@@ -1,0 +1,15 @@
+Chương 1: Tận dụng IoT để Giám sát Sức khỏe Chính xác trong Chăn nuôi với Trí tuệ Nhân tạo
+Chương 2: Tầm quan trọng của Máy học trong Phát hiện Bệnh trên Cây Táo và Hàm ý
+Chương 3: Đầu vào Thông minh Cách mạng hóa Nông nghiệp: Một Nghiên cứu Phân tích
+Chương 4: Nghiên cứu Điển hình về các Sáng kiến và Câu chuyện Thành công của Hệ thống AI Biên cho Nông nghiệp
+Chương 5: Công cụ Đề xuất Cây trồng: Phương pháp Tính toán dựa trên Máy học để Đề xuất Cây trồng Tốt nhất Sử dụng các Đặc điểm Đất đai và Môi trường
+Chương 6: Xem xét các Thuật toán Máy học trong Dự đoán Năng suất Cây trồng 
+Chương 7: Thu hoạch Thông minh: AI và ML Cách mạng hóa Nông nghiệp 
+Chương 8: Sử dụng Học sâu để Phát hiện Bệnh trên Lá Táo 
+Chương 9: Dự đoán Năng suất Cây trồng Nông nghiệp: Phân tích So sánh Sử dụng các Mô hình Máy học
+Chương 10: Những Nguyên tắc Cơ bản về AI và Máy học với các Ví dụ Cụ thể về Ứng dụng trong Nông nghiệp 
+Chương 11: Tương lai Canh tác: Tận dụng Ngôn ngữ Máy để Dự báo Bệnh Lá Khoai tây và Tối ưu hóa Năng suất
+Chương 12: Phân loại Trang trại để Đề xuất Trồng lúa Sử dụng Naive Bayes và SVM: Một Nghiên cứu Điển hình
+Chương 13: Mạng Thần kinh cho Phát hiện Bệnh Cây trồng 
+Chương 14: Dự báo Thời tiết Ngắn hạn cho Nông nghiệp Chính xác ở Jammu và Kashmir: Một Phương pháp Tiếp cận Học sâu 
+Chương 15: Học Tăng cường Sâu cho Tưới tiêu Thông minh

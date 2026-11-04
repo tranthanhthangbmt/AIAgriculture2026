@@ -1,0 +1,16 @@
+KẾ HOẠCH VIẾT SCRIPT THUYẾT TRÌNH BÀI 7: BÁO CÁO NHÓM VÀ THẢO LUẬN DỰ ÁN
+
+1. Mục tiêu:
+- Tạo script thuyết trình chi tiết (scriptB07.txt) dựa trên 29 slides của file PDF "slide Chương 7_ Báo cáo nhóm và Thảo luận dự án.pdf". (Lưu ý: File ở thư mục Buổi 7 nhưng tài liệu tham khảo nằm ở Tuần 8).
+- Định dạng chuẩn: Người 1 (Giảng viên) và Người 2 (Sinh viên).
+- Tham khảo kiến thức từ 2 file PDF trong thư mục "Tuần 8 Báo cáo nhóm và Thảo luận dự án" ([Ethics]_Đạo đức trong AI Nông nghiệp.pdf, [Hands-On] Appendix A_ Machine Learning Project Checklist.pdf).
+
+2. Phân vai:
+- Người 1 (Giảng viên): Chuyên gia hướng dẫn, phân tích quy trình 8 bước triển khai dự án Học máy (ML Project Checklist), đánh giá các ý tưởng dự án của sinh viên và dẫn dắt cuộc thảo luận sâu sắc về các khía cạnh Đạo đức trong AI Nông nghiệp (Big Data, quyền sở hữu dữ liệu, minh bạch thuật toán).
+- Người 2 (Sinh viên): Đóng vai trò sinh viên đại diện nhóm trình bày ý tưởng, đặt các câu hỏi phản biện về tính thực tiễn khi thu thập dữ liệu tại các nông trại, và thắc mắc về vấn đề bảo mật dữ liệu của người nông dân trước các tập đoàn lớn.
+
+3. Kế hoạch triển khai (Các bước thực hiện):
+- Bước 1 (Phần 1 - Hướng dẫn dự án Học máy & Báo cáo nhóm): Slide 1 - 15. Giảng viên giới thiệu yêu cầu báo cáo cuối kỳ. Điểm qua 8 bước cốt lõi của Machine Learning Project Checklist (Từ xác định vấn đề, lấy dữ liệu, đến triển khai hệ thống). Sinh viên tương tác, chia sẻ khó khăn lớn nhất ở bước "Chuẩn bị dữ liệu" do tính chất nhiễu của dữ liệu môi trường nông nghiệp.
+- Bước 2 (Phần 2 - Đạo đức và Dữ liệu lớn trong Nông nghiệp): Slide 16 - 25. Chuyển sang chủ đề Đạo đức. Dựa trên tài liệu tham khảo, giảng viên bàn luận về Hệ thống thông tin thông minh (SIS) và Big Data trong các tập đoàn đa quốc gia. Phân tích các rủi ro: Quyền sở hữu dữ liệu thuộc về ai? Quyền riêng tư của nông dân và nguy cơ thiên vị (bias) trong thuật toán (ví dụ hệ thống ưu tiên các trang trại lớn).
+- Bước 3 (Phần 3 - Thảo luận mở & Hỏi đáp): Slide 26 - 29. Giảng viên và sinh viên tranh luận về câu hỏi: "AI sẽ thay thế nông dân hay chỉ là công cụ hỗ trợ?". Tóm tắt các thông điệp cốt lõi của môn học, hướng đến mục tiêu ứng dụng công nghệ vì một nền nông nghiệp bền vững.
+- Bước 4 (Kiểm tra & Hoàn thiện): Đảm bảo các kiến thức về 8 bước ML Checklist và các khái niệm đạo đức AI được lồng ghép mượt mà, tự nhiên vào hội thoại. Lưu kịch bản vào file `scriptB07.txt`.

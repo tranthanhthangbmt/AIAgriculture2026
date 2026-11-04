@@ -1,0 +1,24 @@
+KẾ HOẠCH VIẾT SCRIPT THUYẾT TRÌNH: CHƯƠNG 9 & 10 - THỰC HÀNH (PHẦN 1 - TẠI DOANH NGHIỆP/TRANG TRẠI)
+
+1. Mục tiêu:
+- Tạo script thuyết trình chi tiết dựa trên 28 slides của file PDF "slide Chương 9&10_Thực hành (Phần 1 - tại doanh nghiệp_trang trại).pdf" (Thư mục Buổi 9_10).
+- Bám sát định dạng chuẩn: Người 1 (Giảng viên/Chuyên gia tại trang trại) và Người 2 (Sinh viên/Thực tập sinh).
+- Tham khảo kiến thức từ 2 tài liệu của "Tuần 9 & 10 Thực hành":
+  + Chapter 7: Tools for Artificial Intelligence (Các công cụ AI ứng dụng).
+  + Chapter 4: Case Studies on the Initiatives (Nghiên cứu tình huống về các sáng kiến thực tiễn).
+
+2. Phân vai:
+- Người 1 (Giảng viên / Kỹ sư Trưởng của Doanh nghiệp): Đóng vai trò là người dẫn dắt chuyến "field trip" (đi thực tế). Sẽ trình bày trực quan các công cụ phần cứng, phần mềm AI (Tools for AI) đang thực sự hoạt động trên cánh đồng, cũng như chia sẻ các bài học thành bại từ những Case Study thực tiễn của doanh nghiệp.
+- Người 2 (Sinh viên): Đóng vai trò là sinh viên đi thực tế, tò mò, hay hỏi và thích so sánh sự khác biệt giữa "lý thuyết đã học trên lớp" và "thực tế lầy lội ngoài ruộng đồng".
+
+3. Kế hoạch triển khai (Các bước thực hiện):
+- Bước 1 (Phần 1 - Chào mừng & Giới thiệu Công cụ AI thực chiến): Slide 1 - 10. 
+  + Bối cảnh: Lớp học diễn ra ngay tại trang trại/doanh nghiệp nông nghiệp công nghệ cao. 
+  + Nội dung: Chuyên gia giới thiệu tổng quan về trang trại. Đi sâu vào "Tools for Artificial Intelligence": Không chỉ là code Python, mà là các trạm thời tiết mini (IoT), camera quang phổ trên Drone, và hệ thống tưới tự động đang hoạt động.
+- Bước 2 (Phần 2 - Phân tích Case Studies từ doanh nghiệp): Slide 11 - 20. 
+  + Nội dung: Dựa vào tài liệu "Case Studies on the Initiatives", kỹ sư chia sẻ câu chuyện thực tế về việc doanh nghiệp đã ứng dụng AI như thế nào. Ví dụ: Dùng AI phát hiện bệnh chổi rồng trên nhãn, hoặc tối ưu hóa lượng phân bón giúp tiết kiệm hàng tỷ đồng. Sinh viên thắc mắc về những sai số khi áp dụng thực tế so với phòng thí nghiệm.
+- Bước 3 (Phần 3 - Demo & Trải nghiệm thực hành): Slide 21 - 25. 
+  + Nội dung: Phần thực hành tương tác. Sinh viên được tận tay điều khiển giao diện phần mềm quản lý (Farm Management Software) hoặc xem trực tiếp cảnh Drone tự động cất cánh đi tuần tra cánh đồng dựa trên lệnh của AI.
+- Bước 4 (Phần 4 - Hỏi đáp & Định hướng nghề nghiệp): Slide 26 - 28. 
+  + Nội dung: Thảo luận mở. Sinh viên hỏi về cơ hội việc làm và các kỹ năng cứng/mềm cần thiết để trở thành kỹ sư Nông nghiệp số. Lời khuyên từ chuyên gia và kết thúc Phần 1 của chuyến đi thực hành.
+- Bước 5 (Kiểm tra & Hoàn thiện): Lưu kịch bản vào file `scriptCh09_10.txt` (tương ứng với thư mục Buổi 9_10), đảm bảo giữ giọng văn tự nhiên, mang đậm không khí của một chuyến đi thực tế (field trip) thay vì ngồi trong lớp học.

@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc nghiệm Buổi 7: Báo cáo nhóm và Thảo luận dự án</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #15803d;
+            --primary-hover: #166534;
+            --primary-light: #dcfce7;
+            --accent: #22c55e;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --success: #16a34a;
+            --success-bg: #f0fdf4;
+            --success-border: #bbf7d0;
+            --error: #dc2626;
+            --error-bg: #fef2f2;
+            --error-border: #fecaca;
+            --radius: 12px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 24px 16px;
+        }
+
+        .quiz-wrapper {
+            width: 100%;
+            max-width: 840px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        /* Header Bar */
+        .quiz-header {
+            padding: 20px 28px;
+            background: linear-gradient(135deg, #14532d 0%, #166534 100%);
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .quiz-header h1 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .session-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+
+        .quiz-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-palette {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-palette:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Progress Bar */
+        .progress-track {
+            width: 100%;
+            height: 6px;
+            background-color: #e2e8f0;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            width: 0%;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Quiz Body */
+        .quiz-body {
+            padding: 32px 28px;
+        }
+
+        .question-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .counter-badge {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .tags-cluster {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .tag-pill {
+            font-size: 0.78rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            background: #f1f5f9;
+            color: var(--text-muted);
+        }
+
+        .tag-pill.diff-de { background: #dcfce7; color: #166534; }
+        .tag-pill.diff-tb { background: #fef3c7; color: #92400e; }
+        .tag-pill.diff-kho { background: #fee2e2; color: #991b1b; }
+
+        .question-title {
+            font-size: 1.22rem;
+            font-weight: 700;
+            line-height: 1.55;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+
+        /* Options Grid */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .option-card {
+            display: flex;
+            align-items: flex-start;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #ffffff;
+            user-select: none;
+        }
+
+        .option-card:hover:not(.locked) {
+            border-color: var(--accent);
+            background: #f8fafc;
+            transform: translateY(-1px);
+        }
+
+        .option-card.selected:not(.locked) {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-card.locked {
+            cursor: default;
+        }
+
+        .option-card.is-correct {
+            border-color: var(--success) !important;
+            background-color: var(--success-bg) !important;
+        }
+
+        .option-card.is-wrong {
+            border-color: var(--error) !important;
+            background-color: var(--error-bg) !important;
+        }
+
+        .option-letter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-right: 14px;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .option-card.selected .option-letter {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .option-card.is-correct .option-letter {
+            background: var(--success);
+            color: #ffffff;
+        }
+
+        .option-card.is-wrong .option-letter {
+            background: var(--error);
+            color: #ffffff;
+        }
+
+        .option-text {
+            font-size: 1.02rem;
+            line-height: 1.5;
+            color: var(--text-main);
+            padding-top: 3px;
+        }
+
+        /* Feedback Box */
+        .feedback-box {
+            display: none;
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            animation: slideDown 0.3s ease;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background-color: var(--success-bg);
+            border: 1px solid var(--success-border);
+        }
+
+        .feedback-box.incorrect {
+            background-color: var(--error-bg);
+            border: 1px solid var(--error-border);
+        }
+
+        .feedback-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .correct .feedback-title { color: var(--success); }
+        .incorrect .feedback-title { color: var(--error); }
+
+        .feedback-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #334155;
+        }
+
+        /* Action Buttons */
+        .actions-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn {
+            padding: 12px 26px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        /* Result Screen */
+        .result-screen {
+            display: none;
+            text-align: center;
+            padding: 40px 24px;
+        }
+
+        .score-ring-wrap {
+            position: relative;
+            width: 170px;
+            height: 170px;
+            margin: 0 auto 28px;
+        }
+
+        .score-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent) 0%, #e2e8f0 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .score-inner {
+            width: 136px;
+            height: 136px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .score-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .result-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .result-summary {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 500px;
+            margin: 0 auto 36px;
+        }
+
+        .stat-card {
+            padding: 16px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .stat-val {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Palette Drawer */
+        .drawer-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 100;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -360px;
+            width: 340px;
+            height: 100%;
+            background: #ffffff;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+            z-index: 101;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+        }
+
+        .drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .drawer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 4px;
+        }
+
+        .palette-item {
+            height: 42px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .palette-item:hover {
+            border-color: var(--primary);
+            background: #e2e8f0;
+        }
+
+        .palette-item.active {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .palette-item.correct {
+            background: var(--success);
+            color: #ffffff;
+            border-color: var(--success);
+        }
+
+        .palette-item.wrong {
+            background: var(--error);
+            color: #ffffff;
+            border-color: var(--error);
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 10px; }
+            .quiz-body { padding: 20px 16px; }
+            .quiz-header { padding: 16px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-wrapper">
+    <!-- Header -->
+    <div class="quiz-header">
+        <h1>
+            <span>🌾</span>
+            <span>Buổi 7: Báo cáo nhóm và Thảo luận dự án</span>
+        </h1>
+        <div class="quiz-meta">
+            <span class="session-badge">Buổi 7</span>
+            <button class="btn-palette" onclick="toggleDrawer()">📋 Mục lục câu</button>
+        </div>
+    </div>
+
+    <!-- Progress Track -->
+    <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <!-- Screen 1: Quiz Active -->
+    <div class="quiz-body" id="quiz-screen">
+        <div class="question-meta-row">
+            <div class="counter-badge" id="question-counter">Câu hỏi 1 / 40</div>
+            <div class="tags-cluster">
+                <span class="tag-pill" id="section-tag">Tổng quan</span>
+                <span class="tag-pill" id="difficulty-tag">Dễ</span>
+            </div>
+        </div>
+
+        <h2 class="question-title" id="question-text">Đang tải câu hỏi...</h2>
+
+        <div class="options-list" id="options-container">
+            <!-- Dynamic Options -->
+        </div>
+
+        <!-- Feedback Container -->
+        <div class="feedback-box" id="feedback-box">
+            <div class="feedback-title" id="feedback-title"></div>
+            <div class="feedback-desc" id="feedback-desc"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions-row">
+            <button class="btn btn-secondary" id="btn-prev" onclick="navigatePrev()">← Câu trước</button>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-primary" id="btn-check" onclick="checkAnswer()" disabled>Kiểm tra</button>
+                <button class="btn btn-primary" id="btn-next" onclick="navigateNext()" style="display: none;">Câu tiếp theo →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 2: Results -->
+    <div class="result-screen" id="result-screen">
+        <div class="score-ring-wrap">
+            <div class="score-circle" id="score-circle">
+                <div class="score-inner">
+                    <span class="score-number" id="final-score">0</span>
+                    <span class="score-label" id="final-total">/ 40</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="result-title" id="result-title">Chúc mừng bạn đã hoàn thành!</h2>
+        <p class="result-summary" id="result-summary">Bạn đã trả lời xuất sắc hầu hết các câu hỏi trong phần này.</p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--success);" id="stat-correct">0</div>
+                <div class="stat-label">Số câu đúng</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--error);" id="stat-wrong">0</div>
+                <div class="stat-label">Số câu sai</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--primary);" id="stat-accuracy">0%</div>
+                <div class="stat-label">Độ chính xác</div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="restartQuiz()">🔄 Làm lại bài</button>
+            <button class="btn btn-secondary" onclick="viewAllAnswers()">🔍 Xem lại chi tiết đáp án</button>
+        </div>
+    </div>
+</div>
+
+<!-- Drawer / Question Palette -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<div class="drawer" id="drawer">
+    <div class="drawer-header">
+        <h3 style="font-size: 1.1rem; font-weight: 700;">Danh sách câu hỏi</h3>
+        <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.85rem;" onclick="toggleDrawer()">Đóng ✕</button>
+    </div>
+    <div class="drawer-grid" id="palette-grid">
+        <!-- Palette numbers -->
+    </div>
+</div>
+
+<script>
+    const questions = [{"id": 226, "local_id": 1, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Theo quy trình chuẩn, bước đầu tiên và quan trọng nhất cần làm trước khi chạm vào bất kỳ dòng code hay dữ liệu nào là gì?", "options": [{"id": "A", "text": "Thiết lập môi trường điện toán đám mây và cài đặt các thư viện Deep Learning chuyên dụng phục vụ việc huấn luyện."}, {"id": "B", "text": "Định khung vấn đề (Frame the Problem): Xác định mục tiêu, loại bài toán và cách đánh giá."}, {"id": "C", "text": "Thu thập và gán nhãn toàn bộ tập dữ liệu mẫu từ các cảm biến IoT và ảnh chụp thực địa tại trang trại canh tác."}, {"id": "D", "text": "Lựa chọn ngay kiến trúc mạng nơ-ron tích chập (CNN) hiện đại nhất để chuẩn bị cho việc huấn luyện mô hình dự đoán."}], "answer": "B", "explanation": "Bạn phải xác định mục tiêu kinh doanh/nghiên cứu là gì, bài toán thuộc loại nào (phân loại/hồi quy), và hiện tại đang giải quyết thủ công như thế nào trước khi bắt đầu."}, {"id": 227, "local_id": 2, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Tại sao việc tách một phần dữ liệu thành “Tập kiểm tra” (Test Set) ngay từ giai đoạn đầu là bắt buộc?", "options": [{"id": "A", "text": "Để giảm tải dung lượng bộ nhớ RAM và tối ưu hóa đáng kể tốc độ huấn luyện cho thuật toán học máy khi xử lý các tập dữ liệu nông nghiệp quy mô lớn."}, {"id": "B", "text": "Để ngăn chặn “Thiên kiến nhòm ngó dữ liệu” (Data Snooping Bias) - tránh việc não bộ con người vô tình chọn mô hình phù hợp với dữ liệu kiểm tra."}, {"id": "C", "text": "Nhằm cung cấp thêm một tập dữ liệu trung gian phục vụ việc tinh chỉnh siêu tham số và lựa chọn hàm kích hoạt phù hợp cho các lớp ẩn của mô hình."}, {"id": "D", "text": "Đảm bảo sự cân bằng tuyệt đối về tỷ lệ phân phối nhãn giữa các lớp bệnh cây trồng ngay trong quá trình chuẩn hóa đặc trưng và xử lý dữ liệu bị khuyết thiếu."}], "answer": "B", "explanation": "Nếu nhìn vào tập test quá sớm, bạn có thể vô thức chọn mô hình hoạt động tốt trên tập đó nhưng không tổng quát hóa được cho dữ liệu mới."}, {"id": 228, "local_id": 3, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Trong bước “Khám phá dữ liệu”, nếu biểu đồ phân phối (Histogram) của một thuộc tính có dạng “đuôi dài” (Heavy tail - lệch hẳn về một bên), bạn nên làm gì?", "options": [{"id": "A", "text": "Loại bỏ hoàn toàn thuộc tính đó ra khỏi tập dữ liệu vì phân phối lệch gây ra lỗi phân kỳ nghiêm trọng cho hàm mất mát."}, {"id": "B", "text": "Biến đổi thuộc tính (ví dụ: lấy logarit) để phân phối trở nên cân đối hơn (giống hình chuông)."}, {"id": "C", "text": "Nhân đôi giá trị của tất cả các quan sát ở phần đuôi để kéo cân bằng biểu đồ tần số về giá trị trung bình tổng thể."}, {"id": "D", "text": "Giữ nguyên phân phối gốc và áp dụng kỹ thuật gán nhãn One-hot Encoding cho toàn bộ các giá trị định lượng liên tục."}], "answer": "B", "explanation": "Các thuật toán ML thường hoạt động tốt hơn với dữ liệu có phân phối chuẩn (Gaussian). Biến đổi logarit giúp xử lý các phân phối bị lệch."}, {"id": 229, "local_id": 4, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Kỹ thuật xử lý dữ liệu bị thiếu (Missing values) bằng cách điền vào giá trị trung bình (Mean) hoặc trung vị (Median) được gọi là gì?", "options": [{"id": "A", "text": "Kỹ thuật loại bỏ bản ghi khuyết thiếu (Dropna/Listwise Deletion)."}, {"id": "B", "text": "Imputation (Gán/Điền dữ liệu)."}, {"id": "C", "text": "Kỹ thuật chuẩn hóa phân phối đặc trưng (Standardization/Z-score)."}, {"id": "D", "text": "Kỹ thuật mã hóa biến danh mục nhị phân (One-hot Encoding)."}], "answer": "B", "explanation": "Imputation là kỹ thuật điền giá trị giả định vào chỗ trống để giữ lại dòng dữ liệu đó thay vì xóa bỏ gây mất mát thông tin."}, {"id": 230, "local_id": 5, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Mục đích của việc xây dựng một “Mô hình cơ sở” (Baseline Model) đơn giản (ví dụ: luôn đoán giá trị trung bình) là gì?", "options": [{"id": "A", "text": "Để nhanh chóng hoàn thiện một giải pháp dự phòng có thể thay thế ngay lập tức khi hệ thống máy chủ Deep Learning gặp sự cố quá tải tài nguyên phần cứng."}, {"id": "B", "text": "Để thiết lập một mốc hiệu suất tối thiểu (Benchmark) mà các mô hình phức tạp (như Deep Learning) phải vượt qua được thì mới đáng giá để sử dụng."}, {"id": "C", "text": "Nhằm mục đích trực quan hóa mối quan hệ tuyến tính giữa các biến đầu vào trên báo cáo kỹ thuật mà không cần trải qua các bước tiền xử lý dữ liệu phức tạp."}, {"id": "D", "text": "Đóng vai trò là mô hình có độ chính xác dự báo cao nhất để làm tiêu chuẩn tham chiếu trần lý thuyết (Upper bound) mà không thuật toán nào vượt qua được."}], "answer": "B", "explanation": "Nếu mô hình phức tạp của bạn không đánh bại được một quy tắc đơn giản, thì mô hình đó vô dụng."}, {"id": 231, "local_id": 6, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Kỹ thuật “Cross-Validation” (Kiểm chứng chéo) được sử dụng để làm gì?", "options": [{"id": "A", "text": "Kiểm tra và phát hiện các lỗi cú pháp lập trình cùng sai số logic trong mã nguồn trước khi biên dịch và chạy mô hình trên môi trường máy chủ đám mây."}, {"id": "B", "text": "Đánh giá hiệu suất mô hình một cách tin cậy hơn trên nhiều tập con khác nhau, tránh trường hợp may mắn ngẫu nhiên trên một lần chia dữ liệu."}, {"id": "C", "text": "Tối ưu hóa tốc độ hội tụ của thuật toán lan truyền ngược nhằm rút ngắn đáng kể thời gian huấn luyện mạng nơ-ron sâu trên các tập dữ liệu lớn."}, {"id": "D", "text": "Tự động cân bằng số lượng mẫu giữa các lớp mất cân bằng trong tập dữ liệu huấn luyện thông qua kỹ thuật nội suy láng giềng gần nhất (SMOTE)."}], "answer": "B", "explanation": "Cross-validation (như K-fold) chia dữ liệu thành K phần, lần lượt huấn luyện và kiểm tra để đảm bảo kết quả đánh giá là khách quan."}, {"id": 232, "local_id": 7, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Nếu mô hình hoạt động rất tốt trên tập huấn luyện nhưng tệ trên tập kiểm tra, hiện tượng này gọi là gì và cách sửa cơ bản?", "options": [{"id": "A", "text": "Underfitting; Cần tăng số lượng lớp ẩn, bổ sung đặc trưng mới hoặc giảm bớt hệ số điều chuẩn (Regularization)."}, {"id": "B", "text": "Overfitting; Cần thu thập thêm dữ liệu hoặc đơn giản hóa mô hình (Regularization)."}, {"id": "C", "text": "Data Leakage; Cần loại bỏ hoàn toàn tập kiểm tra và tiến hành huấn luyện trực tiếp trên toàn bộ dữ liệu gốc."}, {"id": "D", "text": "Concept Drift; Cần cập nhật trọng số ngẫu nhiên liên tục trong mỗi chu kỳ huấn luyện để thích nghi với nhiễu."}], "answer": "B", "explanation": "Overfitting nghĩa là mô hình “học vẹt” dữ liệu huấn luyện. Cần thêm dữ liệu đa dạng hoặc giảm độ phức tạp của mô hình."}, {"id": 233, "local_id": 8, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "“Grid Search” là kỹ thuật dùng để làm gì?", "options": [{"id": "A", "text": "Tìm kiếm và thu thập tự động các tài liệu học thuật cũng như bài báo khoa học từ các công cụ tra cứu trực tuyến."}, {"id": "B", "text": "Tự động thử nghiệm các tổ hợp siêu tham số (Hyperparameters) khác nhau để tìm ra cấu hình tối ưu cho mô hình."}, {"id": "C", "text": "Tự động quét và phát hiện các đoạn mã nguồn phát sinh lỗi tràn bộ nhớ hoặc rò rỉ dữ liệu trong suốt quá trình chạy."}, {"id": "D", "text": "Truy vấn tọa độ địa lý và ranh giới không gian của các thửa ruộng thông qua tích hợp dữ liệu bản đồ số GIS vệ tinh."}], "answer": "B", "explanation": "Grid Search quét qua lưới các giá trị tham số do người dùng định nghĩa để tìm ra bộ tham số tốt nhất."}, {"id": 234, "local_id": 9, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Khi trình bày dự án cho các bên liên quan (Stakeholders) không chuyên về kỹ thuật, điều gì quan trọng nhất?", "options": [{"id": "A", "text": "Trình bày chi tiết từng đoạn mã nguồn nguồn mở, chứng minh tính tối ưu về cấu trúc thuật toán và kiến trúc vi dịch vụ (Microservices) của toàn bộ hệ thống phần mềm."}, {"id": "B", "text": "“Kể chuyện” (Storytelling): Kết nối kết quả kỹ thuật với giá trị thực tế (giải quyết vấn đề gì, tiết kiệm bao nhiêu tiền) thay vì chỉ nói về các con số khô khan."}, {"id": "C", "text": "Tập trung giải thích tường tận các thuật ngữ học máy chuyên sâu như đạo hàm bậc hai, ma trận Hessian và kỹ thuật tối ưu hóa siêu tham số bằng Bayesian Optimization."}, {"id": "D", "text": "Trình bày thật ngắn gọn bảng mã lỗi hệ thống và phân tích sự suy giảm dung lượng bộ nhớ RAM của cụm máy chủ để thuyết phục đối tác cấp thêm ngân sách bảo trì phần cứng."}], "answer": "B", "explanation": "Mục tiêu cuối cùng là giải quyết vấn đề. Nông dân/Nhà đầu tư quan tâm đến lợi ích thực tế hơn là thuật toán bên trong."}, {"id": 235, "local_id": 10, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Theo Checklist, sau khi triển khai mô hình, tại sao chúng ta vẫn cần “Giám sát” (Monitoring)?", "options": [{"id": "A", "text": "Vì mô hình sẽ “thối rữa” (rot) theo thời gian do dữ liệu và môi trường thay đổi (Data Drift/Concept Drift)."}, {"id": "B", "text": "Để phát hiện kịp thời các hư hỏng vật lý hoặc sự suy giảm hiệu năng phần cứng trên hệ thống máy chủ lưu trữ đám mây."}, {"id": "C", "text": "Nhằm ghi lại nhật ký truy vấn để tính toán chính xác chi phí dịch vụ điện toán đám mây phân bổ cho từng hộ nông dân."}, {"id": "D", "text": "Giám sát là không bắt buộc vì mô hình học máy sau khi tối ưu hóa đã có khả năng duy trì độ chính xác vĩnh viễn trên thực địa."}], "answer": "A", "explanation": "Môi trường thực tế luôn thay đổi (ví dụ: xuất hiện loại sâu bệnh mới, khí hậu thay đổi), làm giảm độ chính xác của mô hình theo thời gian. PHẦN 2: ĐẠO ĐỨC, XÃ HỘI VÀ RỦI RO (TƯ DUY PHẢN BIỆN) Mục tiêu: Đánh giá nhận thức xã hội của sinh viên (dựa trên [Ethics])."}, {"id": 236, "local_id": 11, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Vấn đề “Quyền sở hữu dữ liệu” (Data Ownership) trong nông nghiệp thông minh thường gây tranh cãi giữa hai đối tượng nào?", "options": [{"id": "A", "text": "Người tiêu dùng nông sản cuối cùng và các hợp tác xã sản xuất nông nghiệp hữu cơ tại địa phương canh tác."}, {"id": "B", "text": "Nông dân (người tạo ra dữ liệu từ ruộng) và Công ty Công nghệ (người thu thập và phân tích dữ liệu)."}, {"id": "C", "text": "Cơ quan quản lý thuế nhà nước và các tổ chức tín dụng cung cấp khoản vay thế chấp vốn cho người làm nông."}, {"id": "D", "text": "Nhà sản xuất phần cứng thiết bị bay không người lái và các đơn vị cung cấp dịch vụ viễn thông hạ tầng mạng."}], "answer": "B", "explanation": "Có rủi ro là các công ty công nghệ dùng dữ liệu của nông dân để trục lợi (ví dụ: bán dữ liệu thị trường) mà không chia sẻ lợi ích lại cho nông dân."}, {"id": 237, "local_id": 12, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "“Khoảng cách số” (Digital Divide) trong nông nghiệp đề cập đến rủi ro gì khi áp dụng AI?", "options": [{"id": "A", "text": "Khoảng cách không gian thực tế giữa các hàng cây trồng nông nghiệp và mật độ bố trí của các trạm cảm biến IoT trên cánh đồng mẫu lớn."}, {"id": "B", "text": "Nguy cơ các nông hộ nhỏ/nghèo bị bỏ lại phía sau do không đủ tiền mua công nghệ, trong khi các trang trại lớn ngày càng giàu hơn."}, {"id": "C", "text": "Sự chênh lệch về tốc độ xử lý tín hiệu giữa hệ thống chuyển đổi số nhị phân (0 và 1) với các bộ điều khiển logic tương tự (Analog)."}, {"id": "D", "text": "Khoảng cách địa lý từ khu vực canh tác nông thôn đến các trung tâm thương mại thành phố làm gia tăng chi phí vận chuyển nông sản."}], "answer": "B", "explanation": "Công nghệ cao thường đắt đỏ, tạo ra sự bất bình đẳng trong tiếp cận, làm gia tăng hố sâu giàu nghèo."}, {"id": 238, "local_id": 13, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Rác thải điện tử (E-waste) từ các dự án IoT nông nghiệp đến từ đâu?", "options": [{"id": "A", "text": "Từ các dòng mã lệnh phần mềm dư thừa và các tập tin dữ liệu nhật ký không được thu hồi hoặc dọn dẹp khỏi hệ thống máy chủ."}, {"id": "B", "text": "Từ hàng triệu cảm biến, pin và thiết bị phần cứng bị hỏng hoặc hết hạn sử dụng bị vứt bỏ ra môi trường đồng ruộng."}, {"id": "C", "text": "Từ việc đốt rơm rạ và phế phẩm sinh học sau thu hoạch tạo ra các hạt bụi mịn và khói độc phát tán vào không khí nông thôn."}, {"id": "D", "text": "Từ các loại bao bì phân bón vô cơ và chai lọ thuốc bảo vệ thực vật bằng nhựa không được thu gom đúng quy chuẩn an toàn."}], "answer": "B", "explanation": "Triển khai IoT diện rộng đồng nghĩa với việc đưa lượng lớn rác thải điện tử vào môi trường nếu không có quy trình thu hồi/tái chế."}, {"id": 239, "local_id": 14, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "“Thiên kiến thuật toán” (Algorithmic Bias) có thể xảy ra trong nông nghiệp như thế nào?", "options": [{"id": "A", "text": "Mô hình chỉ được huấn luyện trên dữ liệu ở Châu Âu nhưng lại áp dụng ở Việt Nam, dẫn đến dự báo sai lệch hoàn toàn do khác biệt thổ nhưỡng."}, {"id": "B", "text": "Khi hệ thống điện toán tự động đưa ra các phản hồi tiêu cực một cách có chủ đích do người dùng thiết lập sai tham số khởi tạo trong hệ chuyên gia tri thức."}, {"id": "C", "text": "Tốc độ xử lý của thuật toán tính toán quá nhanh dẫn đến việc bỏ qua các bước kiểm tra logic bắt buộc trong chu trình ra quyết định canh tác."}, {"id": "D", "text": "Các cảm biến đo độ ẩm đất bị hỏng hóc vật lý ngẫu nhiên khiến dữ liệu số liệu gửi về bộ xử lý trung tâm bị gián đoạn cục bộ trong một khoảng thời gian."}], "answer": "A", "explanation": "Dữ liệu huấn luyện không đại diện (non-representative) sẽ tạo ra các mô hình thiên kiến, hoạt động kém ở các vùng địa lý khác."}, {"id": 240, "local_id": 15, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Về mặt thị trường lao động, việc sử dụng robot thu hoạch tự động có thể gây ra tác động tiêu cực gì?", "options": [{"id": "A", "text": "Làm gia tăng giá thành bán lẻ của nông sản trên thị trường do chi phí khấu hao trang thiết bị tự động quá lớn."}, {"id": "B", "text": "Gây mất việc làm cho lượng lớn lao động phổ thông/thời vụ (những người sống dựa vào nghề hái thuê)."}, {"id": "C", "text": "Làm tổn thương cơ học đến cấu trúc sinh lý của cây trồng khiến năng suất quang hợp giảm sút nghiêm trọng ở vụ mùa kế tiếp."}, {"id": "D", "text": "Dẫn đến hiện tượng các thiết bị tự hành đồng loạt ngừng hoạt động do lỗi xung đột phần mềm điều khiển trong giờ cao điểm."}], "answer": "B", "explanation": "Tự động hóa thay thế lao động chân tay là một vấn đề đạo đức lớn cần có giải pháp chuyển đổi nghề nghiệp."}, {"id": 241, "local_id": 16, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Trách nhiệm giải trình (Accountability): Nếu một ứng dụng AI tư vấn sai khiến nông dân mất trắng vụ mùa, ai nên chịu trách nhiệm?", "options": [{"id": "A", "text": "Hoàn toàn không thuộc trách nhiệm của bất kỳ ai vì đây được coi là biến cố bất khả kháng xuất phát từ các sai số kỹ thuật ngẫu nhiên trong phần mềm."}, {"id": "B", "text": "Đây là một vấn đề pháp lý phức tạp chưa có lời giải rõ ràng: Là người viết code, công ty cung cấp, hay người nông dân tin tưởng mù quáng?"}, {"id": "C", "text": "Hoàn toàn thuộc về người nông dân vì đã tự nguyện áp dụng khuyến nghị của máy tính mà không tham khảo thêm ý kiến chuyên môn từ cán bộ khuyến nông."}, {"id": "D", "text": "Thuộc về hệ thống máy chủ và thuật toán tự trị vì chúng tự đưa ra quyết định mà không chịu sự can thiệp trực tiếp từ các lập trình viên phát triển."}], "answer": "B", "explanation": "Đây là câu hỏi mở nhằm kích thích tư duy phản biện về khung pháp lý cho AI. PHẦN 3: XỬ LÝ TÌNH HUỐNG THỰC TẾ (TROUBLESHOOTING) Mục tiêu: Kiểm tra khả năng giải quyết vấn đề (Problem Solving) trong các Case Study cụ thể."}, {"id": 242, "local_id": 17, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Trong bài toán phát hiện bệnh, nếu bộ dữ liệu của bạn có 950 ảnh cây khỏe và chỉ 50 ảnh cây bệnh (Mất cân bằng dữ liệu), và mô hình dự đoán tất cả cây đều khỏe. Độ chính xác (Accuracy) là 95%. Kết quả này có tốt không?", "options": [{"id": "A", "text": "Rất tốt, vì tỷ lệ chính xác tổng thể đạt tới 95%, đáp ứng vượt mức kỳ vọng của hầu hết các mô hình phân loại nhị phân trong nông nghiệp."}, {"id": "B", "text": "Rất tệ, vì mô hình hoàn toàn vô dụng trong việc phát hiện bệnh (thứ chúng ta cần tìm)."}, {"id": "C", "text": "Đạt mức chấp nhận được, vì mô hình đã nhận diện chính xác phần lớn các mẫu cây khỏe mạnh thực tế có mặt trên đồng ruộng thử nghiệm."}, {"id": "D", "text": "Chưa thể xác định được vì độ chính xác 95% chỉ phản ánh kết quả trên tập huấn luyện chứ chưa kiểm thử trên tập dữ liệu ngoài thực địa."}], "answer": "B", "explanation": "Trong dữ liệu mất cân bằng, Accuracy là chỉ số đánh lừa. Cần dùng Precision, Recall hoặc F1-Score để đánh giá đúng khả năng tìm ra ca bệnh."}, {"id": 243, "local_id": 18, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Để giải quyết vấn đề mất cân bằng dữ liệu nêu trên (Quá ít ảnh bệnh), giải pháp kỹ thuật nào sau đây là phù hợp?", "options": [{"id": "A", "text": "Loại bỏ ngẫu nhiên thêm các ảnh thuộc lớp cây bệnh để giảm thiểu sự phân tán dữ liệu và giúp thuật toán dễ dàng hội tụ về một nhãn đồng nhất."}, {"id": "B", "text": "Sử dụng kỹ thuật Tăng cường dữ liệu (Data Augmentation) cho lớp cây bệnh hoặc dùng các kỹ thuật lấy mẫu lại (Resampling like SMOTE)."}, {"id": "C", "text": "Giữ nguyên hiện trạng dữ liệu và chỉ cần tăng mạnh tốc độ học (Learning Rate) của mạng nơ-ron nhằm ép mô hình chú ý hơn tới các ca bệnh."}, {"id": "D", "text": "Chuyển đổi toàn bộ bài toán phân loại nhị phân sang mô hình hồi quy phi tuyến tính để dự báo trực tiếp diện tích lá bị tổn thương bề mặt."}], "answer": "B", "explanation": "Cần tăng số lượng mẫu của lớp thiểu số (cây bệnh) để mô hình có đủ dữ liệu để học."}, {"id": 244, "local_id": 19, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Khi triển khai mô hình nhận diện bệnh lên điện thoại di động cũ của nông dân, mô hình chạy rất chậm. Bạn nên làm gì?", "options": [{"id": "A", "text": "Yêu cầu nông dân nâng cấp lên các thiết bị điện thoại cao cấp có cấu hình phần cứng mạnh mẽ và trang bị bộ tăng tốc đồ họa chuyên biệt."}, {"id": "B", "text": "Sử dụng các kỹ thuật nén mô hình (Model Quantization) hoặc chuyển sang các kiến trúc nhẹ hơn (như MobileNet, EfficientNet)."}, {"id": "C", "text": "Chuyển đổi mô hình thành dạng bảng tra cứu thủ công trên sổ tay để người nông dân tự đối chiếu các triệu chứng bệnh cây trên đồng ruộng."}, {"id": "D", "text": "Nâng cao độ phân giải của ảnh đầu vào nhằm cung cấp thêm chi tiết đường gân lá giúp thuật toán trích xuất đặc trưng chính xác và nhanh hơn."}], "answer": "B", "explanation": "Tối ưu hóa cho thiết bị biên (Edge AI) yêu cầu giảm kích thước và độ phức tạp tính toán của mô hình."}, {"id": 245, "local_id": 20, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Nếu hệ thống tưới tiêu IoT của bạn được lắp đặt ở một cánh đồng xa xôi không có sóng 3G/4G hay Wi-Fi, giải pháp thiết kế nào là hợp lý nhất?", "options": [{"id": "A", "text": "Tiến hành thi công lắp đặt và kéo toàn bộ tuyến cáp quang tốc độ cao chuyên dụng từ trung tâm điều hành khu dân cư gần nhất trực tiếp đến từng trạm cảm biến và máy bơm tưới tiêu ngoài đồng ruộng."}, {"id": "B", "text": "Thiết kế hệ thống xử lý tại biên (Edge Computing) để tự ra quyết định tại chỗ mà không cần gửi dữ liệu về Cloud, hoặc dùng công nghệ truyền tin xa năng lượng thấp (LoRaWAN)."}, {"id": "C", "text": "Hủy bỏ hoàn toàn giải pháp tự động hóa thông minh và quay trở lại áp dụng phương thức tưới tràn truyền thống định kỳ kết hợp lấy mẫu kiểm tra độ ẩm đất thủ công tại thực địa."}, {"id": "D", "text": "Thiết lập giao thức kết nối không dây mạng diện rộng Bluetooth tầm ngắn năng lượng thấp trực tiếp lên các chùm vệ tinh viễn thông quỹ đạo thấp nhằm duy trì luồng dữ liệu thời gian thực liên tục."}], "answer": "B", "explanation": "LoRaWAN hoặc xử lý tại biên (Edge) là giải pháp tiêu chuẩn cho các khu vực hạn chế kết nối."}, {"id": 246, "local_id": 21, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Trong dự báo giá nông sản, nếu mô hình không thể dự báo được các cú sốc giá (price spikes) do đại dịch hay chiến tranh, nguyên nhân chính là gì?", "options": [{"id": "A", "text": "Do năng lực tính toán phần cứng của hệ thống máy chủ chưa đủ mạnh để giải các phương trình vi phân mô phỏng cung cầu nông sản phức tạp."}, {"id": "B", "text": "Do dữ liệu huấn luyện trong quá khứ không chứa các sự kiện thiên nga đen (Black Swan events) tương tự, nên mô hình không học được."}, {"id": "C", "text": "Do các thương lái và nông dân tại địa phương chủ động che giấu thông tin giao dịch khiến các đặc trưng giá cả bị làm sai lệch có chủ đích."}, {"id": "D", "text": "Do xảy ra lỗi lập trình trong việc thiết lập chỉ số trễ (Lag features) của chuỗi thời gian khi trích xuất đặc trưng biến động thị trường."}], "answer": "B", "explanation": "Mô hình ML chỉ giỏi dự báo những gì lặp lại từ quá khứ. Nó rất kém trong việc dự báo các sự kiện chưa từng có tiền lệ."}, {"id": 247, "local_id": 22, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Tại sao việc sử dụng “Transfer Learning” (Học chuyển giao) lại được khuyến khích cho các dự án sinh viên về phân loại ảnh cây trồng?", "options": [{"id": "A", "text": "Vì phương pháp này cho phép nhóm nghiên cứu bỏ qua hoàn toàn bước thu thập dữ liệu thực tế ngoài nông trường và không cần phải đánh giá hiệu năng mô hình trên tập kiểm tra độc lập ban đầu."}, {"id": "B", "text": "Vì sinh viên thường không có đủ dữ liệu lớn và tài nguyên tính toán để train một mạng CNN sâu từ đầu. Transfer Learning giúp đạt độ chính xác cao với ít dữ liệu hơn."}, {"id": "C", "text": "Vì các mô hình học chuyển giao là sản phẩm mã nguồn mở hoàn toàn miễn phí và hoàn toàn không yêu cầu bất kỳ kỹ năng lập trình chuyên sâu nào trong suốt quá trình tinh chỉnh và tối ưu hóa trọng số."}, {"id": "D", "text": "Vì kỹ thuật này tự động nâng cao chất lượng cảm biến và độ tương phản quang học của ảnh chụp thực địa, giúp các tổn thương trên lá cây trồng hiển thị rõ nét hơn trong quá trình phân loại tự động."}], "answer": "B", "explanation": "Transfer Learning tận dụng tri thức từ các mô hình lớn (đã train trên ImageNet) để áp dụng cho bài toán nhỏ, tiết kiệm thời gian và dữ liệu."}, {"id": 248, "local_id": 23, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Một nhóm sinh viên đề xuất dùng Drone để bay giám sát sâu bệnh 24/7. Điểm yếu thực tế (Practicality) lớn nhất của ý tưởng này là gì?", "options": [{"id": "A", "text": "Các thiết bị bay không người lái dân dụng hoàn toàn không có khả năng hoạt động ổn định trong không gian mở do thiếu tín hiệu điều hướng toàn cầu GPS."}, {"id": "B", "text": "Thời lượng pin của Drone hiện tại rất ngắn (chỉ 20-30 phút), không thể bay liên tục 24/7 mà cần thay pin liên tục hoặc trạm sạc tự động đắt tiền."}, {"id": "C", "text": "Tiếng ồn từ động cơ của thiết bị bay làm xua đuổi các loài chim ăn sâu có ích và gây xáo trộn hành vi tự nhiên của các loài động vật hoang dã quanh khu vực."}, {"id": "D", "text": "Các loại côn trùng gây hại cây trồng chỉ xuất hiện và phá hoại vào ban đêm, thời điểm mà camera quang học thông thường hoàn toàn mất khả năng ghi nhận hình ảnh."}], "answer": "B", "explanation": "Rào cản lớn nhất của Drone trong nông nghiệp hiện nay là thời lượng pin (Energy constraints), làm giảm khả năng giám sát liên tục."}, {"id": 249, "local_id": 24, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Chỉ số F1-Score là sự kết hợp của hai chỉ số nào?", "options": [{"id": "A", "text": "Accuracy (Độ chính xác tổng thể) và Loss (Hàm mất mát mô hình)."}, {"id": "B", "text": "Precision (Độ chuẩn xác) và Recall (Độ phủ)."}, {"id": "C", "text": "True Positive Rate (Tỷ lệ dương tính thật) và True Negative Rate."}, {"id": "D", "text": "Mean Squared Error (Sai số toàn phương) và Median Absolute Error."}], "answer": "B", "explanation": "F1-Score là trung bình điều hòa của Precision và Recall, dùng để đánh giá tổng quát khi cần cân bằng giữa hai yếu tố này."}, {"id": 250, "local_id": 25, "section": "Tổng quan", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Nếu bạn muốn biết đặc trưng nào (ví dụ: Nhiệt độ, Lượng mưa, hay Phân bón) ảnh hưởng nhiều nhất đến kết quả dự báo của mô hình Random Forest, bạn dùng công cụ gì?", "options": [{"id": "A", "text": "Feature Importance (Tầm quan trọng đặc trưng)."}, {"id": "B", "text": "Confusion Matrix (Ma trận nhầm lẫn đánh giá phân loại)."}, {"id": "C", "text": "Learning Curve (Đường cong học tập biểu diễn hội tụ)."}, {"id": "D", "text": "Cost Function (Hàm chi phí tối ưu hóa hàm mất mát)."}], "answer": "A", "explanation": "Các mô hình cây như Random Forest cung cấp thuộc tính feature_importances_ để xếp hạng mức độ ảnh hưởng của các biến đầu vào."}];
+
+    let currentIndex = 0;
+    let selectedOption = null;
+    let userAnswers = {}; // { index: { selected: 'A', isCorrect: true, checked: true } }
+    let isChecked = false;
+
+    // Elements
+    const qCounter = document.getElementById('question-counter');
+    const secTag = document.getElementById('section-tag');
+    const diffTag = document.getElementById('difficulty-tag');
+    const qText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const feedbackBox = document.getElementById('feedback-box');
+    const feedbackTitle = document.getElementById('feedback-title');
+    const feedbackDesc = document.getElementById('feedback-desc');
+    const btnCheck = document.getElementById('btn-check');
+    const btnNext = document.getElementById('btn-next');
+    const btnPrev = document.getElementById('btn-prev');
+    const progressFill = document.getElementById('progress-fill');
+    const quizScreen = document.getElementById('quiz-screen');
+    const resultScreen = document.getElementById('result-screen');
+    const paletteGrid = document.getElementById('palette-grid');
+
+    function initQuiz() {
+        buildPalette();
+        renderQuestion(currentIndex);
+    }
+
+    function buildPalette() {
+        paletteGrid.innerHTML = '';
+        questions.forEach((q, idx) => {
+            const item = document.createElement('div');
+            item.className = 'palette-item';
+            item.id = `palette-${idx}`;
+            item.innerText = idx + 1;
+            item.onclick = () => {
+                toggleDrawer();
+                jumpToQuestion(idx);
+            };
+            paletteGrid.appendChild(item);
+        });
+    }
+
+    function updatePalette() {
+        questions.forEach((q, idx) => {
+            const el = document.getElementById(`palette-${idx}`);
+            if (!el) return;
+            el.className = 'palette-item';
+            if (idx === currentIndex) el.classList.add('active');
+            if (userAnswers[idx] && userAnswers[idx].checked) {
+                if (userAnswers[idx].isCorrect) el.classList.add('correct');
+                else el.classList.add('wrong');
+            }
+        });
+    }
+
+    function renderQuestion(index) {
+        currentIndex = index;
+        const q = questions[index];
+        const state = userAnswers[index] || null;
+
+        qCounter.innerText = `Câu hỏi ${index + 1} / ${questions.length}`;
+        secTag.innerText = q.section || 'Nội dung trọng tâm';
+        
+        diffTag.innerText = q.difficulty || 'Trung bình';
+        diffTag.className = 'tag-pill';
+        if (q.difficulty === 'Dễ') diffTag.classList.add('diff-de');
+        else if (q.difficulty === 'Khó') diffTag.classList.add('diff-kho');
+        else diffTag.classList.add('diff-tb');
+
+        qText.innerText = q.question;
+        progressFill.style.width = `${((index + 1) / questions.length) * 100}%`;
+
+        btnPrev.disabled = (index === 0);
+
+        // Build Options
+        optionsContainer.innerHTML = '';
+        selectedOption = state ? state.selected : null;
+        isChecked = state ? state.checked : false;
+
+        q.options.forEach(opt => {
+            const card = document.createElement('div');
+            card.className = 'option-card';
+            card.id = `opt-${opt.id}`;
+
+            if (selectedOption === opt.id) {
+                card.classList.add('selected');
+            }
+
+            if (isChecked) {
+                card.classList.add('locked');
+                if (opt.id === q.answer) {
+                    card.classList.add('is-correct');
+                } else if (opt.id === selectedOption && selectedOption !== q.answer) {
+                    card.classList.add('is-wrong');
+                }
+            } else {
+                card.onclick = () => selectOption(opt.id);
+            }
+
+            card.innerHTML = `
+                <div class="option-letter">${opt.id}</div>
+                <div class="option-text">${opt.text}</div>
+            `;
+            optionsContainer.appendChild(card);
+        });
+
+        // Feedback
+        if (isChecked) {
+            btnCheck.style.display = 'none';
+            btnNext.style.display = 'inline-flex';
+            btnNext.innerText = (index === questions.length - 1) ? 'Xem kết quả 🏁' : 'Câu tiếp theo →';
+            showFeedback(state.isCorrect, q);
+        } else {
+            feedbackBox.className = 'feedback-box';
+            btnCheck.style.display = 'inline-flex';
+            btnCheck.disabled = !selectedOption;
+            btnNext.style.display = 'none';
+        }
+
+        updatePalette();
+    }
+
+    function selectOption(optId) {
+        if (isChecked) return;
+        selectedOption = optId;
+        document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+        const target = document.getElementById(`opt-${optId}`);
+        if (target) target.classList.add('selected');
+        btnCheck.disabled = false;
+    }
+
+    function checkAnswer() {
+        if (!selectedOption || isChecked) return;
+        const q = questions[currentIndex];
+        const isCorrect = (selectedOption === q.answer);
+
+        isChecked = true;
+        userAnswers[currentIndex] = {
+            selected: selectedOption,
+            isCorrect: isCorrect,
+            checked: true
+        };
+
+        // Lock options & mark colors
+        document.querySelectorAll('.option-card').forEach(c => c.classList.add('locked'));
+        const correctCard = document.getElementById(`opt-${q.answer}`);
+        if (correctCard) correctCard.classList.add('is-correct');
+
+        if (!isCorrect) {
+            const wrongCard = document.getElementById(`opt-${selectedOption}`);
+            if (wrongCard) wrongCard.classList.add('is-wrong');
+        }
+
+        showFeedback(isCorrect, q);
+
+        btnCheck.style.display = 'none';
+        btnNext.style.display = 'inline-flex';
+        btnNext.innerText = (currentIndex === questions.length - 1) ? 'Xem kết quả 🏁' : 'Câu tiếp theo →';
+
+        updatePalette();
+    }
+
+    function showFeedback(isCorrect, q) {
+        feedbackBox.className = `feedback-box show ${isCorrect ? 'correct' : 'incorrect'}`;
+        if (isCorrect) {
+            feedbackTitle.innerHTML = `<span>🎉</span> Chính xác!`;
+        } else {
+            feedbackTitle.innerHTML = `<span>❌</span> Chưa chính xác. Đáp án đúng là: <b>${q.answer}</b>`;
+        }
+        feedbackDesc.innerHTML = `<b>💡 Giải thích:</b> ${q.explanation || 'Không có giải thích bổ sung.'}`;
+    }
+
+    function navigateNext() {
+        if (currentIndex < questions.length - 1) {
+            renderQuestion(currentIndex + 1);
+        } else {
+            showResults();
+        }
+    }
+
+    function navigatePrev() {
+        if (currentIndex > 0) {
+            renderQuestion(currentIndex - 1);
+        }
+    }
+
+    function jumpToQuestion(idx) {
+        renderQuestion(idx);
+    }
+
+    function showResults() {
+        quizScreen.style.display = 'none';
+        resultScreen.style.display = 'block';
+
+        let correctCount = 0;
+        let wrongCount = 0;
+        questions.forEach((q, idx) => {
+            if (userAnswers[idx] && userAnswers[idx].isCorrect) {
+                correctCount++;
+            } else {
+                wrongCount++;
+            }
+        });
+
+        const total = questions.length;
+        const percent = Math.round((correctCount / total) * 100);
+
+        document.getElementById('final-score').innerText = correctCount;
+        document.getElementById('final-total').innerText = `/ ${total}`;
+        document.getElementById('stat-correct').innerText = correctCount;
+        document.getElementById('stat-wrong').innerText = wrongCount;
+        document.getElementById('stat-accuracy').innerText = `${percent}%`;
+
+        const scoreCircle = document.getElementById('score-circle');
+        scoreCircle.style.background = `conic-gradient(var(--accent) ${percent}%, #e2e8f0 ${percent}%)`;
+
+        const rTitle = document.getElementById('result-title');
+        const rSummary = document.getElementById('result-summary');
+
+        if (percent >= 90) {
+            rTitle.innerText = "🌟 Xuất sắc! Nắm vững kiến thức";
+            rSummary.innerText = "Bạn đã hoàn thành bài thi với kết quả tuyệt vời. Bạn đã hiểu rất sâu về nội dung của buổi học!";
+        } else if (percent >= 75) {
+            rTitle.innerText = "👏 Rất tốt! Đạt yêu cầu cao";
+            rSummary.innerText = "Kết quả rất ấn tượng! Bạn đã nắm chắc hầu hết các khái niệm trọng tâm.";
+        } else if (percent >= 50) {
+            rTitle.innerText = "👍 Đạt yêu cầu cơ bản";
+            rSummary.innerText = "Bạn đã vượt qua bài kiểm tra. Hãy xem lại các câu giải thích chi tiết để củng cố thêm phần còn yếu nhé!";
+        } else {
+            rTitle.innerText = "📖 Cần ôn tập thêm!";
+            rSummary.innerText = "Bạn nên đọc lại slide bài giảng và tài liệu học tập rồi thử sức lại lần nữa nhé.";
+        }
+    }
+
+    function restartQuiz() {
+        userAnswers = {};
+        currentIndex = 0;
+        selectedOption = null;
+        isChecked = false;
+        resultScreen.style.display = 'none';
+        quizScreen.style.display = 'block';
+        initQuiz();
+    }
+
+    function viewAllAnswers() {
+        resultScreen.style.display = 'none';
+        quizScreen.style.display = 'block';
+        renderQuestion(0);
+    }
+
+    function toggleDrawer() {
+        const drawer = document.getElementById('drawer');
+        const overlay = document.getElementById('drawer-overlay');
+        const isOpen = drawer.classList.contains('open');
+        if (isOpen) {
+            drawer.classList.remove('open');
+            overlay.style.display = 'none';
+        } else {
+            drawer.classList.add('open');
+            overlay.style.display = 'block';
+        }
+    }
+
+    // Khởi động
+    initQuiz();
+</script>
+
+</body>
+</html>

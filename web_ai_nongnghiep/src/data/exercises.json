@@ -1,0 +1,658 @@
+{
+  "1": [
+    {
+      "id": 1,
+      "title": "Nhận diện AI quanh ta",
+      "difficulty": "Dễ",
+      "description": "Liệt kê 3 ứng dụng trí tuệ nhân tạo (AI) mà em đang sử dụng hằng ngày trên điện thoại di động.",
+      "goal": "Nhận biết sự hiện diện của AI trong đời sống.",
+      "hint": "Ví dụ: Nhận diện khuôn mặt (FaceID), Trợ lý ảo (Siri/Google Assistant), Thuật toán gợi ý video của TikTok."
+    },
+    {
+      "id": 2,
+      "title": "Phân biệt Tự động hóa và AI",
+      "difficulty": "Dễ",
+      "description": "Một hệ thống tưới nước tự động bật lúc 6h sáng mỗi ngày có phải là AI không? Giải thích tại sao.",
+      "goal": "Phân biệt ranh giới giữa tự động hóa truyền thống (Automation) và Trí tuệ nhân tạo (AI).",
+      "hint": "Không phải AI. Đây chỉ là một bộ đếm thời gian (Timer) được lập trình sẵn. AI cần có khả năng thu thập dữ liệu và tự đưa ra quyết định (ví dụ: tự tưới khi thấy đất khô)."
+    },
+    {
+      "id": 3,
+      "title": "Cấu trúc hệ thống AI Nông nghiệp",
+      "difficulty": "Dễ",
+      "description": "Một hệ thống AI nông nghiệp thông minh cần 3 thành phần chính: Thu thập dữ liệu, Xử lý dữ liệu và Ra quyết định. Hãy lấy ví dụ cho từng thành phần.",
+      "goal": "Hiểu cấu trúc tổng thể của hệ thống Nông nghiệp thông minh.",
+      "hint": "Thu thập: Camera, Cảm biến độ ẩm.\nXử lý: Máy tính chạy mô hình AI nhận diện bệnh.\nRa quyết định: Gửi thông báo đến điện thoại hoặc tự động phun thuốc."
+    },
+    {
+      "id": 4,
+      "title": "Tìm hiểu cảm biến Nông nghiệp",
+      "difficulty": "Dễ",
+      "description": "Tìm kiếm trên Internet và liệt kê 4 loại cảm biến phổ biến nhất thường được lắp đặt trong nhà màng nông nghiệp công nghệ cao.",
+      "goal": "Làm quen với các phần cứng thu thập dữ liệu (IoT).",
+      "hint": "1. Cảm biến độ ẩm đất.\n2. Cảm biến nhiệt độ/độ ẩm không khí.\n3. Cảm biến ánh sáng (Lux).\n4. Cảm biến pH nước."
+    },
+    {
+      "id": 5,
+      "title": "Lợi ích của AI trong Nông nghiệp",
+      "difficulty": "Trung bình",
+      "description": "Giải thích cách AI có thể giúp nông dân giảm thiểu lượng phân bón hóa học sử dụng trên đồng ruộng.",
+      "goal": "Hiểu ý nghĩa kinh tế và môi trường của AI.",
+      "hint": "AI sử dụng ảnh vệ tinh hoặc Drone để phân tích khu vực nào cây đang thiếu dinh dưỡng (thông qua màu lá). Sau đó chỉ đạo máy phun phân bón đúng vào khu vực đó (Bón phân chính xác) thay vì rải đều toàn bộ cánh đồng."
+    },
+    {
+      "id": 6,
+      "title": "Mô phỏng thu thập dữ liệu (Excel)",
+      "difficulty": "Trung bình",
+      "description": "Mở Microsoft Excel (hoặc Google Sheets). Tạo một bảng gồm 3 cột: Ngày, Nhiệt độ (oC), Lượng mưa (mm). Nhập giả định dữ liệu cho 7 ngày trong tuần.",
+      "goal": "Làm quen với việc tổ chức dữ liệu dạng bảng (Tabular Data).",
+      "hint": "Dữ liệu có thể tổ chức thành các dòng và cột. Mỗi cột là một đặc trưng (Feature), mỗi dòng là một điểm dữ liệu (Data point)."
+    },
+    {
+      "id": 7,
+      "title": "Thách thức của người nông dân",
+      "difficulty": "Trung bình",
+      "description": "Phân tích 2 lý do chính khiến người nông dân Việt Nam hiện nay vẫn gặp khó khăn trong việc áp dụng AI vào sản xuất.",
+      "goal": "Hiểu rõ rào cản thực tiễn khi chuyển giao công nghệ.",
+      "hint": "1. Chi phí đầu tư ban đầu cho hệ thống cảm biến và phần mềm quá cao.\n2. Thiếu hụt kỹ năng vận hành công nghệ số và smartphone."
+    },
+    {
+      "id": 8,
+      "title": "Case Study: Nông nghiệp chính xác",
+      "difficulty": "Trung bình",
+      "description": "Tìm hiểu cụm từ 'Precision Agriculture' (Nông nghiệp chính xác). Nêu triết lý cốt lõi của phương pháp này.",
+      "goal": "Nắm vững khái niệm nền tảng của nông nghiệp hiện đại.",
+      "hint": "Triết lý cốt lõi: 'Làm đúng việc, đúng nơi, đúng lúc và đúng lượng'. Thay vì chăm sóc đồng đều cả cánh đồng, ta chăm sóc tùy biến cho từng mét vuông đất."
+    },
+    {
+      "id": 9,
+      "title": "Thiết kế giải pháp AI",
+      "difficulty": "Khó",
+      "description": "Giả sử trang trại thanh long của bạn bị một loại bọ rầy tấn công vào ban đêm. Hãy phác thảo (trên giấy) một hệ thống AI để phát hiện và xua đuổi chúng.",
+      "goal": "Phát triển tư duy thiết kế giải pháp công nghệ.",
+      "hint": "Ý tưởng: Lắp camera hồng ngoại ban đêm (Thu thập dữ liệu) -> Mô hình AI nhận diện bọ rầy (Xử lý) -> Kích hoạt hệ thống phát âm thanh siêu âm hoặc phun sương đuổi bọ (Hành động)."
+    },
+    {
+      "id": 10,
+      "title": "Đạo đức AI (AI Ethics)",
+      "difficulty": "Khó",
+      "description": "Nếu một hệ thống AI tưới tiêu tự động bị lỗi và làm ngập úng làm chết toàn bộ vườn lan trị giá hàng tỷ đồng. Ai sẽ là người chịu trách nhiệm (Công ty phần mềm, Người nông dân, hay Máy móc)?",
+      "goal": "Tư duy phản biện về các rủi ro pháp lý và đạo đức của AI.",
+      "hint": "Đây là một vấn đề gây tranh cãi. Thông thường, hợp đồng sẽ quy định rủi ro. Tuy nhiên, người nông dân cần phải giám sát, và nhà cung cấp phần mềm phải có cơ chế cảnh báo khẩn cấp (Fail-safe)."
+    }
+  ],
+  "2": [
+    {
+      "id": 11,
+      "title": "Dữ liệu và Thông tin",
+      "difficulty": "Dễ",
+      "description": "Sự khác biệt giữa 'Dữ liệu thô' (Raw data) từ cảm biến và 'Thông tin' (Information) có ý nghĩa là gì?",
+      "goal": "Hiểu bản chất của quá trình khai phá dữ liệu.",
+      "hint": "Dữ liệu thô là các con số vô nghĩa (Ví dụ: 38). Thông tin là dữ liệu đã được xử lý (Ví dụ: 38 độ C là quá nóng đối với cây cà chua, cần bật quạt)."
+    },
+    {
+      "id": 12,
+      "title": "Học có giám sát (Supervised Learning)",
+      "difficulty": "Dễ",
+      "description": "Học có giám sát là gì? Lấy một ví dụ về bài toán dự đoán giá cả nông sản.",
+      "goal": "Nắm bắt khái niệm cơ bản của Học máy.",
+      "hint": "Học có giám sát là dạy máy tính bằng dữ liệu đã có sẵn câu trả lời (nhãn). Ví dụ: Cho máy tính học bảng giá lúa của 10 năm qua (có sẵn dữ liệu thời tiết và giá tương ứng) để máy dự đoán giá năm nay."
+    },
+    {
+      "id": 13,
+      "title": "Phân biệt Hồi quy và Phân loại",
+      "difficulty": "Dễ",
+      "description": "Xác định các bài toán sau thuộc loại Phân loại (Classification) hay Hồi quy (Regression): \n1. Dự đoán sản lượng lúa (tấn/ha). \n2. Phân biệt xoài chín và xoài xanh.",
+      "goal": "Phân biệt 2 bài toán lớn nhất của Supervised Learning.",
+      "hint": "1. Hồi quy (vì dự đoán một con số liên tục).\n2. Phân loại (vì dự đoán nhãn rời rạc: Chín / Xanh)."
+    },
+    {
+      "id": 14,
+      "title": "Tính toán trung bình (Excel)",
+      "difficulty": "Trung bình",
+      "description": "Trong Excel, sử dụng hàm =AVERAGE() để tính nhiệt độ trung bình của một tuần giả định.",
+      "goal": "Sử dụng công cụ tính toán cơ bản thay cho lập trình.",
+      "hint": "Nhập dữ liệu từ ô A1 đến A7. Tại ô A8 nhập công thức `=AVERAGE(A1:A7)`."
+    },
+    {
+      "id": 15,
+      "title": "Vẽ biểu đồ tương quan (Excel)",
+      "difficulty": "Trung bình",
+      "description": "Tạo 2 cột trong Excel: 'Lượng phân bón (kg)' và 'Năng suất (tấn)'. Nhập 5 dòng dữ liệu. Sử dụng tính năng Insert > Chart > Scatter để vẽ biểu đồ phân tán.",
+      "goal": "Trực quan hóa dữ liệu bằng công cụ No-code.",
+      "hint": "Biểu đồ Scatter (dấu chấm) giúp bạn nhìn thấy rõ xu hướng: Khi phân bón tăng thì năng suất tăng theo (Tương quan thuận) hay giảm đi."
+    },
+    {
+      "id": 16,
+      "title": "Tìm xu hướng (Trendline)",
+      "difficulty": "Trung bình",
+      "description": "Trên biểu đồ Scatter vừa vẽ ở Bài 15, nhấp chuột phải vào các điểm dữ liệu và chọn 'Add Trendline' (Thêm đường xu hướng). Đường này đại diện cho mô hình học máy nào?",
+      "goal": "Hiểu trực quan về Hồi quy tuyến tính.",
+      "hint": "Đường xu hướng (Trendline) chính là dạng cơ bản nhất của mô hình Hồi quy tuyến tính (Linear Regression) nhằm tìm ra một đường thẳng biểu diễn tốt nhất quy luật của dữ liệu."
+    },
+    {
+      "id": 17,
+      "title": "Xử lý dữ liệu nhiễu (Outliers)",
+      "difficulty": "Trung bình",
+      "description": "Giả sử cảm biến nhiệt độ bị lỗi, ghi nhận 1 ngày nhiệt độ là 150 độ C. Nếu dùng Excel, bạn sẽ làm gì với dữ liệu này trước khi tính trung bình?",
+      "goal": "Hiểu tầm quan trọng của việc làm sạch dữ liệu (Data Cleaning).",
+      "hint": "Phải xóa bỏ (Delete) hoặc thay thế bằng giá trị của ngày hôm trước. Nếu không, nhiệt độ trung bình cả tháng sẽ bị sai lệch hoàn toàn do 1 ngày lỗi này."
+    },
+    {
+      "id": 18,
+      "title": "Cây quyết định (Decision Tree) logic",
+      "difficulty": "Khó",
+      "description": "Vẽ trên giấy một 'Cây quyết định' để phân loại trái Cam: Dựa trên 2 đặc điểm (Màu sắc: Xanh/Vàng) và (Kích thước: To/Nhỏ). Đầu ra là 3 loại: Loại 1, Loại 2, Loại 3.",
+      "goal": "Hiểu logic của thuật toán Cây quyết định mà không cần viết code.",
+      "hint": "Nhánh 1: Màu sắc = Vàng? \n- Nếu Đúng -> Nhánh 2: Kích thước = To? \n  - Đúng -> Cam Loại 1.\n  - Sai -> Cam Loại 2.\n- Nếu Sai -> Cam Loại 3."
+    },
+    {
+      "id": 19,
+      "title": "Học không giám sát (Unsupervised Learning)",
+      "difficulty": "Khó",
+      "description": "Giải thích khái niệm Gom cụm (Clustering). Ví dụ: Có thông tin về thói quen mua hàng của 100 khách mua nông sản, AI sẽ làm gì?",
+      "goal": "Hiểu bài toán Gom cụm.",
+      "hint": "Học không giám sát là dữ liệu không có nhãn trước. Máy sẽ tự tìm ra sự tương đồng và chia 100 khách thành các nhóm (cụm) giống nhau (VD: Nhóm thích mua trái cây, Nhóm thích mua rau) để dễ chạy quảng cáo."
+    },
+    {
+      "id": 20,
+      "title": "Hiệu ứng Overfitting",
+      "difficulty": "Khó",
+      "description": "Một sinh viên học thuộc lòng tất cả đáp án đề thi trắc nghiệm cũ, nhưng khi thi đề mới lại bị điểm kém. Hiện tượng này trong Học máy gọi là gì?",
+      "goal": "Hiểu khái niệm cốt lõi về Học vẹt (Overfitting) trong AI.",
+      "hint": "Đó là Overfitting (Quá khớp). Mô hình học vẹt quá mức dữ liệu huấn luyện (tập đề cũ) nên mất đi khả năng tổng quát hóa (đoán) trên dữ liệu mới thực tế."
+    }
+  ],
+  "3": [
+    {
+      "id": 21,
+      "title": "Khái niệm Nơ-ron nhân tạo",
+      "difficulty": "Dễ",
+      "description": "Mạng nơ-ron nhân tạo (ANN) được lấy cảm hứng từ bộ phận nào của con người?",
+      "goal": "Hiểu nguồn gốc của Deep Learning.",
+      "hint": "Lấy cảm hứng từ cấu trúc mạng lưới tế bào thần kinh (nơ-ron) trong não bộ con người, trong đó các nơ-ron truyền tín hiệu điện cho nhau."
+    },
+    {
+      "id": 22,
+      "title": "Đặc trưng của ảnh",
+      "difficulty": "Dễ",
+      "description": "Khi nhìn vào một bức ảnh lá bị 'bệnh rỉ sắt', mắt bạn dựa vào các đặc điểm nào để nhận ra bệnh?",
+      "goal": "Hiểu cách trích xuất đặc trưng (Feature extraction).",
+      "hint": "Màu sắc (có đốm màu cam/đỏ), Hình dạng đốm (nhỏ li ti), Vị trí (rải rác trên mặt lá). Đây chính là các 'đặc trưng' mà AI cần học."
+    },
+    {
+      "id": 23,
+      "title": "Cấu trúc mạng Nơ-ron",
+      "difficulty": "Dễ",
+      "description": "Một mạng Nơ-ron cơ bản gồm 3 phần: Lớp đầu vào (Input), Lớp ẩn (Hidden) và Lớp đầu ra (Output). Trong bài toán nhận diện bệnh lá, Lớp đầu vào và Lớp đầu ra là gì?",
+      "goal": "Hình dung kiến trúc Input-Output của mô hình DL.",
+      "hint": "Lớp đầu vào: Nhận dữ liệu điểm ảnh (Pixel) của bức ảnh.\nLớp đầu ra: Cho ra % xác suất của các loại bệnh (VD: 90% bệnh rỉ sắt, 10% khỏe mạnh)."
+    },
+    {
+      "id": 24,
+      "title": "Học sâu (Deep Learning) khác gì Học máy?",
+      "difficulty": "Trung bình",
+      "description": "Tại sao xử lý ảnh lại dùng Deep Learning (Mạng nơ-ron nhiều lớp) thay vì Học máy truyền thống?",
+      "goal": "Hiểu lý do sử dụng Deep Learning.",
+      "hint": "Ảnh chứa hàng triệu điểm ảnh. Học máy truyền thống yêu cầu con người phải tự chỉ ra đặc trưng (đây là hình tròn, đây là màu đỏ). Deep Learning có khả năng tự động học và tìm ra các đặc trưng phức tạp đó mà không cần con người nhúng tay vào."
+    },
+    {
+      "id": 25,
+      "title": "Hộp đen AI (Black Box)",
+      "difficulty": "Trung bình",
+      "description": "Tìm hiểu thuật ngữ 'Hộp đen' (Black Box) trong Deep Learning. Tại sao người ta lại e ngại tính 'hộp đen' của AI trong y tế và nông nghiệp?",
+      "goal": "Hiểu tính minh bạch của mô hình AI.",
+      "hint": "Black Box nghĩa là ta không biết tại sao AI lại đưa ra quyết định đó (nó giải quyết được nhưng không giải thích được). Điều này nguy hiểm nếu AI chẩn đoán sai bệnh mà chuyên gia không biết lỗi nằm ở đâu."
+    },
+    {
+      "id": 26,
+      "title": "Kích thước Dữ liệu (Big Data)",
+      "difficulty": "Trung bình",
+      "description": "Để dạy AI nhận diện chính xác quả dưa hấu chín, một sinh viên chụp 10 bức ảnh dưa hấu. Số lượng này có đủ cho Deep Learning không?",
+      "goal": "Nhận thức về tầm quan trọng của Dữ liệu lớn.",
+      "hint": "Hoàn toàn không đủ. Deep Learning thường cần hàng ngàn đến hàng chục ngàn bức ảnh ở nhiều góc độ, ánh sáng khác nhau để không bị 'Học vẹt'."
+    },
+    {
+      "id": 27,
+      "title": "Augmentation (Tăng cường dữ liệu)",
+      "difficulty": "Trung bình",
+      "description": "Nếu chỉ có 100 ảnh lá bệnh, người ta dùng kỹ thuật 'Tăng cường dữ liệu' (Lật ảnh, Xoay ảnh, Chỉnh sáng tối) để tạo ra 1000 ảnh. Tại sao ảnh lật ngược lại giúp AI thông minh hơn?",
+      "goal": "Hiểu kỹ thuật Data Augmentation.",
+      "hint": "Vì trong thực tế, lá cây có thể mọc nghiêng, mọc ngược hoặc bị lật do gió. Học các ảnh xoay/lật giúp AI nhận diện tốt ở mọi góc nhìn thực tế."
+    },
+    {
+      "id": 28,
+      "title": "Phân tích Logic: Chẩn đoán sai",
+      "difficulty": "Khó",
+      "description": "Mô hình AI chẩn đoán bệnh cây rất tốt trong phòng thí nghiệm, nhưng khi đem ra đồng ruộng thì đoán sai hoàn toàn. Hãy suy luận 2 nguyên nhân.",
+      "goal": "Phân tích nguyên nhân thực tiễn (Data drift / Domain shift).",
+      "hint": "1. Ánh sáng: Trong phòng thí nghiệm sáng đều, ngoài đồng có bóng râm, chói nắng.\n2. Bối cảnh: Trong phòng thí nghiệm nền màu trắng, ngoài đồng nền là đất, cỏ dại làm AI bối rối."
+    },
+    {
+      "id": 29,
+      "title": "Thu thập Dữ liệu (Crowdsourcing)",
+      "difficulty": "Khó",
+      "description": "Đề xuất một giải pháp (không dùng tiền) để thu thập 10,000 bức ảnh sâu bệnh từ hàng ngàn nông dân trên cả nước để huấn luyện AI.",
+      "goal": "Tư duy xây dựng nguồn dữ liệu cộng đồng.",
+      "hint": "Tạo một ứng dụng/nhóm Facebook miễn phí cho phép nông dân chụp ảnh bệnh cây gửi lên để được chuyên gia tư vấn miễn phí. Đổi lại, hệ thống sẽ lưu trữ kho ảnh đó làm dữ liệu huấn luyện (Crowdsourcing)."
+    },
+    {
+      "id": 30,
+      "title": "Case Study: Plantix App",
+      "difficulty": "Khó",
+      "description": "Tải và trải nghiệm ứng dụng Plantix trên điện thoại (hoặc xem video review). Trình bày cách ứng dụng này tương tác với nông dân.",
+      "goal": "Trải nghiệm sản phẩm AI nông nghiệp thực tế.",
+      "hint": "Nông dân mở app -> Chụp ảnh lá bệnh -> App dùng AI phân tích ngay lập tức -> Đưa ra tên bệnh và gợi ý loại thuốc bảo vệ thực vật cần mua."
+    }
+  ],
+  "4": [
+    {
+      "id": 31,
+      "title": "Cảm biến hình ảnh",
+      "difficulty": "Dễ",
+      "description": "Ảnh kỹ thuật số được lưu trữ trong máy tính dưới dạng nào?",
+      "goal": "Hiểu bản chất của hình ảnh kỹ thuật số.",
+      "hint": "Ảnh là một ma trận (lưới) chứa các điểm ảnh (Pixels). Mỗi điểm ảnh mang một giá trị số biểu diễn màu sắc (RGB - Red, Green, Blue)."
+    },
+    {
+      "id": 32,
+      "title": "Ứng dụng Computer Vision",
+      "difficulty": "Dễ",
+      "description": "Kể tên 2 ứng dụng của Thị giác máy tính (Computer Vision) dùng trong khâu 'Thu hoạch' nông sản.",
+      "goal": "Nắm bắt ứng dụng thực tiễn của CV.",
+      "hint": "1. Robot có gắn camera để tìm vị trí quả cà chua.\n2. Hệ thống camera trên băng chuyền tự động gạt bỏ các quả bị hỏng/dập."
+    },
+    {
+      "id": 33,
+      "title": "Phân loại vs. Nhận diện (Object Detection)",
+      "difficulty": "Dễ",
+      "description": "Sự khác biệt giữa việc AI trả lời 'Bức ảnh này có con bò' và việc AI 'Vẽ một khung hình chữ nhật bao quanh con bò' là gì?",
+      "goal": "Phân biệt Classification và Object Detection.",
+      "hint": "Trả lời 'Có bò' là Image Classification (Phân loại toàn ảnh). Tranh vẽ khung chữ nhật định vị chính xác vị trí con bò là Object Detection (Phát hiện đối tượng)."
+    },
+    {
+      "id": 34,
+      "title": "Trải nghiệm Teachable Machine",
+      "difficulty": "Trung bình",
+      "description": "Truy cập website 'Google Teachable Machine'. Chọn Image Project. Chụp 10 ảnh cầm quả táo (Class 1) và 10 ảnh cầm quả chuối (Class 2). Bấm Train và test thử với webcam.",
+      "goal": "Tự tay huấn luyện mô hình AI phân loại ảnh mà không cần code.",
+      "hint": "Đây là công cụ No-code của Google giúp bạn hiểu rõ quy trình: Thu thập Data -> Train Model -> Preview (Test) mô hình hoạt động theo thời gian thực."
+    },
+    {
+      "id": 35,
+      "title": "Góc khuất của Computer Vision",
+      "difficulty": "Trung bình",
+      "description": "Khi sử dụng camera trên drone để đếm số lượng cây dừa từ trên không, thuật toán có thể bị đếm thiếu (sai số) do nguyên nhân vật lý nào?",
+      "goal": "Hiểu các giới hạn quang học trong Computer Vision.",
+      "hint": "Sự che khuất (Occlusion): Tán cây dừa lớn có thể che khuất các cây nhỏ bên dưới, hoặc bóng râm làm AI lầm tưởng là vùng đất trống."
+    },
+    {
+      "id": 36,
+      "title": "Xử lý ảnh: Chuyển ảnh xám (Grayscale)",
+      "difficulty": "Trung bình",
+      "description": "Tại sao trước khi cho AI phân tích hình dạng của lá cây, người ta thường dùng phần mềm chuyển ảnh màu (RGB) thành ảnh xám đen (Grayscale)?",
+      "goal": "Hiểu ý nghĩa của việc tiền xử lý ảnh.",
+      "hint": "Ảnh màu (RGB) có 3 kênh màu, nặng và xử lý chậm. Ảnh xám chỉ có 1 kênh sáng/tối, vẫn giữ nguyên được 'hình dáng' đường viền của lá mà máy tính xử lý nhanh hơn gấp 3 lần."
+    },
+    {
+      "id": 37,
+      "title": "Nhận diện dịch bệnh diện rộng",
+      "difficulty": "Trung bình",
+      "description": "Drone bay trên cao làm sao để nhận diện được một khu vực lúa bị rầy nâu tấn công mà không cần nhìn rõ từng con rầy?",
+      "goal": "Ứng dụng ảnh vệ tinh/ảnh đa phổ.",
+      "hint": "AI trên drone không nhìn con rầy, mà nhìn 'Màu sắc/Độ vàng úa' của mảng lúa thông qua camera đa phổ hoặc chỉ số sức khỏe cây (NDVI) để khoanh vùng."
+    },
+    {
+      "id": 38,
+      "title": "Đếm quả tự động (Logic)",
+      "difficulty": "Khó",
+      "description": "Giả sử bạn có AI nhận diện quả táo rất tốt. Nhưng khi robot chạy dọc theo luống táo để đếm, nó đếm 1 quả thành 3 lần (vì chạy qua chạy lại). Giải pháp logic nào để khắc phục?",
+      "goal": "Giải quyết vấn đề thực tế (Object Tracking).",
+      "hint": "Cần áp dụng thuật toán 'Theo dõi đối tượng' (Object Tracking). AI sẽ gán cho mỗi quả táo 1 ID (Ví dụ: Táo số 1). Khi camera di chuyển, AI vẫn nhận ra 'À, đây vẫn là quả Táo số 1' và không đếm thêm."
+    },
+    {
+      "id": 39,
+      "title": "Độ chính xác ảo",
+      "difficulty": "Khó",
+      "description": "Nếu trong tập dữ liệu 1000 quả trứng, có 990 trứng lành và 10 trứng vỡ. Một mô hình AI cực 'ngu' cứ phán bừa 'Tất cả đều là trứng lành'. Độ chính xác (Accuracy) của nó là bao nhiêu?",
+      "goal": "Hiểu cạm bẫy của mất cân bằng dữ liệu (Imbalanced Data).",
+      "hint": "Độ chính xác = 990/1000 = 99%. Một con số trông rất tuyệt vời nhưng mô hình hoàn toàn vô dụng vì không tìm ra được quả trứng vỡ nào!"
+    },
+    {
+      "id": 40,
+      "title": "Case Study: Phân loại rác thải nông nghiệp",
+      "difficulty": "Khó",
+      "description": "Thiết kế quy trình cho hệ thống băng chuyền phân loại quả cà chua: Cà chua xanh, Cà chua chín đỏ, và Cà chua bị thối đen. Bạn cần lắp đặt camera và đèn như thế nào?",
+      "goal": "Tư duy thiết kế hệ thống phần cứng hỗ trợ AI.",
+      "hint": "Lắp camera vuông góc từ trên xuống. Đèn chiếu sáng phải là đèn khuếch tán (Diffuser) để tránh bị bóng phản chiếu (chói sáng) trên vỏ cà chua láng bóng khiến AI nhìn nhầm thành đốm trắng."
+    }
+  ],
+  "6": [
+    {
+      "id": 41,
+      "title": "Cảm biến đo độ ẩm đất",
+      "difficulty": "Dễ",
+      "description": "Tìm hiểu cách hoạt động của một cảm biến độ ẩm đất cắm sâu xuống đất. Nó đo lường thông qua đại lượng vật lý nào?",
+      "goal": "Hiểu thiết bị IoT cơ bản.",
+      "hint": "Nó đo 'Điện trở' của đất. Đất càng ướt thì dẫn điện càng tốt (điện trở thấp), đất khô thì điện trở cao."
+    },
+    {
+      "id": 42,
+      "title": "Hệ thống tưới nhỏ giọt",
+      "difficulty": "Dễ",
+      "description": "Tưới nhỏ giọt (Drip irrigation) kết hợp với AI mang lại lợi ích môi trường nào lớn nhất?",
+      "goal": "Kiến thức nông nghiệp bền vững.",
+      "hint": "Tiết kiệm tới 70% lượng nước so với tưới tràn. AI điều chỉnh từng giọt nước xuống thẳng rễ cây tùy theo độ khô của đất."
+    },
+    {
+      "id": 43,
+      "title": "Phân bón chính xác (VRT)",
+      "difficulty": "Dễ",
+      "description": "Công nghệ VRT (Variable Rate Technology - Bón phân theo tỷ lệ thay đổi) hoạt động như thế nào?",
+      "goal": "Hiểu quy trình Nông nghiệp chính xác.",
+      "hint": "Máy cày gắn GPS và AI sẽ đọc bản đồ dinh dưỡng của ruộng. Chỗ nào đất nghèo dinh dưỡng thì vòi phun xả nhiều phân, chỗ nào đất tốt thì xả ít hoặc ngừng xả."
+    },
+    {
+      "id": 44,
+      "title": "Logic IF-THEN trong Excel",
+      "difficulty": "Trung bình",
+      "description": "Trong Excel, tạo cột A là 'Độ ẩm đất (%)'. Tạo cột B là 'Lệnh Máy Bơm'. Viết hàm IF ở cột B: Nếu độ ẩm < 40 thì ghi 'BẬT', ngược lại ghi 'TẮT'.",
+      "goal": "Thực hành logic tự động hóa cơ bản.",
+      "hint": "Sử dụng công thức: `=IF(A2 < 40, \"BẬT\", \"TẮT\")`"
+    },
+    {
+      "id": 45,
+      "title": "Tích hợp đa điều kiện (AND/OR)",
+      "difficulty": "Trung bình",
+      "description": "Nâng cấp bài 44: Hệ thống chỉ 'BẬT' máy bơm NẾU Độ ẩm < 40 VÀ Trời không mưa. Viết logic hàm Excel.",
+      "goal": "Xây dựng cây quyết định phức tạp hơn.",
+      "hint": "Giả sử cột C là 'Dự báo mưa' (Có/Không). Công thức: `=IF(AND(A2 < 40, C2=\"Không\"), \"BẬT\", \"TẮT\")`"
+    },
+    {
+      "id": 46,
+      "title": "Chỉ số NDVI (Thực hành Web)",
+      "difficulty": "Trung bình",
+      "description": "Truy cập các nền tảng xem ảnh vệ tinh mở (VD: Sentinel Hub EO Browser). Tìm chỉ số NDVI. Màu sắc nào trên bản đồ NDVI thể hiện cây trồng đang cực kỳ khỏe mạnh?",
+      "goal": "Đọc hiểu dữ liệu viễn thám vệ tinh.",
+      "hint": "Thông thường, màu Xanh lá cây đậm (Dark Green) tương ứng với NDVI cao (0.7 đến 1.0) thể hiện thảm thực vật rậm rạp và khỏe mạnh. Màu đỏ/cam là đất trống hoặc cây chết."
+    },
+    {
+      "id": 47,
+      "title": "Gom cụm đất đai (Clustering by eye)",
+      "difficulty": "Trung bình",
+      "description": "Nhìn vào một bản đồ nhiệt (Heatmap) thể hiện độ mặn của một cánh đồng, bạn hãy vẽ tay chia cánh đồng đó thành 3 khu vực (cụm) cần xử lý khác nhau.",
+      "goal": "Hiểu tư tưởng của thuật toán K-Means Clustering.",
+      "hint": "Phân nhóm các vùng có màu sắc giống nhau ở gần nhau thành 1 cụm (Vùng an toàn, Vùng mặn nhẹ, Vùng mặn nặng) để lập kế hoạch rửa mặn."
+    },
+    {
+      "id": 48,
+      "title": "Tối ưu hóa nguồn nước",
+      "difficulty": "Khó",
+      "description": "Một hồ chứa có giới hạn 100 khối nước. Cánh đồng chia làm 2 khu: Khu A trồng lúa (cần nhiều nước), Khu B trồng xương rồng (cần ít nước). AI sẽ phân bổ 100 khối nước này như thế nào để tối ưu lợi nhuận?",
+      "goal": "Tư duy giải toán Tối ưu hóa (Optimization).",
+      "hint": "AI sẽ tính toán giá trị kinh tế của việc tưới 1 khối nước cho khu A so với khu B. Nước sẽ được ưu tiên bơm vào khu vực mang lại năng suất quy đổi ra tiền cao nhất tại thời điểm đó."
+    },
+    {
+      "id": 49,
+      "title": "Sự cố cảm biến (Sensor Fault)",
+      "difficulty": "Khó",
+      "description": "Cảm biến độ ẩm bị hỏng và liên tục báo 'Đất khô 0%', khiến máy bơm chạy liên tục gây ngập lụt. Làm sao để thiết kế hệ thống AI nhận biết được cảm biến đang bị hỏng để ngắt máy bơm?",
+      "goal": "Thiết kế hệ thống thông minh, chống lỗi (Fault detection).",
+      "hint": "1. Dùng thuật toán so sánh với các cảm biến xung quanh (nếu 3 cái kia báo ướt mà 1 cái báo khô -> Cảm biến hỏng).\n2. Cài đặt ngưỡng thời gian (Bơm liên tục 2 tiếng mà độ ẩm không tăng thì tự ngắt và báo lỗi)."
+    },
+    {
+      "id": 50,
+      "title": "Tính toán chỉ số ROI",
+      "difficulty": "Khó",
+      "description": "Trang bị hệ thống tưới AI tốn 50 triệu đồng. Mỗi tháng tiết kiệm được 2 triệu tiền điện/nước và tăng năng suất bán được thêm 3 triệu. Tính thời gian hoàn vốn (ROI).",
+      "goal": "Bài toán kinh tế khi áp dụng công nghệ Nông nghiệp.",
+      "hint": "Lợi nhuận ròng hàng tháng = Tiết kiệm (2tr) + Tăng thu (3tr) = 5 triệu. \nThời gian hoàn vốn = Vốn đầu tư (50tr) / Lợi nhuận (5tr/tháng) = 10 tháng."
+    }
+  ],
+  "7": [
+    {
+      "id": 51,
+      "title": "Đặc điểm Chuỗi thời gian",
+      "difficulty": "Dễ",
+      "description": "Dữ liệu 'Sản lượng lúa qua 10 năm' là một loại Dữ liệu Chuỗi thời gian (Time-Series). Nó khác với dữ liệu bảng bình thường ở yếu tố nào?",
+      "goal": "Nhận dạng dữ liệu chuỗi thời gian.",
+      "hint": "Nó có yếu tố 'Thứ tự thời gian'. Giá trị của năm nay phụ thuộc rất lớn vào giá trị của năm ngoái (Tính tự tương quan)."
+    },
+    {
+      "id": 52,
+      "title": "Vẽ biểu đồ đường (Line Chart)",
+      "difficulty": "Dễ",
+      "description": "Dùng Excel tạo cột 'Tháng' (1 đến 12) và cột 'Nhiệt độ'. Nhập số liệu và vẽ biểu đồ Line Chart.",
+      "goal": "Trực quan hóa chuỗi thời gian cơ bản.",
+      "hint": "Biểu đồ đường (Line) là cách tốt nhất để xem xu hướng (tăng/giảm) theo thời gian, thay vì biểu đồ cột (Bar) hay tròn (Pie)."
+    },
+    {
+      "id": 53,
+      "title": "Tính Mùa vụ (Seasonality)",
+      "difficulty": "Dễ",
+      "description": "Nhìn vào biểu đồ giá sầu riêng trong 3 năm. Bạn thấy cứ đến tháng 6 giá lại giảm mạnh, tháng 12 giá lại tăng cao. Hiện tượng này gọi là gì?",
+      "goal": "Đọc hiểu thành phần của chuỗi thời gian.",
+      "hint": "Đó là 'Tính mùa vụ' (Seasonality). Các mô hình AI như ARIMA rất mạnh trong việc học và dự báo các chu kỳ lặp đi lặp lại này."
+    },
+    {
+      "id": 54,
+      "title": "Đường trung bình động (Moving Average)",
+      "difficulty": "Trung bình",
+      "description": "Trong Excel, tính Trung bình động 3 tháng (Tức là giá trị tháng 4 = trung bình của tháng 1,2,3). Việc tính trung bình động có tác dụng gì cho đồ thị?",
+      "goal": "Kỹ thuật làm mượt chuỗi thời gian.",
+      "hint": "Tính trung bình động giúp 'Làm mượt' (Smoothing) đồ thị, loại bỏ các nhiễu rác bất thường theo ngày, giúp ta nhìn rõ 'Xu hướng dài hạn' (Trend) hơn."
+    },
+    {
+      "id": 55,
+      "title": "Chỉ số độ trễ (Lag)",
+      "difficulty": "Trung bình",
+      "description": "Khi dự báo lượng mưa của ngày mai (T), AI thường dùng dữ liệu của ngày hôm nay (T-1) và hôm qua (T-2). T-1 và T-2 gọi là gì?",
+      "goal": "Hiểu thuật ngữ Lag trong phân tích dự báo.",
+      "hint": "Gọi là các giá trị 'Trễ' (Lag). Mô hình sẽ tìm xem lượng mưa của quá khứ (Lag) ảnh hưởng thế nào đến hiện tại."
+    },
+    {
+      "id": 56,
+      "title": "Sự khác biệt của AI trong Dự báo",
+      "difficulty": "Trung bình",
+      "description": "Phân tích xem tại sao việc dự báo bằng Học sâu (Deep Learning LSTM) lại tốt hơn việc dựa vào kinh nghiệm nhìn trời của lão nông?",
+      "goal": "Hiểu sức mạnh của Data-driven so với Kinh nghiệm.",
+      "hint": "Kinh nghiệm nông dân bị giới hạn bởi cảm quan cá nhân và vị trí địa lý hẹp. AI có thể xử lý hàng triệu điểm dữ liệu từ vệ tinh, áp suất, độ ẩm toàn cầu để dự đoán các hiện tượng cực đoan (như El Nino) sớm hàng tháng."
+    },
+    {
+      "id": 57,
+      "title": "Phân tích Đa biến (Multivariate)",
+      "difficulty": "Trung bình",
+      "description": "Nếu chỉ dùng 'Lịch sử giá tiêu' để dự báo 'Giá tiêu tháng sau' thì là dự báo đơn biến. Hãy đề xuất thêm 3 biến (features) bên ngoài để giúp AI dự báo giá tiêu chính xác hơn.",
+      "goal": "Kỹ năng làm giàu dữ liệu (Feature Engineering).",
+      "hint": "1. Sản lượng tiêu của Brazil (đối thủ cạnh tranh).\n2. Giá cước vận tải biển toàn cầu.\n3. Lượng mưa năm nay (ảnh hưởng mùa vụ)."
+    },
+    {
+      "id": 58,
+      "title": "Kiểm thử mô hình (Backtesting)",
+      "difficulty": "Khó",
+      "description": "Làm sao để biết mô hình AI dự báo năng suất lúa có chính xác hay không trước khi áp dụng vào năm nay (2026)?",
+      "goal": "Kỹ thuật đánh giá mô hình chuỗi thời gian.",
+      "hint": "Áp dụng kỹ thuật Backtesting: Che đi dữ liệu năm 2025, yêu cầu AI học dữ liệu từ 2010-2024 và bắt nó dự đoán năm 2025. Sau đó so sánh kết quả dự đoán với sự thật năm 2025."
+    },
+    {
+      "id": 59,
+      "title": "Thiên nga đen (Black Swan)",
+      "difficulty": "Khó",
+      "description": "Năm 2020 đại dịch COVID-19 xảy ra làm đứt gãy chuỗi cung ứng, giá nông sản rớt thảm hại. Mô hình AI huấn luyện bằng dữ liệu 2010-2019 có dự đoán được đợt rớt giá này không? Tại sao?",
+      "goal": "Hiểu giới hạn của Trí tuệ nhân tạo.",
+      "hint": "AI KHÔNG dự đoán được. Đây gọi là sự kiện 'Thiên nga đen' (Dữ liệu ngoại lai bất thường chưa từng xảy ra trong lịch sử học của máy). AI chỉ dự đoán tốt dựa trên quy luật quá khứ, không có khả năng tiên tri rủi ro phi truyền thống."
+    },
+    {
+      "id": 60,
+      "title": "Case Study: Hoạch định chuỗi cung ứng",
+      "difficulty": "Khó",
+      "description": "Dựa vào dự báo AI: 'Tháng sau thu hoạch 100 tấn dưa hấu'. Chủ trang trại cần lên kế hoạch chuẩn bị những gì ngay từ bây giờ?",
+      "goal": "Kết nối AI với bài toán Quản trị kinh doanh nông nghiệp.",
+      "hint": "1. Thuê sẵn bao nhiêu xe tải vận chuyển (tránh bị ép giá cước giờ chót).\n2. Ký hợp đồng trước với siêu thị để cam kết đầu ra.\n3. Chuẩn bị nhân công thu hoạch tương ứng khối lượng."
+    }
+  ],
+  "8": [
+    {
+      "id": 61,
+      "title": "Lựa chọn Đề tài (Problem Statement)",
+      "difficulty": "Dễ",
+      "description": "Xác định 1 vấn đề nhức nhối nhất của nền nông nghiệp tại địa phương bạn (VD: sâu bệnh, thiếu nước, thương lái ép giá) và đặt tên cho Dự án giải quyết nó.",
+      "goal": "Khởi động dự án nhóm thực tế.",
+      "hint": "Tên dự án cần rõ ràng. Ví dụ: 'Hệ thống cảnh báo sớm rầy nâu hại lúa qua tin nhắn SMS'."
+    },
+    {
+      "id": 62,
+      "title": "Giải pháp Đơn giản",
+      "difficulty": "Dễ",
+      "description": "Trước khi dùng AI phức tạp, liệu vấn đề của bạn có thể giải quyết bằng một quy tắc IF-THEN đơn giản không? Giải thích.",
+      "goal": "Tránh lạm dụng AI (AI Overkill).",
+      "hint": "Nếu vấn đề là 'Bật đèn khi trời tối', chỉ cần cảm biến quang trở (Sensor) là đủ, không cần nhúng Trí tuệ nhân tạo. AI chỉ nên dùng khi quy tắc quá phức tạp (Ví dụ: nhận diện 10 loại sâu bệnh khác nhau)."
+    },
+    {
+      "id": 63,
+      "title": "Thiết kế Phiếu thu thập dữ liệu",
+      "difficulty": "Dễ",
+      "description": "Tạo một mẫu Google Form để nhờ người quen chụp ảnh nấm mốc trên cây trồng. Form cần có những trường (câu hỏi) nào?",
+      "goal": "Kỹ năng thu thập Dữ liệu (Data Collection).",
+      "hint": "1. Tải ảnh nấm mốc lên.\n2. Loại cây trồng (Dropdown).\n3. Tình trạng cây (Nhẹ/Nặng).\n4. Vị trí/Tỉnh thành."
+    },
+    {
+      "id": 64,
+      "title": "Mô hình kinh doanh (Business Canvas)",
+      "difficulty": "Trung bình",
+      "description": "Vẽ mô hình kinh doanh cho sản phẩm AI của nhóm: Khách hàng mục tiêu là ai? (Nông dân nhỏ lẻ, Hợp tác xã, Doanh nghiệp lớn) Dòng doanh thu từ đâu?",
+      "goal": "Thương mại hóa sản phẩm AI.",
+      "hint": "Khách hàng: Nông dân trang trại lớn. Doanh thu: Bán theo gói đăng ký (Subscription) 100.000 VNĐ/tháng để dùng App nhận diện bệnh."
+    },
+    {
+      "id": 65,
+      "title": "Bảo mật và Quyền riêng tư",
+      "difficulty": "Trung bình",
+      "description": "Camera drone của bạn vô tình quay được hình ảnh nhà cửa, khuôn mặt của người dân xung quanh khu vực trang trại. Bạn phải xử lý thế nào về mặt Đạo đức dữ liệu?",
+      "goal": "Hiểu luật và đạo đức khi triển khai công nghệ.",
+      "hint": "Phải có thuật toán 'Làm mờ' (Blurring) khuôn mặt người và biển số xe trước khi lưu trữ vào hệ thống máy chủ để tôn trọng quyền riêng tư."
+    },
+    {
+      "id": 66,
+      "title": "Ma trận phân công (RACI)",
+      "difficulty": "Trung bình",
+      "description": "Chia nhóm 4 người (A, B, C, D). Lập bảng phân công ai làm Data, ai làm Thiết kế App (Frontend), ai thuyết trình (Business).",
+      "goal": "Kỹ năng quản lý dự án (Project Management).",
+      "hint": "Sử dụng thế mạnh của từng người. Người rành máy tính làm Data. Người giao tiếp tốt làm Thuyết trình."
+    },
+    {
+      "id": 67,
+      "title": "Kịch bản Thuyết trình (Pitching)",
+      "difficulty": "Trung bình",
+      "description": "Viết kịch bản 3 phút (Elevator Pitch) để thuyết phục nhà đầu tư rót vốn 500 triệu cho hệ thống AI của nhóm.",
+      "goal": "Kỹ năng trình bày (Pitching).",
+      "hint": "Cấu trúc: 1. Nỗi đau của nông dân (Pain point) -> 2. Giải pháp AI của bạn -> 3. Tại sao giải pháp này khả thi/Rẻ hơn đối thủ -> 4. Lợi nhuận dự kiến."
+    },
+    {
+      "id": 68,
+      "title": "Thiết kế Wireframe App",
+      "difficulty": "Khó",
+      "description": "Vẽ phác thảo trên giấy giao diện 3 màn hình của Ứng dụng điện thoại Nông nghiệp thông minh của bạn (Trang chủ, Màn hình chụp ảnh, Màn hình Kết quả).",
+      "goal": "Thiết kế Trải nghiệm người dùng (UX/UI).",
+      "hint": "Màn hình chụp ảnh cần có khung viền vuông giữa màn hình và hướng dẫn 'Hãy đưa lá cây vào giữa khung hình' để tăng chất lượng ảnh."
+    },
+    {
+      "id": 69,
+      "title": "Mô phỏng Thất bại",
+      "difficulty": "Khó",
+      "description": "Hãy tưởng tượng dự án của bạn đã THẤT BẠI thảm hại sau 6 tháng ra mắt. Viết một biên bản 'Mổ xẻ' (Post-mortem) liệt kê 3 nguyên nhân chủ quan khiến dự án sụp đổ.",
+      "goal": "Tư duy quản trị rủi ro nghịch đảo.",
+      "hint": "1. Ứng dụng quá chậm, nông dân mất kiên nhẫn.\n2. Thu tiền phí quá cao, nông dân chọn cách gọi hỏi chuyên gia làng.\n3. Mô hình AI chẩn đoán sai liên tục do lúc thu thập ảnh chỉ chụp buổi sáng, không có ảnh buổi chiều."
+    },
+    {
+      "id": 70,
+      "title": "Thiết kế Slide Báo cáo",
+      "difficulty": "Khó",
+      "description": "Liệt kê cấu trúc 10 slide chuyên nghiệp cho buổi báo cáo cuối kỳ (Bảo vệ đồ án).",
+      "goal": "Chuẩn bị tốt nhất cho đánh giá cuối kỳ.",
+      "hint": "Slide 1: Tên đề tài.\nSlide 2: Đặt vấn đề.\nSlide 3: Mục tiêu.\nSlide 4: Cách thức thu thập Data.\nSlide 5: Đề xuất Mô hình AI.\nSlide 6: Kết quả/Demo phần mềm.\nSlide 7: Bài toán kinh tế (Chi phí/Lợi ích).\nSlide 8: Khó khăn gặp phải.\nSlide 9: Hướng phát triển.\nSlide 10: Cảm ơn và Q&A."
+    }
+  ],
+  "9&10": [
+    {
+      "id": 71,
+      "title": "Khảo sát thực địa (Field Trip)",
+      "difficulty": "Dễ",
+      "description": "Trong chuyến đi thực tế tại trang trại, hãy chụp lại 3 thiết bị cảm biến hoặc máy móc tự động hóa đang được sử dụng. Ghi chú lại tên và chức năng của chúng.",
+      "goal": "Quan sát hệ thống thực tế ngoài đời thường.",
+      "hint": "Ví dụ: Cảm biến nhiệt độ trong nhà màng, quạt thông gió tự động, hệ thống tưới nhỏ giọt Israel."
+    },
+    {
+      "id": 72,
+      "title": "Phân tích khoảng cách (Gap Analysis)",
+      "difficulty": "Dễ",
+      "description": "So sánh giữa 'Trang trại thông minh trên lý thuyết/Slide' và 'Trang trại thực tế bạn vừa tham quan', điểm khác biệt lớn nhất là gì?",
+      "goal": "Nhận thức thực tế vs Lý thuyết.",
+      "hint": "Thực tế thường dây điện rối rắm hơn, bụi bẩn bám vào cảm biến nhiều hơn lý thuyết, và nông dân thường xuyên phải can thiệp thủ công vì máy hay lỗi vặt."
+    },
+    {
+      "id": 73,
+      "title": "Phỏng vấn Nông dân",
+      "difficulty": "Dễ",
+      "description": "Liệt kê 3 câu hỏi bạn sẽ hỏi chủ trang trại để tìm hiểu xem họ có thực sự cần AI hay không.",
+      "goal": "Kỹ năng thu thập yêu cầu khách hàng (Requirement Gathering).",
+      "hint": "1. 'Công đoạn nào mất nhiều nhân công và làm chú mệt mỏi nhất?'\n2. 'Chú có ghi chép lại sổ sách thu chi, bón phân hàng ngày không?'\n3. 'Chú có sẵn sàng chi 10 triệu để hệ thống tự động bón phân chính xác không?'"
+    },
+    {
+      "id": 74,
+      "title": "Sử dụng ChatGPT làm trợ lý",
+      "difficulty": "Trung bình",
+      "description": "Mở ChatGPT (hoặc Gemini). Nhập Prompt: 'Đóng vai chuyên gia nông nghiệp, hãy viết cho tôi quy trình 3 bước xử lý bệnh đốm lá trên cây cà chua hữu cơ'. Chụp lại kết quả.",
+      "goal": "Biết cách ứng dụng Generative AI vào công việc.",
+      "hint": "Prompt engineering (Kỹ năng ra lệnh cho AI) rất quan trọng. Cần chỉ rõ bối cảnh (hữu cơ, cà chua, 3 bước) để AI trả lời đúng trọng tâm."
+    },
+    {
+      "id": 75,
+      "title": "Review phần mềm nông nghiệp",
+      "difficulty": "Trung bình",
+      "description": "Tải một phần mềm quản lý trang trại trên App Store/Google Play (Ví dụ: AgriHub, Agri Connect). Trải nghiệm 10 phút và đánh giá 1 điểm mạnh, 1 điểm yếu.",
+      "goal": "Học hỏi từ sản phẩm thực tế của thị trường.",
+      "hint": "Điểm mạnh: Giao diện trực quan dễ nhìn.\nĐiểm yếu: Quá nhiều nút bấm, nông dân lớn tuổi thao tác khó khăn."
+    },
+    {
+      "id": 76,
+      "title": "Quy trình Bảo trì Cảm biến",
+      "difficulty": "Trung bình",
+      "description": "Tại sao một hệ thống AI nông nghiệp cần có kế hoạch 'Lau chùi cảm biến' định kỳ hàng tuần? Chuyện gì xảy ra nếu không làm?",
+      "goal": "Quản trị vận hành hệ thống AI.",
+      "hint": "Nếu bùn đất hoặc phân chim bám vào cảm biến ánh sáng, hệ thống AI sẽ nhận được dữ liệu Sai (Tưởng trời tối) và tự động bật đèn liên tục gây lãng phí điện."
+    },
+    {
+      "id": 77,
+      "title": "Đánh giá hiệu quả IoT (Tính toán Excel)",
+      "difficulty": "Trung bình",
+      "description": "Vườn sử dụng AI tốn 10 khối nước/tuần. Vườn tưới tay tốn 30 khối nước/tuần. Tiền nước là 5.000đ/khối. Tính số tiền tiết kiệm được trong 1 năm (52 tuần) bằng công thức Excel.",
+      "goal": "Tính toán chi phí cơ bản.",
+      "hint": "Công thức Excel: `=(30 - 10) * 5000 * 52` = 5.200.000 VNĐ."
+    },
+    {
+      "id": 78,
+      "title": "Tích hợp AI dự báo thời tiết",
+      "difficulty": "Khó",
+      "description": "Nếu trang trại sử dụng API của AccuWeather dự báo chiều nay mưa to (xác suất 90%). Hệ thống tự động nên đưa ra hành động gì cho mái che nhà màng và máy bơm tưới?",
+      "goal": "Thiết kế kịch bản tự động hóa cấp cao.",
+      "hint": "Hành động: \n1. Tắt máy bơm (vì sẽ có nước mưa bù vào, tiết kiệm nước).\n2. Gửi tín hiệu motor kéo đóng kín mái che nhà màng để tránh mưa làm dập hoa/nứt quả."
+    },
+    {
+      "id": 79,
+      "title": "Vẽ luồng dữ liệu (Data Flow Diagram)",
+      "difficulty": "Khó",
+      "description": "Vẽ trên giấy Sơ đồ truyền dữ liệu: Từ (1) Cảm biến đất -> (2) Bộ phát Wifi ở trang trại -> (3) Server Cloud phân tích AI -> (4) App trên điện thoại nông dân.",
+      "goal": "Hiểu kiến trúc mạng lưới IoT-Cloud.",
+      "hint": "Các mũi tên phải có ghi chú: Mũi tên (1)-(2) là sóng Radio/Zigbee. Mũi tên (2)-(3) là Internet. Mũi tên (3)-(4) là kết quả chẩn đoán bệnh."
+    },
+    {
+      "id": 80,
+      "title": "Trình diễn ý tưởng cuối cùng (Demo Day)",
+      "difficulty": "Khó",
+      "description": "Tổng kết lại: Hãy đóng vai một startup Nông nghiệp công nghệ cao, tự quay một video ngắn 2 phút (bằng điện thoại) trình bày về ý tưởng AI của bạn để nộp bài cuối kỳ.",
+      "goal": "Tổng hợp kỹ năng toàn diện: Hiểu biết công nghệ, kinh doanh, và truyền thông.",
+      "hint": "Tự tin, ngắn gọn. Nêu bật được việc AI giúp gì cho bà con nông dân (Tăng thu nhập, giảm vất vả)."
+    }
+  ]
+}

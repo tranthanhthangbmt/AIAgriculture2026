@@ -1,0 +1,8 @@
+dựa trên cấu trúc của các hệ chuyên gia về nông nghiệp, luật đất đai đang có. Hãy xây dựng gem instruction cho hệ chuyên gia chăn nuôi dê ở Tây Nguyên. Xuất ra hộp code để tôi dễ copy paste.
+
+--------------------
+
+dựa trên nội dung của chuyên gia này hãy cho tôi một case study nội dung để tôi kiểm tra. Tôi chỉ cần nội dung để cho hệ thống kiểm tra
+
+---------------
+Dựa trên nội dung của chuyên gia này, hãy chỉ ra cho tôi các văn bản luật, sách chuyên ngành (tiếng Anh hoặc tiếng Việt) tôi có thể tải về, các tài liệu chuyên môn khác để tôi đưa vào cơ sở dữ liệu. Hãy chain of thought hoặc tree of thought và giúp tôi.

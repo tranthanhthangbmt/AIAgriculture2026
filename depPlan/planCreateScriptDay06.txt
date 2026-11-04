@@ -1,0 +1,17 @@
+KẾ HOẠCH VIẾT SCRIPT THUYẾT TRÌNH BÀI 6: ỨNG DỤNG AI TRONG QUẢN LÝ NƯỚC VÀ DINH DƯỠNG
+
+1. Mục tiêu:
+- Tạo script thuyết trình chi tiết dựa trên 24 slides của file PDF "slide Chương 5_ Ứng dụng AI trong quản lý nước và dinh dưỡng.pdf". (Lưu ý: Nội dung slide ghi rõ là "Buổi 6", do đó kịch bản sẽ bám sát tiến trình của Buổi 6, mặc dù nằm trong thư mục Buổi 5).
+- Định dạng chuẩn: Người 1 (Giảng viên) và Người 2 (Sinh viên).
+- Tham khảo kiến thức từ 3 file PDF trong "Tuần 6" (Precision Farming, DRL for Smart Irrigation, IoT for Health Monitoring).
+
+2. Phân vai:
+- Người 1 (Giảng viên): Chuyên gia hệ thống, giải thích quy trình luân chuyển dữ liệu từ IoT lên Cloud (Đám mây), cách thức AI hoạt động như một "bộ não" trung tâm điều khiển tưới tiêu (DRL) và bón phân biến thiên (VRT).
+- Người 2 (Sinh viên): Liên hệ thực tiễn, phân tích nỗi đau của nông dân khi bón phân "cào bằng", đặt câu hỏi về tính khả thi của công nghệ và tương tác nhiệt tình ở phần Live Demo mô phỏng AI tưới cây.
+
+3. Kế hoạch triển khai (Các bước thực hiện):
+- Bước 1 (Phần 1 - Hạ tầng IoT): Slide 1 - 8. Phân tích nghịch lý lãng phí tài nguyên của nông nghiệp truyền thống. Giới thiệu khái niệm Nông nghiệp chính xác. Trình bày hành trình dữ liệu 5 bước từ "Lính gác" (Sensors) lên "Đám mây" (Cloud) và quay về thành "Mệnh lệnh".
+- Bước 2 (Phần 2 - Thuật toán DRL cho Tưới tiêu): Slide 9 - 14. Phân tích điểm yếu của tưới tiêu theo lịch cố định. Giới thiệu Học Tăng Cường Sâu (DRL) giải quyết bài toán tưới tiêu như cách chơi game (Trạng thái - Hành động - Phần thưởng). Case study: Cây hạnh nhân tiết kiệm 7.8% nước.
+- Bước 3 (Phần 3 - Giải pháp Bón phân VRT & Thách thức): Slide 15 - 20. Phân tích sự lãng phí vô hình của bón phân dàn trải. Đưa ra giải pháp bón phân theo địa điểm cụ thể (Site-Specific) giúp giảm 30% phân bón. Bàn luận thẳng thắn về câu hỏi: "Tại sao công nghệ tốt mà chưa phổ biến?" (Chi phí, Kỹ năng, Hạ tầng).
+- Bước 4 (Phần 4 - Tương tác & Tổng kết): Slide 21 - 24. Giới thiệu ứng dụng Streamlit đóng vai AI tưới cây. Tổng kết thông điệp nhân văn: "Chăm sóc đất đai, nuôi sống thế giới".
+- Bước 5 (Kiểm tra & Hoàn thiện): Lưu kịch bản vào file `scriptB06.txt` (hoặc `scriptB05.txt` tuỳ theo thư mục yêu cầu).

@@ -1,0 +1,16 @@
+KẾ HOẠCH VIẾT SCRIPT THUYẾT TRÌNH BÀI 3: HỌC SÂU (DEEP LEARNING) VÀ MẠNG NƠ-RON
+
+1. Mục tiêu:
+- Tạo script thuyết trình chi tiết (scriptB03.txt) dựa trên 22 slides của file PDF "slide Chương 3_ Học sâu (Deep Learning) và Mạng Nơ-ron.pdf".
+- Duy trì định dạng hội thoại giữa Người 1 (Giảng viên) và Người 2 (Sinh viên).
+- Tham khảo kiến thức từ 4 file PDF trong thư mục "Tuần 3 Học sâu (Deep Learning) và Mạng Nơ-ron" ( Disease Classification, Deep Learning, Apple Leaf Disease, Artificial Neural Networks).
+
+2. Phân vai:
+- Người 1 (Giảng viên): Chuyên gia Deep Learning, dẫn dắt từ nỗi đau của nông nghiệp (bệnh cây trồng) đến giải pháp (Mạng nơ-ron). Trình bày cách thức hoạt động của perceptron đa lớp, CNN, Transfer Learning và hệ sinh thái Keras/TensorFlow.
+- Người 2 (Sinh viên): Đóng vai trò phản biện và liên hệ thực tế, đưa ra sự so sánh giữa con người và máy móc, và làm rõ các khái niệm như Gradient Descent hay Convolution (Tích chập) dưới góc nhìn đơn giản nhất.
+
+3. Kế hoạch triển khai (Các bước thực hiện):
+- Bước 1 (Phác thảo Phần 1 - Nền tảng ANN): Slide 1 - 12. Từ bối cảnh bệnh cây trồng dẫn dắt đến bộ não nhân tạo (ANN). Làm rõ các thành phần của nơ-ron (Weight, Bias, Activation Function). Thảo luận về lịch sử thăng trầm của AI và sự khác biệt cốt lõi giữa ML và DL (tự học đặc trưng/Feature Extraction).
+- Bước 2 (Phác thảo Phần 2 - Công nghệ CNN & Case Studies): Slide 13 - 17. Tập trung giải thích Mạng Nơ-ron Tích chập (CNN) và 2 lớp quan trọng (Convolutional Layer, Pooling Layer). Trình bày 2 Case Study: Bệnh lá Khoai tây (CNN tự xây) và Bệnh lá Táo (sử dụng Transfer Learning với VGG16, ResNet).
+- Bước 3 (Phác thảo Phần 3 - Hệ sinh thái Công cụ): Slide 18 - 22. Điểm qua các công cụ thực chiến: TensorFlow/Keras (Sequential, Functional, Subclassing API), các trợ lý huấn luyện (Callbacks, TensorBoard), và kỹ thuật tự động hóa siêu tham số (Keras Tuner).
+- Bước 4 (Kiểm tra & Hoàn thiện): Đảm bảo các đoạn hội thoại về code (như đoạn Sequential model) được diễn giải tự nhiên chứ không đọc code một cách máy móc. Lưu script vào file scriptB03.txt.

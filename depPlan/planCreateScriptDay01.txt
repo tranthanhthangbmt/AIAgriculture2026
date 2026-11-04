@@ -1,0 +1,17 @@
+KẾ HOẠCH VIẾT SCRIPT THUYẾT TRÌNH BÀI 1: TỔNG QUAN VỀ AI VÀ NÔNG NGHIỆP THÔNG MINH
+
+1. Mục tiêu:
+- Tạo script thuyết trình (scriptB01.txt) dựa trên 27 slides của file PDF "slide Chương 1_ Tổng quan về AI và Nông nghiệp thông minh.pdf".
+- Định dạng chuẩn theo "scriptDemo.txt" (Người 1: Thầy giảng viên, Người 2: Sinh viên).
+- Tham khảo thêm dữ liệu từ 4 file PDF trong thư mục "Tuần 1 Tổng quan về AI và Nông nghiệp thông minh" để làm phong phú nội dung.
+
+2. Phân vai:
+- Người 1 (Giảng viên): Dẫn dắt vấn đề, giải thích các định nghĩa cốt lõi, cơ chế hoạt động, phân tích chuyên sâu về lý thuyết và định hướng tư duy.
+- Người 2 (Sinh viên): Tiếp nối ý, đưa ra ví dụ thực tiễn, đặt câu hỏi phản biện, và tóm tắt dưới góc nhìn của người học.
+
+3. Kế hoạch triển khai (Các bước thực hiện):
+- Bước 1 (Nghiên cứu thêm): Đọc lướt qua 4 file tài liệu tham khảo (Precision Farming, Artificial Intelligence, Harvesting Intelligence, Đạo đức trong AI Nông nghiệp) để chắt lọc số liệu, ví dụ thực tế và các luận điểm sắc bén.
+- Bước 2 (Phác thảo kịch bản - Phần 1: Nền tảng): Từ Slide 1 đến Slide 14. Tập trung vào bối cảnh toàn cầu, định nghĩa Nông nghiệp chính xác, vai trò của AI và mô hình 3 bước (Thu thập - Phân tích - Hành động).
+- Bước 3 (Phác thảo kịch bản - Phần 2: Thực tiễn): Từ Slide 15 đến Slide 21. Tập trung vào các ứng dụng thực tế: Dự đoán năng suất, tối ưu tài nguyên, tự động hóa, và chăn nuôi.
+- Bước 4 (Phác thảo kịch bản - Phần 3: Thách thức & Đạo đức): Từ Slide 22 đến Slide 27. Cân đo đong đếm lợi ích/rủi ro, bàn về quyền sở hữu dữ liệu, công bằng kinh tế, tương lai việc làm và kết luận.
+- Bước 5 (Kiểm tra & Hoàn thiện): Rà soát lại format (Slide X: [Tên Slide]), đảm bảo sự tự nhiên trong giao tiếp giữa Người 1 và Người 2, lưu kết quả vào file scriptB01.txt.

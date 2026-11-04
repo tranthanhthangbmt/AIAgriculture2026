@@ -1,0 +1,174 @@
+Theo quy trình chuẩn, bước đầu tiên và quan trọng nhất cần làm trước khi chạm vào bất kỳ dòng code hay dữ liệu nào là gì?
+A. Thiết lập môi trường điện toán đám mây và cài đặt các thư viện Deep Learning chuyên dụng phục vụ việc huấn luyện.
+B. Định khung vấn đề (Frame the Problem): Xác định mục tiêu, loại bài toán và cách đánh giá.
+C. Thu thập và gán nhãn toàn bộ tập dữ liệu mẫu từ các cảm biến IoT và ảnh chụp thực địa tại trang trại canh tác.
+D. Lựa chọn ngay kiến trúc mạng nơ-ron tích chập (CNN) hiện đại nhất để chuẩn bị cho việc huấn luyện mô hình dự đoán.
+ANSWER: B
+
+Tại sao việc tách một phần dữ liệu thành “Tập kiểm tra” (Test Set) ngay từ giai đoạn đầu là bắt buộc?
+A. Để giảm tải dung lượng bộ nhớ RAM và tối ưu hóa đáng kể tốc độ huấn luyện cho thuật toán học máy khi xử lý các tập dữ liệu nông nghiệp quy mô lớn.
+B. Để ngăn chặn “Thiên kiến nhòm ngó dữ liệu” (Data Snooping Bias) - tránh việc não bộ con người vô tình chọn mô hình phù hợp với dữ liệu kiểm tra.
+C. Nhằm cung cấp thêm một tập dữ liệu trung gian phục vụ việc tinh chỉnh siêu tham số và lựa chọn hàm kích hoạt phù hợp cho các lớp ẩn của mô hình.
+D. Đảm bảo sự cân bằng tuyệt đối về tỷ lệ phân phối nhãn giữa các lớp bệnh cây trồng ngay trong quá trình chuẩn hóa đặc trưng và xử lý dữ liệu bị khuyết thiếu.
+ANSWER: B
+
+Trong bước “Khám phá dữ liệu”, nếu biểu đồ phân phối (Histogram) của một thuộc tính có dạng “đuôi dài” (Heavy tail - lệch hẳn về một bên), bạn nên làm gì?
+A. Loại bỏ hoàn toàn thuộc tính đó ra khỏi tập dữ liệu vì phân phối lệch gây ra lỗi phân kỳ nghiêm trọng cho hàm mất mát.
+B. Biến đổi thuộc tính (ví dụ: lấy logarit) để phân phối trở nên cân đối hơn (giống hình chuông).
+C. Nhân đôi giá trị của tất cả các quan sát ở phần đuôi để kéo cân bằng biểu đồ tần số về giá trị trung bình tổng thể.
+D. Giữ nguyên phân phối gốc và áp dụng kỹ thuật gán nhãn One-hot Encoding cho toàn bộ các giá trị định lượng liên tục.
+ANSWER: B
+
+Kỹ thuật xử lý dữ liệu bị thiếu (Missing values) bằng cách điền vào giá trị trung bình (Mean) hoặc trung vị (Median) được gọi là gì?
+A. Kỹ thuật loại bỏ bản ghi khuyết thiếu (Dropna/Listwise Deletion).
+B. Imputation (Gán/Điền dữ liệu).
+C. Kỹ thuật chuẩn hóa phân phối đặc trưng (Standardization/Z-score).
+D. Kỹ thuật mã hóa biến danh mục nhị phân (One-hot Encoding).
+ANSWER: B
+
+Mục đích của việc xây dựng một “Mô hình cơ sở” (Baseline Model) đơn giản (ví dụ: luôn đoán giá trị trung bình) là gì?
+A. Để nhanh chóng hoàn thiện một giải pháp dự phòng có thể thay thế ngay lập tức khi hệ thống máy chủ Deep Learning gặp sự cố quá tải tài nguyên phần cứng.
+B. Để thiết lập một mốc hiệu suất tối thiểu (Benchmark) mà các mô hình phức tạp (như Deep Learning) phải vượt qua được thì mới đáng giá để sử dụng.
+C. Nhằm mục đích trực quan hóa mối quan hệ tuyến tính giữa các biến đầu vào trên báo cáo kỹ thuật mà không cần trải qua các bước tiền xử lý dữ liệu phức tạp.
+D. Đóng vai trò là mô hình có độ chính xác dự báo cao nhất để làm tiêu chuẩn tham chiếu trần lý thuyết (Upper bound) mà không thuật toán nào vượt qua được.
+ANSWER: B
+
+Kỹ thuật “Cross-Validation” (Kiểm chứng chéo) được sử dụng để làm gì?
+A. Kiểm tra và phát hiện các lỗi cú pháp lập trình cùng sai số logic trong mã nguồn trước khi biên dịch và chạy mô hình trên môi trường máy chủ đám mây.
+B. Đánh giá hiệu suất mô hình một cách tin cậy hơn trên nhiều tập con khác nhau, tránh trường hợp may mắn ngẫu nhiên trên một lần chia dữ liệu.
+C. Tối ưu hóa tốc độ hội tụ của thuật toán lan truyền ngược nhằm rút ngắn đáng kể thời gian huấn luyện mạng nơ-ron sâu trên các tập dữ liệu lớn.
+D. Tự động cân bằng số lượng mẫu giữa các lớp mất cân bằng trong tập dữ liệu huấn luyện thông qua kỹ thuật nội suy láng giềng gần nhất (SMOTE).
+ANSWER: B
+
+Nếu mô hình hoạt động rất tốt trên tập huấn luyện nhưng tệ trên tập kiểm tra, hiện tượng này gọi là gì và cách sửa cơ bản?
+A. Underfitting; Cần tăng số lượng lớp ẩn, bổ sung đặc trưng mới hoặc giảm bớt hệ số điều chuẩn (Regularization).
+B. Overfitting; Cần thu thập thêm dữ liệu hoặc đơn giản hóa mô hình (Regularization).
+C. Data Leakage; Cần loại bỏ hoàn toàn tập kiểm tra và tiến hành huấn luyện trực tiếp trên toàn bộ dữ liệu gốc.
+D. Concept Drift; Cần cập nhật trọng số ngẫu nhiên liên tục trong mỗi chu kỳ huấn luyện để thích nghi với nhiễu.
+ANSWER: B
+
+“Grid Search” là kỹ thuật dùng để làm gì?
+A. Tìm kiếm và thu thập tự động các tài liệu học thuật cũng như bài báo khoa học từ các công cụ tra cứu trực tuyến.
+B. Tự động thử nghiệm các tổ hợp siêu tham số (Hyperparameters) khác nhau để tìm ra cấu hình tối ưu cho mô hình.
+C. Tự động quét và phát hiện các đoạn mã nguồn phát sinh lỗi tràn bộ nhớ hoặc rò rỉ dữ liệu trong suốt quá trình chạy.
+D. Truy vấn tọa độ địa lý và ranh giới không gian của các thửa ruộng thông qua tích hợp dữ liệu bản đồ số GIS vệ tinh.
+ANSWER: B
+
+Khi trình bày dự án cho các bên liên quan (Stakeholders) không chuyên về kỹ thuật, điều gì quan trọng nhất?
+A. Trình bày chi tiết từng đoạn mã nguồn nguồn mở, chứng minh tính tối ưu về cấu trúc thuật toán và kiến trúc vi dịch vụ (Microservices) của toàn bộ hệ thống phần mềm.
+B. “Kể chuyện” (Storytelling): Kết nối kết quả kỹ thuật với giá trị thực tế (giải quyết vấn đề gì, tiết kiệm bao nhiêu tiền) thay vì chỉ nói về các con số khô khan.
+C. Tập trung giải thích tường tận các thuật ngữ học máy chuyên sâu như đạo hàm bậc hai, ma trận Hessian và kỹ thuật tối ưu hóa siêu tham số bằng Bayesian Optimization.
+D. Trình bày thật ngắn gọn bảng mã lỗi hệ thống và phân tích sự suy giảm dung lượng bộ nhớ RAM của cụm máy chủ để thuyết phục đối tác cấp thêm ngân sách bảo trì phần cứng.
+ANSWER: B
+
+Theo Checklist, sau khi triển khai mô hình, tại sao chúng ta vẫn cần “Giám sát” (Monitoring)?
+A. Vì mô hình sẽ “thối rữa” (rot) theo thời gian do dữ liệu và môi trường thay đổi (Data Drift/Concept Drift).
+B. Để phát hiện kịp thời các hư hỏng vật lý hoặc sự suy giảm hiệu năng phần cứng trên hệ thống máy chủ lưu trữ đám mây.
+C. Nhằm ghi lại nhật ký truy vấn để tính toán chính xác chi phí dịch vụ điện toán đám mây phân bổ cho từng hộ nông dân.
+D. Giám sát là không bắt buộc vì mô hình học máy sau khi tối ưu hóa đã có khả năng duy trì độ chính xác vĩnh viễn trên thực địa.
+ANSWER: A
+
+Vấn đề “Quyền sở hữu dữ liệu” (Data Ownership) trong nông nghiệp thông minh thường gây tranh cãi giữa hai đối tượng nào?
+A. Người tiêu dùng nông sản cuối cùng và các hợp tác xã sản xuất nông nghiệp hữu cơ tại địa phương canh tác.
+B. Nông dân (người tạo ra dữ liệu từ ruộng) và Công ty Công nghệ (người thu thập và phân tích dữ liệu).
+C. Cơ quan quản lý thuế nhà nước và các tổ chức tín dụng cung cấp khoản vay thế chấp vốn cho người làm nông.
+D. Nhà sản xuất phần cứng thiết bị bay không người lái và các đơn vị cung cấp dịch vụ viễn thông hạ tầng mạng.
+ANSWER: B
+
+“Khoảng cách số” (Digital Divide) trong nông nghiệp đề cập đến rủi ro gì khi áp dụng AI?
+A. Khoảng cách không gian thực tế giữa các hàng cây trồng nông nghiệp và mật độ bố trí của các trạm cảm biến IoT trên cánh đồng mẫu lớn.
+B. Nguy cơ các nông hộ nhỏ/nghèo bị bỏ lại phía sau do không đủ tiền mua công nghệ, trong khi các trang trại lớn ngày càng giàu hơn.
+C. Sự chênh lệch về tốc độ xử lý tín hiệu giữa hệ thống chuyển đổi số nhị phân (0 và 1) với các bộ điều khiển logic tương tự (Analog).
+D. Khoảng cách địa lý từ khu vực canh tác nông thôn đến các trung tâm thương mại thành phố làm gia tăng chi phí vận chuyển nông sản.
+ANSWER: B
+
+Rác thải điện tử (E-waste) từ các dự án IoT nông nghiệp đến từ đâu?
+A. Từ các dòng mã lệnh phần mềm dư thừa và các tập tin dữ liệu nhật ký không được thu hồi hoặc dọn dẹp khỏi hệ thống máy chủ.
+B. Từ hàng triệu cảm biến, pin và thiết bị phần cứng bị hỏng hoặc hết hạn sử dụng bị vứt bỏ ra môi trường đồng ruộng.
+C. Từ việc đốt rơm rạ và phế phẩm sinh học sau thu hoạch tạo ra các hạt bụi mịn và khói độc phát tán vào không khí nông thôn.
+D. Từ các loại bao bì phân bón vô cơ và chai lọ thuốc bảo vệ thực vật bằng nhựa không được thu gom đúng quy chuẩn an toàn.
+ANSWER: B
+
+“Thiên kiến thuật toán” (Algorithmic Bias) có thể xảy ra trong nông nghiệp như thế nào?
+A. Mô hình chỉ được huấn luyện trên dữ liệu ở Châu Âu nhưng lại áp dụng ở Việt Nam, dẫn đến dự báo sai lệch hoàn toàn do khác biệt thổ nhưỡng.
+B. Khi hệ thống điện toán tự động đưa ra các phản hồi tiêu cực một cách có chủ đích do người dùng thiết lập sai tham số khởi tạo trong hệ chuyên gia tri thức.
+C. Tốc độ xử lý của thuật toán tính toán quá nhanh dẫn đến việc bỏ qua các bước kiểm tra logic bắt buộc trong chu trình ra quyết định canh tác.
+D. Các cảm biến đo độ ẩm đất bị hỏng hóc vật lý ngẫu nhiên khiến dữ liệu số liệu gửi về bộ xử lý trung tâm bị gián đoạn cục bộ trong một khoảng thời gian.
+ANSWER: A
+
+Về mặt thị trường lao động, việc sử dụng robot thu hoạch tự động có thể gây ra tác động tiêu cực gì?
+A. Làm gia tăng giá thành bán lẻ của nông sản trên thị trường do chi phí khấu hao trang thiết bị tự động quá lớn.
+B. Gây mất việc làm cho lượng lớn lao động phổ thông/thời vụ (những người sống dựa vào nghề hái thuê).
+C. Làm tổn thương cơ học đến cấu trúc sinh lý của cây trồng khiến năng suất quang hợp giảm sút nghiêm trọng ở vụ mùa kế tiếp.
+D. Dẫn đến hiện tượng các thiết bị tự hành đồng loạt ngừng hoạt động do lỗi xung đột phần mềm điều khiển trong giờ cao điểm.
+ANSWER: B
+
+Trách nhiệm giải trình (Accountability): Nếu một ứng dụng AI tư vấn sai khiến nông dân mất trắng vụ mùa, ai nên chịu trách nhiệm?
+A. Hoàn toàn không thuộc trách nhiệm của bất kỳ ai vì đây được coi là biến cố bất khả kháng xuất phát từ các sai số kỹ thuật ngẫu nhiên trong phần mềm.
+B. Đây là một vấn đề pháp lý phức tạp chưa có lời giải rõ ràng: Là người viết code, công ty cung cấp, hay người nông dân tin tưởng mù quáng?
+C. Hoàn toàn thuộc về người nông dân vì đã tự nguyện áp dụng khuyến nghị của máy tính mà không tham khảo thêm ý kiến chuyên môn từ cán bộ khuyến nông.
+D. Thuộc về hệ thống máy chủ và thuật toán tự trị vì chúng tự đưa ra quyết định mà không chịu sự can thiệp trực tiếp từ các lập trình viên phát triển.
+ANSWER: B
+
+Trong bài toán phát hiện bệnh, nếu bộ dữ liệu của bạn có 950 ảnh cây khỏe và chỉ 50 ảnh cây bệnh (Mất cân bằng dữ liệu), và mô hình dự đoán tất cả cây đều khỏe. Độ chính xác (Accuracy) là 95%. Kết quả này có tốt không?
+A. Rất tốt, vì tỷ lệ chính xác tổng thể đạt tới 95%, đáp ứng vượt mức kỳ vọng của hầu hết các mô hình phân loại nhị phân trong nông nghiệp.
+B. Rất tệ, vì mô hình hoàn toàn vô dụng trong việc phát hiện bệnh (thứ chúng ta cần tìm).
+C. Đạt mức chấp nhận được, vì mô hình đã nhận diện chính xác phần lớn các mẫu cây khỏe mạnh thực tế có mặt trên đồng ruộng thử nghiệm.
+D. Chưa thể xác định được vì độ chính xác 95% chỉ phản ánh kết quả trên tập huấn luyện chứ chưa kiểm thử trên tập dữ liệu ngoài thực địa.
+ANSWER: B
+
+Để giải quyết vấn đề mất cân bằng dữ liệu nêu trên (Quá ít ảnh bệnh), giải pháp kỹ thuật nào sau đây là phù hợp?
+A. Loại bỏ ngẫu nhiên thêm các ảnh thuộc lớp cây bệnh để giảm thiểu sự phân tán dữ liệu và giúp thuật toán dễ dàng hội tụ về một nhãn đồng nhất.
+B. Sử dụng kỹ thuật Tăng cường dữ liệu (Data Augmentation) cho lớp cây bệnh hoặc dùng các kỹ thuật lấy mẫu lại (Resampling like SMOTE).
+C. Giữ nguyên hiện trạng dữ liệu và chỉ cần tăng mạnh tốc độ học (Learning Rate) của mạng nơ-ron nhằm ép mô hình chú ý hơn tới các ca bệnh.
+D. Chuyển đổi toàn bộ bài toán phân loại nhị phân sang mô hình hồi quy phi tuyến tính để dự báo trực tiếp diện tích lá bị tổn thương bề mặt.
+ANSWER: B
+
+Khi triển khai mô hình nhận diện bệnh lên điện thoại di động cũ của nông dân, mô hình chạy rất chậm. Bạn nên làm gì?
+A. Yêu cầu nông dân nâng cấp lên các thiết bị điện thoại cao cấp có cấu hình phần cứng mạnh mẽ và trang bị bộ tăng tốc đồ họa chuyên biệt.
+B. Sử dụng các kỹ thuật nén mô hình (Model Quantization) hoặc chuyển sang các kiến trúc nhẹ hơn (như MobileNet, EfficientNet).
+C. Chuyển đổi mô hình thành dạng bảng tra cứu thủ công trên sổ tay để người nông dân tự đối chiếu các triệu chứng bệnh cây trên đồng ruộng.
+D. Nâng cao độ phân giải của ảnh đầu vào nhằm cung cấp thêm chi tiết đường gân lá giúp thuật toán trích xuất đặc trưng chính xác và nhanh hơn.
+ANSWER: B
+
+Nếu hệ thống tưới tiêu IoT của bạn được lắp đặt ở một cánh đồng xa xôi không có sóng 3G/4G hay Wi-Fi, giải pháp thiết kế nào là hợp lý nhất?
+A. Tiến hành thi công lắp đặt và kéo toàn bộ tuyến cáp quang tốc độ cao chuyên dụng từ trung tâm điều hành khu dân cư gần nhất trực tiếp đến từng trạm cảm biến và máy bơm tưới tiêu ngoài đồng ruộng.
+B. Thiết kế hệ thống xử lý tại biên (Edge Computing) để tự ra quyết định tại chỗ mà không cần gửi dữ liệu về Cloud, hoặc dùng công nghệ truyền tin xa năng lượng thấp (LoRaWAN).
+C. Hủy bỏ hoàn toàn giải pháp tự động hóa thông minh và quay trở lại áp dụng phương thức tưới tràn truyền thống định kỳ kết hợp lấy mẫu kiểm tra độ ẩm đất thủ công tại thực địa.
+D. Thiết lập giao thức kết nối không dây mạng diện rộng Bluetooth tầm ngắn năng lượng thấp trực tiếp lên các chùm vệ tinh viễn thông quỹ đạo thấp nhằm duy trì luồng dữ liệu thời gian thực liên tục.
+ANSWER: B
+
+Trong dự báo giá nông sản, nếu mô hình không thể dự báo được các cú sốc giá (price spikes) do đại dịch hay chiến tranh, nguyên nhân chính là gì?
+A. Do năng lực tính toán phần cứng của hệ thống máy chủ chưa đủ mạnh để giải các phương trình vi phân mô phỏng cung cầu nông sản phức tạp.
+B. Do dữ liệu huấn luyện trong quá khứ không chứa các sự kiện thiên nga đen (Black Swan events) tương tự, nên mô hình không học được.
+C. Do các thương lái và nông dân tại địa phương chủ động che giấu thông tin giao dịch khiến các đặc trưng giá cả bị làm sai lệch có chủ đích.
+D. Do xảy ra lỗi lập trình trong việc thiết lập chỉ số trễ (Lag features) của chuỗi thời gian khi trích xuất đặc trưng biến động thị trường.
+ANSWER: B
+
+Tại sao việc sử dụng “Transfer Learning” (Học chuyển giao) lại được khuyến khích cho các dự án sinh viên về phân loại ảnh cây trồng?
+A. Vì phương pháp này cho phép nhóm nghiên cứu bỏ qua hoàn toàn bước thu thập dữ liệu thực tế ngoài nông trường và không cần phải đánh giá hiệu năng mô hình trên tập kiểm tra độc lập ban đầu.
+B. Vì sinh viên thường không có đủ dữ liệu lớn và tài nguyên tính toán để train một mạng CNN sâu từ đầu. Transfer Learning giúp đạt độ chính xác cao với ít dữ liệu hơn.
+C. Vì các mô hình học chuyển giao là sản phẩm mã nguồn mở hoàn toàn miễn phí và hoàn toàn không yêu cầu bất kỳ kỹ năng lập trình chuyên sâu nào trong suốt quá trình tinh chỉnh và tối ưu hóa trọng số.
+D. Vì kỹ thuật này tự động nâng cao chất lượng cảm biến và độ tương phản quang học của ảnh chụp thực địa, giúp các tổn thương trên lá cây trồng hiển thị rõ nét hơn trong quá trình phân loại tự động.
+ANSWER: B
+
+Một nhóm sinh viên đề xuất dùng Drone để bay giám sát sâu bệnh 24/7. Điểm yếu thực tế (Practicality) lớn nhất của ý tưởng này là gì?
+A. Các thiết bị bay không người lái dân dụng hoàn toàn không có khả năng hoạt động ổn định trong không gian mở do thiếu tín hiệu điều hướng toàn cầu GPS.
+B. Thời lượng pin của Drone hiện tại rất ngắn (chỉ 20-30 phút), không thể bay liên tục 24/7 mà cần thay pin liên tục hoặc trạm sạc tự động đắt tiền.
+C. Tiếng ồn từ động cơ của thiết bị bay làm xua đuổi các loài chim ăn sâu có ích và gây xáo trộn hành vi tự nhiên của các loài động vật hoang dã quanh khu vực.
+D. Các loại côn trùng gây hại cây trồng chỉ xuất hiện và phá hoại vào ban đêm, thời điểm mà camera quang học thông thường hoàn toàn mất khả năng ghi nhận hình ảnh.
+ANSWER: B
+
+Chỉ số F1-Score là sự kết hợp của hai chỉ số nào?
+A. Accuracy (Độ chính xác tổng thể) và Loss (Hàm mất mát mô hình).
+B. Precision (Độ chuẩn xác) và Recall (Độ phủ).
+C. True Positive Rate (Tỷ lệ dương tính thật) và True Negative Rate.
+D. Mean Squared Error (Sai số toàn phương) và Median Absolute Error.
+ANSWER: B
+
+Nếu bạn muốn biết đặc trưng nào (ví dụ: Nhiệt độ, Lượng mưa, hay Phân bón) ảnh hưởng nhiều nhất đến kết quả dự báo của mô hình Random Forest, bạn dùng công cụ gì?
+A. Feature Importance (Tầm quan trọng đặc trưng).
+B. Confusion Matrix (Ma trận nhầm lẫn đánh giá phân loại).
+C. Learning Curve (Đường cong học tập biểu diễn hội tụ).
+D. Cost Function (Hàm chi phí tối ưu hóa hàm mất mát).
+ANSWER: A

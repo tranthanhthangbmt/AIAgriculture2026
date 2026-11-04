@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc nghiệm Buổi 8: Ôn tập và Kiểm tra giữa kỳ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #15803d;
+            --primary-hover: #166534;
+            --primary-light: #dcfce7;
+            --accent: #22c55e;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --success: #16a34a;
+            --success-bg: #f0fdf4;
+            --success-border: #bbf7d0;
+            --error: #dc2626;
+            --error-bg: #fef2f2;
+            --error-border: #fecaca;
+            --radius: 12px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 24px 16px;
+        }
+
+        .quiz-wrapper {
+            width: 100%;
+            max-width: 840px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        /* Header Bar */
+        .quiz-header {
+            padding: 20px 28px;
+            background: linear-gradient(135deg, #14532d 0%, #166534 100%);
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .quiz-header h1 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .session-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+
+        .quiz-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-palette {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-palette:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Progress Bar */
+        .progress-track {
+            width: 100%;
+            height: 6px;
+            background-color: #e2e8f0;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            width: 0%;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Quiz Body */
+        .quiz-body {
+            padding: 32px 28px;
+        }
+
+        .question-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .counter-badge {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .tags-cluster {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .tag-pill {
+            font-size: 0.78rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            background: #f1f5f9;
+            color: var(--text-muted);
+        }
+
+        .tag-pill.diff-de { background: #dcfce7; color: #166534; }
+        .tag-pill.diff-tb { background: #fef3c7; color: #92400e; }
+        .tag-pill.diff-kho { background: #fee2e2; color: #991b1b; }
+
+        .question-title {
+            font-size: 1.22rem;
+            font-weight: 700;
+            line-height: 1.55;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+
+        /* Options Grid */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .option-card {
+            display: flex;
+            align-items: flex-start;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #ffffff;
+            user-select: none;
+        }
+
+        .option-card:hover:not(.locked) {
+            border-color: var(--accent);
+            background: #f8fafc;
+            transform: translateY(-1px);
+        }
+
+        .option-card.selected:not(.locked) {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-card.locked {
+            cursor: default;
+        }
+
+        .option-card.is-correct {
+            border-color: var(--success) !important;
+            background-color: var(--success-bg) !important;
+        }
+
+        .option-card.is-wrong {
+            border-color: var(--error) !important;
+            background-color: var(--error-bg) !important;
+        }
+
+        .option-letter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-right: 14px;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .option-card.selected .option-letter {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .option-card.is-correct .option-letter {
+            background: var(--success);
+            color: #ffffff;
+        }
+
+        .option-card.is-wrong .option-letter {
+            background: var(--error);
+            color: #ffffff;
+        }
+
+        .option-text {
+            font-size: 1.02rem;
+            line-height: 1.5;
+            color: var(--text-main);
+            padding-top: 3px;
+        }
+
+        /* Feedback Box */
+        .feedback-box {
+            display: none;
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            animation: slideDown 0.3s ease;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background-color: var(--success-bg);
+            border: 1px solid var(--success-border);
+        }
+
+        .feedback-box.incorrect {
+            background-color: var(--error-bg);
+            border: 1px solid var(--error-border);
+        }
+
+        .feedback-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .correct .feedback-title { color: var(--success); }
+        .incorrect .feedback-title { color: var(--error); }
+
+        .feedback-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #334155;
+        }
+
+        /* Action Buttons */
+        .actions-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn {
+            padding: 12px 26px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        /* Result Screen */
+        .result-screen {
+            display: none;
+            text-align: center;
+            padding: 40px 24px;
+        }
+
+        .score-ring-wrap {
+            position: relative;
+            width: 170px;
+            height: 170px;
+            margin: 0 auto 28px;
+        }
+
+        .score-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent) 0%, #e2e8f0 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .score-inner {
+            width: 136px;
+            height: 136px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .score-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .result-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .result-summary {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 500px;
+            margin: 0 auto 36px;
+        }
+
+        .stat-card {
+            padding: 16px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .stat-val {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Palette Drawer */
+        .drawer-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 100;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -360px;
+            width: 340px;
+            height: 100%;
+            background: #ffffff;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+            z-index: 101;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+        }
+
+        .drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .drawer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 4px;
+        }
+
+        .palette-item {
+            height: 42px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .palette-item:hover {
+            border-color: var(--primary);
+            background: #e2e8f0;
+        }
+
+        .palette-item.active {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .palette-item.correct {
+            background: var(--success);
+            color: #ffffff;
+            border-color: var(--success);
+        }
+
+        .palette-item.wrong {
+            background: var(--error);
+            color: #ffffff;
+            border-color: var(--error);
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 10px; }
+            .quiz-body { padding: 20px 16px; }
+            .quiz-header { padding: 16px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-wrapper">
+    <!-- Header -->
+    <div class="quiz-header">
+        <h1>
+            <span>🌾</span>
+            <span>Buổi 8: Ôn tập và Kiểm tra giữa kỳ</span>
+        </h1>
+        <div class="quiz-meta">
+            <span class="session-badge">Buổi 8</span>
+            <button class="btn-palette" onclick="toggleDrawer()">📋 Mục lục câu</button>
+        </div>
+    </div>
+
+    <!-- Progress Track -->
+    <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <!-- Screen 1: Quiz Active -->
+    <div class="quiz-body" id="quiz-screen">
+        <div class="question-meta-row">
+            <div class="counter-badge" id="question-counter">Câu hỏi 1 / 40</div>
+            <div class="tags-cluster">
+                <span class="tag-pill" id="section-tag">Tổng quan</span>
+                <span class="tag-pill" id="difficulty-tag">Dễ</span>
+            </div>
+        </div>
+
+        <h2 class="question-title" id="question-text">Đang tải câu hỏi...</h2>
+
+        <div class="options-list" id="options-container">
+            <!-- Dynamic Options -->
+        </div>
+
+        <!-- Feedback Container -->
+        <div class="feedback-box" id="feedback-box">
+            <div class="feedback-title" id="feedback-title"></div>
+            <div class="feedback-desc" id="feedback-desc"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions-row">
+            <button class="btn btn-secondary" id="btn-prev" onclick="navigatePrev()">← Câu trước</button>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-primary" id="btn-check" onclick="checkAnswer()" disabled>Kiểm tra</button>
+                <button class="btn btn-primary" id="btn-next" onclick="navigateNext()" style="display: none;">Câu tiếp theo →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 2: Results -->
+    <div class="result-screen" id="result-screen">
+        <div class="score-ring-wrap">
+            <div class="score-circle" id="score-circle">
+                <div class="score-inner">
+                    <span class="score-number" id="final-score">0</span>
+                    <span class="score-label" id="final-total">/ 40</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="result-title" id="result-title">Chúc mừng bạn đã hoàn thành!</h2>
+        <p class="result-summary" id="result-summary">Bạn đã trả lời xuất sắc hầu hết các câu hỏi trong phần này.</p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--success);" id="stat-correct">0</div>
+                <div class="stat-label">Số câu đúng</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--error);" id="stat-wrong">0</div>
+                <div class="stat-label">Số câu sai</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--primary);" id="stat-accuracy">0%</div>
+                <div class="stat-label">Độ chính xác</div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="restartQuiz()">🔄 Làm lại bài</button>
+            <button class="btn btn-secondary" onclick="viewAllAnswers()">🔍 Xem lại chi tiết đáp án</button>
+        </div>
+    </div>
+</div>
+
+<!-- Drawer / Question Palette -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<div class="drawer" id="drawer">
+    <div class="drawer-header">
+        <h3 style="font-size: 1.1rem; font-weight: 700;">Danh sách câu hỏi</h3>
+        <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.85rem;" onclick="toggleDrawer()">Đóng ✕</button>
+    </div>
+    <div class="drawer-grid" id="palette-grid">
+        <!-- Palette numbers -->
+    </div>
+</div>
+
+<script>
+    const questions = [{"id": 251, "local_id": 1, "section": "Phần 3: Kiểm tra dữ liệu & Xử lý sự cố (Troubleshooting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Khi lắp đặt một hộp điều khiển IoT (chứa mạch điện tử) ngoài trời, chỉ số bảo vệ vỏ hộp nào sau đây là tối thiểu cần thiết để chống mưa và bụi?", "options": [{"id": "A", "text": "IP20 hoặc IP22 (Chỉ có khả năng ngăn các vật thể rắn có kích thước ngón tay và chống nước nhỏ giọt nhẹ theo phương thẳng đứng)."}, {"id": "B", "text": "IP65 hoặc IP67 (Chống bụi hoàn toàn và chống tia nước áp lực thấp/ngâm nước)."}, {"id": "C", "text": "Hộp nhựa PVC thông thường không có gioăng cao su làm kín, chỉ cần đục lỗ thoát khí ở mặt đáy để hơi nước tự bốc hơi ra ngoài."}, {"id": "D", "text": "IP40 hoặc IP43 (Chỉ bảo vệ ngăn chặn được dị vật lớn hơn 1mm và nước phun nghiêng góc 60 độ, không có khả năng chống được bụi mịn xâm nhập mạch)."}], "answer": "B", "explanation": "Thiết bị ngoài đồng ruộng phải chịu mưa, độ ẩm cao và bụi bẩn. Chuẩn IP65/67 là bắt buộc để bảo vệ mạch điện tử bên trong."}, {"id": 252, "local_id": 2, "section": "Phần 3: Kiểm tra dữ liệu & Xử lý sự cố (Troubleshooting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Bước đầu tiên quan trọng nhất khi tiến hành “Khảo sát địa điểm” (Site Survey) để lắp đặt hệ thống IoT không dây là gì?", "options": [{"id": "A", "text": "Tiến hành khoan bắt vít cố định hộp bảo vệ và kéo hệ thống dây nguồn cấp điện trước khi xác định vị trí đặt cảm biến phù hợp."}, {"id": "B", "text": "Kiểm tra cường độ sóng (Signal Strength) của mạng Wi-Fi/4G/LoRa tại điểm dự kiến lắp đặt."}, {"id": "C", "text": "Thu thập toàn bộ các mẫu đất tại nông trại đem về phòng thí nghiệm chuyên sâu để phân tích thành phần cơ giới và độ ẩm ban đầu."}, {"id": "D", "text": "Lập trình sẵn lịch tưới cố định trên ứng dụng di động máy trạm trước khi khảo sát thực địa địa hình và cấu trúc che chắn của khu đất."}], "answer": "B", "explanation": "Nếu lắp xong mà không có sóng để truyền dữ liệu về trung tâm thì hệ thống vô dụng. Việc đo sóng phải thực hiện đầu tiên."}, {"id": 253, "local_id": 3, "section": "Phần 3: Kiểm tra dữ liệu & Xử lý sự cố (Troubleshooting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Nguồn năng lượng khả thi nhất cho các trạm cảm biến (Sensor Nodes) nằm xa nguồn điện lưới là gì?", "options": [{"id": "A", "text": "Kéo hệ thống đường dây điện hạ thế 220V ngoài trời từ nhà kho trung tâm đến từng vị trí đặt cảm biến."}, {"id": "B", "text": "Sử dụng Pin kết hợp tấm năng lượng mặt trời (Solar Panel)."}, {"id": "C", "text": "Trang bị máy phát điện công nghiệp chạy xăng hoặc dầu diesel hoạt động liên tục 24/7 tại mỗi trạm đo."}, {"id": "D", "text": "Lắp đặt tuabin gió mini độc lập công suất lớn tại từng gốc cây để tận dụng luồng gió đối lưu tự nhiên."}], "answer": "B", "explanation": "Năng lượng mặt trời kết hợp pin lưu trữ là giải pháp tiêu chuẩn cho IoT nông nghiệp vì tính bền vững và không cần kéo dây phức tạp. PHẦN 2: QUY TRÌNH LẮP ĐẶT & KẾT NỐI"}, {"id": 254, "local_id": 4, "section": "Phần 3: Kiểm tra dữ liệu & Xử lý sự cố (Troubleshooting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Khi lắp đặt “Cảm biến độ ẩm đất” (Soil Moisture Sensor), vị trí nào là chính xác để phản ánh đúng nhu cầu nước của cây?", "options": [{"id": "A", "text": "Đặt đầu đo cảm biến nằm phẳng ngay trên bề mặt tầng đất mặt để đón trực tiếp độ ẩm không khí và nước tưới từ vòi phun."}, {"id": "B", "text": "Chôn cảm biến ở vùng rễ hoạt động (Root Zone) của cây trồng (độ sâu tùy loại cây)."}, {"id": "C", "text": "Chôn cảm biến thật sâu xuống dưới đáy tầng đất cái hoặc sát đáy chậu cây, cách xa vùng phân bố của bộ rễ hút dinh dưỡng."}, {"id": "D", "text": "Cắm cảm biến vào thân cây gỗ hoặc treo lơ lửng trên cành tán cây gần vòi phun sương để ước tính lượng nước đọng trên tán lá."}], "answer": "B", "explanation": "Cây hút nước từ rễ. Cảm biến cần đo độ ẩm tại vùng rễ để biết cây có đang khát hay không. Đặt trên mặt đất sẽ bị khô nhanh do nắng gió, không phản ánh đúng."}, {"id": 255, "local_id": 5, "section": "Phần 3: Kiểm tra dữ liệu & Xử lý sự cố (Troubleshooting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Trong quy ước màu dây điện chuẩn của các cảm biến công nghiệp, dây màu Đỏ (Red) và Đen (Black) thường đại diện cho chân nào?", "options": [{"id": "A", "text": "Đỏ: Dây truyền tín hiệu tương tự (Analog/Signal); Đen: Nối đất bảo vệ (GND/Ground)."}, {"id": "B", "text": "Đỏ: Nguồn dương (VCC/+); Đen: Nguồn âm/Đất (GND/-)."}, {"id": "C", "text": "Đỏ: Cực âm hoặc chân nối đất (GND); Đen: Cấp điện áp nguồn dương hoạt động (VCC/+)."}, {"id": "D", "text": "Đỏ: Dây giao tiếp truyền dữ liệu nối tiếp (TX/RX); Đen: Chân cấp nguồn dự phòng (VREF)."}], "answer": "B", "explanation": "Quy ước chuẩn: Đỏ là Dương (Power), Đen là Âm (Ground). Đấu ngược cực có thể làm cháy cảm biến ngay lập tức."}, {"id": 256, "local_id": 6, "section": "Phần 3: Kiểm tra dữ liệu & Xử lý sự cố (Troubleshooting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Tại sao sau khi lắp đặt xong, ta cần thực hiện bước “Hiệu chuẩn” (Calibration) cảm biến độ ẩm đất?", "options": [{"id": "A", "text": "Vì cảm biến đo độ ẩm đất cần phải hấp thụ đủ lượng ion khoáng vi lượng từ phân bón trong ít nhất 48 giờ thì các điện cực đồng mới bắt đầu ổn định chỉ số và không bị trôi điểm mốc điện áp danh định ban đầu."}, {"id": "B", "text": "Vì các loại đất khác nhau (đất cát vs đất sét) có tính chất dẫn điện khác nhau; cần hiệu chuẩn để mức “100% ẩm” và “0% ẩm” tương ứng đúng với loại đất thực tế."}, {"id": "C", "text": "Để tẩy rửa các màng bám vi sinh vật và loại bỏ lớp oxit kim loại bám trên bề mặt que đo nhằm tăng độ thẩm thấu của nước tưới qua lớp vỏ bọc bảo vệ của cảm biến trong môi trường đất ngập úng định kỳ."}, {"id": "D", "text": "Để đưa vi điều khiển và mạch khuếch đại tín hiệu chuyển sang chế độ ngủ sâu (Deep Sleep), từ đó giảm thiểu tối đa công suất tiêu thụ pin và kéo dài tuổi thọ vận hành liên tục ngoài đồng ruộng cho trạm đo."}], "answer": "B", "explanation": "Cảm biến đo độ dẫn điện/điện dung. Cùng một giá trị điện áp đọc được nhưng ở đất cát có thể là “ẩm”, ở đất sét có thể là “khô”. Cần hiệu chuẩn thực tế (Lấy mẫu đất khô kiệt và đất bão hòa nước)."}, {"id": 257, "local_id": 7, "section": "Phần 3: Kiểm tra dữ liệu & Xử lý sự cố (Troubleshooting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Khi lắp đặt cảm biến nhiệt độ & độ ẩm không khí (dạng hộp), cần lưu ý điều gì để số liệu không bị sai lệch?", "options": [{"id": "A", "text": "Lắp đặt cảm biến trực tiếp ở nơi đón nhiều ánh nắng mặt trời nhất để ghi nhận chính xác nhiệt độ bức xạ cực đại ngoài trời."}, {"id": "B", "text": "Lắp trong hộp che chắn chuyên dụng (Radiation Shield) có khe thoáng khí, tránh ánh nắng trực tiếp và mưa tạt."}, {"id": "C", "text": "Bọc kín toàn bộ vỏ hộp cảm biến bằng màng bọc nilon hoặc băng keo cách điện nhằm ngăn chặn tuyệt đối độ ẩm không khí lọt vào."}, {"id": "D", "text": "Đặt cảm biến ngay sát miệng quạt thông gió hoặc cửa xả khí nóng của máy bơm nông nghiệp để đối lưu không khí đạt vận tốc cao."}], "answer": "B", "explanation": "Ánh nắng trực tiếp chiếu vào cảm biến sẽ làm nhiệt độ đo được cao hơn nhiệt độ không khí thực tế (do bức xạ nhiệt). Cần có hộp che chắn nhưng vẫn phải thông gió. PHẦN 3: KIỂM TRA DỮ LIỆU & XỬ LÝ SỰ CỐ"}, {"id": 258, "local_id": 8, "section": "Phần 3: Kiểm tra dữ liệu & Xử lý sự cố (Troubleshooting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Tình huống: Trên ứng dụng điện thoại báo độ ẩm đất là 0% liên tục trong nhiều ngày dù trời vừa mưa to. Nguyên nhân có khả năng nhất là gì?", "options": [{"id": "A", "text": "Đất bị ngập úng vượt ngưỡng bão hòa khiến mạch đo chuyển sang trạng thái ngắt bảo vệ tự động."}, {"id": "B", "text": "Mất kết nối dây tín hiệu hoặc cảm biến bị hỏng/lỏng dây."}, {"id": "C", "text": "Bộ rễ cây trồng đã lập tức hút cạn toàn bộ lượng nước mưa vừa rơi xuống trong vài giây."}, {"id": "D", "text": "Giao diện ứng dụng di động bị lỗi phông chữ Unicode nên tự động chuyển giá trị về số không."}], "answer": "B", "explanation": "Giá trị 0% (hoặc giá trị cực tiểu/cực đại bất thường) thường là dấu hiệu của việc hở mạch (đứt dây) hoặc cảm biến chết, chứ không phải do môi trường thực tế."}, {"id": 259, "local_id": 9, "section": "Phần 3: Kiểm tra dữ liệu & Xử lý sự cố (Troubleshooting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Để kiểm chứng xem cảm biến độ ẩm đất có đang báo đúng hay không (Data Validation) ngay tại hiện trường, cách đơn giản nhất là gì?", "options": [{"id": "A", "text": "Gửi hình ảnh mặt đất lên mô hình ngôn ngữ lớn ChatGPT để thuật toán thị giác tự động ước tính tỷ lệ độ ẩm thể tích tương ứng."}, {"id": "B", "text": "Dùng tay sờ vào đất hoặc dùng một máy đo cầm tay (handheld meter) đã được chuẩn hóa để đo đối chứng tại cùng vị trí."}, {"id": "C", "text": "Quan sát độ xanh của phiến lá cây trồng bằng mắt thường rồi suy diễn trực tiếp độ ẩm hiện tại trong tầng đất rễ của khu vườn."}, {"id": "D", "text": "Đợi cho đến khi kết thúc chu kỳ thu hoạch vụ mùa để thống kê tổng sản lượng quả rồi tính toán ngược lại lượng nước đã bốc thoát hơi."}], "answer": "B", "explanation": "Phương pháp đối chứng (Cross-check) với thiết bị cầm tay hoặc cảm nhận xúc giác (nắm đất) giúp phát hiện nhanh các sai số thô của hệ thống IoT."}, {"id": 260, "local_id": 10, "section": "Phần 3: Kiểm tra dữ liệu & Xử lý sự cố (Troubleshooting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Tần suất gửi dữ liệu (Sampling Rate) của cảm biến nên được cài đặt như thế nào là hợp lý cho cây trồng?", "options": [{"id": "A", "text": "Gửi dữ liệu liên tục với tần suất 1 giây một lần (Real-time tuyệt đối) để theo dõi từng thay đổi vi mô."}, {"id": "B", "text": "Gửi mỗi 15-30 phút hoặc 1 tiếng một lần."}, {"id": "C", "text": "Cài đặt chu kỳ gửi dữ liệu mỗi tháng một lần nhằm tối ưu hóa tuổi thọ pin lưu trữ lên đến vài chục năm."}, {"id": "D", "text": "Chỉ gửi dữ liệu khi có nhân viên nông trại trực tiếp đi tới hiện trường bấm nút kích hoạt vật lý trên thiết bị."}], "answer": "B", "explanation": "Độ ẩm đất biến đổi chậm. Gửi mỗi giây là không cần thiết và làm hao pin, tốn dung lượng 4G rất nhanh. 15-60 phút là khoảng thời gian hợp lý để cân bằng giữa độ chi tiết và năng lượng."}, {"id": 261, "local_id": 11, "section": "Phần 3: Kiểm tra dữ liệu & Xử lý sự cố (Troubleshooting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Nếu Gateway (bộ thu phát trung tâm) không kết nối được Internet, đèn trạng thái thường sẽ báo hiệu như thế nào?", "options": [{"id": "A", "text": "Đèn chỉ báo mạng (WAN/Internet) phát sáng màu xanh liên tục và đứng yên không chớp nháy."}, {"id": "B", "text": "Đèn đỏ nhấp nháy hoặc đèn báo hiệu mạng tắt (tùy dòng máy)."}, {"id": "C", "text": "Bộ vi xử lý phát ra chuỗi âm thanh báo động đa âm sắc hoặc bản nhạc chuông để cảnh báo người dùng."}, {"id": "D", "text": "Mọi đèn chỉ báo trên bảng mạch chuyển sang nhấp nháy theo nhịp điệu ánh sáng 7 màu ngẫu nhiên khác nhau."}], "answer": "B", "explanation": "Kỹ năng quan sát đèn trạng thái (LED indicators) là kỹ năng debug phần cứng cơ bản. Thường đèn đỏ hoặc nháy liên tục báo hiệu lỗi kết nối."}, {"id": 262, "local_id": 12, "section": "Phần 3: Kiểm tra dữ liệu & Xử lý sự cố (Troubleshooting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Khi lắp đặt nhiều cảm biến không dây gần nhau, hiện tượng “Nhiễu sóng” (Interference) có thể xảy ra nếu:", "options": [{"id": "A", "text": "Các thiết bị cùng sử dụng một tần số truyền tin (ví dụ: cùng kênh Wi-Fi 2.4GHz) và phát cùng lúc quá dày đặc."}, {"id": "B", "text": "Các thiết bị cảm biến được sản xuất cùng một thương hiệu và có màu sắc vỏ nhựa bảo vệ tương đồng nhau trên cùng một cánh đồng."}, {"id": "C", "text": "Cường độ bức xạ mặt trời vào buổi trưa quá cao làm phân rã các bước sóng vô tuyến trong quá trình truyền dẫn giữa các trạm thu phát."}, {"id": "D", "text": "Tốc độ gió thổi qua khu vực canh tác vượt quá mức trung bình làm thổi bay và chuyển hướng các luồng sóng điện từ trong không gian tự do."}], "answer": "A", "explanation": "Nhiễu tần số (Radio Interference) xảy ra khi quá nhiều thiết bị tranh chấp băng thông trên cùng một kênh, gây mất gói tin (packet loss)."}];
+
+    let currentIndex = 0;
+    let selectedOption = null;
+    let userAnswers = {}; // { index: { selected: 'A', isCorrect: true, checked: true } }
+    let isChecked = false;
+
+    // Elements
+    const qCounter = document.getElementById('question-counter');
+    const secTag = document.getElementById('section-tag');
+    const diffTag = document.getElementById('difficulty-tag');
+    const qText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const feedbackBox = document.getElementById('feedback-box');
+    const feedbackTitle = document.getElementById('feedback-title');
+    const feedbackDesc = document.getElementById('feedback-desc');
+    const btnCheck = document.getElementById('btn-check');
+    const btnNext = document.getElementById('btn-next');
+    const btnPrev = document.getElementById('btn-prev');
+    const progressFill = document.getElementById('progress-fill');
+    const quizScreen = document.getElementById('quiz-screen');
+    const resultScreen = document.getElementById('result-screen');
+    const paletteGrid = document.getElementById('palette-grid');
+
+    function initQuiz() {
+        buildPalette();
+        renderQuestion(currentIndex);
+    }
+
+    function buildPalette() {
+        paletteGrid.innerHTML = '';
+        questions.forEach((q, idx) => {
+            const item = document.createElement('div');
+            item.className = 'palette-item';
+            item.id = `palette-${idx}`;
+            item.innerText = idx + 1;
+            item.onclick = () => {
+                toggleDrawer();
+                jumpToQuestion(idx);
+            };
+            paletteGrid.appendChild(item);
+        });
+    }
+
+    function updatePalette() {
+        questions.forEach((q, idx) => {
+            const el = document.getElementById(`palette-${idx}`);
+            if (!el) return;
+            el.className = 'palette-item';
+            if (idx === currentIndex) el.classList.add('active');
+            if (userAnswers[idx] && userAnswers[idx].checked) {
+                if (userAnswers[idx].isCorrect) el.classList.add('correct');
+                else el.classList.add('wrong');
+            }
+        });
+    }
+
+    function renderQuestion(index) {
+        currentIndex = index;
+        const q = questions[index];
+        const state = userAnswers[index] || null;
+
+        qCounter.innerText = `Câu hỏi ${index + 1} / ${questions.length}`;
+        secTag.innerText = q.section || 'Nội dung trọng tâm';
+        
+        diffTag.innerText = q.difficulty || 'Trung bình';
+        diffTag.className = 'tag-pill';
+        if (q.difficulty === 'Dễ') diffTag.classList.add('diff-de');
+        else if (q.difficulty === 'Khó') diffTag.classList.add('diff-kho');
+        else diffTag.classList.add('diff-tb');
+
+        qText.innerText = q.question;
+        progressFill.style.width = `${((index + 1) / questions.length) * 100}%`;
+
+        btnPrev.disabled = (index === 0);
+
+        // Build Options
+        optionsContainer.innerHTML = '';
+        selectedOption = state ? state.selected : null;
+        isChecked = state ? state.checked : false;
+
+        q.options.forEach(opt => {
+            const card = document.createElement('div');
+            card.className = 'option-card';
+            card.id = `opt-${opt.id}`;
+
+            if (selectedOption === opt.id) {
+                card.classList.add('selected');
+            }
+
+            if (isChecked) {
+                card.classList.add('locked');
+                if (opt.id === q.answer) {
+                    card.classList.add('is-correct');
+                } else if (opt.id === selectedOption && selectedOption !== q.answer) {
+                    card.classList.add('is-wrong');
+                }
+            } else {
+                card.onclick = () => selectOption(opt.id);
+            }
+
+            card.innerHTML = `
+                <div class="option-letter">${opt.id}</div>
+                <div class="option-text">${opt.text}</div>
+            `;
+            optionsContainer.appendChild(card);
+        });
+
+        // Feedback
+        if (isChecked) {
+            btnCheck.style.display = 'none';
+            btnNext.style.display = 'inline-flex';
+            btnNext.innerText = (index === questions.length - 1) ? 'Xem kết quả 🏁' : 'Câu tiếp theo →';
+            showFeedback(state.isCorrect, q);
+        } else {
+            feedbackBox.className = 'feedback-box';
+            btnCheck.style.display = 'inline-flex';
+            btnCheck.disabled = !selectedOption;
+            btnNext.style.display = 'none';
+        }
+
+        updatePalette();
+    }
+
+    function selectOption(optId) {
+        if (isChecked) return;
+        selectedOption = optId;
+        document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+        const target = document.getElementById(`opt-${optId}`);
+        if (target) target.classList.add('selected');
+        btnCheck.disabled = false;
+    }
+
+    function checkAnswer() {
+        if (!selectedOption || isChecked) return;
+        const q = questions[currentIndex];
+        const isCorrect = (selectedOption === q.answer);
+
+        isChecked = true;
+        userAnswers[currentIndex] = {
+            selected: selectedOption,
+            isCorrect: isCorrect,
+            checked: true
+        };
+
+        // Lock options & mark colors
+        document.querySelectorAll('.option-card').forEach(c => c.classList.add('locked'));
+        const correctCard = document.getElementById(`opt-${q.answer}`);
+        if (correctCard) correctCard.classList.add('is-correct');
+
+        if (!isCorrect) {
+            const wrongCard = document.getElementById(`opt-${selectedOption}`);
+            if (wrongCard) wrongCard.classList.add('is-wrong');
+        }
+
+        showFeedback(isCorrect, q);
+
+        btnCheck.style.display = 'none';
+        btnNext.style.display = 'inline-flex';
+        btnNext.innerText = (currentIndex === questions.length - 1) ? 'Xem kết quả 🏁' : 'Câu tiếp theo →';
+
+        updatePalette();
+    }
+
+    function showFeedback(isCorrect, q) {
+        feedbackBox.className = `feedback-box show ${isCorrect ? 'correct' : 'incorrect'}`;
+        if (isCorrect) {
+            feedbackTitle.innerHTML = `<span>🎉</span> Chính xác!`;
+        } else {
+            feedbackTitle.innerHTML = `<span>❌</span> Chưa chính xác. Đáp án đúng là: <b>${q.answer}</b>`;
+        }
+        feedbackDesc.innerHTML = `<b>💡 Giải thích:</b> ${q.explanation || 'Không có giải thích bổ sung.'}`;
+    }
+
+    function navigateNext() {
+        if (currentIndex < questions.length - 1) {
+            renderQuestion(currentIndex + 1);
+        } else {
+            showResults();
+        }
+    }
+
+    function navigatePrev() {
+        if (currentIndex > 0) {
+            renderQuestion(currentIndex - 1);
+        }
+    }
+
+    function jumpToQuestion(idx) {
+        renderQuestion(idx);
+    }
+
+    function showResults() {
+        quizScreen.style.display = 'none';
+        resultScreen.style.display = 'block';
+
+        let correctCount = 0;
+        let wrongCount = 0;
+        questions.forEach((q, idx) => {
+            if (userAnswers[idx] && userAnswers[idx].isCorrect) {
+                correctCount++;
+            } else {
+                wrongCount++;
+            }
+        });
+
+        const total = questions.length;
+        const percent = Math.round((correctCount / total) * 100);
+
+        document.getElementById('final-score').innerText = correctCount;
+        document.getElementById('final-total').innerText = `/ ${total}`;
+        document.getElementById('stat-correct').innerText = correctCount;
+        document.getElementById('stat-wrong').innerText = wrongCount;
+        document.getElementById('stat-accuracy').innerText = `${percent}%`;
+
+        const scoreCircle = document.getElementById('score-circle');
+        scoreCircle.style.background = `conic-gradient(var(--accent) ${percent}%, #e2e8f0 ${percent}%)`;
+
+        const rTitle = document.getElementById('result-title');
+        const rSummary = document.getElementById('result-summary');
+
+        if (percent >= 90) {
+            rTitle.innerText = "🌟 Xuất sắc! Nắm vững kiến thức";
+            rSummary.innerText = "Bạn đã hoàn thành bài thi với kết quả tuyệt vời. Bạn đã hiểu rất sâu về nội dung của buổi học!";
+        } else if (percent >= 75) {
+            rTitle.innerText = "👏 Rất tốt! Đạt yêu cầu cao";
+            rSummary.innerText = "Kết quả rất ấn tượng! Bạn đã nắm chắc hầu hết các khái niệm trọng tâm.";
+        } else if (percent >= 50) {
+            rTitle.innerText = "👍 Đạt yêu cầu cơ bản";
+            rSummary.innerText = "Bạn đã vượt qua bài kiểm tra. Hãy xem lại các câu giải thích chi tiết để củng cố thêm phần còn yếu nhé!";
+        } else {
+            rTitle.innerText = "📖 Cần ôn tập thêm!";
+            rSummary.innerText = "Bạn nên đọc lại slide bài giảng và tài liệu học tập rồi thử sức lại lần nữa nhé.";
+        }
+    }
+
+    function restartQuiz() {
+        userAnswers = {};
+        currentIndex = 0;
+        selectedOption = null;
+        isChecked = false;
+        resultScreen.style.display = 'none';
+        quizScreen.style.display = 'block';
+        initQuiz();
+    }
+
+    function viewAllAnswers() {
+        resultScreen.style.display = 'none';
+        quizScreen.style.display = 'block';
+        renderQuestion(0);
+    }
+
+    function toggleDrawer() {
+        const drawer = document.getElementById('drawer');
+        const overlay = document.getElementById('drawer-overlay');
+        const isOpen = drawer.classList.contains('open');
+        if (isOpen) {
+            drawer.classList.remove('open');
+            overlay.style.display = 'none';
+        } else {
+            drawer.classList.add('open');
+            overlay.style.display = 'block';
+        }
+    }
+
+    // Khởi động
+    initQuiz();
+</script>
+
+</body>
+</html>

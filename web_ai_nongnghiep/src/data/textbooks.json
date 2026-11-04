@@ -1,0 +1,45 @@
+{
+  "1": [
+    "[AI-Agri] Chapter 12_ Precision Farming.pdf",
+    "[AI-Agri] Chapter 1_ Artificial Intelligence.pdf",
+    "[Data-Driven] Chapter 7 Harvesting Intelligence.pdf",
+    "[Ethics]_Đạo đức trong AI Nông nghiệp.pdf"
+  ],
+  "2": [
+    "[AI-Agri] Chapter 3_ Machine Learning.pdf",
+    "[AI-Agri] Chapter 9_ Machine Learning Algorithms.pdf",
+    "[Data-Driven] Chapter 14_ Short-Term Weather Forecasting.pdf",
+    "[Data-Driven] Chapter 5_ Crop Recommender.pdf",
+    "[Hands-On] Chapter 1_ The Machine Learning Landscape.pdf"
+  ],
+  "3": [
+    "[AI-Agri] Chapter 10_ Disease Classification and Detection in Plants.pdf",
+    "[AI-Agri] Chapter 4_ Deep Learning.pdf",
+    "[Data-Driven] Chapter 8_ Using Deep Learning to Detect Apple Leaf Disease.pdf",
+    "[Hands-On] Chapter 10_ Introduction to Artificial Neural Networks.pdf"
+  ],
+  "4": [
+    "[AI-Agri] Chapter 11_ Species Recognition in Flowers.pdf",
+    "[AI-Agri] Chapter 5_ Computer Vision.pdf",
+    "[Data-Driven] Chapter 2_ Significance of Machine Learning in Apple Disease Detection.pdf",
+    "[Hands-On] Chapter 14_ Deep Computer Vision Using CNNs.pdf"
+  ],
+  "6": [
+    "[AI-Agri] Chapter 12_ Precision Farming.pdf",
+    "[Data-Driven] Chapter 15_ Deep Reinforcement Learning for Smart Irrigation.pdf",
+    "[Data-Driven] Chapter 1_ Leveraging IoT for Precision Health Monitoring.pdf"
+  ],
+  "7": [
+    "[Data-Driven] Chapter 3_ Intelligent Inputs Revolutionizing Agriculture.pdf",
+    "[Data-Driven] Chapter 6_ A Perusal of Machine-Learning Algorithms in Crop-Yield Predictions.pdf",
+    "[Data-Driven] Chapter 9_ Agricultural Crop-Yield Prediction.pdf"
+  ],
+  "8": [
+    "[Ethics]_Đạo đức trong AI Nông nghiệp.pdf",
+    "[Hands-On] Appendix A_ Machine Learning Project Checklist.pdf"
+  ],
+  "9&10": [
+    "[AI-Agri] Chapter 7_ Tools for Artificial Intelligence.pdf",
+    "[Data-Driven] Chapter 4_ Case Studies on the Initiatives.pdf"
+  ]
+}

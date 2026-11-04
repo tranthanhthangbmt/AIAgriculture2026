@@ -1,0 +1,21 @@
+KẾ HOẠCH VIẾT SCRIPT THUYẾT TRÌNH: GIỚI THIỆU MÔN HỌC (AI IN SMART AGRICULTURE)
+
+1. Mục tiêu:
+- Tạo script thuyết trình chi tiết dựa trên 12 slides của file PDF "AI_in_Smart_Agriculture.pdf" (Thư mục Video2\Giới thiệu môn học).
+- Lồng ghép các thông tin chính thức từ "Đề cương_Ứng dụng AI trong nông nghiệp_v2.pdf" (Mã HP: AGRI2306, ĐH Đông Á).
+- Định dạng chuẩn 2 người (Giảng viên & Sinh viên) nhằm tạo không khí cởi mở, phá băng ngay từ buổi học đầu tiên.
+
+2. Phân vai:
+- Người 1 (Giảng viên phụ trách môn học): Đóng vai trò là người truyền cảm hứng, giới thiệu sự giao thoa tuyệt vời giữa Nông nghiệp và Công nghệ. Giảng viên sẽ làm rõ cấu trúc khóa học, phương pháp đánh giá, và đặc biệt là giải tỏa nỗi sợ "phải lập trình" của sinh viên khối ngành nông nghiệp.
+- Người 2 (Sinh viên khối ngành Nông nghiệp/Thực phẩm): Đại diện cho tâm lý chung của lớp: Hào hứng với công nghệ mới nhưng bối rối và e ngại vì nền tảng IT hạn chế. Sẽ đặt các câu hỏi thiết thực về tính ứng dụng của môn học vào nghề nghiệp tương lai.
+
+3. Kế hoạch triển khai (Các bước thực hiện dự kiến trên 12 slides):
+- Bước 1 (Phần 1 - Chào mừng & Phá băng): Slide 1 - 3. 
+  + Nội dung: Giảng viên gửi lời chào mừng đến học phần "Ứng dụng AI trong Nông nghiệp". Đặt câu hỏi mở: Tại sao sinh viên chuyên ngành Nông nghiệp lại phải học về Trí tuệ nhân tạo? Định nghĩa ngắn gọn về sự thay đổi từ Nông nghiệp truyền thống sang Smart Agriculture.
+- Bước 2 (Phần 2 - Phổ biến Đề cương chi tiết học phần): Slide 4 - 7. 
+  + Nội dung: Dựa trên Đề cương chi tiết, trình bày mục tiêu môn học (Tối ưu hóa năng suất, bền vững). Trình bày cấu trúc tín chỉ (Lý thuyết và Thực hành). Sinh viên mạnh dạn bày tỏ nỗi sợ "viết code". Giảng viên trấn an: Môn học tập trung vào "Tư duy ứng dụng AI" (ứng dụng Machine Learning, Computer Vision) để giải quyết vấn đề nông nghiệp, chứ không đào tạo thành thợ lập trình thuần túy.
+- Bước 3 (Phần 3 - Bản đồ Hành trình Khóa học): Slide 8 - 10. 
+  + Nội dung: Giảng viên lướt qua các "Trailer" hấp dẫn của các chương sắp tới (Dùng camera bắt bệnh lá cây, dùng DRL để tưới nước tự động, dự báo năng suất...). Sinh viên đặc biệt hào hứng khi nghe đến phần "Thực hành tại doanh nghiệp/trang trại" (7.5 tiết thực hành thực tế).
+- Bước 4 (Phần 4 - Tiêu chí Đánh giá & Khởi động): Slide 11 - 12. 
+  + Nội dung: Phổ biến rõ ràng cách tính điểm (Bài tập nhóm, Báo cáo cuối kỳ, Điểm thực hành). Kêu gọi tinh thần học tập chủ động và kết thúc phần Giới thiệu để chuẩn bị bước vào Bài 1.
+- Bước 5 (Kiểm tra & Hoàn thiện): Đảm bảo các thông tin về thời lượng, mã học phần từ file đề cương được trích dẫn chính xác. Lưu kịch bản vào file `scriptIntro.txt`.

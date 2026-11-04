@@ -1,0 +1,16 @@
+KẾ HOẠCH VIẾT SCRIPT THUYẾT TRÌNH BÀI 4: THỊ GIÁC MÁY TÍNH (COMPUTER VISION)
+
+1. Mục tiêu:
+- Tạo script thuyết trình chi tiết (scriptB04.txt) dựa trên 29 slides của file PDF "slide Chương 4_ Thị giác máy tính (Computer Vision) ứng dụng.pdf".
+- Định dạng chuẩn: Người 1 (Giảng viên) và Người 2 (Sinh viên).
+- Tham khảo kiến thức từ 4 file PDF trong thư mục "Tuần 4 Thị giác máy tính" (Species Recognition, Computer Vision, Apple Disease Detection, Deep Computer Vision Using CNNs).
+
+2. Phân vai:
+- Người 1 (Giảng viên): GS. Nguyễn Văn An. Trình bày từ nguyên lý (cảm hứng vỏ não thị giác) đến quy trình 6 bước của hệ thống Computer Vision (CV). So sánh sâu sắc giữa 2 hướng tiếp cận: Học sâu (CNN) và Xử lý ảnh cổ điển (Classic CV - OpenCV). 
+- Người 2 (Sinh viên): Đóng vai trò sinh viên tích cực, phân tích điểm tương đồng giữa mắt người và camera, đặt câu hỏi về hiện tượng overfitting (học vẹt) và ứng dụng thực tiễn của Data Augmentation hay kỹ thuật phân loại hạt gạo.
+
+3. Kế hoạch triển khai (Các bước thực hiện):
+- Bước 1 (Phần 1 - Nguyên lý hoạt động): Slide 1 - 14. Bắt đầu với cảm hứng từ giải Nobel của Hubel & Wiesel về vỏ não thị giác. Đi qua 6 bước của một hệ thống CV. Phân tích chi tiết "Trái tim" CNN: Phép Tích chập (nhân ma trận) và Lớp gộp (Max Pooling). Xem "Tâm trí" mạng nơ-ron qua các lớp (Shallow, Mid, Deep).
+- Bước 2 (Phần 2 - Công cụ & Học sâu): Slide 15 - 22. Giới thiệu thư viện OpenCV. Giải quyết Bài toán 1 (Bệnh cây trồng) bằng quy trình 6 bước và kỹ thuật Data Augmentation (Làm giàu dữ liệu). Phân tích Case Study A: Phân loại 5 loài hoa bằng CNN.
+- Bước 3 (Phần 3 - Xử lý ảnh cổ điển & Tổng kết): Slide 23 - 29. Chuyển sang Hướng tiếp cận 2 (Classic CV) khi "không cần học mà cần đo đạc". Phân tích Case Study B: Đếm và phân loại hạt gạo bằng 6 bước OpenCV (Nhị phân hóa, Co lại, Tìm đường viền). Đưa ra bảng so sánh Deep Learning vs Classic CV. Kết thúc bằng lời dẫn vào Live Demo Streamlit.
+- Bước 4 (Kiểm tra & Hoàn thiện): Đảm bảo các kiến thức về OpenCV (cv2.imread, cv2.findContours) và CNN được lồng ghép mượt mà vào hội thoại. Lưu vào file scriptB04.txt.

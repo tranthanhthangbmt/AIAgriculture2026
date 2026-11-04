@@ -1,0 +1,20 @@
+KẾ HOẠCH VIẾT SCRIPT THUYẾT TRÌNH: CHƯƠNG 6 - ỨNG DỤNG AI TRONG DỰ BÁO VÀ HOẠCH ĐỊNH SẢN XUẤT
+
+1. Mục tiêu:
+- Tạo script thuyết trình chi tiết dựa trên 27 slides của file PDF "slide Chương 6_ Ứng dụng AI trong dự báo & hoạch định sản xuất.pdf" (Thư mục Buổi 6).
+- Định dạng chuẩn: Người 1 (Giảng viên) và Người 2 (Sinh viên), bám sát tiến trình và tách nội dung theo từng slide.
+- Tham khảo kiến thức chuyên sâu từ 3 tài liệu trong "Tuần 7": 
+  + Intelligent Inputs Revolutionizing Agriculture.
+  + A Perusal of Machine-Learning Algorithms in Crop-Yield Predictions.
+  + Agricultural Crop-Yield Prediction.
+
+2. Phân vai:
+- Người 1 (Giảng viên): Chuyên gia về Data-Driven Agriculture (Nông nghiệp dựa trên dữ liệu). Trình bày cách thu thập các yếu tố đầu vào (đất, khí hậu, hạt giống) và giải thích cách các thuật toán Machine Learning (như Hồi quy, SVM, Random Forest, Mạng nơ-ron) tìm ra các quy luật phi tuyến tính để dự báo sản lượng một cách chính xác.
+- Người 2 (Sinh viên): Đóng vai trò phản biện, đặt câu hỏi về độ tin cậy của mô hình dự báo khi thời tiết ngày càng cực đoan (biến đổi khí hậu), và hỏi về cách AI giúp người nông dân ra quyết định cụ thể (ví dụ: trồng cây gì, khi nào thu hoạch).
+
+3. Kế hoạch triển khai (Các bước thực hiện):
+- Bước 1 (Phần 1 - Tổng quan về Nông nghiệp dựa trên dữ liệu): Slide 1 - 8. Giới thiệu bối cảnh áp lực an ninh lương thực và biến đổi khí hậu. Trình bày khái niệm Nông nghiệp dựa trên dữ liệu (Data-Driven Agriculture). Phân tích các biến số phức tạp quyết định năng suất cây trồng (địa hình, chất lượng đất, di truyền, thời tiết).
+- Bước 2 (Phần 2 - Sức mạnh của Machine Learning trong Dự báo năng suất): Slide 9 - 18. Chuyển từ dự báo thống kê truyền thống sang Học máy. Phân tích cách các mô hình (Regression, Random Forest, Neural Networks) hấp thụ dữ liệu lịch sử để dự đoán tương lai. Sinh viên tương tác về cách AI xử lý "nhiễu" do những trận mưa bão bất thường gây ra.
+- Bước 3 (Phần 3 - Từ Dự báo đến Hoạch định Sản xuất): Slide 19 - 25. Giải thích rằng dự báo chỉ là bước đệm, mục đích cuối cùng là Hoạch định (Planning). Giới thiệu Hệ thống khuyến nghị thông minh giúp nông dân ra quyết định: Lựa chọn giống cây trồng phù hợp nhất với dự báo thời tiết năm nay, tính toán thời điểm gieo hạt và thu hoạch tối ưu để tối đa hóa lợi nhuận.
+- Bước 4 (Phần 4 - Tương tác & Tổng kết): Slide 26 - 27. Đưa ra Case Study hoặc Live Demo về việc nhập số liệu môi trường để dự đoán sản lượng thóc. Tổng kết thông điệp cốt lõi: "AI biến sự bất định của thời tiết thành một bản kế hoạch kinh doanh chắc chắn cho người nông dân". 
+- Bước 5 (Kiểm tra & Hoàn thiện): Đảm bảo các kiến thức từ tài liệu tham khảo được tích hợp mượt mà. Lưu kịch bản vào file `scriptCh06.txt` (tương ứng với thư mục Buổi 6).

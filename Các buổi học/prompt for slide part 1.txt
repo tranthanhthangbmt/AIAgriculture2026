@@ -1,0 +1,90 @@
+tôi đang tạo slide bài giảng cho buổi học môn AI ứng dụng trong nông nghiệp, Buổi 3, Chương 3: Học sâu (Deep Learning) và Mạng Nơ-ron
+- Giới thiệu về Học sâu (DL) và Mạng Nơ-ron.
+- So sánh sự khác biệt giữa DL và ML truyền thống.
+- Ứng dụng của DL trong nhận diện sâu bệnh qua hình ảnh.
+
+. Nội dung của buổi học gồm 2 phần. Hãy tạo slide cho phần 1 cho tôi. Sau đây là nội dung 2 phần: 
+
+PHẦN 1: CƠ SỞ LÝ THUYẾT: TỪ BỆNH CÂY TRỒNG ĐẾN MẠNG NƠ-RON
+(Dùng cho nửa đầu buổi học: Tập trung vào vấn đề và kiến trúc bên trong của AI)
+
+1. Bối cảnh & Vấn đề
+
+Thách thức: Bệnh cây trồng đe dọa an ninh lương thực (đặc biệt ở các nước đang phát triển).
+
+Hạn chế của phương pháp cũ: Chậm, tốn kém, phụ thuộc vào mắt thường của chuyên gia, khó tiếp cận với nông hộ nhỏ.
+
+Giải pháp: Cần tự động hóa bằng Học sâu (Deep Learning).
+
+2. Nền tảng Mạng Nơ-ron Nhân tạo (ANN)
+
+Lịch sử: Từ Perceptron (1957) đến sự bùng nổ hiện nay nhờ: Dữ liệu lớn (Big Data) + GPU mạnh + Thuật toán tốt hơn.
+
+Cấu tạo của một Nơ-ron:
+
+Đầu vào (Inputs) x Trọng số (Weights) + Độ lệch (Bias) -> Hàm kích hoạt (Activation Function) -> Đầu ra.
+
+Kiến trúc Mạng Perceptron Đa lớp (MLP): Xếp chồng nhiều lớp (Lớp ẩn) để học các mẫu phức tạp.
+
+Cơ chế học (Quan trọng):
+
+Lan truyền ngược (Backpropagation): Tính toán lỗi và điều chỉnh trọng số ngược từ đầu ra về đầu vào.
+
+Gradient Descent: Thuật toán tối ưu hóa để giảm thiểu sai số.
+
+3. So sánh: Học Máy (ML) vs. Học Sâu (DL)
+
+Phụ thuộc dữ liệu: DL cần dữ liệu khổng lồ để phát huy hiệu quả, ML tốt với dữ liệu nhỏ.
+
+Trích xuất đặc trưng:
+
+ML: Con người phải tự chọn đặc trưng (ví dụ: định nghĩa màu sắc, hình dạng lá).
+
+DL: Máy tự học và trích xuất đặc trưng từ dữ liệu thô (ảnh gốc).
+
+Phần cứng: DL yêu cầu GPU mạnh.
+
+PHẦN 2: CÔNG NGHỆ CỐT LÕI (CNN), THỰC TIỄN VÀ CÔNG CỤ
+(Dùng cho nửa sau buổi học: Đi sâu vào kiến trúc xử lý ảnh và công cụ lập trình)
+
+1. Mạng Nơ-ron Tích chập (CNN) - "Vũ khí" của thị giác máy
+
+Đặc điểm: Sử dụng lớp tích chập (Convolution) và gộp (Pooling) để quét và nhận diện đặc trưng không gian (cạnh, góc, hoa văn trên lá).
+
+Ứng dụng: Chuyên trị dữ liệu hình ảnh (phát hiện bệnh), dữ liệu lưới.
+
+2. Nghiên cứu Điển hình (Case Studies)
+
+Case 1: Khoai tây (Dataset Plant Village):
+
+Mô hình: CNN tuần tự (Sequential).
+
+Kết quả: Phân loại 3 lớp (Khỏe, Cháy sớm, Cháy muộn) với độ chính xác 97.68%.
+
+Case 2: Táo (Dataset Kashmir):
+
+So sánh: Thử nghiệm 4 mô hình (Custom CNN, VGG16, ResNet-50, InceptionV3).
+
+Kết quả: VGG16 hiệu quả nhất (Độ chính xác 85%, F1-score 0.81). Bài học: Chọn kiến trúc phù hợp quan trọng hơn là tự xây mới.
+
+3. Hệ sinh thái Công cụ (Keras & TensorFlow)
+
+3 API xây dựng mô hình:
+
+Sequential: Xếp chồng đơn giản (dễ nhất).
+
+Functional: Linh hoạt, nhiều nhánh (cho mô hình phức tạp).
+
+Subclassing: Tùy biến sâu (khó nhất, dành cho nghiên cứu).
+
+Công cụ hỗ trợ huấn luyện:
+
+Callbacks: ModelCheckpoint (Lưu model tốt nhất), EarlyStopping (Dừng khi không tiến bộ để chống Overfitting).
+
+TensorBoard: Vẽ biểu đồ theo dõi quá trình học (Loss/Accuracy) trực quan.
+
+Tối ưu hóa (Hyperparameter Tuning):
+
+Dùng Keras Tuner (RandomSearch, Hyperband) để máy tự tìm số lớp, số nơ-ron, tốc độ học (learning rate) tối ưu thay vì con người đoán mò.
+
+Gợi ý hoạt động tiếp theo: Với nền tảng IT của anh, anh có muốn tôi viết một đoạn code Python mẫu (sử dụng Keras) để minh họa cho phần 3.1 (Phát hiện bệnh trên lá khoai tây) để anh chạy thử demo cho lớp xem không? Đoạn code sẽ bao gồm việc xây dựng mô hình CNN đơn giản.

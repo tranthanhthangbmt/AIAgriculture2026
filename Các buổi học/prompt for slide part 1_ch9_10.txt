@@ -1,0 +1,71 @@
+tôi đang tạo slide bài giảng cho buổi học môn AI ứng dụng trong nông nghiệp, Buổi 9&10, Chương 8: Thực hành (Phần 1 - tại doanh nghiệp/trang trại)
+- Tham quan thực tế mô hình nông nghiệp thông minh.
+- Hướng dẫn quy trình lắp đặt và thu thập dữ liệu.
+Chương 9: Thực hành (Phần 2 - Vận hành và Báo cáo)
+- Thực hành vận hành một chức năng của hệ thống.
+- Hướng dẫn viết báo cáo thực hành.
+- Tổng kết, ôn tập cuối kỳ.
+
+Tuần 9 & 10: Thực hành
+•	Hoạt động: Đi thực tế và Vận hành.
+•	Tài liệu hỗ trợ:
+o	[AI-Agri] Chapter 7: Tools for Artificial Intelligence: Giới thiệu các công cụ/phần mềm mà sinh viên có thể gặp hoặc sử dụng để viết báo cáo.
+o	[Data-Driven] Chapter 4: Case Studies on the Initiatives...: Tham khảo cách người ta viết báo cáo về một hệ thống thực tế (Case study) để hướng dẫn sinh viên viết báo cáo thực hành.
+
+. Nội dung của buổi học gồm 2 phần. Hãy tạo slide cho phần 1 cho tôi. Sau đây là nội dung 2 phần: 
+
+PHẦN 1: THIẾT LẬP MÔI TRƯỜNG PHÁT TRIỂN (TOOLKIT)
+(Dùng cho giờ thực hành đầu tiên: Cài đặt và làm quen công cụ)
+
+1. Ngôn ngữ & Nền tảng cốt lõi
+
+Python (3.6+): Ngôn ngữ chuẩn cho AI.
+
+Anaconda:
+
+Vai trò: Bộ công cụ "tất cả trong một" cho Khoa học dữ liệu (chứa sẵn Python và các thư viện).
+
+Lưu ý cài đặt: Không chọn "Add to PATH" trên Windows để tránh xung đột hệ thống.
+
+2. Môi trường lập trình (IDE)
+
+Jupyter Notebook:
+
+Đặc điểm: Viết code, chạy từng dòng, xem biểu đồ ngay lập tức -> Tuyệt vời cho dạy và học.
+
+Cách dùng: Chạy lệnh jupyter notebook từ Anaconda Prompt.
+
+Google Colab (Khuyên dùng cho lớp):
+
+Ưu điểm: Không cần cài đặt, chạy trên trình duyệt, miễn phí GPU/TPU của Google.
+
+Tính năng: Kết nối Google Drive, chia sẻ dễ như Google Docs.
+
+PHẦN 2: CÔNG NGHỆ MỚI - AI BIÊN (EDGE AI)
+(Dùng cho giờ lý thuyết nâng cao: Xu hướng công nghệ tương lai)
+
+1. Khái niệm & Sự cần thiết
+
+Vấn đề của AI Đám mây (Cloud AI): Độ trễ cao (gửi ảnh lên mạng -> chờ xử lý -> trả về), tốn băng thông, rủi ro mất mạng ở nông thôn.
+
+Giải pháp AI Biên (Edge AI): Xử lý dữ liệu ngay tại chỗ (trên cảm biến, camera, máy kéo) thay vì gửi về server trung tâm.
+
+Lợi ích: Phản ứng tức thì (Real-time), bảo mật dữ liệu, hoạt động offline.
+
+2. 10 Nghiên cứu điển hình (Case Studies chọn lọc)
+
+Case 1 (IoT thiết bị nhẹ): Dùng mạng nơ-ron nhẹ (Lightweight CNN) chạy trên chip nhỏ để phát hiện bệnh cây ngay tại ruộng.
+
+Case 5 (Ảo hóa cảm biến): Hệ thống DLSense giúp giảm 81% độ trễ.
+
+Case 8 (Vườn nho): Hệ thống SEnviro phát hiện bệnh phấn trắng tại chỗ, giảm chi phí hóa chất.
+
+Case 10 (CareBro): Trợ lý canh tác IoT tự động hóa quản lý trang trại từ xa.
+
+3. Tác động xã hội & Tương lai
+
+Trao quyền cho nông hộ nhỏ tiếp cận công nghệ cao.
+
+Giảm tác động môi trường nhờ bón phân/tưới nước chính xác từng milimet.
+
+Gợi ý bước tiếp theo: Để kết nối phần Google Colab (Phần 1) với sở thích Streamlit của anh, tôi có một ý tưởng cho bài tập về nhà: "Hướng dẫn sinh viên viết một mô hình AI đơn giản trên Google Colab (ví dụ: phân loại hoa), sau đó tải mô hình đó về và nhúng vào một ứng dụng Streamlit chạy trên máy tính cá nhân."

@@ -1,0 +1,6 @@
+I:\Course_UDA\Ứng dụng AI trong nông nghiệp\slide\Day_02,
+Học_Máy_Trong_Nông_Nghiệp_Hiện_Đại.pdf cho tập tin [AI-Agri] Chapter 3_ Machine Learning.pdf
+Các_Thuật_Toán_Học_Máy.pdf cho [AI-Agri] Chapter 9_ Machine Learning Algorithms.pdf 
+Từ_Đất_đai_đến_Silicon.pdf cho [Data-Driven] Chapter 5_ Crop Recommender.pdf
+Dự_Báo_Thời_Tiết_Nông_Nghiệp_Bằng_Học_Sâu.pdf cho  [Data-Driven] Chapter 14_ Short-Term Weather Forecasting.pdf
+Học_Máy_Tổng_Quan.pdf cho [Hands-On] Chapter 1_ The Machine Learning Landscape.pdf 

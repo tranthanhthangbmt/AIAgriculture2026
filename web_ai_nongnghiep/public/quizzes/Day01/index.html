@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc nghiệm Buổi 1: Tổng quan về AI và Nông nghiệp thông minh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #15803d;
+            --primary-hover: #166534;
+            --primary-light: #dcfce7;
+            --accent: #22c55e;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --success: #16a34a;
+            --success-bg: #f0fdf4;
+            --success-border: #bbf7d0;
+            --error: #dc2626;
+            --error-bg: #fef2f2;
+            --error-border: #fecaca;
+            --radius: 12px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 24px 16px;
+        }
+
+        .quiz-wrapper {
+            width: 100%;
+            max-width: 840px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        /* Header Bar */
+        .quiz-header {
+            padding: 20px 28px;
+            background: linear-gradient(135deg, #14532d 0%, #166534 100%);
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .quiz-header h1 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .session-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+
+        .quiz-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-palette {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-palette:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Progress Bar */
+        .progress-track {
+            width: 100%;
+            height: 6px;
+            background-color: #e2e8f0;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            width: 0%;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Quiz Body */
+        .quiz-body {
+            padding: 32px 28px;
+        }
+
+        .question-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .counter-badge {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .tags-cluster {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .tag-pill {
+            font-size: 0.78rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            background: #f1f5f9;
+            color: var(--text-muted);
+        }
+
+        .tag-pill.diff-de { background: #dcfce7; color: #166534; }
+        .tag-pill.diff-tb { background: #fef3c7; color: #92400e; }
+        .tag-pill.diff-kho { background: #fee2e2; color: #991b1b; }
+
+        .question-title {
+            font-size: 1.22rem;
+            font-weight: 700;
+            line-height: 1.55;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+
+        /* Options Grid */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .option-card {
+            display: flex;
+            align-items: flex-start;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #ffffff;
+            user-select: none;
+        }
+
+        .option-card:hover:not(.locked) {
+            border-color: var(--accent);
+            background: #f8fafc;
+            transform: translateY(-1px);
+        }
+
+        .option-card.selected:not(.locked) {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-card.locked {
+            cursor: default;
+        }
+
+        .option-card.is-correct {
+            border-color: var(--success) !important;
+            background-color: var(--success-bg) !important;
+        }
+
+        .option-card.is-wrong {
+            border-color: var(--error) !important;
+            background-color: var(--error-bg) !important;
+        }
+
+        .option-letter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-right: 14px;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .option-card.selected .option-letter {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .option-card.is-correct .option-letter {
+            background: var(--success);
+            color: #ffffff;
+        }
+
+        .option-card.is-wrong .option-letter {
+            background: var(--error);
+            color: #ffffff;
+        }
+
+        .option-text {
+            font-size: 1.02rem;
+            line-height: 1.5;
+            color: var(--text-main);
+            padding-top: 3px;
+        }
+
+        /* Feedback Box */
+        .feedback-box {
+            display: none;
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            animation: slideDown 0.3s ease;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background-color: var(--success-bg);
+            border: 1px solid var(--success-border);
+        }
+
+        .feedback-box.incorrect {
+            background-color: var(--error-bg);
+            border: 1px solid var(--error-border);
+        }
+
+        .feedback-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .correct .feedback-title { color: var(--success); }
+        .incorrect .feedback-title { color: var(--error); }
+
+        .feedback-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #334155;
+        }
+
+        /* Action Buttons */
+        .actions-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn {
+            padding: 12px 26px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        /* Result Screen */
+        .result-screen {
+            display: none;
+            text-align: center;
+            padding: 40px 24px;
+        }
+
+        .score-ring-wrap {
+            position: relative;
+            width: 170px;
+            height: 170px;
+            margin: 0 auto 28px;
+        }
+
+        .score-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent) 0%, #e2e8f0 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .score-inner {
+            width: 136px;
+            height: 136px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .score-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .result-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .result-summary {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 500px;
+            margin: 0 auto 36px;
+        }
+
+        .stat-card {
+            padding: 16px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .stat-val {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Palette Drawer */
+        .drawer-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 100;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -360px;
+            width: 340px;
+            height: 100%;
+            background: #ffffff;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+            z-index: 101;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+        }
+
+        .drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .drawer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 4px;
+        }
+
+        .palette-item {
+            height: 42px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .palette-item:hover {
+            border-color: var(--primary);
+            background: #e2e8f0;
+        }
+
+        .palette-item.active {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .palette-item.correct {
+            background: var(--success);
+            color: #ffffff;
+            border-color: var(--success);
+        }
+
+        .palette-item.wrong {
+            background: var(--error);
+            color: #ffffff;
+            border-color: var(--error);
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 10px; }
+            .quiz-body { padding: 20px 16px; }
+            .quiz-header { padding: 16px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-wrapper">
+    <!-- Header -->
+    <div class="quiz-header">
+        <h1>
+            <span>🌾</span>
+            <span>Buổi 1: Tổng quan về AI và Nông nghiệp thông minh</span>
+        </h1>
+        <div class="quiz-meta">
+            <span class="session-badge">Buổi 1</span>
+            <button class="btn-palette" onclick="toggleDrawer()">📋 Mục lục câu</button>
+        </div>
+    </div>
+
+    <!-- Progress Track -->
+    <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <!-- Screen 1: Quiz Active -->
+    <div class="quiz-body" id="quiz-screen">
+        <div class="question-meta-row">
+            <div class="counter-badge" id="question-counter">Câu hỏi 1 / 40</div>
+            <div class="tags-cluster">
+                <span class="tag-pill" id="section-tag">Tổng quan</span>
+                <span class="tag-pill" id="difficulty-tag">Dễ</span>
+            </div>
+        </div>
+
+        <h2 class="question-title" id="question-text">Đang tải câu hỏi...</h2>
+
+        <div class="options-list" id="options-container">
+            <!-- Dynamic Options -->
+        </div>
+
+        <!-- Feedback Container -->
+        <div class="feedback-box" id="feedback-box">
+            <div class="feedback-title" id="feedback-title"></div>
+            <div class="feedback-desc" id="feedback-desc"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions-row">
+            <button class="btn btn-secondary" id="btn-prev" onclick="navigatePrev()">← Câu trước</button>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-primary" id="btn-check" onclick="checkAnswer()" disabled>Kiểm tra</button>
+                <button class="btn btn-primary" id="btn-next" onclick="navigateNext()" style="display: none;">Câu tiếp theo →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 2: Results -->
+    <div class="result-screen" id="result-screen">
+        <div class="score-ring-wrap">
+            <div class="score-circle" id="score-circle">
+                <div class="score-inner">
+                    <span class="score-number" id="final-score">0</span>
+                    <span class="score-label" id="final-total">/ 40</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="result-title" id="result-title">Chúc mừng bạn đã hoàn thành!</h2>
+        <p class="result-summary" id="result-summary">Bạn đã trả lời xuất sắc hầu hết các câu hỏi trong phần này.</p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--success);" id="stat-correct">0</div>
+                <div class="stat-label">Số câu đúng</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--error);" id="stat-wrong">0</div>
+                <div class="stat-label">Số câu sai</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--primary);" id="stat-accuracy">0%</div>
+                <div class="stat-label">Độ chính xác</div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="restartQuiz()">🔄 Làm lại bài</button>
+            <button class="btn btn-secondary" onclick="viewAllAnswers()">🔍 Xem lại chi tiết đáp án</button>
+        </div>
+    </div>
+</div>
+
+<!-- Drawer / Question Palette -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<div class="drawer" id="drawer">
+    <div class="drawer-header">
+        <h3 style="font-size: 1.1rem; font-weight: 700;">Danh sách câu hỏi</h3>
+        <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.85rem;" onclick="toggleDrawer()">Đóng ✕</button>
+    </div>
+    <div class="drawer-grid" id="palette-grid">
+        <!-- Palette numbers -->
+    </div>
+</div>
+
+<script>
+    const questions = [{"id": 1, "local_id": 1, "section": "PHẦN 1: CÁC KHÁI NIỆM CƠ BẢN VỀ TRÍ TUỆ NHÂN TẠO", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Theo định nghĩa chung trong tài liệu, mục tiêu chính của Trí tuệ nhân tạo (AI) là gì?", "options": [{"id": "A", "text": "Thay thế hoàn toàn con người và tự động hóa toàn diện tất cả các khía cạnh của đời sống xã hội."}, {"id": "B", "text": "Làm cho máy móc trở nên thông minh, có thể bắt chước hành vi và suy nghĩ của con người."}, {"id": "C", "text": "Chỉ tập trung vào việc tối ưu tốc độ tính toán số học thuần túy của các bộ vi xử lý máy tính."}, {"id": "D", "text": "Chế tạo các robot cơ học hình người chuyên phục vụ công việc gia đình và các dịch vụ cơ bản."}], "answer": "B", "explanation": "Tài liệu định nghĩa AI là “Làm cho một cỗ máy trở nên thông minh, có thể bắt chước hành vi của con người” và là “nhánh Khoa học Máy tính có thể thực hiện các hoạt động giống con người, bao gồm suy nghĩ, học hỏi”."}, {"id": 2, "local_id": 2, "section": "PHẦN 1: CÁC KHÁI NIỆM CƠ BẢN VỀ TRÍ TUỆ NHÂN TẠO", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Trí tuệ nhân tạo hẹp (ANI) còn được gọi là gì?", "options": [{"id": "A", "text": "AI mạnh (Strong AI)."}, {"id": "B", "text": "AI siêu việt (Super AI)."}, {"id": "C", "text": "AI yếu (Weak AI)."}, {"id": "D", "text": "AI tự nhận thức (Self-Aware AI)."}], "answer": "C", "explanation": "Trí tuệ nhân tạo hẹp (ANI) còn được gọi là AI yếu (Weak AI), chỉ có thể thực hiện các nhiệm vụ được xác định hẹp và không có khả năng nhận thức."}, {"id": 3, "local_id": 3, "section": "PHẦN 1: CÁC KHÁI NIỆM CƠ BẢN VỀ TRÍ TUỆ NHÂN TẠO", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Đâu là ví dụ của Trí tuệ nhân tạo hẹp (ANI) hiện nay?", "options": [{"id": "A", "text": "Một hệ thống có ý thức và cảm xúc như con người."}, {"id": "B", "text": "Robot có khả năng vượt qua trí tuệ của toàn nhân loại."}, {"id": "C", "text": "Siri, Alexa, xe tự lái, Alpha Go."}, {"id": "D", "text": "Hệ thống có thể suy đoán tâm lý của người đối diện."}], "answer": "C", "explanation": "Tài liệu liệt kê Siri, Alexa, xe tự lái, Alpha Go, và robot hình người Sophia là những ví dụ của ANI mà chúng ta đã phát triển cho đến nay."}, {"id": 4, "local_id": 4, "section": "PHẦN 1: CÁC KHÁI NIỆM CƠ BẢN VỀ TRÍ TUỆ NHÂN TẠO", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Đặc điểm chính của “Trí tuệ nhân tạo phản ứng” (Reactive Machine AI) là gì?", "options": [{"id": "A", "text": "Có khả năng lưu trữ toàn diện ký ức trong quá khứ để phân tích xu hướng và dự đoán chính xác các kịch bản tương lai."}, {"id": "B", "text": "Có khả năng thấu hiểu trạng thái cảm xúc, niềm tin cũng như suy nghĩ của con người nhằm tương tác một cách đồng cảm."}, {"id": "C", "text": "Chỉ nhận đầu vào là dữ liệu hiện tại và thực hiện nhiệm vụ dựa trên tình huống hiện tại, không dự đoán tương lai."}, {"id": "D", "text": "Sở hữu ý thức độc lập, nhận thức rõ ràng về sự tồn tại của bản thân và có khả năng tự đưa ra quyết định có mục đích riêng."}], "answer": "C", "explanation": "Loại hệ thống AI này nhận đầu vào là dữ liệu hiện tại và thực hiện nhiệm vụ dựa trên các tình huống hiện tại. Hệ thống này không thể phân tích và dự đoán nhiệm vụ tương lai ,."}, {"id": 5, "local_id": 5, "section": "PHẦN 1: CÁC KHÁI NIỆM CƠ BẢN VỀ TRÍ TUỆ NHÂN TẠO", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Loại AI nào chủ yếu dựa trên dữ liệu đã lưu trữ và thực hiện nhiệm vụ bằng cách nghiên cứu các nhiệm vụ đã thực hiện trước đó?", "options": [{"id": "A", "text": "AI máy phản ứng tức thời (Reactive Machine AI)."}, {"id": "B", "text": "AI có bộ nhớ hạn chế (Limited Memory AI)."}, {"id": "C", "text": "AI Lý thuyết về Tâm trí (Theory of Mind AI)."}, {"id": "D", "text": "Siêu trí tuệ nhân tạo tương lai (Super AI - ASI)."}], "answer": "B", "explanation": "AI có bộ nhớ hạn chế (Limited Memory AI) dựa trên dữ liệu chúng đã lưu trữ và thường thực hiện nhiệm vụ bằng cách nghiên cứu các nhiệm vụ đã thực hiện trước đó."}, {"id": 6, "local_id": 6, "section": "PHẦN 1: CÁC KHÁI NIỆM CƠ BẢN VỀ TRÍ TUỆ NHÂN TẠO", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Trí tuệ nhân tạo chung (AGI) hay “AI mạnh” được định nghĩa như thế nào?", "options": [{"id": "A", "text": "Là hệ thống chuyên biệt chỉ có khả năng thực hiện thành công một nhiệm vụ đơn lẻ được lập trình sẵn."}, {"id": "B", "text": "Là hệ thống sở hữu khả năng suy nghĩ và đưa ra quyết định giống như con người."}, {"id": "C", "text": "Là hệ thống sở hữu năng lực nhận thức siêu việt, vượt xa toàn bộ giới hạn trí tuệ tập thể của nhân loại."}, {"id": "D", "text": "Là hệ thống máy móc thuần phản ứng, chỉ hoạt động dựa trên tín hiệu tức thời mà không có ký ức quá khứ."}], "answer": "B", "explanation": "AGI là giai đoạn thứ hai của quá trình tiến hóa AI, sở hữu khả năng suy nghĩ và đưa ra quyết định giống như con người."}, {"id": 7, "local_id": 7, "section": "PHẦN 1: CÁC KHÁI NIỆM CƠ BẢN VỀ TRÍ TUỆ NHÂN TẠO", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Giai đoạn nào của AI được xem là một tình huống giả định mà khả năng của hệ thống sẽ vượt qua mọi giới hạn và lấn át con người?", "options": [{"id": "A", "text": "ANI (Trí tuệ nhân tạo hẹp chuyên biệt)."}, {"id": "B", "text": "AGI (Trí tuệ nhân tạo tổng quát ngang con người)."}, {"id": "C", "text": "ASI (Siêu trí tuệ nhân tạo)."}, {"id": "D", "text": "ML (Học máy thuật toán thống kê cơ bản)."}], "answer": "C", "explanation": "Siêu trí tuệ nhân tạo (ASI) là giai đoạn mà khả năng của hệ thống AI sẽ vượt qua mọi giới hạn và có thể lấn át con người."}, {"id": 8, "local_id": 8, "section": "PHẦN 1: CÁC KHÁI NIỆM CƠ BẢN VỀ TRÍ TUỆ NHÂN TẠO", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Đâu KHÔNG phải là một nhánh công nghệ chính của Trí tuệ nhân tạo được liệt kê trong tài liệu?", "options": [{"id": "A", "text": "Học máy thống kê (Machine Learning)."}, {"id": "B", "text": "Mạng nơ-ron học sâu (Deep Learning)."}, {"id": "C", "text": "Thị giác máy tính (Computer Vision)."}, {"id": "D", "text": "Công nghệ in 3D (3D Printing)."}], "answer": "D", "explanation": "Tài liệu liệt kê các nhánh của AI bao gồm: Học máy, Học sâu, Thị giác máy tính, Khoa học dữ liệu và Dữ liệu lớn. Công nghệ in 3D không được đề cập là một nhánh của AI trong ngữ cảnh này , ,."}, {"id": 9, "local_id": 9, "section": "PHẦN 1: CÁC KHÁI NIỆM CƠ BẢN VỀ TRÍ TUỆ NHÂN TẠO", "difficulty": "Dễ", "difficulty_code": "NB", "question": "“AI Lý thuyết về Tâm trí” (Theory of Mind AI) đóng vai trò chính trong lĩnh vực nào và liên quan đến yếu tố gì?", "options": [{"id": "A", "text": "Lĩnh vực khí tượng học và liên quan đến dự báo biến đổi khí hậu toàn cầu."}, {"id": "B", "text": "Lĩnh vực tâm lý học và liên quan đến Trí tuệ cảm xúc."}, {"id": "C", "text": "Lĩnh vực kỹ thuật cơ khí và điều khiển tự động hóa dây chuyền sản xuất xe hơi."}, {"id": "D", "text": "Lĩnh vực khoa học máy tính và tối ưu hóa hạ tầng lưu trữ cơ sở dữ liệu lớn."}], "answer": "B", "explanation": "AI Lý thuyết về Tâm trí là những hệ thống tiên tiến hơn, đóng vai trò chính trong lĩnh vực tâm lý học và thực hiện các nhiệm vụ liên quan đến Trí tuệ cảm xúc ,."}, {"id": 10, "local_id": 10, "section": "PHẦN 1: CÁC KHÁI NIỆM CƠ BẢN VỀ TRÍ TUỆ NHÂN TẠO", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Theo tài liệu, tại sao việc sử dụng AI trong nông nghiệp lại quan trọng trong bối cảnh hiện nay?", "options": [{"id": "A", "text": "Vì ứng dụng công nghệ AI giúp triệt tiêu hoàn toàn chi phí sản xuất nông nghiệp trong ngắn hạn."}, {"id": "B", "text": "Vì dân số gia tăng dẫn đến tiêu thụ lương thực tăng, trong khi sản lượng sản xuất giảm."}, {"id": "C", "text": "Vì toàn bộ lực lượng lao động nông nghiệp nông thôn đang dịch chuyển hoàn toàn sang các đô thị lớn."}, {"id": "D", "text": "Vì AI có thể tạo ra các nguồn thực phẩm nhân tạo thay thế hoàn toàn nhu cầu trồng trọt ngoài đồng ruộng."}], "answer": "B", "explanation": "Dân số luôn gia tăng dẫn đến tăng tiêu thụ lương thực và giảm 20% sản lượng sản xuất. AI giúp tự động hóa và tăng sản lượng để giải quyết vấn đề này."}, {"id": 11, "local_id": 11, "section": "PHẦN 1: CÁC KHÁI NIỆM CƠ BẢN VỀ TRÍ TUỆ NHÂN TẠO", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Ngành nông nghiệp đóng góp khoảng bao nhiêu phần trăm vào doanh thu hàng năm cho nền kinh tế (theo bối cảnh trong tài liệu)?", "options": [{"id": "A", "text": "50%."}, {"id": "B", "text": "17%."}, {"id": "C", "text": "25%."}, {"id": "D", "text": "30%."}], "answer": "B", "explanation": "Về doanh thu hàng năm, ngành nông nghiệp đóng góp gần 17% cho nền kinh tế."}, {"id": 12, "local_id": 12, "section": "PHẦN 1: CÁC KHÁI NIỆM CƠ BẢN VỀ TRÍ TUỆ NHÂN TẠO", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Giai đoạn cuối cùng của Trí tuệ nhân tạo, nơi hệ thống có ý thức và tự nhận thức được mọi thứ, được gọi là gì?", "options": [{"id": "A", "text": "AI Phản ứng cấp thấp (Reactive Machine AI)."}, {"id": "B", "text": "AI Tự nhận thức (Self-Aware AI)."}, {"id": "C", "text": "AI Bộ nhớ giới hạn (Limited Memory AI)."}, {"id": "D", "text": "AI Hẹp chuyên biệt (Artificial Narrow AI)."}], "answer": "B", "explanation": "AI Tự nhận thức là hệ thống tiên tiến nhất cho đến nay và thuộc giai đoạn cuối cùng của Trí tuệ nhân tạo, nơi hệ thống AI có ý thức và tự nhận thức được mọi thứ."}, {"id": 13, "local_id": 13, "section": "PHẦN 2: NÔNG NGHIỆP CHÍNH XÁC - NỀN TẢNG CỦA NÔNG NGHIỆP 4.0", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Định nghĩa cốt lõi của “Nông nghiệp chính xác” (Precision Farming) được mô tả trong tài liệu là gì?", "options": [{"id": "A", "text": "Làm mọi việc nhanh nhất có thể bằng máy móc hạng nặng."}, {"id": "B", "text": "Làm đúng việc, đúng cách, đúng nơi và đúng thời điểm."}, {"id": "C", "text": "Thay thế hoàn toàn con người bằng robot trong mọi khâu sản xuất."}, {"id": "D", "text": "Trồng trọt trong nhà kính để tránh tác động của thời tiết."}], "answer": "B", "explanation": "Tài liệu định nghĩa “Nông nghiệp chính xác (Precision agriculture hay precision farming) có nghĩa là làm đúng việc, đúng cách, đúng nơi và đúng thời điểm”."}, {"id": 14, "local_id": 14, "section": "PHẦN 2: NÔNG NGHIỆP CHÍNH XÁC - NỀN TẢNG CỦA NÔNG NGHIỆP 4.0", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Mục tiêu trọng tâm của Hệ thống Nông nghiệp Chính xác (PFS) là quản lý yếu tố nào trên cánh đồng?", "options": [{"id": "A", "text": "Sự biến động liên tục về giá cả và cung cầu thị trường tiêu thụ nông sản trên quy mô quốc tế."}, {"id": "B", "text": "Sự biến động về nguồn nhân lực lao động và cơ cấu nhân sự quản lý vận hành nông trại mùa vụ."}, {"id": "C", "text": "Sự biến đổi theo không gian và thời gian trong quá trình phát triển của cây trồng."}, {"id": "D", "text": "Sự thay đổi trong quy hoạch sử dụng đất và các chính sách pháp lý nông nghiệp của địa phương."}], "answer": "C", "explanation": "PFS tập trung vào việc nhận diện “sự biến đổi theo không gian và thời gian” trong quá trình phát triển của cây trồng để tăng năng suất và giảm rủi ro môi trường."}, {"id": 15, "local_id": 15, "section": "PHẦN 2: NÔNG NGHIỆP CHÍNH XÁC - NỀN TẢNG CỦA NÔNG NGHIỆP 4.0", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Thuật ngữ SSCM trong bối cảnh nông nghiệp chính xác là viết tắt của khái niệm nào?", "options": [{"id": "A", "text": "Site-Specific Crop Management (Quản lý canh tác theo địa điểm cụ thể)."}, {"id": "B", "text": "Smart System Crop Monitoring (Hệ thống giám sát cây trồng thông minh toàn diện)."}, {"id": "C", "text": "Soil Science Crop Management (Quản lý cây trồng dựa trên khoa học thổ nhưỡng)."}, {"id": "D", "text": "Sustainable System Crop Method (Phương pháp cây trồng hệ thống bền vững)."}], "answer": "A", "explanation": "Chương trình nông nghiệp chính xác trong một cánh đồng thường được gọi là “quản lý canh tác theo địa điểm cụ thể (SSCM)”."}, {"id": 16, "local_id": 16, "section": "PHẦN 2: NÔNG NGHIỆP CHÍNH XÁC - NỀN TẢNG CỦA NÔNG NGHIỆP 4.0", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Theo Segarra (2002), đâu KHÔNG phải là một trong những lợi ích chính của nông nghiệp chính xác?", "options": [{"id": "A", "text": "Tăng tổng sản lượng (nhờ đáp ứng tối ưu yêu cầu cây trồng)."}, {"id": "B", "text": "Giảm chi phí sản xuất (nhờ giảm lượng hóa chất đầu vào)."}, {"id": "C", "text": "Loại bỏ hoàn toàn sự cần thiết của nước tưới."}, {"id": "D", "text": "Giảm tác động đến khí hậu (tránh dư lượng hóa chất trong đất/nước)."}], "answer": "C", "explanation": "Tài liệu liệt kê các lợi ích gồm: Tăng tổng sản lượng, Cải thiện hiệu quả, Giảm chi phí sản xuất, Hỗ trợ ra quyết định, Giảm tác động đến khí hậu, và Tích lũy kiến thức . Không có ý nào nói về việc loại bỏ nước tưới."}, {"id": 17, "local_id": 17, "section": "PHẦN 2: NÔNG NGHIỆP CHÍNH XÁC - NỀN TẢNG CỦA NÔNG NGHIỆP 4.0", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Bước đầu tiên và quan trọng nhất trong quy trình nông nghiệp chính xác là gì?", "options": [{"id": "A", "text": "Mua sắm hệ thống máy bay không người lái (Drone quan trắc)."}, {"id": "B", "text": "Đánh giá sự biến đổi (Assessing variability)."}, {"id": "C", "text": "Tiến hành gieo sạ hạt giống đồng loạt trên quy mô toàn cánh đồng."}, {"id": "D", "text": "Thu hoạch nông sản tự động bằng máy gặt đập liên hợp thông minh."}], "answer": "B", "explanation": "Bước quan trọng đầu tiên là “đánh giá sự biến đổi”, vì tài liệu nhấn mạnh rằng “bạn không thể quản lý những gì bạn không biết” ."}, {"id": 18, "local_id": 18, "section": "PHẦN 2: NÔNG NGHIỆP CHÍNH XÁC - NỀN TẢNG CỦA NÔNG NGHIỆP 4.0", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Trong bước “Quản lý sự biến đổi”, nông dân cần thực hiện hành động gì?", "options": [{"id": "A", "text": "Áp dụng đồng đều một định mức phân bón và thuốc trừ sâu cho toàn bộ cánh đồng để tiết kiệm tối đa thời gian."}, {"id": "B", "text": "Điều chỉnh các yếu tố đầu vào (nước, phân bón) cho phù hợp với điều kiện cụ thể của từng địa điểm."}, {"id": "C", "text": "Ngừng thu thập thêm dữ liệu số hóa và quay lại phương thức canh tác truyền thống theo thói quen kinh nghiệm."}, {"id": "D", "text": "Chủ động tăng gấp đôi lượng phân bón hóa học và thuốc bảo vệ thực vật để đảm bảo an toàn tuyệt đối cho vụ mùa."}], "answer": "B", "explanation": "Nông dân phải điều chỉnh các yếu tố đầu vào nông nghiệp cho phù hợp với các điều kiện đã được thiết lập, theo đặc thù của từng địa điểm."}, {"id": 19, "local_id": 19, "section": "PHẦN 2: NÔNG NGHIỆP CHÍNH XÁC - NỀN TẢNG CỦA NÔNG NGHIỆP 4.0", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Quy trình triển khai Trí tuệ nhân tạo (AI) trong nông nghiệp chính xác gồm 3 bước chính theo thứ tự nào?", "options": [{"id": "A", "text": "Phân tích dữ liệu Thu thập dữ liệu Hành động cuối cùng."}, {"id": "B", "text": "Thu thập dữ liệu Hành động hiện trường Báo cáo tổng kết."}, {"id": "C", "text": "Thu thập dữ liệu Phân tích dữ liệu Hành động cuối cùng."}, {"id": "D", "text": "Mua sắm thiết bị Lắp đặt cơ sở hạ tầng Vận hành nông trại."}], "answer": "C", "explanation": "Tài liệu mô tả quy trình 3 bước: 1. Thu thập dữ liệu (Acquiring) 2. Phân tích dữ liệu (Analysis) 3. Hành động cuối cùng (Final Action) ."}, {"id": 20, "local_id": 20, "section": "PHẦN 2: NÔNG NGHIỆP CHÍNH XÁC - NỀN TẢNG CỦA NÔNG NGHIỆP 4.0", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Công nghệ nào sau đây giúp xác định thời điểm tưới cây tốt nhất từ xa thông qua việc đo độ ẩm đất?", "options": [{"id": "A", "text": "Robot thu hoạch nông sản tự hành đa năng."}, {"id": "B", "text": "Cảm biến IoT (Internet of Things)."}, {"id": "C", "text": "Máy kéo tự hành dẫn đường định vị vệ tinh."}, {"id": "D", "text": "Công nghệ in 3D chế tạo phụ tùng cơ khí."}], "answer": "B", "explanation": "Tài liệu nêu rõ: “Cảm biến độ ẩm của đất (IoT) giúp xác định thời điểm tốt nhất để tưới cây từ xa”."}, {"id": 21, "local_id": 21, "section": "PHẦN 2: NÔNG NGHIỆP CHÍNH XÁC - NỀN TẢNG CỦA NÔNG NGHIỆP 4.0", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Việc sử dụng phương pháp quang phổ và quét cánh đồng để bón phân chính xác (chỉ bón vào điểm cần thiết) có thể giúp giảm lượng phân bón sử dụng lên đến bao nhiêu phần trăm?", "options": [{"id": "A", "text": "10%."}, {"id": "B", "text": "30%."}, {"id": "C", "text": "50%."}, {"id": "D", "text": "70%."}], "answer": "B", "explanation": "Việc chỉ bón phân vào những điểm cần thiết sau khi quét cánh đồng giúp “giảm việc sử dụng phân bón lên đến 30%”."}, {"id": 22, "local_id": 22, "section": "PHẦN 2: NÔNG NGHIỆP CHÍNH XÁC - NỀN TẢNG CỦA NÔNG NGHIỆP 4.0", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Đâu là một trong những thách thức lớn nhất về mặt “Kết nối” (Connectivity) đối với việc triển khai nông nghiệp chính xác hiện đại?", "options": [{"id": "A", "text": "Hạ tầng lưới điện quốc gia chưa thể phủ sóng cấp điện liên tục đến các vùng nông thôn hẻo lánh."}, {"id": "B", "text": "Cần mạng 5G để truyền tải dữ liệu lớn, an toàn và nhanh chóng từ cảm biến/drone."}, {"id": "C", "text": "Phần lớn người nông dân chưa có kỹ năng sử dụng điện thoại thông minh để đồng bộ hóa dữ liệu số."}, {"id": "D", "text": "Đường dây truyền dẫn cáp quang viễn thông hoàn toàn không thể chôn ngầm dưới nền đất canh tác ruộng lúa."}], "answer": "B", "explanation": "Trong các ứng dụng hiện tại, việc giới thiệu mạng 5G là bắt buộc để truyền dữ liệu an toàn và nhanh chóng, hỗ trợ xử lý thời gian thực."}, {"id": 23, "local_id": 23, "section": "PHẦN 3: ỨNG DỤNG VÀ VAI TRÒ CỦA AI TRONG NÔNG NGHIỆP (12 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Trong quy trình dự đoán năng suất cây trồng bằng Học máy (ML), bước “Kỹ thuật đặc trưng” (Feature Engineering) liên quan đến hoạt động nào?", "options": [{"id": "A", "text": "Lập dự toán đầu tư và tổ chức mua sắm các hệ thống cảm biến quang phổ hiện đại nhất để đo đạc trực tiếp các chỉ tiêu nông học."}, {"id": "B", "text": "Chọn và thiết kế các đặc trưng liên quan từ dữ liệu đã thu thập (nhiệt độ, lượng mưa, độ ẩm đất) có ảnh hưởng đến năng suất."}, {"id": "C", "text": "Triển khai hoạt động cày xới, xử lý cơ học đất và trực tiếp tiến hành gieo sạ các giống hạt lai tạo mới xuống mặt ruộng thực tế."}, {"id": "D", "text": "Xây dựng chuỗi cung ứng logistics, đóng gói bao bì đạt chuẩn xuất khẩu và đưa sản phẩm nông nghiệp sau thu hoạch ra thị trường."}], "answer": "B", "explanation": "Kỹ thuật đặc trưng bao gồm việc chọn và thiết kế các đặc trưng liên quan từ dữ liệu đã thu thập có thể ảnh hưởng đến năng suất cây trồng."}, {"id": 24, "local_id": 24, "section": "PHẦN 3: ỨNG DỤNG VÀ VAI TRÒ CỦA AI TRONG NÔNG NGHIỆP (12 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Công nghệ nào được coi là “yếu tố thay đổi cuộc chơi” cho phép phát hiện sớm bệnh trên cây trồng bằng cách phân tích hình ảnh lá cây?", "options": [{"id": "A", "text": "Công nghệ sổ cái chuỗi khối (Blockchain) truy xuất nguồn gốc."}, {"id": "B", "text": "Thị giác máy tính (Computer Vision) và Phân tích hình ảnh."}, {"id": "C", "text": "Kỹ thuật tạo mẫu nhanh bằng công nghệ in ba chiều (3D Printing)."}, {"id": "D", "text": "Hệ thống điều áp và tưới nhỏ giọt tự động vận hành thủ công."}], "answer": "B", "explanation": "Tận dụng thị giác máy tính và phân tích hình ảnh để phát hiện bệnh trên cây trồng đã trở thành một yếu tố thay đổi cuộc chơi, cho phép xác định bệnh nhanh chóng và chính xác ."}, {"id": 25, "local_id": 25, "section": "PHẦN 3: ỨNG DỤNG VÀ VAI TRÒ CỦA AI TRONG NÔNG NGHIỆP (12 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Robot nông nghiệp (Agricultural Bots) sử dụng AI tiên tiến có khả năng thực hiện tác vụ phức tạp nào sau đây mà máy móc truyền thống khó làm được?", "options": [{"id": "A", "text": "Chỉ có thể tự động di chuyển tịnh tiến thẳng hàng theo các luống cây đã được cắm cọc định vị cơ học."}, {"id": "B", "text": "Phát hiện trái cây chín, điều chỉnh theo hình dạng/kích thước và hái cẩn thận khỏi cành."}, {"id": "C", "text": "Thực hiện việc cày xới và san phẳng bề mặt đồng ruộng một cách ngẫu nhiên mà không cần theo dõi bản đồ đất."}, {"id": "D", "text": "Phun đều hóa chất bảo vệ thực vật lên toàn bộ bề mặt cánh đồng mà không cần phân biệt vị trí có cây hay cỏ."}], "answer": "B", "explanation": "Các robot thu hoạch tiên tiến sử dụng AI để phát hiện trái cây chín, điều chỉnh theo hình dạng và kích thước của chúng và hái cẩn thận khỏi cành."}, {"id": 26, "local_id": 26, "section": "PHẦN 3: ỨNG DỤNG VÀ VAI TRÒ CỦA AI TRONG NÔNG NGHIỆP (12 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Hệ thống giám sát vật nuôi tự động sử dụng thiết bị đeo (wearables) và cảm biến để theo dõi các chỉ số sinh tồn nào?", "options": [{"id": "A", "text": "Mật độ phân bố và độ bóng mượt của lớp lông trên cơ thể gia súc."}, {"id": "B", "text": "Nhiệt độ cơ thể, nhịp tim, nhịp thở và mức độ hoạt động."}, {"id": "C", "text": "Biến động mức định giá thương phẩm của từng cá thể trên sàn đấu giá."}, {"id": "D", "text": "Danh tính, thông tin liên lạc và giấy phép đăng ký của chủ trang trại."}], "answer": "B", "explanation": "Các cảm biến này có thể theo dõi các dấu hiệu sinh tồn như nhiệt độ cơ thể, nhịp tim, nhịp thở và mức độ hoạt động của động vật."}, {"id": 27, "local_id": 27, "section": "PHẦN 3: ỨNG DỤNG VÀ VAI TRÒ CỦA AI TRONG NÔNG NGHIỆP (12 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Mục tiêu chính của việc áp dụng Học máy (ML) trong “Tối ưu hóa thức ăn chăn nuôi” là gì?", "options": [{"id": "A", "text": "Liên tục cung cấp khẩu phần thức ăn ở mức tối đa mà không cần quan tâm đến khả năng hấp thụ của đàn vật nuôi."}, {"id": "B", "text": "Tối đa hóa năng suất động vật (sản lượng sữa, tăng trọng) trong khi giảm thiểu chi phí thức ăn."}, {"id": "C", "text": "Thay thế hoàn toàn thức ăn tự nhiên và cỏ xanh bằng các hợp chất dinh dưỡng hóa học tổng hợp nhân tạo trong phòng thí nghiệm."}, {"id": "D", "text": "Chủ động hạn chế trọng lượng cơ thể của vật nuôi ở mức thấp nhằm tiết kiệm diện tích chuồng trại và dễ dàng đóng thùng vận chuyển."}], "answer": "B", "explanation": "Mục tiêu là xác định hàm mục tiêu, thường là tối đa hóa năng suất động vật trong khi giảm thiểu chi phí thức ăn."}, {"id": 28, "local_id": 28, "section": "PHẦN 3: ỨNG DỤNG VÀ VAI TRÒ CỦA AI TRONG NÔNG NGHIỆP (12 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Trong ứng dụng “Chọn lọc giống” (Species Breeding), các thuật toán Học sâu (Deep Learning) cần dữ liệu gì để dự đoán gen tốt nhất?", "options": [{"id": "A", "text": "Chuỗi dữ liệu lịch sử về biến động giá cổ phiếu nông nghiệp trên thị trường chứng khoán quốc tế."}, {"id": "B", "text": "Hàng thập kỷ dữ liệu thực địa về hiệu quả sử dụng nước, khả năng chịu khí hậu, kháng bệnh."}, {"id": "C", "text": "Số liệu điều tra nhân khẩu học về cơ cấu giới tính và độ tuổi của lao động nông nghiệp trong khu vực."}, {"id": "D", "text": "Hệ thống thông số kỹ thuật chi tiết cùng lịch sử bảo trì định kỳ của các dòng máy kéo cơ giới trên đồng."}], "answer": "B", "explanation": "Các thuật toán học sâu đòi hỏi hàng thập kỷ dữ liệu thực địa để phân tích và dự đoán gen nào đóng góp nhiều nhất vào lợi ích của cây trồng ."}, {"id": 29, "local_id": 29, "section": "PHẦN 3: ỨNG DỤNG VÀ VAI TRÒ CỦA AI TRONG NÔNG NGHIỆP (12 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Học tăng cường sâu (Deep Reinforcement Learning) được ứng dụng như thế nào trong hệ thống tưới tiêu thông minh?", "options": [{"id": "A", "text": "Hệ thống tự động kích hoạt tưới nước theo một khung giờ cố định bất kể mọi sự biến động của độ ẩm đất hay diễn biến thời tiết."}, {"id": "B", "text": "Nó học và thích ứng với điều kiện môi trường qua cơ chế “thử và sai” để tối đa hóa phần thưởng (độ ẩm đất tối ưu)."}, {"id": "C", "text": "Mô hình liên tục gửi tin nhắn cảnh báo yêu cầu người nông dân phải tự tay kiểm tra và đóng mở van nước cơ học mỗi ngày."}, {"id": "D", "text": "Thuật toán chỉ kích hoạt máy bơm vận hành trong những thời điểm trời đổ mưa lớn nhằm kiểm tra hệ thống thoát nước mặt ruộng."}], "answer": "B", "explanation": "[Hình 7.5] mô tả Học tăng cường trong lịch trình tưới tiêu bao gồm các yếu tố như “thăm dò vs khai thác”, “ra quyết định động” và “học tập liên tục” để cân bằng các đánh đổi ."}, {"id": 30, "local_id": 30, "section": "PHẦN 3: ỨNG DỤNG VÀ VAI TRÒ CỦA AI TRONG NÔNG NGHIỆP (12 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Công nghệ nào giúp nông dân tiêu diệt cỏ dại một cách chính xác bằng một liều thuốc diệt cỏ hoặc laser, giảm thiểu tác động môi trường?", "options": [{"id": "A", "text": "Phương pháp rải thảm thuốc bảo vệ thực vật trên toàn bộ diện tích cánh đồng."}, {"id": "B", "text": "Robot/Máy chạy bằng năng lượng mặt trời tích hợp AI nhận dạng cỏ dại."}, {"id": "C", "text": "Kỹ thuật cày xới sâu liên tục toàn bộ bề mặt đất để chôn vùi rễ cây cỏ dại."}, {"id": "D", "text": "Biện pháp phát quang đốt nương rẫy truyền thống để tiêu diệt mầm cỏ dại."}], "answer": "B", "explanation": "Các máy chạy bằng năng lượng mặt trời có thể xác định cỏ dại và tiêu diệt chúng một cách chính xác bằng một liều thuốc diệt cỏ hoặc laser."}, {"id": 31, "local_id": 31, "section": "PHẦN 3: ỨNG DỤNG VÀ VAI TRÒ CỦA AI TRONG NÔNG NGHIỆP (12 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "AI hỗ trợ “Thu hoạch trong nhà” (Indoor Harvest) như thủy canh hoặc aquaponics như thế nào?", "options": [{"id": "A", "text": "Bằng cách vận chuyển toàn bộ khối lượng đất canh tác từ ngoài đồng ruộng vào lấp đầy các bồn nuôi thủy canh."}, {"id": "B", "text": "Tự động hóa quá trình thu hoạch và phân tích mọi thứ (ánh sáng, môi trường) trong không gian khép kín."}, {"id": "C", "text": "Bằng cách tháo dỡ toàn bộ mái che nhà kính để tận dụng tối đa ánh sáng mặt trời và các yếu tố thời tiết tự nhiên."}, {"id": "D", "text": "Bằng cách tự động đàm phán hợp đồng thương mại nhằm giảm bớt chi phí thuê mặt bằng nhà màng cho chủ trang trại."}], "answer": "B", "explanation": "AI giúp thu hoạch trong nhà trở nên đơn giản hơn vì nó có thể phân tích mọi thứ trong một môi trường khép kín và tự động hóa quá trình thu hoạch."}, {"id": 32, "local_id": 32, "section": "PHẦN 3: ỨNG DỤNG VÀ VAI TRÒ CỦA AI TRONG NÔNG NGHIỆP (12 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Vai trò của “Hệ thống chuyên gia nông nghiệp” (Agriculture Expert Systems) là gì?", "options": [{"id": "A", "text": "Thay thế hoàn toàn vai trò nghiên cứu lý thuyết cũng như công tác thực nghiệm của các nhà khoa học nông nghiệp đầu ngành."}, {"id": "B", "text": "Lưu trữ kiến thức cấp chuyên gia và cung cấp hướng dẫn phù hợp cho nông dân dựa trên các tình huống khác nhau."}, {"id": "C", "text": "Đơn thuần chỉ đóng vai trò là bảng hiển thị cập nhật thông tin dự báo thời tiết và nhiệt độ không khí theo thời gian thực."}, {"id": "D", "text": "Đảm nhận toàn bộ nghiệp vụ kế toán thu chi, quản lý dòng tiền và kê khai quyết toán tài chính định kỳ cho trang trại."}], "answer": "B", "explanation": "Hệ thống chuyên gia là hệ thống lưu trữ kiến thức cấp chuyên gia, được thu thập từ các chuyên gia khác nhau để cung cấp hướng dẫn phù hợp ."}, {"id": 33, "local_id": 33, "section": "PHẦN 3: ỨNG DỤNG VÀ VAI TRÒ CỦA AI TRONG NÔNG NGHIỆP (12 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Một trong những lợi ích của việc sử dụng AI kết hợp với Máy bay không người lái (Drones) là gì?", "options": [{"id": "A", "text": "Giảm chi phí lao động và cung cấp thông tin thời gian thực về nhu cầu nước, phân bón của cây trồng."}, {"id": "B", "text": "Đảm nhận việc vận chuyển thương phẩm nông nghiệp khối lượng hàng chục tấn từ cánh đồng đến các trung tâm logistics."}, {"id": "C", "text": "Làm gia tăng chi phí vận hành nhưng chỉ mang lại giá trị quảng bá hình ảnh trang trại và làm đẹp cảnh quan sinh thái."}, {"id": "D", "text": "Thay thế hoàn toàn các loại máy kéo cơ giới hạng nặng trong việc cày lật đất sâu và xử lý cơ học nền đất trước vụ mùa."}], "answer": "A", "explanation": "Công nghệ máy bay không người lái giúp nông dân cải thiện năng suất cây trồng, giảm chi phí và cung cấp thông tin thời gian thực về nhu cầu của cây trồng."}, {"id": 34, "local_id": 34, "section": "PHẦN 3: ỨNG DỤNG VÀ VAI TRÒ CỦA AI TRONG NÔNG NGHIỆP (12 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "AI giúp “Quản lý đất đai” (Soil Management) hiệu quả hơn thông qua cơ chế nào?", "options": [{"id": "A", "text": "Thay thế toàn bộ lớp đất canh tác tự nhiên bằng các giá thể nhân tạo vô cơ biến tính."}, {"id": "B", "text": "Nghiên cứu quá trình bốc hơi, độ ẩm và nhiệt độ đất để hiểu động thái hệ sinh thái."}, {"id": "C", "text": "Chỉ đơn thuần đo đạc bản đồ địa chính và xác lập ranh giới phân lô của từng thửa đất."}, {"id": "D", "text": "Dự đoán xu hướng biến động giá thị trường bất động sản đất nông nghiệp trong tương lai."}], "answer": "B", "explanation": "Các thuật toán học máy nghiên cứu quá trình bốc hơi, độ ẩm và nhiệt độ của đất để hiểu động thái của hệ sinh thái."}, {"id": 35, "local_id": 35, "section": "PHẦN 4: THÁCH THỨC VÀ ĐẠO ĐỨC TRONG AI NÔNG NGHIỆP (6 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Một trong những thách thức kỹ thuật lớn nhất về “Phần cứng” (Hardware) khi triển khai Nông nghiệp chính xác là gì?", "options": [{"id": "A", "text": "Vật liệu phần cứng quá nhẹ nên dễ bị gió giật và lốc xoáy cuốn trôi khỏi vị trí đặt trạm."}, {"id": "B", "text": "Chi phí phát triển, bảo trì và vận hành các cảm biến/drone còn cao."}, {"id": "C", "text": "Thiết kế vỏ ngoài phần cứng thiếu màu sắc nổi bật gây khó khăn cho việc phát hiện định vị."}, {"id": "D", "text": "Hệ thống phân phối thương mại chưa tiếp cận được nông dân khiến họ không tìm được điểm bán."}], "answer": "B", "explanation": "Các cảm biến và thiết bị này có nhiều nhược điểm, bao gồm chi phí phát triển, bảo trì và vận hành cao."}, {"id": 36, "local_id": 36, "section": "PHẦN 4: THÁCH THỨC VÀ ĐẠO ĐỨC TRONG AI NÔNG NGHIỆP (6 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Tại sao “Thay đổi thời tiết” lại là một thách thức đối với độ chính xác của dữ liệu trong hệ thống AI nông nghiệp?", "options": [{"id": "A", "text": "Vì nước mưa và độ ẩm không khí tăng cao làm sai lệch trực tiếp các tham số trọng số toán học bên trong mạng nơ-ron AI."}, {"id": "B", "text": "Vì mưa, gió, và các xáo trộn khí quyển có thể làm gián đoạn tín hiệu không dây và ảnh hưởng đến độ nhạy của cảm biến."}, {"id": "C", "text": "Vì mưa giông và gió bão ngăn cản người nông dân trực tiếp đi ra thực địa để thực hiện thao tác khởi động các trạm đo."}, {"id": "D", "text": "Vì toàn bộ các vệ tinh viễn thám nông nghiệp chỉ hoạt động vào ban ngày và hoàn toàn ngắt cảm biến khi trời chuyển tối."}], "answer": "B", "explanation": "Sự nhiễu loạn do các xáo trộn khí quyển trong các kênh không dây sẽ làm gián đoạn liên lạc; ô nhiễm và mây cũng ảnh hưởng đến hình ảnh vệ tinh ."}, {"id": 37, "local_id": 37, "section": "PHẦN 4: THÁCH THỨC VÀ ĐẠO ĐỨC TRONG AI NÔNG NGHIỆP (6 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Vấn đề đạo đức về “Quyền sở hữu dữ liệu” (Data Ownership) nảy sinh từ mâu thuẫn nào?", "options": [{"id": "A", "text": "Sự bất đồng và tranh chấp gay gắt về mặt lợi ích kinh tế giữa các hộ nông dân lân cận trong việc phân chia nguồn nước tưới và ranh giới bờ ruộng."}, {"id": "B", "text": "Sự căng thẳng giữa việc doanh nghiệp bảo vệ tài sản trí tuệ (thuật toán) và việc nông dân bảo vệ quyền kiểm soát dữ liệu họ tạo ra."}, {"id": "C", "text": "Mâu thuẫn phát sinh trong công tác bồi thường giải phóng mặt bằng đất nông nghiệp khi cơ quan nhà nước thực hiện quy hoạch dự án mới."}, {"id": "D", "text": "Tâm lý bảo thủ của các chủ trang trại cá thể khi kiên quyết từ chối chia sẻ kinh nghiệm canh tác cổ truyền cho các nông hộ xung quanh."}], "answer": "B", "explanation": "Có một sự căng thẳng giữa việc đảm bảo tài sản trí tuệ của doanh nghiệp nông nghiệp và việc bảo vệ quyền sở hữu dữ liệu của người nông dân."}, {"id": 38, "local_id": 38, "section": "PHẦN 4: THÁCH THỨC VÀ ĐẠO ĐỨC TRONG AI NÔNG NGHIỆP (6 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "“Sự phân chia kỹ thuật số” (Digital Divide) trong nông nghiệp thông minh đề cập đến nguy cơ gì?", "options": [{"id": "A", "text": "Sự mất cân đối nghiêm trọng về cơ cấu diện tích canh tác giữa các loại cây trồng truyền thống và cây biến đổi gen thương mại."}, {"id": "B", "text": "Nguy cơ các trang trại lớn, giàu có tiếp cận được công nghệ AI, trong khi các nông hộ nhỏ, nghèo bị bỏ lại phía sau."}, {"id": "C", "text": "Sự chia rẽ thị phần do xung đột phần mềm giữa các dòng thiết bị di động chạy nền tảng Android và hệ điều hành Apple iOS."}, {"id": "D", "text": "Hiện tượng chia cắt đất đai thừa kế thành các mảnh vườn quá nhỏ khiến máy móc cơ giới hóa không thể tiếp cận và di chuyển."}], "answer": "B", "explanation": "Việc sử dụng các công nghệ SIS tương đối tốn kém có thể ngăn cản những nông dân nghèo hơn áp dụng chúng, dẫn đến sự phân chia kỹ thuật số ."}, {"id": 39, "local_id": 39, "section": "PHẦN 4: THÁCH THỨC VÀ ĐẠO ĐỨC TRONG AI NÔNG NGHIỆP (6 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Về vấn đề “Việc làm” (Employment), các công ty cung cấp giải pháp AI thường lập luận như thế nào để trấn an công chúng?", "options": [{"id": "A", "text": "AI được tạo ra nhằm thay thế toàn bộ người lao động vì con người có năng suất làm việc và sức bền kém hơn máy móc."}, {"id": "B", "text": "AI được thiết kế để bổ sung cho chuyên gia con người (như nhà nông học), chứ không phải thay thế họ."}, {"id": "C", "text": "Lực lượng lao động nông thôn là yếu tố thứ yếu và sự sụt giảm việc làm nông nghiệp hoàn toàn không ảnh hưởng đến xã hội."}, {"id": "D", "text": "AI cam kết sẽ chuyển dịch toàn bộ nông dân mất việc trở thành kỹ sư công nghệ làm việc tại các nhà máy chế tạo robot nông nghiệp."}], "answer": "B", "explanation": "Nhóm dự án tuyên bố rằng SIS của họ được thiết kế để bổ sung cho chuyên gia con người, chứ không phải thay thế họ."}, {"id": 40, "local_id": 40, "section": "PHẦN 4: THÁCH THỨC VÀ ĐẠO ĐỨC TRONG AI NÔNG NGHIỆP (6 câu)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Tại sao “Quyền riêng tư” (Privacy) vẫn là mối lo ngại dù dữ liệu nông nghiệp có vẻ không nhạy cảm như dữ liệu y tế?", "options": [{"id": "A", "text": "Vì người nông dân thường có tâm lý e ngại và phản đối quyết liệt khi các thiết bị bay không người lái vô tình chụp lại hình ảnh đời sống cá nhân của họ."}, {"id": "B", "text": "Vì dữ liệu thu thập bao gồm thông tin cá nhân như mức thu nhập, vị trí tài sản và thói quen canh tác, có thể bị lạm dụng bởi đối thủ cạnh tranh."}, {"id": "C", "text": "Vì toàn bộ bản đồ quy hoạch và dữ liệu canh tác cây trồng luôn được xếp vào nhóm tài liệu mật cấp quốc gia cần được quân đội bảo vệ nghiêm ngặt."}, {"id": "D", "text": "Vì các hệ thống AI hiện đại đã phát triển khả năng phân tích sóng não từ xa để nhận biết chính xác cảm xúc và suy nghĩ nội tâm của người nông dân trên đồng."}], "answer": "B", "explanation": "Thông tin cá nhân liên quan đến tên, địa điểm, loại tài sản, mức thu nhập và định giá được thu thập để xử lý. Đây đều là dữ liệu cá nhân, một số rất nhạy cảm ."}];
+
+    let currentIndex = 0;
+    let selectedOption = null;
+    let userAnswers = {}; // { index: { selected: 'A', isCorrect: true, checked: true } }
+    let isChecked = false;
+
+    // Elements
+    const qCounter = document.getElementById('question-counter');
+    const secTag = document.getElementById('section-tag');
+    const diffTag = document.getElementById('difficulty-tag');
+    const qText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const feedbackBox = document.getElementById('feedback-box');
+    const feedbackTitle = document.getElementById('feedback-title');
+    const feedbackDesc = document.getElementById('feedback-desc');
+    const btnCheck = document.getElementById('btn-check');
+    const btnNext = document.getElementById('btn-next');
+    const btnPrev = document.getElementById('btn-prev');
+    const progressFill = document.getElementById('progress-fill');
+    const quizScreen = document.getElementById('quiz-screen');
+    const resultScreen = document.getElementById('result-screen');
+    const paletteGrid = document.getElementById('palette-grid');
+
+    function initQuiz() {
+        buildPalette();
+        renderQuestion(currentIndex);
+    }
+
+    function buildPalette() {
+        paletteGrid.innerHTML = '';
+        questions.forEach((q, idx) => {
+            const item = document.createElement('div');
+            item.className = 'palette-item';
+            item.id = `palette-${idx}`;
+            item.innerText = idx + 1;
+            item.onclick = () => {
+                toggleDrawer();
+                jumpToQuestion(idx);
+            };
+            paletteGrid.appendChild(item);
+        });
+    }
+
+    function updatePalette() {
+        questions.forEach((q, idx) => {
+            const el = document.getElementById(`palette-${idx}`);
+            if (!el) return;
+            el.className = 'palette-item';
+            if (idx === currentIndex) el.classList.add('active');
+            if (userAnswers[idx] && userAnswers[idx].checked) {
+                if (userAnswers[idx].isCorrect) el.classList.add('correct');
+                else el.classList.add('wrong');
+            }
+        });
+    }
+
+    function renderQuestion(index) {
+        currentIndex = index;
+        const q = questions[index];
+        const state = userAnswers[index] || null;
+
+        qCounter.innerText = `Câu hỏi ${index + 1} / ${questions.length}`;
+        secTag.innerText = q.section || 'Nội dung trọng tâm';
+        
+        diffTag.innerText = q.difficulty || 'Trung bình';
+        diffTag.className = 'tag-pill';
+        if (q.difficulty === 'Dễ') diffTag.classList.add('diff-de');
+        else if (q.difficulty === 'Khó') diffTag.classList.add('diff-kho');
+        else diffTag.classList.add('diff-tb');
+
+        qText.innerText = q.question;
+        progressFill.style.width = `${((index + 1) / questions.length) * 100}%`;
+
+        btnPrev.disabled = (index === 0);
+
+        // Build Options
+        optionsContainer.innerHTML = '';
+        selectedOption = state ? state.selected : null;
+        isChecked = state ? state.checked : false;
+
+        q.options.forEach(opt => {
+            const card = document.createElement('div');
+            card.className = 'option-card';
+            card.id = `opt-${opt.id}`;
+
+            if (selectedOption === opt.id) {
+                card.classList.add('selected');
+            }
+
+            if (isChecked) {
+                card.classList.add('locked');
+                if (opt.id === q.answer) {
+                    card.classList.add('is-correct');
+                } else if (opt.id === selectedOption && selectedOption !== q.answer) {
+                    card.classList.add('is-wrong');
+                }
+            } else {
+                card.onclick = () => selectOption(opt.id);
+            }
+
+            card.innerHTML = `
+                <div class="option-letter">${opt.id}</div>
+                <div class="option-text">${opt.text}</div>
+            `;
+            optionsContainer.appendChild(card);
+        });
+
+        // Feedback
+        if (isChecked) {
+            btnCheck.style.display = 'none';
+            btnNext.style.display = 'inline-flex';
+            btnNext.innerText = (index === questions.length - 1) ? 'Xem kết quả 🏁' : 'Câu tiếp theo →';
+            showFeedback(state.isCorrect, q);
+        } else {
+            feedbackBox.className = 'feedback-box';
+            btnCheck.style.display = 'inline-flex';
+            btnCheck.disabled = !selectedOption;
+            btnNext.style.display = 'none';
+        }
+
+        updatePalette();
+    }
+
+    function selectOption(optId) {
+        if (isChecked) return;
+        selectedOption = optId;
+        document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+        const target = document.getElementById(`opt-${optId}`);
+        if (target) target.classList.add('selected');
+        btnCheck.disabled = false;
+    }
+
+    function checkAnswer() {
+        if (!selectedOption || isChecked) return;
+        const q = questions[currentIndex];
+        const isCorrect = (selectedOption === q.answer);
+
+        isChecked = true;
+        userAnswers[currentIndex] = {
+            selected: selectedOption,
+            isCorrect: isCorrect,
+            checked: true
+        };
+
+        // Lock options & mark colors
+        document.querySelectorAll('.option-card').forEach(c => c.classList.add('locked'));
+        const correctCard = document.getElementById(`opt-${q.answer}`);
+        if (correctCard) correctCard.classList.add('is-correct');
+
+        if (!isCorrect) {
+            const wrongCard = document.getElementById(`opt-${selectedOption}`);
+            if (wrongCard) wrongCard.classList.add('is-wrong');
+        }
+
+        showFeedback(isCorrect, q);
+
+        btnCheck.style.display = 'none';
+        btnNext.style.display = 'inline-flex';
+        btnNext.innerText = (currentIndex === questions.length - 1) ? 'Xem kết quả 🏁' : 'Câu tiếp theo →';
+
+        updatePalette();
+    }
+
+    function showFeedback(isCorrect, q) {
+        feedbackBox.className = `feedback-box show ${isCorrect ? 'correct' : 'incorrect'}`;
+        if (isCorrect) {
+            feedbackTitle.innerHTML = `<span>🎉</span> Chính xác!`;
+        } else {
+            feedbackTitle.innerHTML = `<span>❌</span> Chưa chính xác. Đáp án đúng là: <b>${q.answer}</b>`;
+        }
+        feedbackDesc.innerHTML = `<b>💡 Giải thích:</b> ${q.explanation || 'Không có giải thích bổ sung.'}`;
+    }
+
+    function navigateNext() {
+        if (currentIndex < questions.length - 1) {
+            renderQuestion(currentIndex + 1);
+        } else {
+            showResults();
+        }
+    }
+
+    function navigatePrev() {
+        if (currentIndex > 0) {
+            renderQuestion(currentIndex - 1);
+        }
+    }
+
+    function jumpToQuestion(idx) {
+        renderQuestion(idx);
+    }
+
+    function showResults() {
+        quizScreen.style.display = 'none';
+        resultScreen.style.display = 'block';
+
+        let correctCount = 0;
+        let wrongCount = 0;
+        questions.forEach((q, idx) => {
+            if (userAnswers[idx] && userAnswers[idx].isCorrect) {
+                correctCount++;
+            } else {
+                wrongCount++;
+            }
+        });
+
+        const total = questions.length;
+        const percent = Math.round((correctCount / total) * 100);
+
+        document.getElementById('final-score').innerText = correctCount;
+        document.getElementById('final-total').innerText = `/ ${total}`;
+        document.getElementById('stat-correct').innerText = correctCount;
+        document.getElementById('stat-wrong').innerText = wrongCount;
+        document.getElementById('stat-accuracy').innerText = `${percent}%`;
+
+        const scoreCircle = document.getElementById('score-circle');
+        scoreCircle.style.background = `conic-gradient(var(--accent) ${percent}%, #e2e8f0 ${percent}%)`;
+
+        const rTitle = document.getElementById('result-title');
+        const rSummary = document.getElementById('result-summary');
+
+        if (percent >= 90) {
+            rTitle.innerText = "🌟 Xuất sắc! Nắm vững kiến thức";
+            rSummary.innerText = "Bạn đã hoàn thành bài thi với kết quả tuyệt vời. Bạn đã hiểu rất sâu về nội dung của buổi học!";
+        } else if (percent >= 75) {
+            rTitle.innerText = "👏 Rất tốt! Đạt yêu cầu cao";
+            rSummary.innerText = "Kết quả rất ấn tượng! Bạn đã nắm chắc hầu hết các khái niệm trọng tâm.";
+        } else if (percent >= 50) {
+            rTitle.innerText = "👍 Đạt yêu cầu cơ bản";
+            rSummary.innerText = "Bạn đã vượt qua bài kiểm tra. Hãy xem lại các câu giải thích chi tiết để củng cố thêm phần còn yếu nhé!";
+        } else {
+            rTitle.innerText = "📖 Cần ôn tập thêm!";
+            rSummary.innerText = "Bạn nên đọc lại slide bài giảng và tài liệu học tập rồi thử sức lại lần nữa nhé.";
+        }
+    }
+
+    function restartQuiz() {
+        userAnswers = {};
+        currentIndex = 0;
+        selectedOption = null;
+        isChecked = false;
+        resultScreen.style.display = 'none';
+        quizScreen.style.display = 'block';
+        initQuiz();
+    }
+
+    function viewAllAnswers() {
+        resultScreen.style.display = 'none';
+        quizScreen.style.display = 'block';
+        renderQuestion(0);
+    }
+
+    function toggleDrawer() {
+        const drawer = document.getElementById('drawer');
+        const overlay = document.getElementById('drawer-overlay');
+        const isOpen = drawer.classList.contains('open');
+        if (isOpen) {
+            drawer.classList.remove('open');
+            overlay.style.display = 'none';
+        } else {
+            drawer.classList.add('open');
+            overlay.style.display = 'block';
+        }
+    }
+
+    // Khởi động
+    initQuiz();
+</script>
+
+</body>
+</html>

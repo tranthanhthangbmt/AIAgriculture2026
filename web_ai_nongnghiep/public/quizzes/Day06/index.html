@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc nghiệm Buổi 6: Ứng dụng AI trong dự báo & hoạch định sản xuất</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #15803d;
+            --primary-hover: #166534;
+            --primary-light: #dcfce7;
+            --accent: #22c55e;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --success: #16a34a;
+            --success-bg: #f0fdf4;
+            --success-border: #bbf7d0;
+            --error: #dc2626;
+            --error-bg: #fef2f2;
+            --error-border: #fecaca;
+            --radius: 12px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 24px 16px;
+        }
+
+        .quiz-wrapper {
+            width: 100%;
+            max-width: 840px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        /* Header Bar */
+        .quiz-header {
+            padding: 20px 28px;
+            background: linear-gradient(135deg, #14532d 0%, #166534 100%);
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .quiz-header h1 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .session-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+
+        .quiz-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-palette {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-palette:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Progress Bar */
+        .progress-track {
+            width: 100%;
+            height: 6px;
+            background-color: #e2e8f0;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            width: 0%;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Quiz Body */
+        .quiz-body {
+            padding: 32px 28px;
+        }
+
+        .question-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .counter-badge {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .tags-cluster {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .tag-pill {
+            font-size: 0.78rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            background: #f1f5f9;
+            color: var(--text-muted);
+        }
+
+        .tag-pill.diff-de { background: #dcfce7; color: #166534; }
+        .tag-pill.diff-tb { background: #fef3c7; color: #92400e; }
+        .tag-pill.diff-kho { background: #fee2e2; color: #991b1b; }
+
+        .question-title {
+            font-size: 1.22rem;
+            font-weight: 700;
+            line-height: 1.55;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+
+        /* Options Grid */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .option-card {
+            display: flex;
+            align-items: flex-start;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #ffffff;
+            user-select: none;
+        }
+
+        .option-card:hover:not(.locked) {
+            border-color: var(--accent);
+            background: #f8fafc;
+            transform: translateY(-1px);
+        }
+
+        .option-card.selected:not(.locked) {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-card.locked {
+            cursor: default;
+        }
+
+        .option-card.is-correct {
+            border-color: var(--success) !important;
+            background-color: var(--success-bg) !important;
+        }
+
+        .option-card.is-wrong {
+            border-color: var(--error) !important;
+            background-color: var(--error-bg) !important;
+        }
+
+        .option-letter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-right: 14px;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .option-card.selected .option-letter {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .option-card.is-correct .option-letter {
+            background: var(--success);
+            color: #ffffff;
+        }
+
+        .option-card.is-wrong .option-letter {
+            background: var(--error);
+            color: #ffffff;
+        }
+
+        .option-text {
+            font-size: 1.02rem;
+            line-height: 1.5;
+            color: var(--text-main);
+            padding-top: 3px;
+        }
+
+        /* Feedback Box */
+        .feedback-box {
+            display: none;
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            animation: slideDown 0.3s ease;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background-color: var(--success-bg);
+            border: 1px solid var(--success-border);
+        }
+
+        .feedback-box.incorrect {
+            background-color: var(--error-bg);
+            border: 1px solid var(--error-border);
+        }
+
+        .feedback-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .correct .feedback-title { color: var(--success); }
+        .incorrect .feedback-title { color: var(--error); }
+
+        .feedback-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #334155;
+        }
+
+        /* Action Buttons */
+        .actions-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn {
+            padding: 12px 26px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        /* Result Screen */
+        .result-screen {
+            display: none;
+            text-align: center;
+            padding: 40px 24px;
+        }
+
+        .score-ring-wrap {
+            position: relative;
+            width: 170px;
+            height: 170px;
+            margin: 0 auto 28px;
+        }
+
+        .score-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent) 0%, #e2e8f0 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .score-inner {
+            width: 136px;
+            height: 136px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .score-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .result-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .result-summary {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 500px;
+            margin: 0 auto 36px;
+        }
+
+        .stat-card {
+            padding: 16px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .stat-val {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Palette Drawer */
+        .drawer-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 100;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -360px;
+            width: 340px;
+            height: 100%;
+            background: #ffffff;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+            z-index: 101;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+        }
+
+        .drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .drawer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 4px;
+        }
+
+        .palette-item {
+            height: 42px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .palette-item:hover {
+            border-color: var(--primary);
+            background: #e2e8f0;
+        }
+
+        .palette-item.active {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .palette-item.correct {
+            background: var(--success);
+            color: #ffffff;
+            border-color: var(--success);
+        }
+
+        .palette-item.wrong {
+            background: var(--error);
+            color: #ffffff;
+            border-color: var(--error);
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 10px; }
+            .quiz-body { padding: 20px 16px; }
+            .quiz-header { padding: 16px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-wrapper">
+    <!-- Header -->
+    <div class="quiz-header">
+        <h1>
+            <span>🌾</span>
+            <span>Buổi 6: Ứng dụng AI trong dự báo & hoạch định sản xuất</span>
+        </h1>
+        <div class="quiz-meta">
+            <span class="session-badge">Buổi 6</span>
+            <button class="btn-palette" onclick="toggleDrawer()">📋 Mục lục câu</button>
+        </div>
+    </div>
+
+    <!-- Progress Track -->
+    <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <!-- Screen 1: Quiz Active -->
+    <div class="quiz-body" id="quiz-screen">
+        <div class="question-meta-row">
+            <div class="counter-badge" id="question-counter">Câu hỏi 1 / 40</div>
+            <div class="tags-cluster">
+                <span class="tag-pill" id="section-tag">Tổng quan</span>
+                <span class="tag-pill" id="difficulty-tag">Dễ</span>
+            </div>
+        </div>
+
+        <h2 class="question-title" id="question-text">Đang tải câu hỏi...</h2>
+
+        <div class="options-list" id="options-container">
+            <!-- Dynamic Options -->
+        </div>
+
+        <!-- Feedback Container -->
+        <div class="feedback-box" id="feedback-box">
+            <div class="feedback-title" id="feedback-title"></div>
+            <div class="feedback-desc" id="feedback-desc"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions-row">
+            <button class="btn btn-secondary" id="btn-prev" onclick="navigatePrev()">← Câu trước</button>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-primary" id="btn-check" onclick="checkAnswer()" disabled>Kiểm tra</button>
+                <button class="btn btn-primary" id="btn-next" onclick="navigateNext()" style="display: none;">Câu tiếp theo →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 2: Results -->
+    <div class="result-screen" id="result-screen">
+        <div class="score-ring-wrap">
+            <div class="score-circle" id="score-circle">
+                <div class="score-inner">
+                    <span class="score-number" id="final-score">0</span>
+                    <span class="score-label" id="final-total">/ 40</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="result-title" id="result-title">Chúc mừng bạn đã hoàn thành!</h2>
+        <p class="result-summary" id="result-summary">Bạn đã trả lời xuất sắc hầu hết các câu hỏi trong phần này.</p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--success);" id="stat-correct">0</div>
+                <div class="stat-label">Số câu đúng</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--error);" id="stat-wrong">0</div>
+                <div class="stat-label">Số câu sai</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--primary);" id="stat-accuracy">0%</div>
+                <div class="stat-label">Độ chính xác</div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="restartQuiz()">🔄 Làm lại bài</button>
+            <button class="btn btn-secondary" onclick="viewAllAnswers()">🔍 Xem lại chi tiết đáp án</button>
+        </div>
+    </div>
+</div>
+
+<!-- Drawer / Question Palette -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<div class="drawer" id="drawer">
+    <div class="drawer-header">
+        <h3 style="font-size: 1.1rem; font-weight: 700;">Danh sách câu hỏi</h3>
+        <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.85rem;" onclick="toggleDrawer()">Đóng ✕</button>
+    </div>
+    <div class="drawer-grid" id="palette-grid">
+        <!-- Palette numbers -->
+    </div>
+</div>
+
+<script>
+    const questions = [{"id": 190, "local_id": 1, "section": "PHẦN 1: CÁC YẾU TỐ ẢNH HƯỞNG & QUY TRÌNH XỬ LÝ DỮ LIỆU", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Theo tài liệu [Data-Driven] Chapter 6, năng suất cây trồng (Crop Yield) là kết quả tương tác phức tạp của ba nhóm yếu tố chính nào?", "options": [{"id": "A", "text": "Đặc tính lý hóa của đất đai, Khả năng cung ứng nguồn vốn và Trình độ nhân lực nông hộ."}, {"id": "B", "text": "Kiểu gen (Genotype), Môi trường (Environment) và Quản lý (Management)."}, {"id": "C", "text": "Chế độ dinh dưỡng phân bón, Hoạt chất bảo vệ thực vật và Mức độ cơ giới hóa đồng ruộng."}, {"id": "D", "text": "Biến động thời tiết mùa vụ, Cơ chế giá cả thị trường và Khung chính sách hỗ trợ sản xuất."}], "answer": "B", "explanation": "Năng suất cây trồng chịu ảnh hưởng bởi sự tương tác giữa đặc tính di truyền (Gen), điều kiện môi trường (Đất, khí hậu) và các biện pháp quản lý canh tác (G x E x M)."}, {"id": 191, "local_id": 2, "section": "PHẦN 1: CÁC YẾU TỐ ẢNH HƯỞNG & QUY TRÌNH XỬ LÝ DỮ LIỆU", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Trong các yếu tố môi trường ảnh hưởng đến dự báo năng suất, yếu tố nào được coi là quan trọng nhất và khó kiểm soát nhất?", "options": [{"id": "A", "text": "Độ chua hoạt tính (pH) và khả năng đệm dinh dưỡng trao đổi cation (CEC) của nền đất."}, {"id": "B", "text": "Các yếu tố khí hậu/thời tiết (Nhiệt độ, Lượng mưa, Bức xạ mặt trời)."}, {"id": "C", "text": "Liều lượng và tỷ lệ phối trộn các loại phân bón đa lượng N-P-K theo từng giai đoạn phát triển."}, {"id": "D", "text": "Mật độ gieo cấy hạt giống và khoảng cách bố trí hàng cây trên đơn vị diện tích canh tác."}], "answer": "B", "explanation": "Biến đổi khí hậu và các kiểu thời tiết (nhiệt độ, lượng mưa) ảnh hưởng trực tiếp và mạnh mẽ nhất đến sự phát triển của cây trồng và rất khó dự đoán chính xác."}, {"id": 192, "local_id": 3, "section": "PHẦN 1: CÁC YẾU TỐ ẢNH HƯỞNG & QUY TRÌNH XỬ LÝ DỮ LIỆU", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Chỉ số thực vật nào thường được trích xuất từ hình ảnh vệ tinh hoặc UAV để đánh giá sức khỏe cây trồng và dự báo năng suất?", "options": [{"id": "A", "text": "NDWI (Normalized Difference Water Index - Chỉ số khác biệt mặt nước dùng trong thủy văn)."}, {"id": "B", "text": "NDVI (Normalized Difference Vegetation Index - Chỉ số khác biệt thực vật chuẩn hóa)."}, {"id": "C", "text": "NDBI (Normalized Difference Built-up Index - Chỉ số khác biệt công trình xây dựng đô thị)."}, {"id": "D", "text": "NDTI (Normalized Difference Tillage Index - Chỉ số dư lượng che phủ đất sau khi cày xới)."}], "answer": "B", "explanation": "NDVI là chỉ số phổ biến nhất trong viễn thám nông nghiệp, phản ánh mật độ chất diệp lục và sinh khối xanh, tương quan chặt chẽ với năng suất tiềm năng."}, {"id": 193, "local_id": 4, "section": "PHẦN 1: CÁC YẾU TỐ ẢNH HƯỞNG & QUY TRÌNH XỬ LÝ DỮ LIỆU", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Tại sao dữ liệu thu thập từ cảm biến hoặc nhật ký canh tác (Raw Data) cần phải trải qua bước “Làm sạch dữ liệu” (Data Cleaning) trước khi đưa vào mô hình AI?", "options": [{"id": "A", "text": "Để nén kích thước tệp tin về định dạng tối thiểu nhằm giảm bớt chi phí băng thông mạng khi truyền dữ liệu qua giao thức không dây IoT."}, {"id": "B", "text": "Để loại bỏ các giá trị bị thiếu (Missing values), nhiễu (Noise) và giá trị ngoại lai (Outliers) có thể làm sai lệch kết quả dự báo."}, {"id": "C", "text": "Để tự động mã hóa toàn bộ dữ liệu định tính thành các chuỗi nhị phân phân tách phục vụ cho thuật toán tìm kiếm cây nhị phân tối ưu."}, {"id": "D", "text": "Để gia tăng số chiều không gian đặc trưng của dữ liệu nhằm nâng cao độ phức tạp toán học và kéo dài thời gian hội tụ của các thuật toán học sâu."}], "answer": "B", "explanation": "Dữ liệu thô thường chứa lỗi. Việc xử lý giá trị thiếu và ngoại lai là bắt buộc để đảm bảo mô hình học được các mẫu chính xác."}, {"id": 194, "local_id": 5, "section": "PHẦN 1: CÁC YẾU TỐ ẢNH HƯỞNG & QUY TRÌNH XỬ LÝ DỮ LIỆU", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Kỹ thuật “Chuẩn hóa dữ liệu” (Data Normalization/Scaling) có tác dụng gì khi chúng ta có các biến số khác nhau như “Lượng mưa (mm)” và “Nhiệt độ (°C)”?", "options": [{"id": "A", "text": "Chuyển đổi đồng nhất tất cả các đơn vị đo lường vật lý khác nhau về cùng đơn vị chiều dài milimét (mm) thông qua các hằng số quy đổi nhiệt động học nhằm thống nhất đại lượng đo."}, {"id": "B", "text": "Đưa các biến số về cùng một phạm vi giá trị (thường là [0, 1] hoặc [-1, 1]) để tránh việc biến số có giá trị lớn (như lượng mưa 2000mm) lấn át biến số nhỏ (như nhiệt độ 30°C)."}, {"id": "C", "text": "Tự động loại bỏ hoàn toàn biến số Nhiệt độ môi trường ra khỏi mô hình huấn luyện vì cho rằng biên độ dao động giá trị tuyệt đối của nó quá nhỏ bé so với quy mô tổng lượng mưa đo được hàng năm."}, {"id": "D", "text": "Thực hiện phép cộng gộp giá trị số học của hai đại lượng để tạo thành một chỉ số tích hợp duy nhất đại diện chung cho cả hai yếu tố thời tiết thay vì tiến hành phân tích độc lập từng biến."}], "answer": "B", "explanation": "Các thuật toán ML hoạt động tốt hơn khi các đặc trưng đầu vào có cùng thang đo. Nếu không chuẩn hóa, thuật toán có thể thiên vị các đặc trưng có giá trị số học lớn hơn."}, {"id": 195, "local_id": 6, "section": "PHẦN 1: CÁC YẾU TỐ ẢNH HƯỞNG & QUY TRÌNH XỬ LÝ DỮ LIỆU", "difficulty": "Dễ", "difficulty_code": "NB", "question": "“Dữ liệu lịch sử” (Historical Data) đóng vai trò gì trong bài toán dự báo năng suất?", "options": [{"id": "A", "text": "Không có ý nghĩa thực tiễn do biến đổi khí hậu khiến toàn bộ quy luật sinh trưởng quá khứ hoàn toàn bị triệt tiêu ở hiện tại."}, {"id": "B", "text": "Là nguồn dữ liệu huấn luyện (Training data) để mô hình AI học các quy luật và xu hướng từ quá khứ, từ đó suy ra tương lai."}, {"id": "C", "text": "Chỉ phục vụ mục đích lưu trữ hành chính và lập báo cáo tài chính cuối năm mà không thể dùng cho các thuật toán phân tích số liệu."}, {"id": "D", "text": "Được thiết lập làm ngưỡng cơ sở pháp lý bắt buộc để kiểm toán và quy trách nhiệm phạt vi phạm hợp đồng nếu năng suất suy giảm."}], "answer": "B", "explanation": "Các mô hình ML cần được huấn luyện trên dữ liệu lịch sử (năng suất các năm trước kèm theo điều kiện thời tiết tương ứng) để học mối quan hệ giữa các biến."}, {"id": 196, "local_id": 7, "section": "PHẦN 1: CÁC YẾU TỐ ẢNH HƯỞNG & QUY TRÌNH XỬ LÝ DỮ LIỆU", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Trong quản lý đầu vào thông minh (Chapter 3), công nghệ UAV (Drone) giúp thu thập loại dữ liệu nào mà vệ tinh khó đáp ứng được?", "options": [{"id": "A", "text": "Dữ liệu chu kỳ hoàn lưu khí quyển và trường gió trên tầng đối lưu ở phạm vi lục địa với chu kỳ tái quan sát toàn cầu."}, {"id": "B", "text": "Hình ảnh độ phân giải cực cao (sub-centimeter) tại thời điểm cụ thể theo yêu cầu, không bị mây che phủ."}, {"id": "C", "text": "Dữ liệu diễn biến chỉ số giá nông sản kỳ hạn và biến động cung cầu tức thời trên các sàn giao dịch hàng hóa thế giới."}, {"id": "D", "text": "Bản đồ phân bố độ sâu của các tầng ngậm nước ngầm sâu hàng trăm mét dưới lòng đất bằng công nghệ tán xạ sóng vô tuyến."}], "answer": "B", "explanation": "UAV cung cấp hình ảnh độ phân giải cao và linh hoạt về thời gian bay, khắc phục hạn chế về độ phân giải thấp và vấn đề mây che phủ của vệ tinh."}, {"id": 197, "local_id": 8, "section": "PHẦN 1: CÁC YẾU TỐ ẢNH HƯỞNG & QUY TRÌNH XỬ LÝ DỮ LIỆU", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Yếu tố nào sau đây thuộc nhóm “Yếu tố quản lý” (Management Factors) mà con người có thể chủ động điều chỉnh để tối ưu hóa năng suất?", "options": [{"id": "A", "text": "Cường độ bức xạ quang hợp mặt trời."}, {"id": "B", "text": "Lịch tưới tiêu và lượng phân bón."}, {"id": "C", "text": "Biên độ nhiệt độ không khí môi trường."}, {"id": "D", "text": "Thành phần cơ giới của đất tự nhiên."}], "answer": "B", "explanation": "Trong mô hình GxExM, các yếu tố quản lý như tưới tiêu, bón phân, thời điểm gieo hạt là những biến số con người có thể can thiệp dựa trên dự báo của AI."}, {"id": 198, "local_id": 9, "section": "PHẦN 1: CÁC YẾU TỐ ẢNH HƯỞNG & QUY TRÌNH XỬ LÝ DỮ LIỆU", "difficulty": "Dễ", "difficulty_code": "NB", "question": "“Phân tích tương quan” (Correlation Analysis), ví dụ như Ma trận nhiệt (Heatmap), được sử dụng ở bước tiền xử lý để làm gì?", "options": [{"id": "A", "text": "Để trực quan hóa màu sắc trang trí trên các biểu đồ báo cáo nghiệm thu kỹ thuật mà không tham gia vào bất kỳ quy trình tinh chỉnh nào của mô hình AI."}, {"id": "B", "text": "Để xác định mối quan hệ giữa các biến đầu vào và biến mục tiêu (năng suất), giúp chọn ra những đặc trưng quan trọng nhất (Feature Selection)."}, {"id": "C", "text": "Để rà soát, phát hiện và tự động xóa bỏ hoàn toàn các bản ghi bị trùng lặp khóa chính hoặc các mẫu dữ liệu lỗi phát sinh trong quá trình đo đạc thực tế."}, {"id": "D", "text": "Để phân tách ngẫu nhiên toàn bộ tập dữ liệu ban đầu thành hai tập con hoàn toàn độc lập gồm tập huấn luyện (Train) và tập kiểm thử (Test) theo tỷ lệ chuẩn."}], "answer": "B", "explanation": "Phân tích tương quan giúp loại bỏ các biến ít ảnh hưởng hoặc các biến tương quan tuyến tính mạnh với nhau (đa cộng tuyến), giữ lại những yếu tố ảnh hưởng nhất đến năng suất."}, {"id": 199, "local_id": 10, "section": "PHẦN 1: CÁC YẾU TỐ ẢNH HƯỞNG & QUY TRÌNH XỬ LÝ DỮ LIỆU", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Dữ liệu về “Độ phì nhiêu của đất” (Soil Fertility) bao gồm các thông số hóa học nào quan trọng nhất cho dự báo năng suất?", "options": [{"id": "A", "text": "Độ nén chặt cơ học, màu sắc tầng phát sinh và cấp độ nứt nẻ của đất."}, {"id": "B", "text": "Nitơ (N), Phốt pho (P), Kali (K), Carbon hữu cơ (OC) và độ pH."}, {"id": "C", "text": "Tỷ lệ thể tích đá sỏi thô và kích thước hạt cát thô trong phẫu diện đất."}, {"id": "D", "text": "Mùi đặc trưng của vi sinh vật kỵ khí và độ nhớt của bùn lắng đọng trên ruộng."}], "answer": "B", "explanation": "N, P, K, pH là các chất dinh dưỡng đa lượng và chỉ số hóa học quyết định khả năng sinh trưởng của cây, là đầu vào bắt buộc cho các mô hình dự báo chính xác."}, {"id": 200, "local_id": 11, "section": "PHẦN 1: CÁC YẾU TỐ ẢNH HƯỞNG & QUY TRÌNH XỬ LÝ DỮ LIỆU", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Một tập dữ liệu dự báo năng suất bị “Mất cân bằng” (Imbalanced) có nghĩa là gì?", "options": [{"id": "A", "text": "Số lượng mẫu về năng suất cao và năng suất thấp chênh lệch nhau quá lớn (ví dụ: chủ yếu là năm được mùa, rất ít năm mất mùa)."}, {"id": "B", "text": "Dữ liệu bị thất thoát một nửa số lượng cột thuộc tính đo đạc do cảm biến truyền tín hiệu chập chờn trong quá trình ghi nhận thực địa."}, {"id": "C", "text": "Dữ liệu khảo sát chỉ được thu thập tập trung ở một vùng sinh thái nông nghiệp duy nhất nên thiếu tính đại diện địa lý trên toàn cầu."}, {"id": "D", "text": "Dữ liệu quan trắc hoàn toàn bị thiếu thông tin định danh mốc thời gian khiến mô hình không thể sắp xếp thành chuỗi dữ liệu mùa vụ."}], "answer": "A", "explanation": "Mất cân bằng dữ liệu làm cho mô hình có xu hướng dự báo nghiêng về lớp đa số (ví dụ: luôn dự báo được mùa) và dự báo kém các sự kiện hiếm gặp (thiên tai/mất mùa)."}, {"id": 201, "local_id": 12, "section": "PHẦN 1: CÁC YẾU TỐ ẢNH HƯỞNG & QUY TRÌNH XỬ LÝ DỮ LIỆU", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Vai trò của “Kỹ thuật đặc trưng” (Feature Engineering) trong bài toán này là gì?", "options": [{"id": "A", "text": "Tiến hành lấy thêm nhiều mẫu đất tại thực địa đồng ruộng mang về phòng thí nghiệm phân tích hóa lý nhằm mở rộng quy mô mẫu dữ liệu ban đầu phục vụ kiểm định nông hóa."}, {"id": "B", "text": "Tạo ra các biến mới từ dữ liệu cũ giúp mô hình học tốt hơn (ví dụ: tạo biến “Lượng mưa tích lũy trong giai đoạn trổ bông” thay vì chỉ dùng lượng mưa trung bình năm)."}, {"id": "C", "text": "Ứng dụng hệ thống thông tin địa lý (GIS) để biên tập và trực quan hóa bản đồ ranh giới thửa ruộng nông nghiệp phục vụ cho công tác quy hoạch vùng trồng trọt tập trung."}, {"id": "D", "text": "Nâng cấp cấu hình phần cứng bằng việc trang bị thêm các cụm máy chủ điện toán hiệu năng cao nhằm tăng tốc độ xử lý tính toán mà không làm thay đổi tập đặc trưng đầu vào."}], "answer": "B", "explanation": "Feature Engineering biến đổi dữ liệu thô thành các đặc trưng đại diện tốt hơn cho vấn đề cơ bản, giúp cải thiện độ chính xác của mô hình dự báo."}, {"id": 202, "local_id": 13, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Bài toán “Dự báo năng suất” (ví dụ: dự báo thu được bao nhiêu tấn lúa/ha) thuộc loại bài toán nào trong Học máy?", "options": [{"id": "A", "text": "Bài toán Phân loại (Classification)."}, {"id": "B", "text": "Bài toán Hồi quy (Regression)."}, {"id": "C", "text": "Bài toán Phân cụm (Clustering)."}, {"id": "D", "text": "Bài toán Học tăng cường (Reinforcement Learning)."}], "answer": "B", "explanation": "Năng suất là một con số liên tục (ví dụ: 5.4 tấn, 6.2 tấn), do đó đây là bài toán Hồi quy. Phân loại chỉ dùng khi dự đoán nhãn (ví dụ: Được mùa/Mất mùa)."}, {"id": 203, "local_id": 14, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Tại sao thuật toán “Hồi quy tuyến tính” (Linear Regression) thường có hiệu suất thấp khi dự báo năng suất cây trồng thực tế?", "options": [{"id": "A", "text": "Vì thuật toán tiêu tốn quá nhiều tài nguyên tính toán phần cứng và dung lượng bộ nhớ khi phải thực hiện phép nghịch đảo ma trận kích thước lớn, dẫn đến tốc độ huấn luyện chậm hơn nhiều so với mạng nơ-ron sâu."}, {"id": "B", "text": "Vì mối quan hệ giữa các yếu tố môi trường (thời tiết, đất) và năng suất thường là phi tuyến tính (non-linear) và phức tạp, trong khi Hồi quy tuyến tính giả định mối quan hệ là đường thẳng."}, {"id": "C", "text": "Vì thuật toán bắt buộc phải được cung cấp một khối lượng dữ liệu thực nghiệm khổng lồ lên tới hàng triệu mẫu quan trắc thời gian thực thì các tham số trọng số của hàm mục tiêu mới có thể bắt đầu hội tụ."}, {"id": "D", "text": "Vì thuật toán này vốn chỉ được đóng gói trên các hệ thống phần mềm thống kê truyền thống độc quyền mà từ trước đến nay hoàn toàn chưa từng được tích hợp vào hệ sinh thái thư viện mã nguồn mở của ngôn ngữ Python."}], "answer": "B", "explanation": "Năng suất chịu ảnh hưởng phức tạp của nhiều yếu tố. Hồi quy tuyến tính quá đơn giản để nắm bắt các biến động này."}, {"id": 204, "local_id": 15, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Thuật toán “Rừng ngẫu nhiên” (Random Forest) hoạt động dựa trên nguyên lý nào?", "options": [{"id": "A", "text": "Xây dựng duy nhất một cây quyết định đơn lẻ có độ sâu vô hạn nhằm ghi nhớ chi tiết toàn bộ các mẫu dữ liệu trong không gian huấn luyện ban đầu."}, {"id": "B", "text": "Học tập tổ hợp (Ensemble Learning): Tạo ra nhiều cây quyết định ngẫu nhiên và lấy kết quả trung bình của chúng để đưa ra dự đoán cuối cùng."}, {"id": "C", "text": "Mô phỏng cấu trúc kết nối synap sinh học của mạng nơ-ron nhân tạo thông qua quá trình lan truyền ngược để cập nhật liên tục các ma trận trọng số."}, {"id": "D", "text": "Tính toán khoảng cách hình học Euclide trong không gian đa chiều để xác định các điểm láng giềng gần nhất bao quanh mẫu dữ liệu cần dự đoán."}], "answer": "B", "explanation": "Random Forest kết hợp nhiều cây quyết định (Decision Trees) để cải thiện độ chính xác và giảm thiểu rủi ro overfitting."}, {"id": 205, "local_id": 16, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Một ưu điểm lớn của thuật toán Random Forest so với Decision Tree đơn lẻ được nhắc đến trong Chapter 6 là gì?", "options": [{"id": "A", "text": "Có nguy cơ xảy ra hiện tượng Overfitting (quá khớp) trầm trọng hơn rất nhiều trên tập kiểm thử."}, {"id": "B", "text": "Giúp chống lại hiện tượng Overfitting (Quá khớp) tốt hơn và xử lý tốt dữ liệu bị thiếu."}, {"id": "C", "text": "Đơn giản hóa cấu trúc mô hình thành dạng quy tắc tường minh trực quan nên dễ giải thích hơn hẳn."}, {"id": "D", "text": "Chuyên biệt hóa độc quyền cho việc trích xuất và xử lý dữ liệu ma trận điểm ảnh từ ảnh vệ tinh."}], "answer": "B", "explanation": "Random Forest giảm thiểu overfitting bằng cách lấy trung bình kết quả của nhiều cây con, làm cho mô hình tổng quát hóa tốt hơn trên dữ liệu mới."}, {"id": 206, "local_id": 17, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Mạng Nơ-ron nhân tạo (ANN) phù hợp nhất với loại dữ liệu nông nghiệp nào?", "options": [{"id": "A", "text": "Dữ liệu thuần túy chỉ có mối quan hệ đơn biến tuyến tính đơn giản và số lượng các thuộc tính đầu vào cực kỳ hạn chế."}, {"id": "B", "text": "Dữ liệu lớn, phức tạp, có mối quan hệ phi tuyến tính cao giữa đầu vào (thời tiết, đất) và đầu ra (năng suất)."}, {"id": "C", "text": "Dữ liệu dạng văn bản tự do phi cấu trúc trích xuất từ các tài liệu ghi chép nhật ký mùa vụ viết tay cổ xưa của nông hộ."}, {"id": "D", "text": "Dữ liệu khảo sát có quy mô cực kỳ nhỏ với ít hơn 10 dòng quan sát thực địa nhưng yêu cầu độ tin cậy thống kê tuyệt đối."}], "answer": "B", "explanation": "ANN, lấy cảm hứng từ não bộ, rất hiệu quả trong việc nắm bắt các mối quan hệ cực kỳ phức tạp và phi tuyến tính trong dữ liệu lớn."}, {"id": 207, "local_id": 18, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Kiến trúc mạng nơ-ron nào đặc biệt hiệu quả khi dữ liệu đầu vào là chuỗi thời gian (ví dụ: nhiệt độ thay đổi theo từng ngày trong suốt vụ mùa)?", "options": [{"id": "A", "text": "CNN (Convolutional Neural Network)."}, {"id": "B", "text": "LSTM (Long Short-Term Memory)."}, {"id": "C", "text": "KNN (K-Nearest Neighbors Algorithm)."}, {"id": "D", "text": "K-Means (K-Means Clustering Method)."}], "answer": "B", "explanation": "LSTM là một biến thể của RNN, được thiết kế để ghi nhớ các phụ thuộc dài hạn trong dữ liệu chuỗi thời gian, rất phù hợp cho dữ liệu thời tiết."}, {"id": 208, "local_id": 19, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Trong nghiên cứu so sánh các thuật toán dự báo năng suất Đậu gà (Chickpea) tại Iran (Chapter 6), thuật toán nào cho kết quả sai số thấp nhất?", "options": [{"id": "A", "text": "Hồi quy tuyến tính (Linear Regression)."}, {"id": "B", "text": "Random Forest (RF)."}, {"id": "C", "text": "K-Nearest Neighbors (KNN Classifier)."}, {"id": "D", "text": "Support Vector Machine (SVM Model)."}], "answer": "B", "explanation": "Tài liệu trích dẫn nghiên cứu cho thấy “RF là mô hình cho ít lỗi nhất” khi so sánh với SVR và các mô hình khác."}, {"id": 209, "local_id": 20, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Thuật toán “Hồi quy Vectơ Hỗ trợ” (SVR - Support Vector Regression) hoạt động bằng cách nào?", "options": [{"id": "A", "text": "Thiết lập một đường hồi quy đa thức bậc cao đi qua chính xác toàn bộ tất cả các điểm dữ liệu mà không chấp nhận bất kỳ sai số nào."}, {"id": "B", "text": "Tìm một “siêu phẳng” (hyperplane) tối ưu trong không gian nhiều chiều để khớp với dữ liệu trong một giới hạn sai số cho phép."}, {"id": "C", "text": "Phân chia không gian dữ liệu đầu vào thành các cụm hình cầu đồng tâm không chồng lấn dựa trên khoảng cách tâm cụm trong thuật toán K-means."}, {"id": "D", "text": "Thực hiện sắp xếp thứ tự phân hạng toàn bộ các bản ghi theo bảng chữ cái danh mục của từng giống cây trồng trước khi nội suy."}], "answer": "B", "explanation": "SVR (biến thể của SVM cho hồi quy) tìm siêu phẳng tối ưu để mô hình hóa mối quan hệ giữa các biến."}, {"id": 210, "local_id": 21, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Thuật toán KNN (K-Láng giềng gần nhất) dự báo năng suất cho một thửa ruộng mới dựa trên cơ sở nào?", "options": [{"id": "A", "text": "Dựa trên năng suất trung bình của K thửa ruộng có điều kiện (đất, khí hậu) tương tự nhất trong quá khứ."}, {"id": "B", "text": "Dựa trên việc giải hệ phương trình vi phân phi tuyến tính phức tạp nhằm mô phỏng toàn bộ chu trình trao đổi chất sinh học."}, {"id": "C", "text": "Dựa trên giá trị năng suất của thửa ruộng có khoảng cách không gian địa lý xa xôi nhất trong tập dữ liệu quan trắc toàn cầu."}, {"id": "D", "text": "Dựa thuần túy vào chỉ số độ ẩm và nhiệt độ từ bản tin dự báo thời tiết ngày mai mà bỏ qua toàn bộ lịch sử canh tác trước đó."}], "answer": "A", "explanation": "KNN là thuật toán “dựa trên trường hợp” (instance-based), dự đoán dựa trên các điểm dữ liệu gần nhất (tương tự nhất) trong tập huấn luyện."}, {"id": 211, "local_id": 22, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Nhược điểm của KNN khi áp dụng cho dữ liệu lớn (Big Data) trong nông nghiệp là gì?", "options": [{"id": "A", "text": "Mô hình luôn đạt độ chính xác tuyệt đối 100% trên mọi tập dữ liệu khiến các nhà khoa học nghi ngờ về tính xác thực."}, {"id": "B", "text": "Tốc độ dự báo chậm và tốn bộ nhớ vì phải tính khoảng cách với tất cả dữ liệu lịch sử mỗi khi dự báo."}, {"id": "C", "text": "Thuật toán hoàn toàn không có khả năng tính toán số học trên các biến liên tục như nhiệt độ, độ ẩm hay lượng phân bón."}, {"id": "D", "text": "Thuật toán đòi hỏi cấu trúc phần cứng của máy tính lượng tử thế hệ mới mới có thể bắt đầu quá trình nạp dữ liệu huấn luyện."}], "answer": "B", "explanation": "KNN là thuật toán “lười” (lazy learning), không học mô hình trước mà tính toán tại thời điểm dự báo, gây tốn kém tài nguyên với dữ liệu lớn."}, {"id": 212, "local_id": 23, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Thuật toán XGBoost (được nhắc đến như mô hình Tăng cường/Boosting) nổi tiếng vì điều gì?", "options": [{"id": "A", "text": "Thời gian xử lý huấn luyện cực kỳ chậm chạp nhưng luôn đảm bảo sai số dự báo năng suất trên toàn bộ dữ liệu tiệm cận về giá trị 0 tuyệt đối."}, {"id": "B", "text": "Hiệu suất cao, tốc độ nhanh và khả năng chiến thắng nhiều cuộc thi dữ liệu (Kaggle) nhờ cơ chế sửa lỗi của các mô hình trước đó."}, {"id": "C", "text": "Được thiết kế chuyên biệt độc quyền cho việc phân tích dữ liệu hình ảnh quang phổ mà hoàn toàn không thể xử lý dữ liệu dạng bảng số liệu nông học."}, {"id": "D", "text": "Là thuật toán cổ điển lâu đời nhất trong lịch sử khoa học máy tính và hoàn toàn không hỗ trợ bất kỳ kỹ thuật tính toán song song hiện đại nào."}], "answer": "B", "explanation": "XGBoost là một thuật toán học tập tập hợp tiên tiến (Boosting), nổi tiếng về tốc độ và hiệu suất cao với các bộ dữ liệu lớn."}, {"id": 213, "local_id": 24, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Khi lựa chọn mô hình dự báo cho một loại cây trồng cụ thể (ví dụ: Lúa), yếu tố nào quan trọng nhất cần xem xét?", "options": [{"id": "A", "text": "Mức độ phổ biến về tên gọi thương mại của thuật toán trên các diễn đàn công nghệ thông tin đại chúng."}, {"id": "B", "text": "Đặc điểm của dữ liệu có sẵn (kích thước, loại dữ liệu) và độ chính xác mong muốn."}, {"id": "C", "text": "Màu sắc thẩm mỹ và cách bố trí các nút bấm đồ họa trên giao diện phần mềm trực quan hóa dữ liệu."}, {"id": "D", "text": "Ý kiến tư vấn mang tính thương mại của các đơn vị phân phối và bán lẻ trang thiết bị máy vi tính."}], "answer": "B", "explanation": "Không có thuật toán nào tốt nhất cho mọi bài toán (“No Free Lunch” theorem). Việc chọn mô hình phụ thuộc vào bản chất dữ liệu (tuyến tính hay phi tuyến tính, ít hay nhiều). PHẦN 3: ĐÁNH GIÁ MÔ HÌNH & TỐI ƯU HÓA SẢN XUẤT (12 Câu)"}, {"id": 214, "local_id": 25, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Chỉ số RMSE (Root Mean Square Error - Căn bậc hai sai số bình phương trung bình) dùng để đánh giá điều gì của mô hình dự báo năng suất?", "options": [{"id": "A", "text": "Tỷ lệ phần trăm phân loại chính xác các lớp nhãn vụ mùa được mùa hay mất mùa trên ma trận nhầm lẫn."}, {"id": "B", "text": "Mức độ chênh lệch trung bình giữa năng suất dự báo và năng suất thực tế (càng thấp càng tốt)."}, {"id": "C", "text": "Tốc độ tính toán và tổng thời gian thực thi trung bình của thuật toán trên từng luồng xử lý phần cứng CPU."}, {"id": "D", "text": "Độ sâu cấu trúc và tổng số lượng trọng số tham số tự do cần tối ưu hóa trong toàn bộ mô hình."}], "answer": "B", "explanation": "RMSE đo lường độ lớn của sai số dự báo. Giá trị RMSE càng nhỏ nghĩa là dự báo càng sát với thực tế."}, {"id": 215, "local_id": 26, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Hệ số xác định (R-squared) có giá trị nằm trong khoảng nào và ý nghĩa là gì?", "options": [{"id": "A", "text": "Từ âm vô cùng đến dương vô cùng; giá trị tuyệt đối càng lớn thể hiện tốc độ hội tụ của mô hình càng nhanh."}, {"id": "B", "text": "Từ 0 đến 1; càng gần 1 nghĩa là mô hình càng giải thích tốt sự biến thiên của năng suất (độ phù hợp cao)."}, {"id": "C", "text": "Từ 0 đến 100; giá trị phần trăm càng tiệm cận về 0 chứng tỏ phương sai sai số của mô hình được triệt tiêu hoàn toàn."}, {"id": "D", "text": "Luôn mang giá trị cố định bằng 0 do phương sai của phần dư và phương sai tổng thể luôn triệt tiêu lẫn nhau trong mọi điều kiện."}], "answer": "B", "explanation": "cho biết tỷ lệ phương sai của biến phụ thuộc có thể dự đoán được từ các biến độc lập. nghĩa là mô hình giải thích được 81% sự thay đổi của năng suất."}, {"id": 216, "local_id": 27, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Nếu mô hình có cao trên tập huấn luyện (Training set) nhưng rất thấp trên tập kiểm tra (Test set), mô hình đang gặp vấn đề gì?", "options": [{"id": "A", "text": "Underfitting (Mô hình chưa khớp dữ liệu)."}, {"id": "B", "text": "Overfitting (Quá khớp/Học vẹt)."}, {"id": "C", "text": "Optimal Fitting (Trạng thái tối ưu hóa hoàn hảo)."}, {"id": "D", "text": "Data Leakage (Hiện tượng rò rỉ dữ liệu huấn luyện)."}], "answer": "B", "explanation": "Đây là dấu hiệu kinh điển của Overfitting: Mô hình học quá kỹ dữ liệu cũ nhưng không áp dụng được cho dữ liệu mới."}, {"id": 217, "local_id": 28, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Chỉ số MAE (Mean Absolute Error - Sai số tuyệt đối trung bình) khác RMSE ở điểm nào?", "options": [{"id": "A", "text": "MAE thực hiện phép bình phương sai số lên trước khi lấy trung bình nhằm khuếch đại mức độ ảnh hưởng của các điểm dị biệt."}, {"id": "B", "text": "MAE lấy giá trị tuyệt đối của sai số, ít bị ảnh hưởng bởi các giá trị ngoại lai (outliers) hơn so với RMSE."}, {"id": "C", "text": "MAE trên cùng một tập dữ liệu kiểm nghiệm luôn có giá trị số học lớn hơn đáng kể so với chỉ số RMSE tương ứng."}, {"id": "D", "text": "MAE là chỉ số đo lường chuyên biệt chỉ áp dụng cho bài toán phân loại nhãn nhị phân chứ không thể đo lường biến liên tục."}], "answer": "B", "explanation": "RMSE bình phương sai số nên sẽ phạt rất nặng các sai số lớn (outliers), trong khi MAE đánh giá đều các sai số."}, {"id": 218, "local_id": 29, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Trong Case Study dự báo năng suất Lúa (Chapter 9), việc sử dụng AI giúp các nhà hoạch định chính sách điều gì?", "options": [{"id": "A", "text": "Can thiệp trực tiếp vào việc áp đặt giá gạo bán lẻ tại tất cả các siêu thị và chợ dân sinh nội địa."}, {"id": "B", "text": "Ước tính tổng sản lượng quốc gia sớm để có kế hoạch xuất nhập khẩu và đảm bảo an ninh lương thực."}, {"id": "C", "text": "Đếm chính xác tổng số lượng hạt lúa bên trong từng bao tải nông sản sau quá trình thu hoạch tại kho bãi."}, {"id": "D", "text": "Bình chọn và vinh danh danh hiệu cá nhân người nông dân sản xuất kinh doanh giỏi nhất trong niên vụ canh tác."}], "answer": "B", "explanation": "Dự báo chính xác giúp chính phủ và nhà hoạch định đưa ra quyết định tốt hơn về xuất nhập khẩu và an ninh lương thực."}, {"id": 219, "local_id": 30, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "“Tối ưu hóa đầu vào” (Input Optimization) dựa trên dự báo năng suất (Chapter 3) có nghĩa là gì?", "options": [{"id": "A", "text": "Ưu tiên đầu tư chọn mua các dòng phân bón và hạt giống có đơn giá thị trường đắt đỏ nhất trên thị trường."}, {"id": "B", "text": "Sử dụng đúng lượng hạt giống, phân bón và nước cần thiết để đạt năng suất mục tiêu, tránh lãng phí."}, {"id": "C", "text": "Tăng cường bón phân và tưới nước ở mức tối đa có thể để thúc đẩy sinh trưởng mà không tính đến chi phí đầu tư."}, {"id": "D", "text": "Chủ động hạn chế vật tư đầu vào để hạ thấp sản lượng thu hoạch xuống mức sàn nhằm tránh tình trạng rớt giá nông sản."}], "answer": "B", "explanation": "Mục tiêu là tối ưu hóa hiệu quả sử dụng tài nguyên (resource use efficiency), giảm lãng phí đầu vào mà vẫn đảm bảo năng suất."}, {"id": 220, "local_id": 31, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Khái niệm “AI có thể diễn giải” (Explainable AI - XAI) được đề xuất trong hướng phát triển tương lai (Chapter 6) nhằm giải quyết vấn đề gì?", "options": [{"id": "A", "text": "Tối ưu hóa các thuật toán tính toán ma trận để giúp các mô hình học sâu gia tăng tốc độ suy luận thời gian thực trên các thiết bị nhúng IoT."}, {"id": "B", "text": "Giải quyết vấn đề “Hộp đen” (Black box) - giúp nông dân hiểu TẠI SAO mô hình lại đưa ra dự báo đó (ví dụ: năng suất thấp do thiếu đạm)."}, {"id": "C", "text": "Tích hợp công nghệ nhận diện giọng nói và tổng hợp âm thanh tự nhiên để hệ thống AI có thể đàm thoại trực tiếp với người nông dân trên đồng ruộng."}, {"id": "D", "text": "Tự động hóa hoàn toàn quy trình đóng gói phần mềm thương mại nhằm cắt giảm chi phí bản quyền và hạ giá thành chuyển giao công nghệ cho trang trại."}], "answer": "B", "explanation": "Nông dân cần hiểu lý do đằng sau dự đoán để tin tưởng và hành động. XAI giúp minh bạch hóa quá trình ra quyết định của các mô hình phức tạp."}, {"id": 221, "local_id": 32, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Dữ liệu “Bất thường” (Anomaly) được phát hiện trong quá trình giám sát sản xuất (ví dụ: nhiệt độ tăng đột biến) sẽ kích hoạt hành động gì trong hệ thống AI?", "options": [{"id": "A", "text": "Ngắt toàn bộ nguồn điện và tự động tắt hệ thống máy chủ điều khiển trung tâm để phòng ngừa nguy cơ chập cháy thiết bị đo đạc."}, {"id": "B", "text": "Gửi cảnh báo sớm (Early Warning) để nông dân có biện pháp can thiệp kịp thời (ví dụ: che chắn, tưới nước làm mát)."}, {"id": "C", "text": "Tự động xóa sạch toàn bộ các bản ghi dữ liệu bất thường của ngày hôm đó ra khỏi cơ sở dữ liệu để giữ cho biểu đồ luôn có dạng chuẩn."}, {"id": "D", "text": "Tự động hiệu chỉnh nhân hệ số nhằm tăng mức dự báo sản lượng thu hoạch cuối vụ lên cao hơn để bù đắp sai số nhiệt độ ghi nhận."}], "answer": "B", "explanation": "Hệ thống giám sát thời gian thực giúp phát hiện bất thường và cảnh báo để giảm thiểu thiệt hại."}, {"id": 222, "local_id": 33, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Trong bảng so sánh các mô hình (Chapter 9), nếu Mô hình A có RMSE = 0.5 tấn/ha và Mô hình B có RMSE = 0.8 tấn/ha, ta nên chọn mô hình nào?", "options": [{"id": "A", "text": "Mô hình A."}, {"id": "B", "text": "Mô hình B."}, {"id": "C", "text": "Cả hai như nhau."}, {"id": "D", "text": "Không chọn mô hình nào."}], "answer": "A", "explanation": "RMSE càng thấp nghĩa là sai số càng nhỏ, dự báo càng chính xác."}, {"id": 223, "local_id": 34, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Công nghệ “Tỷ lệ biến đổi” (VRT - Variable Rate Technology) sử dụng kết quả dự báo năng suất để làm gì?", "options": [{"id": "A", "text": "Tự động tăng giảm tốc độ di chuyển cơ học của máy kéo nông nghiệp dựa trên độ dốc và độ gồ ghề của địa hình từng luống đất canh tác."}, {"id": "B", "text": "Điều chỉnh lượng phân bón/thuốc trừ sâu phun ra tại từng vị trí khác nhau trên cánh đồng tùy theo tiềm năng năng suất của vị trí đó."}, {"id": "C", "text": "Cho phép người nông dân tiến hành thay thế toàn bộ giống cây trồng mới ngay ở giai đoạn giữa chu kỳ sinh trưởng của vụ mùa hiện tại."}, {"id": "D", "text": "Quy hoạch và phân chia lại diện tích ranh giới bờ thửa của từng thửa ruộng sản xuất theo từng tuần dựa trên sự biến động của dự báo năng suất."}], "answer": "B", "explanation": "VRT là ứng dụng thực tế của tối ưu hóa đầu vào, dựa trên bản đồ năng suất dự báo để phân bổ tài nguyên chính xác."}, {"id": 224, "local_id": 35, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Tại sao việc tích hợp dữ liệu “Đa nguồn” (Multi-source data) từ vệ tinh, drone và cảm biến lại cải thiện độ chính xác của dự báo?", "options": [{"id": "A", "text": "Vì việc kết hợp gộp chung nhiều nguồn dữ liệu giúp tạo ra hiện tượng nhiễu tương hỗ có lợi nhằm làm mờ đi các giá trị biến động cục bộ bất thường trên cánh đồng."}, {"id": "B", "text": "Vì mỗi nguồn dữ liệu bù đắp khuyết điểm cho nhau (Vệ tinh nhìn rộng, Drone nhìn chi tiết, Cảm biến đo chính xác tại chỗ), tạo ra bức tranh toàn diện."}, {"id": "C", "text": "Vì sự kết hợp này chủ yếu phục vụ mục tiêu giải ngân tối đa nguồn vốn và ngân sách đầu tư thiết bị công nghệ cao của các dự án nông nghiệp số quy mô quốc gia."}, {"id": "D", "text": "Vì các chuyên gia nghiên cứu muốn gia tăng mức độ phức tạp toán học của thuật toán nhằm kéo dài thời gian hoàn thành công tác nghiệm thu của các đề tài khoa học."}], "answer": "B", "explanation": "Tích hợp dữ liệu đa nguồn là hướng phát triển tương lai để khắc phục hạn chế của từng nguồn dữ liệu riêng lẻ."}, {"id": 225, "local_id": 36, "section": "PHẦN 2: CÁC MÔ HÌNH & THUẬT TOÁN DỰ BÁO NĂNG SUẤT (12 Câu)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Kết quả cuối cùng của một hệ thống “Hoạch định sản xuất” thông minh là gì?", "options": [{"id": "A", "text": "Một tập tin bảng tính định dạng thô chứa các dãy số đo đạc cảm biến chưa qua bất kỳ khâu xử lý thống kê nào để cán bộ quản lý tự phân tích thủ công."}, {"id": "B", "text": "Một kế hoạch hành động (Action Plan) bao gồm lịch gieo trồng, lượng vật tư cần thiết và dự kiến sản lượng thu hoạch để tối ưu lợi nhuận."}, {"id": "C", "text": "Một tấm bản đồ ảnh vệ tinh quang phổ đa băng tầng với độ phân giải không gian trung bình chỉ thể hiện hiện trạng phân bố lớp phủ thực vật bề mặt."}, {"id": "D", "text": "Một bản tin dự báo xu thế thời tiết khí tượng thủy văn thông thường trong phạm vi bảy ngày tới mà hoàn toàn không kèm theo bất kỳ khuyến nghị nông học nào."}], "answer": "B", "explanation": "Mục tiêu cuối cùng là hỗ trợ ra quyết định (Decision Support), chuyển đổi dữ liệu dự báo thành kế hoạch canh tác cụ thể để tối ưu hóa sản xuất."}];
+
+    let currentIndex = 0;
+    let selectedOption = null;
+    let userAnswers = {}; // { index: { selected: 'A', isCorrect: true, checked: true } }
+    let isChecked = false;
+
+    // Elements
+    const qCounter = document.getElementById('question-counter');
+    const secTag = document.getElementById('section-tag');
+    const diffTag = document.getElementById('difficulty-tag');
+    const qText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const feedbackBox = document.getElementById('feedback-box');
+    const feedbackTitle = document.getElementById('feedback-title');
+    const feedbackDesc = document.getElementById('feedback-desc');
+    const btnCheck = document.getElementById('btn-check');
+    const btnNext = document.getElementById('btn-next');
+    const btnPrev = document.getElementById('btn-prev');
+    const progressFill = document.getElementById('progress-fill');
+    const quizScreen = document.getElementById('quiz-screen');
+    const resultScreen = document.getElementById('result-screen');
+    const paletteGrid = document.getElementById('palette-grid');
+
+    function initQuiz() {
+        buildPalette();
+        renderQuestion(currentIndex);
+    }
+
+    function buildPalette() {
+        paletteGrid.innerHTML = '';
+        questions.forEach((q, idx) => {
+            const item = document.createElement('div');
+            item.className = 'palette-item';
+            item.id = `palette-${idx}`;
+            item.innerText = idx + 1;
+            item.onclick = () => {
+                toggleDrawer();
+                jumpToQuestion(idx);
+            };
+            paletteGrid.appendChild(item);
+        });
+    }
+
+    function updatePalette() {
+        questions.forEach((q, idx) => {
+            const el = document.getElementById(`palette-${idx}`);
+            if (!el) return;
+            el.className = 'palette-item';
+            if (idx === currentIndex) el.classList.add('active');
+            if (userAnswers[idx] && userAnswers[idx].checked) {
+                if (userAnswers[idx].isCorrect) el.classList.add('correct');
+                else el.classList.add('wrong');
+            }
+        });
+    }
+
+    function renderQuestion(index) {
+        currentIndex = index;
+        const q = questions[index];
+        const state = userAnswers[index] || null;
+
+        qCounter.innerText = `Câu hỏi ${index + 1} / ${questions.length}`;
+        secTag.innerText = q.section || 'Nội dung trọng tâm';
+        
+        diffTag.innerText = q.difficulty || 'Trung bình';
+        diffTag.className = 'tag-pill';
+        if (q.difficulty === 'Dễ') diffTag.classList.add('diff-de');
+        else if (q.difficulty === 'Khó') diffTag.classList.add('diff-kho');
+        else diffTag.classList.add('diff-tb');
+
+        qText.innerText = q.question;
+        progressFill.style.width = `${((index + 1) / questions.length) * 100}%`;
+
+        btnPrev.disabled = (index === 0);
+
+        // Build Options
+        optionsContainer.innerHTML = '';
+        selectedOption = state ? state.selected : null;
+        isChecked = state ? state.checked : false;
+
+        q.options.forEach(opt => {
+            const card = document.createElement('div');
+            card.className = 'option-card';
+            card.id = `opt-${opt.id}`;
+
+            if (selectedOption === opt.id) {
+                card.classList.add('selected');
+            }
+
+            if (isChecked) {
+                card.classList.add('locked');
+                if (opt.id === q.answer) {
+                    card.classList.add('is-correct');
+                } else if (opt.id === selectedOption && selectedOption !== q.answer) {
+                    card.classList.add('is-wrong');
+                }
+            } else {
+                card.onclick = () => selectOption(opt.id);
+            }
+
+            card.innerHTML = `
+                <div class="option-letter">${opt.id}</div>
+                <div class="option-text">${opt.text}</div>
+            `;
+            optionsContainer.appendChild(card);
+        });
+
+        // Feedback
+        if (isChecked) {
+            btnCheck.style.display = 'none';
+            btnNext.style.display = 'inline-flex';
+            btnNext.innerText = (index === questions.length - 1) ? 'Xem kết quả 🏁' : 'Câu tiếp theo →';
+            showFeedback(state.isCorrect, q);
+        } else {
+            feedbackBox.className = 'feedback-box';
+            btnCheck.style.display = 'inline-flex';
+            btnCheck.disabled = !selectedOption;
+            btnNext.style.display = 'none';
+        }
+
+        updatePalette();
+    }
+
+    function selectOption(optId) {
+        if (isChecked) return;
+        selectedOption = optId;
+        document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+        const target = document.getElementById(`opt-${optId}`);
+        if (target) target.classList.add('selected');
+        btnCheck.disabled = false;
+    }
+
+    function checkAnswer() {
+        if (!selectedOption || isChecked) return;
+        const q = questions[currentIndex];
+        const isCorrect = (selectedOption === q.answer);
+
+        isChecked = true;
+        userAnswers[currentIndex] = {
+            selected: selectedOption,
+            isCorrect: isCorrect,
+            checked: true
+        };
+
+        // Lock options & mark colors
+        document.querySelectorAll('.option-card').forEach(c => c.classList.add('locked'));
+        const correctCard = document.getElementById(`opt-${q.answer}`);
+        if (correctCard) correctCard.classList.add('is-correct');
+
+        if (!isCorrect) {
+            const wrongCard = document.getElementById(`opt-${selectedOption}`);
+            if (wrongCard) wrongCard.classList.add('is-wrong');
+        }
+
+        showFeedback(isCorrect, q);
+
+        btnCheck.style.display = 'none';
+        btnNext.style.display = 'inline-flex';
+        btnNext.innerText = (currentIndex === questions.length - 1) ? 'Xem kết quả 🏁' : 'Câu tiếp theo →';
+
+        updatePalette();
+    }
+
+    function showFeedback(isCorrect, q) {
+        feedbackBox.className = `feedback-box show ${isCorrect ? 'correct' : 'incorrect'}`;
+        if (isCorrect) {
+            feedbackTitle.innerHTML = `<span>🎉</span> Chính xác!`;
+        } else {
+            feedbackTitle.innerHTML = `<span>❌</span> Chưa chính xác. Đáp án đúng là: <b>${q.answer}</b>`;
+        }
+        feedbackDesc.innerHTML = `<b>💡 Giải thích:</b> ${q.explanation || 'Không có giải thích bổ sung.'}`;
+    }
+
+    function navigateNext() {
+        if (currentIndex < questions.length - 1) {
+            renderQuestion(currentIndex + 1);
+        } else {
+            showResults();
+        }
+    }
+
+    function navigatePrev() {
+        if (currentIndex > 0) {
+            renderQuestion(currentIndex - 1);
+        }
+    }
+
+    function jumpToQuestion(idx) {
+        renderQuestion(idx);
+    }
+
+    function showResults() {
+        quizScreen.style.display = 'none';
+        resultScreen.style.display = 'block';
+
+        let correctCount = 0;
+        let wrongCount = 0;
+        questions.forEach((q, idx) => {
+            if (userAnswers[idx] && userAnswers[idx].isCorrect) {
+                correctCount++;
+            } else {
+                wrongCount++;
+            }
+        });
+
+        const total = questions.length;
+        const percent = Math.round((correctCount / total) * 100);
+
+        document.getElementById('final-score').innerText = correctCount;
+        document.getElementById('final-total').innerText = `/ ${total}`;
+        document.getElementById('stat-correct').innerText = correctCount;
+        document.getElementById('stat-wrong').innerText = wrongCount;
+        document.getElementById('stat-accuracy').innerText = `${percent}%`;
+
+        const scoreCircle = document.getElementById('score-circle');
+        scoreCircle.style.background = `conic-gradient(var(--accent) ${percent}%, #e2e8f0 ${percent}%)`;
+
+        const rTitle = document.getElementById('result-title');
+        const rSummary = document.getElementById('result-summary');
+
+        if (percent >= 90) {
+            rTitle.innerText = "🌟 Xuất sắc! Nắm vững kiến thức";
+            rSummary.innerText = "Bạn đã hoàn thành bài thi với kết quả tuyệt vời. Bạn đã hiểu rất sâu về nội dung của buổi học!";
+        } else if (percent >= 75) {
+            rTitle.innerText = "👏 Rất tốt! Đạt yêu cầu cao";
+            rSummary.innerText = "Kết quả rất ấn tượng! Bạn đã nắm chắc hầu hết các khái niệm trọng tâm.";
+        } else if (percent >= 50) {
+            rTitle.innerText = "👍 Đạt yêu cầu cơ bản";
+            rSummary.innerText = "Bạn đã vượt qua bài kiểm tra. Hãy xem lại các câu giải thích chi tiết để củng cố thêm phần còn yếu nhé!";
+        } else {
+            rTitle.innerText = "📖 Cần ôn tập thêm!";
+            rSummary.innerText = "Bạn nên đọc lại slide bài giảng và tài liệu học tập rồi thử sức lại lần nữa nhé.";
+        }
+    }
+
+    function restartQuiz() {
+        userAnswers = {};
+        currentIndex = 0;
+        selectedOption = null;
+        isChecked = false;
+        resultScreen.style.display = 'none';
+        quizScreen.style.display = 'block';
+        initQuiz();
+    }
+
+    function viewAllAnswers() {
+        resultScreen.style.display = 'none';
+        quizScreen.style.display = 'block';
+        renderQuestion(0);
+    }
+
+    function toggleDrawer() {
+        const drawer = document.getElementById('drawer');
+        const overlay = document.getElementById('drawer-overlay');
+        const isOpen = drawer.classList.contains('open');
+        if (isOpen) {
+            drawer.classList.remove('open');
+            overlay.style.display = 'none';
+        } else {
+            drawer.classList.add('open');
+            overlay.style.display = 'block';
+        }
+    }
+
+    // Khởi động
+    initQuiz();
+</script>
+
+</body>
+</html>

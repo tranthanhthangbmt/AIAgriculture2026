@@ -1,0 +1,35 @@
+1️⃣ Chủ đề 1: Định khoản TT200
+Chủ đề 1: Hệ chuyên gia Tư vấn Định khoản tự động & Phân loại giao dịch
+📌 Tổng quan Đề tài
+Dự án yêu cầu sinh viên chuyển hóa các quy định phức tạp của Thông tư 200/2014/TT-BTC thành một "Cố vấn Kế toán Ảo" trên nền tảng web. Thay vì phải tra cứu thủ công, người dùng chỉ cần nhập nội dung nghiệp vụ (ví dụ: "Mua 2 laptop Dell cho phòng marketing giá 40 triệu thanh toán bằng chuyển khoản"), hệ thống sẽ tự động bóc tách thông tin và đề xuất bút toán (Nợ/Có) chính xác kèm theo cơ sở pháp lý.
+
+📚 Tài liệu Sách & PDF Tham khảo chính
+📗 Sách chính: ChatGPT and AI for Accountants (Scott Dell & Mfon Akpan) — Tập trung Chương 1 và Chương 12 (Sử dụng Generative AI và Plugins trong kế toán).
+👉 📖 Mở đọc / Tải PDF: ChatGPT and AI for Accountants (Scott Dell & Mfon Akpan)
+📘 Sách bổ sung: Artificial Intelligence in Accounting: Practical Applications (Cory Ng & John Alarcon) — Tập trung Chương 1 (What Accountants Need to Know).
+👉 📖 Mở đọc / Tải PDF: Artificial Intelligence in Accounting: Practical Applications (Cory Ng & John Alarcon)
+📄 Trích lục chương học: Chương 1 (GenAI in Accounting) | Chương 12 (Web-Enhanced ChatGPT)
+🌳 Phân rã Cây tư duy (Tree of Thoughts) Hướng dẫn Thực hiện
+🎋 Nhánh 1: Khai thác Tri thức Học thuật (Xây dựng Knowledge Base)
+Sách ChatGPT and AI for Accountants (Chương 1 & 12): Hiểu nguyên lý hoạt động của Generative AI trong kế toán và cách ứng dụng Plugins để tự động hóa khâu ghi sổ (Bookkeeping).
+Sách Artificial Intelligence in Accounting: Practical Applications (Chương 1): Làm rõ sự khác biệt giữa tư duy lập luận của máy (Machine Reasoning) và trí tuệ con người, cũng như bản chất của Hệ chuyên gia (Expert Systems) dựa trên luật (Rules-based IF-THEN).
+Đầu ra Nhánh 1: Báo cáo tóm tắt lý thuyết, giải thích được "hộp đen" của thuật toán khi đọc hóa đơn và đối chiếu với Hệ thống tài khoản (Chart of Accounts).
+🎋 Nhánh 2: Thiết kế "Bộ não" bằng Kỹ thuật Prompt Engineering
+Thiết lập Persona (Đóng vai): "Hãy đóng vai một Kế toán trưởng với 15 năm kinh nghiệm tại Việt Nam. Bạn nắm rất rõ Thông tư 200/2014/TT-BTC. Nhiệm vụ của bạn là kiểm tra các nghiệp vụ kế toán tôi đưa ra, chỉ ra lỗi sai (nếu có) và hướng dẫn định khoản chính xác. Hãy luôn trích dẫn cơ sở pháp lý."
+Xử lý dữ liệu khuyết thiếu (Missing Data): Nếu thông tin hóa đơn bị mờ hoặc thiếu, tuyệt đối không tự bịa ra số liệu (Hallucination) mà phải trả về trạng thái [CẦN KIỂM TRA LẠI].
+Đầu ra Nhánh 2: Bộ quy tắc Prompt (Code of Conduct) hoàn chỉnh, được thử nghiệm đối kháng (Red-Teaming) bằng cách cố tình đưa chứng từ sai để kiểm tra xem AI có từ chối hoặc báo lỗi hay không.
+🎋 Nhánh 3: Xây dựng Website Demo bằng Antigravity (No-Code)
+Giao diện Đầu vào (Input):
+Một Textbox để người dùng gõ mô tả nghiệp vụ (hoặc dán nội dung hóa đơn).
+Các Checkbox tùy chọn: Hình thức thanh toán (Tiền mặt/Chuyển khoản), Có hóa đơn GTGT hay không.
+Luồng xử lý trung tâm (Process): Antigravity lấy Input của người dùng, tự động ghép với "Persona Kế toán trưởng" ở backend và gửi yêu cầu xử lý.
+Giao diện Đầu ra (Output): Trả về Bảng cấu trúc 5 cột rõ ràng:
+Diễn giải nghiệp vụ | 2. Tài khoản Nợ (Số hiệu & Tên TK) | 3. Tài khoản Có (Số hiệu & Tên TK) | 4. Số tiền | 5. Căn cứ pháp lý (Điều khoản TT200).
+Chức năng mở rộng: Nút "Xuất dữ liệu ra file CSV" để import vào phần mềm kế toán (MISA, SAP).
+🎋 Nhánh 4: Kiểm soát & Tư duy Phản biện (MOSAIC Framework)
+Hoài nghi nghề nghiệp (Professional Skepticism): AI chỉ đưa ra "Đề xuất bút toán", việc "Duyệt (Approve)" cuối cùng thuộc về con người (Human-in-the-loop).
+Cảnh báo bảo mật: Áp dụng nguyên tắc Ẩn danh hóa dữ liệu (Anonymization) — không đưa thông tin thật của đối tác, số tài khoản ngân hàng thực tế lên hệ thống demo.
+✅ Tiêu chuẩn Nộp bài & Kịch bản Test của Giảng viên
+Báo cáo Đề án (Word/PDF): Quy trình MOSAIC, danh sách Prompt, phân tích lý thuyết từ sách và nhật ký khắc phục lỗi định khoản sai.
+Kịch bản Giảng viên Test trực tiếp: Nhập nghiệp vụ phức tạp (ví dụ: Mua TSCĐ có chi phí lắp đặt, chạy thử) để kiểm tra hệ thống có gom đúng nguyên giá vào TK 211 hay không.
+Slide Thuyết trình & Bảo vệ (15-20 phút): 5p lý thuyết + 10p Live Demo + 5p Q&A.

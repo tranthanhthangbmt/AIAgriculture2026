@@ -1,0 +1,272 @@
+Định nghĩa kinh điển về Học máy (Machine Learning) của Arthur Samuel (1959) là gì?
+A. Là phân ngành kỹ thuật chế tạo các hệ thống cơ điện tử tự hành có khả năng bắt chước toàn diện nhận thức và hành vi cảm xúc của con người.
+B. Là lĩnh vực nghiên cứu cung cấp cho máy tính khả năng học hỏi mà không cần được lập trình rõ ràng (explicitly programmed).
+C. Là phương pháp thiết lập hệ chuyên gia thông qua việc lập trình thủ công toàn bộ tập luật suy diễn if-else cùng các ràng buộc logic xác định.
+D. Là quá trình mô phỏng hoàn toàn mạng lưới nơ-ron sinh học của vỏ não con người bằng các vi mạch phần cứng điện tử neuromorphic chuyên dụng.
+ANSWER: B
+
+Sự khác biệt cơ bản nhất giữa “Lập trình truyền thống” và “Học máy” là gì?
+A. Lập trình truyền thống bắt buộc phải viết mã bằng các ngôn ngữ cấp thấp như C/C++, trong khi Học máy chỉ có thể chạy trên Python hoặc R.
+B. Lập trình truyền thống: Con người nhập quy tắc Máy ra đáp án. Học máy: Con người nhập dữ liệu + đáp án Máy tự tìm ra quy tắc.
+C. Lập trình truyền thống tối ưu hóa tốc độ thực thi các phép tính đại số tuyến tính, còn Học máy chỉ tập trung vào việc nén dung lượng bộ nhớ dữ liệu.
+D. Lập trình truyền thống đòi hỏi máy tính phải có cơ chế suy diễn xác suất, trong khi Học máy chỉ thực hiện các chuỗi lệnh logic tuần tự và tĩnh.
+ANSWER: B
+
+Trong “Học có giám sát” (Supervised Learning), dữ liệu huấn luyện có đặc điểm gì quan trọng nhất?
+A. Dữ liệu hoàn toàn không có cấu trúc và không chứa bất kỳ thông tin nào về nhãn mục tiêu.
+B. Dữ liệu bao gồm các đầu vào (input) và các nhãn (labels) mong muốn.
+C. Dữ liệu bắt buộc phải là tín hiệu âm thanh hoặc hình ảnh độ phân giải cao thu thập từ vệ tinh.
+D. Dữ liệu chỉ bao gồm các biến đầu vào độc lập mà không có bất kỳ nhãn kết quả tham chiếu nào.
+ANSWER: B
+
+Bài toán dự đoán “Giá nhà” hoặc “Nhiệt độ ngày mai” (giá trị liên tục) thuộc loại nào trong Học có giám sát?
+A. Phân loại dữ liệu danh mục (Classification).
+B. Phân cụm không giám sát (Clustering).
+C. Hồi quy (Regression).
+D. Giảm chiều dữ liệu (Dimensionality Reduction).
+ANSWER: C
+
+Bài toán lọc thư rác (Spam/Non-spam) là ví dụ điển hình của loại vấn đề nào?
+A. Hồi quy liên tục (Regression Analysis).
+B. Phân loại (Classification).
+C. Phân cụm dữ liệu (Cluster Analysis).
+D. Học tăng cường tương tác (Reinforcement Learning).
+ANSWER: B
+
+Đặc điểm chính của “Học không giám sát” (Unsupervised Learning) là gì?
+A. Hệ thống học cách ánh xạ từ các mẫu đầu vào sang các nhãn đầu ra đã được con người gán nhãn chính xác từ trước.
+B. Hệ thống phải tự tìm ra các mẫu (patterns) hoặc cấu trúc ẩn trong dữ liệu không có nhãn.
+C. Hệ thống tương tác liên tục với môi trường để học chính sách hành động thông qua cơ chế nhận điểm thưởng hoặc bị phạt.
+D. Hệ thống bắt buộc phải có chuyên gia giám sát và can thiệp điều chỉnh trọng số thủ công sau mỗi chu kỳ huấn luyện.
+ANSWER: B
+
+Thuật toán nào sau đây thuộc nhóm “Học không giám sát”?
+A. Hồi quy tuyến tính đa biến (Multiple Linear Regression).
+B. Cây quyết định phân loại (Classification Decision Tree).
+C. Phân cụm K-Means (K-Means Clustering).
+D. Máy Vector Hỗ trợ (Support Vector Machine - SVM).
+ANSWER: C
+
+“Học tăng cường” (Reinforcement Learning) hoạt động dựa trên cơ chế nào?
+A. Ghi nhớ nguyên trạng toàn bộ tập dữ liệu lịch sử và tra cứu kết quả bằng phép đối sánh tương đồng hình học.
+B. Thử và sai (Trial and error) để tối đa hóa phần thưởng (reward) hoặc giảm thiểu hình phạt.
+C. Ước lượng tham số phân phối thống kê tĩnh và tính toán các đại lượng mô tả như kỳ vọng toán và phương sai mẫu.
+D. Phân tích cụm không gian dữ liệu đầu vào dựa trên ma trận khoảng cách hình học giữa các quan sát chưa có nhãn.
+ANSWER: B
+
+Sự khác biệt giữa “Học theo lô” (Batch Learning) và “Học trực tuyến” (Online Learning) là gì?
+A. Học theo lô huấn luyện trên toàn bộ dữ liệu một lúc; Học trực tuyến huấn luyện dần dần theo từng phần nhỏ.
+B. Học theo lô luôn có tốc độ hội tụ nhanh hơn, trong khi Học trực tuyến chỉ áp dụng được khi toàn bộ dữ liệu đã được lưu trữ cố định.
+C. Học trực tuyến không có khả năng tiếp nhận dữ liệu mới theo thời gian thực mà bắt buộc phải nạp lại toàn bộ cơ sở dữ liệu từ đầu.
+D. Học theo lô chỉ phù hợp với các bài toán hồi quy chuỗi thời gian, trong khi Học trực tuyến chỉ giải quyết được các bài toán phân loại nhị phân.
+ANSWER: A
+
+Hiện tượng “Quá khớp” (Overfitting) xảy ra khi nào?
+A. Mô hình có cấu trúc quá đơn giản nên không thể nắm bắt được xu hướng cơ bản của dữ liệu huấn luyện.
+B. Mô hình hoạt động rất tốt trên dữ liệu huấn luyện nhưng kém trên dữ liệu mới (học vẹt).
+C. Mô hình có độ lệch (bias) rất cao dẫn đến việc dự đoán sai lệch trên cả tập huấn luyện và tập kiểm thử.
+D. Mô hình đạt độ tổng quát hóa tối ưu khi sai số kiểm thử và sai số huấn luyện đồng thời tiến về giá trị 0.
+ANSWER: B
+
+Hiện tượng “Chưa khớp” (Underfitting) là gì?
+A. Mô hình có độ phức tạp quá cao, ghi nhớ luôn cả các thành phần nhiễu ngẫu nhiên trong dữ liệu huấn luyện.
+B. Mô hình quá đơn giản để nắm bắt cấu trúc cơ bản của dữ liệu, hoạt động kém trên cả tập huấn luyện.
+C. Mô hình đạt độ chính xác tuyệt đối trên tập kiểm định nhưng lại phân loại sai lệch trên tập huấn luyện thực tế.
+D. Mô hình bị bùng nổ tài nguyên tính toán khiến thời gian huấn luyện vượt quá giới hạn dung lượng phần cứng hệ thống.
+ANSWER: B
+
+Đâu là một thách thức về chất lượng dữ liệu thường gặp trong dự án ML (“Dữ liệu kém”)?
+A. Dữ liệu chứa nhiều nhiễu, giá trị ngoại lai (outliers) hoặc bị thiếu.
+B. Dữ liệu đã được chuẩn hóa thang đo và điền đầy đủ các thuộc tính khuyết thiếu.
+C. Dữ liệu có kích thước mẫu lớn với độ cân bằng hoàn hảo giữa các lớp phân loại.
+D. Dữ liệu được lưu trữ dưới định dạng bảng quan hệ tiêu chuẩn có khóa chính rõ ràng.
+ANSWER: A
+
+Thuật toán “Hồi quy tuyến tính” (Linear Regression) thường được sử dụng cho mục đích gì?
+A. Phân tách và phân loại các mẫu dữ liệu phi cấu trúc phức tạp như phân loại hình ảnh sâu bệnh hại cây trồng thành các nhãn rời rạc.
+B. Tìm mối quan hệ tuyến tính giữa biến phụ thuộc và biến độc lập để dự đoán một giá trị liên tục (ví dụ: sản lượng lúa).
+C. Gom nhóm các vùng đất canh tác có đặc tính thổ nhưỡng tương đồng mà không cần sử dụng bất kỳ nhãn giám sát mục tiêu nào.
+D. Mô hình hóa chuỗi quyết định đa tầng để sinh ra chuỗi văn bản tự động dựa trên mạng nơ-ron hồi quy kết hợp cơ chế chú ý.
+ANSWER: B
+
+Thuật toán “Hồi quy Logistic” (Logistic Regression) khác Hồi quy tuyến tính ở điểm nào cơ bản nhất?
+A. Hồi quy Logistic được dùng chuyên biệt để dự báo các chuỗi giá trị thời gian liên tục đa biến có tính chu kỳ mùa vụ trong thời gian dài hạn.
+B. Hồi quy Logistic dùng cho bài toán Phân loại (đầu ra là xác suất thuộc về một lớp, ví dụ: 0 hoặc 1), thay vì dự đoán giá trị liên tục.
+C. Hồi quy Logistic hoạt động hoàn toàn không cần dữ liệu đầu vào huấn luyện mà tự động nội suy nhãn mục tiêu dựa trên phân phối tiên nghiệm chuẩn.
+D. Hồi quy Logistic đòi hỏi chi phí tính toán huấn luyện ma trận nghịch đảo đại số phức tạp hơn nhiều lần so với các mô hình mạng nơ-ron học sâu.
+ANSWER: B
+
+Cấu trúc của thuật toán “Cây quyết định” (Decision Tree) bao gồm các thành phần nào?
+A. Lớp nơ-ron đầu vào, các lớp nơ-ron ẩn trung gian tích hợp hàm phi tuyến và lớp nơ-ron đầu ra.
+B. Nút gốc, nút nội bộ (kiểm tra thuộc tính), nhánh (kết quả kiểm tra) và nút lá (nhãn lớp).
+C. Các chu trình đồ thị có hướng khép kín và các vòng lặp đệ quy phản hồi trạng thái liên tục.
+D. Các siêu phẳng phân tách tuyến tính đa chiều cùng tập hợp các vector hỗ trợ định hình biên lề.
+ANSWER: B
+
+Tại sao thuật toán “Rừng ngẫu nhiên” (Random Forest) thường được ưa chuộng hơn một “Cây quyết định” đơn lẻ?
+A. Vì thuật toán này sở hữu kiến trúc toán học đơn giản hơn rất nhiều, dễ diễn giải trực quan từng quy tắc rẽ nhánh hơn cây quyết định đơn lẻ.
+B. Vì nó giúp giảm hiện tượng “Quá khớp” (Overfitting) và thường cho độ chính xác cao hơn bằng cách kết hợp kết quả của nhiều cây.
+C. Vì nó tiêu tốn ít tài nguyên bộ nhớ tính toán hơn nhiều và luôn có tốc độ huấn luyện trên tập dữ liệu lớn nhanh hơn cây đơn lẻ.
+D. Vì nó loại bỏ hoàn toàn nhu cầu thu thập dữ liệu huấn luyện và cho phép mô hình tự ngoại suy quy luật mà không cần biến đầu vào.
+ANSWER: B
+
+Mục tiêu chính của thuật toán “Máy Vector Hỗ trợ” (SVM) trong bài toán phân loại là gì?
+A. Gom cụm tự động tất cả các điểm dữ liệu có khoảng cách Euclid nhỏ nhất vào các vùng không gian lân cận.
+B. Tìm một siêu phẳng (hyperplane) tối ưu để phân tách các lớp dữ liệu với lề (margin) lớn nhất.
+C. Tính toán bảng xác suất có điều kiện kết hợp giữa các đặc trưng đầu vào dựa trên công thức tiên nghiệm Bayes.
+D. Xây dựng cây nhị phân phân cấp để sắp xếp tuần tự các điểm dữ liệu theo giá trị phương sai tăng dần.
+ANSWER: B
+
+Thuật toán “Naïve Bayes” dựa trên định lý toán học nào và có giả định “ngây thơ” gì?
+A. Định lý Pytago trong không gian Euclid; giả định mối quan hệ vuông góc trực giao giữa toàn bộ các vector đặc trưng dữ liệu.
+B. Định lý Bayes; giả định sự độc lập có điều kiện giữa các đặc trưng (các tính chất không ảnh hưởng lẫn nhau).
+C. Định lý hình học Thales; giả định sự song song tuyệt đối và tỷ lệ đồng dạng bất biến giữa các trục tọa độ dữ liệu đầu vào.
+D. Định luật vạn vật hấp dẫn của Newton; giả định các điểm dữ liệu hút nhau theo tỷ lệ thuận với khối lượng và khoảng cách.
+ANSWER: B
+
+Thuật toán “K-Láng giềng gần nhất” (KNN) phân loại một điểm dữ liệu mới dựa trên nguyên tắc nào?
+A. Bỏ phiếu theo đa số của K điểm dữ liệu gần nó nhất trong không gian.
+B. Thiết lập hệ phương trình hồi quy phi tuyến bậc cao với ma trận trọng số tối ưu.
+C. Lấy mẫu ngẫu nhiên xác suất dựa trên phân phối chuẩn của toàn bộ biến mục tiêu.
+D. Tính toán giá trị trung bình số học tích lũy của toàn bộ các điểm trong cơ sở dữ liệu.
+ANSWER: A
+
+Nhược điểm lớn nhất của thuật toán KNN khi làm việc với tập dữ liệu lớn là gì?
+A. Mô hình luôn có độ chính xác phân loại tiệm cận bằng không trên hầu hết các tập dữ liệu có phân bố đa chiều.
+B. Tốn kém về mặt tính toán và yêu cầu bộ nhớ cao (do phải lưu và tính khoảng cách với tất cả điểm dữ liệu).
+C. Cấu trúc giải thuật cực kỳ phức tạp và đòi hỏi tối ưu hàm mất mát phi lồi bằng các giải thuật vi phân nâng cao.
+D. Mô hình hoàn toàn bị giới hạn, chỉ có khả năng xử lý dữ liệu dạng chuỗi ký tự mà không thể áp dụng cho dữ liệu số.
+ANSWER: B
+
+Thuật toán “K-Means” thuộc loại học máy nào và nhiệm vụ chính là gì?
+A. Học có giám sát; Phân loại nhãn ảnh dựa trên tập dữ liệu đã được gán nhãn trước.
+B. Học không giám sát; Phân cụm dữ liệu (gom các điểm dữ liệu tương tự vào K nhóm).
+C. Học tăng cường; Tối ưu hóa chuỗi hành động của tác nhân trong môi trường mô phỏng.
+D. Học bán giám sát; Dịch tự động ngôn ngữ tự nhiên kết hợp cơ chế lan truyền nhãn.
+ANSWER: B
+
+Trong thuật toán K-Means, người dùng phải xác định trước tham số nào?
+A. Số lượng nhãn phân loại (labels) của tập đích.
+B. Số lượng cụm (k) cần phân chia.
+C. Hệ số tốc độ học (learning rate) tối ưu.
+D. Độ sâu tối đa của các nhánh cây quyết định.
+ANSWER: B
+
+Hàm kích hoạt nào thường được sử dụng ở đầu ra của mô hình Hồi quy Logistic để ép giá trị về khoảng [0,1]?
+A. Hàm ReLU (Rectified Linear Unit).
+B. Sigmoid.
+C. Hàm Tanh (Hyperbolic Tangent).
+D. Hàm Tuyến tính (Linear Activation).
+ANSWER: B
+
+Để giải quyết vấn đề “Quá khớp” (Overfitting) trong Cây quyết định (Decision Tree), phương pháp nào thường được sử dụng?
+A. Tăng độ sâu tối đa của cây lên mức vô hạn để học chi tiết từng mẫu đơn lẻ.
+B. Cắt tỉa cây (Pruning) hoặc sử dụng Rừng ngẫu nhiên (Random Forest).
+C. Xóa bỏ ngẫu nhiên phần lớn tập dữ liệu kiểm thử để giảm độ biến thiên kết quả.
+D. Bỏ qua các bước tinh chỉnh siêu tham số và giữ nguyên cây phát triển tự do.
+ANSWER: B
+
+Mục tiêu chính của hệ thống “Khuyến nghị cây trồng” (Crop Recommender) dựa trên ML là gì?
+A. Dự báo biến động chỉ số giá nông sản trên thị trường chứng khoán quốc tế trong chu kỳ tài chính tiếp theo.
+B. Đề xuất loại cây trồng phù hợp nhất để canh tác dựa trên các thông số đất đai và môi trường cụ thể.
+C. Điều khiển trực tiếp các cơ cấu chấp hành của robot nông nghiệp để tự động gieo hạt giống xuống các luống đất.
+D. Nhận diện và phân loại mức độ nguy hại của các loài côn trùng gây hại cây trồng dựa trên ảnh quang học cục bộ.
+ANSWER: B
+
+Trong bài toán Khuyến nghị cây trồng (Chapter 5), đâu là các đặc trưng đầu vào (Input features) quan trọng nhất của đất?
+A. Màu sắc cảm quan của bề mặt đất và mùi vị thổ nhưỡng tự nhiên.
+B. Hàm lượng Nitơ (N), Phốt pho (P), Kali (K) và độ pH.
+C. Mật độ phân bố số lượng giun đất và các vi sinh vật hiếu khí.
+D. Độ dày tầng đất mặt và bán kính bóng râm của các tán cây xung quanh.
+ANSWER: B
+
+Ngoài các yếu tố về đất, hệ thống khuyến nghị cây trồng còn cần dữ liệu môi trường nào để tăng độ chính xác?
+A. Vận tốc dòng gió và góc hướng gió tầng cao.
+B. Nhiệt độ, độ ẩm và lượng mưa.
+C. Dao động biên độ triều cường và mực nước biển dâng.
+D. Trị số áp suất khí quyển và bức xạ ion hóa vũ trụ.
+ANSWER: B
+
+Trong các thử nghiệm nghiên cứu (Chapter 5), nhóm thuật toán nào thường cho độ chính xác cao nhất (lên tới 99%) cho bài toán khuyến nghị cây trồng?
+A. Hồi quy tuyến tính đơn giản (Simple Linear Regression).
+B. Phân loại xác suất Naïve Bayes cổ điển (Gaussian Naïve Bayes).
+C. Các kỹ thuật Ensemble (như Random Forest, Bagging).
+D. Phân cụm không giám sát K-Means (K-Means Clustering).
+ANSWER: C
+
+Trong quy trình xây dựng mô hình ML cho nông nghiệp, bước “Tiền xử lý” (Preprocessing) như “Feature Scaling” (Co giãn đặc trưng) có tác dụng gì?
+A. Nhân bản ngẫu nhiên các mẫu quan sát để làm tăng kích thước tập dữ liệu huấn luyện lên gấp đôi một cách nhân tạo.
+B. Đưa các biến số (ví dụ: lượng mưa mm và nhiệt độ độ C) về cùng một thang đo để thuật toán không bị thiên lệch.
+C. Tự động phát hiện và loại bỏ hoàn toàn các cột thuộc tính có mức độ tương quan thấp để giảm kích thước bộ nhớ của mô hình.
+D. Cố tình bổ sung nhiễu ngẫu nhiên vào dữ liệu nhằm hạ thấp độ chính xác tổng thể để kiểm tra tính bền vững của mô hình.
+ANSWER: B
+
+Bài toán “Dự báo thời tiết ngắn hạn” (Chapter 14) sử dụng loại dữ liệu đặc thù nào?
+A. Dữ liệu hình ảnh chụp tĩnh cắt ngang không gian.
+B. Dữ liệu văn bản phi cấu trúc từ các bài báo cáo.
+C. Dữ liệu chuỗi thời gian (Time-series data).
+D. Dữ liệu tín hiệu âm thanh và sóng siêu âm phản hồi.
+ANSWER: C
+
+Tại sao các Mạng Nơ-ron Hồi quy (RNN) lại phù hợp cho bài toán dự báo thời tiết hơn là các mạng nơ-ron truyền thống?
+A. Vì nó có khả năng trích xuất các đặc trưng không gian đa chiều từ dữ liệu ma trận điểm ảnh tốt hơn.
+B. Vì nó có khả năng ghi nhớ thông tin từ các bước thời gian trước đó (xử lý dữ liệu chuỗi).
+C. Vì thuật toán này luôn có tốc độ xử lý nhanh hơn đáng kể trên kiến trúc phần cứng CPU truyền thống.
+D. Vì nó hoàn toàn không cần trải qua quá trình huấn luyện mà tự động nội suy trọng số từ dữ liệu ban đầu.
+ANSWER: B
+
+Trong nghiên cứu về dự báo thời tiết (Chapter 14), cấu hình mô hình nào cho kết quả tốt hơn khi dự báo nhiều biến thời tiết?
+A. MIMO (Nhiều đầu vào - Nhiều đầu ra) - Tích hợp toàn bộ các biến vào một mô hình duy nhất.
+B. SISO (Đầu vào Đơn - Đầu ra Đơn) - Xây dựng mô hình riêng cho từng biến.
+C. MISO (Nhiều đầu vào - Đầu ra Đơn) kết hợp phương pháp dự báo trung bình trượt ngẫu nhiên.
+D. Mô hình hồi quy tuyến tính cổ điển không xét tới các yếu tố trễ thời gian trong quá khứ.
+ANSWER: B
+
+Để đánh giá sai số của mô hình dự báo thời tiết (giá trị liên tục như nhiệt độ), chỉ số nào thường được sử dụng?
+A. Accuracy (Tỷ lệ phân loại chính xác trên tổng số mẫu kiểm thử).
+B. Precision và Recall (Độ chuẩn xác và Độ thu hồi của lớp dự đoán).
+C. RMSE (Căn bậc hai của Sai số bình phương trung bình) hoặc MSE.
+D. F1-Score (Điểm số trung bình điều hòa giữa độ chuẩn xác và độ thu hồi).
+ANSWER: C
+
+Kỹ thuật “Làm mịn dữ liệu” (Data Smoothing) như EMA (Exponential Moving Average) trong dự báo thời tiết có tác dụng gì?
+A. Loại bỏ nhiễu (noise) để làm lộ rõ xu hướng của dữ liệu thời tiết.
+B. Gia tăng tính phi tuyến và làm dữ liệu trở nên phức tạp hơn để thử thách mô hình.
+C. Mở rộng kích thước tệp lưu trữ và tăng số lượng chiều không gian của các đặc trưng.
+D. Mã hóa các giá trị thời tiết thành dạng chuỗi băm bảo mật chống can thiệp dữ liệu.
+ANSWER: A
+
+Trong bài toán “Phân loại độ phì nhiêu của đất” (Soil Fertility Analysis), nếu sử dụng thuật toán “Phân cụm” (Clustering) thay vì Phân loại, điều đó có nghĩa là gì?
+A. Chúng ta đã gán nhãn đầy đủ cho từng mẫu đất (Đất phì nhiêu/Đất cằn cỗi) và muốn máy học quy tắc phân chia.
+B. Chúng ta chưa biết nhãn, muốn máy tự động gom nhóm các mẫu đất có đặc tính giống nhau.
+C. Chúng ta muốn xây dựng một mô hình hồi quy để ước lượng giá trị tài chính thương mại của từng lô đất nông nghiệp.
+D. Chúng ta muốn thực hiện nội suy không gian địa lý để vẽ bản đồ ranh giới hành chính của vùng đất canh tác.
+ANSWER: B
+
+Một trong những lợi ích lớn nhất của việc áp dụng ML vào dự báo thời tiết so với các phương pháp vật lý truyền thống là gì?
+A. ML có khả năng dự báo chính xác mà hoàn toàn không cần dựa trên bất kỳ dữ liệu khí tượng nào trong lịch sử.
+B. ML có thể nắm bắt được các mối quan hệ phi tuyến tính phức tạp mà con người khó mô hình hóa bằng công thức.
+C. ML luôn đảm bảo kết quả dự báo chính xác tuyệt đối 100% và không bao giờ xuất hiện sai số trong thực nghiệm.
+D. ML có thể vận hành trực tiếp trên các vi điều khiển cấp thấp mà không tiêu tốn bất kỳ nguồn năng lượng nào.
+ANSWER: B
+
+Khi xây dựng hệ thống gợi ý cây trồng, nếu dữ liệu huấn luyện chỉ lấy từ vùng đồng bằng nhưng áp dụng mô hình cho vùng núi, vấn đề gì sẽ xảy ra?
+A. Mô hình sẽ tự động thích nghi tối ưu và đạt độ chính xác hoàn hảo trên mọi địa hình.
+B. Vấn đề “Dữ liệu không đại diện” (Sampling Bias), dẫn đến dự đoán sai lệch.
+C. Hiện tượng bùng nổ tham số tính toán khiến mô hình bị dừng đột ngột khi suy luận.
+D. Mô hình sẽ tự động giảm thiểu thời gian xử lý và giảm độ trễ tính toán xuống mức 0.
+ANSWER: B
+
+Trong biểu đồ đánh giá mô hình dự báo (như Hình 7.1 Chapter 7), bước nào giúp đảm bảo mô hình không bị “lỗi thời” theo thời gian?
+A. Thu thập dữ liệu một lần duy nhất tại thời điểm bắt đầu triển khai dự án.
+B. Giám sát và Cập nhật liên tục (Continuous Monitoring and Updating).
+C. Cố định kiến trúc mô hình ban đầu mà không bao giờ thay đổi trọng số học.
+D. Đóng băng toàn bộ các bước kỹ thuật đặc trưng sau khi hoàn tất huấn luyện.
+ANSWER: B
+
+Đâu là một ví dụ về “Kỹ thuật đặc trưng” (Feature Engineering) trong bài toán dự báo năng suất cây trồng?
+A. Loại bỏ hoàn toàn cột “Lượng mưa” khỏi tập dữ liệu chỉ vì thấy có một vài giá trị 0.
+B. Tạo thêm một cột mới là “Tỷ lệ N/P” từ hai cột “Nitơ” và “Phốt pho” có sẵn.
+C. Chỉnh sửa tên tiêu đề của cột “Nhiệt độ” thành “Temp” để dễ nhìn hơn khi hiển thị.
+D. Sao chép nguyên văn toàn bộ bảng dữ liệu sang một thư mục mới để phòng ngừa mất mát.
+ANSWER: B

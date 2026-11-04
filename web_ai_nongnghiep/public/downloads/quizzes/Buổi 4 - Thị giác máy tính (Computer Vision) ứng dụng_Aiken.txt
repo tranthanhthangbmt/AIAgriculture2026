@@ -1,0 +1,251 @@
+Định nghĩa cơ bản nhất của “Thị giác máy tính” (Computer Vision) là gì?
+A. Là một chuyên ngành thuộc kỹ thuật đồ họa máy tính nhằm tổng hợp, kết xuất và mô phỏng trực quan các mô hình hình học không gian 3D phức tạp.
+B. Là một lĩnh vực của AI dùng để trích xuất thông tin hữu ích từ hình ảnh kỹ thuật số (nhận dạng, đo lường, điều hướng).
+C. Là công nghệ phần cứng sinh trắc học chuyên về thiết kế chế tạo các hệ thống cảm biến quang học cấy ghép thay thế giác mạc mắt người trong phẫu thuật.
+D. Là công nghệ truyền thông đa phương tiện chuyên xử lý các chuẩn nén luồng video và phân phối nội dung truyền hình độ trễ thấp trên mạng máy tính diện rộng.
+ANSWER: B
+
+So với thị giác của con người, thị giác máy tính khác biệt ở điểm nào về mặt “đầu vào”?
+A. Con người nhìn thấy ánh sáng; Máy tính nhìn thấy các ma trận số (giá trị pixel).
+B. Con người cảm nhận quang phổ liên tục; Máy tính chỉ tiếp nhận tín hiệu từ các hình ảnh đen trắng đơn sắc.
+C. Con người cảm nhận hình ảnh trực tiếp; Máy tính chỉ có thể tiếp nhận và đọc hiểu hình ảnh dưới dạng văn bản.
+D. Không có bất kỳ sự khác biệt nào vì cả mắt người và máy tính đều trực tiếp xử lý các ma trận điểm ảnh rời rạc.
+ANSWER: A
+
+Bước đầu tiên trong quy trình xử lý ảnh điển hình là gì?
+A. Tiền xử lý nâng cao chất lượng ảnh (Preprocessing).
+B. Thu thập hình ảnh (Image Acquisition).
+C. Phân đoạn tách vùng quan tâm (Segmentation).
+D. Trích xuất đặc trưng và ra quyết định phân loại.
+ANSWER: B
+
+Kỹ thuật “Chuyển đổi sang ảnh xám” (Grayscale Conversion) thường được thực hiện ở giai đoạn nào và mục đích là gì?
+A. Ở giai đoạn Hậu xử lý; nhằm chuẩn hóa định dạng màu sắc cho máy in công nghiệp và phục vụ việc lưu trữ dữ liệu bản vẽ kỹ thuật dạng vector.
+B. Ở giai đoạn Tiền xử lý; để giảm độ phức tạp tính toán (từ 3 kênh màu RGB xuống 1 kênh) mà vẫn giữ được thông tin cấu trúc.
+C. Ở giai đoạn Phân đoạn; nhằm loại bỏ hoàn toàn các đường viền góc cạnh để làm mịn không gian phông nền trong suốt quá trình nhận dạng đối tượng.
+D. Ở giai đoạn Trích xuất đặc trưng; nhằm bổ sung thêm thông tin độ sâu 3D và tăng cường mật độ điểm ảnh cho các lớp tích chập của mô hình học sâu.
+ANSWER: B
+
+Ảnh nhị phân (Binary Image) là loại ảnh như thế nào?
+A. Ảnh chứa đầy đủ ba kênh màu RGB với giá trị mỗi kênh từ 0 đến 255.
+B. Ảnh chỉ có hai giá trị màu: Đen (0) và Trắng (1 hoặc 255).
+C. Ảnh xám có 256 mức độ sáng khác nhau từ đen tuyền đến trắng sáng.
+D. Ảnh đa phổ ghi nhận dữ liệu bức xạ hồng ngoại và phản xạ nhiệt độ.
+ANSWER: B
+
+Kỹ thuật “Lọc nhiễu” (Filtering), ví dụ như sử dụng bộ lọc trung bình (Mean filter), có tác dụng gì?
+A. Làm tăng độ tương phản cục bộ và làm sắc nét các đường biên cạnh phân cách giữa các đối tượng.
+B. Làm mờ ảnh nhẹ để loại bỏ các điểm nhiễu (noise) lấm tấm không mong muốn.
+C. Thay đổi kích thước và tỷ lệ khung hình không gian của bức ảnh để chuẩn hóa đầu vào cho mô hình.
+D. Xoay góc chụp và đảo chiều ma trận điểm ảnh theo trục đối xứng để tăng cường dữ liệu huấn luyện.
+ANSWER: B
+
+Trong xử lý hình thái học (Morphological Operations), phép “Co” (Erosion) có tác dụng gì đối với đối tượng trong ảnh nhị phân?
+A. Làm giãn nở và mở rộng ranh giới đối tượng, giúp hàn gắn các vết đứt gãy hoặc lấp đầy lỗ thủng bên trong.
+B. Làm mỏng đối tượng, giúp loại bỏ các nhiễu nhỏ ở biên hoặc tách hai vật thể bị dính liền nhau.
+C. Tự động gán nhãn màu sắc giả lập cho các phân vùng đối tượng để chuẩn bị cho bước phân lớp phân đoạn.
+D. Đảo ngược hoàn toàn các giá trị điểm ảnh nhị phân từ đen thành trắng và ngược lại trên toàn bức ảnh.
+ANSWER: B
+
+Ngược lại với phép Co, phép “Giãn” (Dilation) làm gì?
+A. Làm bào mòn ranh giới đối tượng, giúp loại bỏ các nhánh nhiễu nhỏ nhô ra ngoài đường viền biên.
+B. Làm dày/nở rộng đối tượng, giúp lấp đầy các lỗ hổng nhỏ bên trong đối tượng.
+C. Cắt phân đôi đối tượng thành hai phần hoàn toàn độc lập dựa trên trục đối xứng hình học không gian.
+D. Xóa bỏ hoàn toàn phần phông nền xung quanh và chỉ giữ lại một điểm ảnh trọng tâm tọa độ duy nhất.
+ANSWER: B
+
+Thuật toán Canny hoặc Sobel thường được sử dụng cho mục đích gì trong thị giác máy tính?
+A. Phát hiện khuôn mặt và nhận diện các tọa độ mốc giải phẫu sinh trắc học trên gương mặt đối tượng.
+B. Phát hiện cạnh (Edge Detection) - tìm ranh giới giữa các vùng có độ sáng thay đổi mạnh.
+C. Nhận dạng tiếng nói tự động và khử tạp âm nền cho tín hiệu âm thanh thu được từ microphone trường gần.
+D. Nén dung lượng tập tin hình ảnh dựa trên thuật toán biến đổi cosin rời rạc (chuẩn nén JPEG/DCT).
+ANSWER: B
+
+Thư viện mã nguồn mở phổ biến nhất được sử dụng trong Python cho các tác vụ xử lý ảnh này là gì?
+A. Pandas (chuyên dùng phân tích dữ liệu dạng bảng).
+B. OpenCV (cv2).
+C. NumPy (thư viện tính toán khoa học cho mảng đa chiều).
+D. ReactJS (thư viện JavaScript phát triển giao diện web).
+ANSWER: B
+
+Trong ví dụ phân loại hạt gạo (Chapter 5), hệ thống tính toán “Tỷ lệ khung hình” (Aspect Ratio) bằng cách nào?
+A. Chia Chiều rộng cho Chiều cao của hình chữ nhật bao quanh hạt gạo.
+B. Lấy khối lượng hạt gạo chia cho thể tích thực nghiệm đo bằng cảm biến tải trọng.
+C. Lấy tổng chu vi đường bao hạt gạo chia cho giá trị diện tích bề mặt tính theo pixel.
+D. Đếm tổng số pixel mức xám cao nhất trong vùng lõi chia cho số pixel vùng biên hạt gạo.
+ANSWER: A
+
+Tại sao bước “Phân đoạn” (Segmentation) lại quan trọng trong bài toán đếm số lượng hạt gạo?
+A. Vì nó giúp hệ thống đếm tổng số lượng điểm ảnh (pixels) của toàn bộ bức ảnh nhằm tối ưu hóa dung lượng bộ nhớ đệm RAM khi huấn luyện mô hình.
+B. Vì nó giúp tách biệt từng hạt gạo ra khỏi nền và ra khỏi các hạt gạo khác, để máy tính có thể đếm từng đối tượng riêng lẻ.
+C. Vì nó giúp tăng cường màu sắc và độ tương phản quang học để bức ảnh chụp hạt gạo hiển thị trực quan, sắc nét và thẩm mỹ hơn trên màn hình người dùng.
+D. Vì nó giúp giảm thiểu công suất tiêu thụ điện năng của camera và card đồ họa xử lý trong suốt chu trình thu thập tín hiệu tại dây chuyền sản xuất.
+ANSWER: B
+
+Cảm hứng sinh học cho sự ra đời của Mạng Nơ-ron Tích chập (CNN) đến từ nghiên cứu về bộ phận nào của con người/động vật?
+A. Màng nhĩ và hệ thống thính giác ốc tai.
+B. Vỏ não thị giác (Visual Cortex).
+C. Hệ thống thần kinh tiêu hóa và dạ dày.
+D. Mạng lưới dây thần kinh vận động ngoại biên.
+ANSWER: B
+
+Khái niệm “Trường tiếp nhận” (Receptive Field) trong CNN có nghĩa là gì?
+A. Toàn bộ không gian ma trận điểm ảnh đầu vào được truyền đồng thời và kết nối trực tiếp tới tất cả các nơ-ron trong cùng một lớp ẩn.
+B. Một vùng nhỏ cụ thể của hình ảnh đầu vào mà một nơ-ron đơn lẻ trong lớp tích chập “nhìn thấy” và phản ứng lại.
+C. Dung lượng bộ nhớ đệm đồ họa GPU được cấp phát chuyên biệt để lưu trữ tạm thời các trọng số mô hình trong toàn bộ pha lan truyền xuôi.
+D. Kích thước màn hình hiển thị kết quả phân loại nhằm trực quan hóa các hộp bao đối tượng cho người vận hành dễ dàng theo dõi ngoài thực tế.
+ANSWER: B
+
+Trong kiến trúc CNN, các nơ-ron ở các lớp đầu tiên (cấp thấp) thường phát hiện các đặc trưng gì?
+A. Các bộ phận phức tạp như toàn bộ cấu trúc khuôn mặt hoặc thân cây.
+B. Các mẫu đơn giản như đường thẳng, cạnh ngang, cạnh dọc.
+C. Tên nhãn định danh cụ thể và phân lớp phân loại của đối tượng mục tiêu.
+D. Trạng thái biểu cảm và các thuộc tính ngữ nghĩa trừu tượng cấp cao.
+ANSWER: B
+
+Một “Bộ lọc” (Filter) hay Kernel trong lớp Tích chập thực chất là gì?
+A. Một lớp kính phân cực vật lý gắn trước ống kính camera để lọc bớt ánh sáng chói lóa ngoài thực địa.
+B. Một ma trận các trọng số (weights) nhỏ trượt qua ảnh để tìm kiếm một đặc trưng cụ thể.
+C. Một thuật toán phần mềm bảo mật chuyên kiểm tra mã độc và loại bỏ các gói tin bị lỗi đường truyền.
+D. Một bảng tra cứu bảng mã màu chuẩn xác định danh sách các dải quang phổ hồng ngoại của ảnh vệ tinh.
+ANSWER: B
+
+Tại sao CNN lại ưu việt hơn mạng kết nối đầy đủ (Dense Network) khi xử lý hình ảnh?
+A. Vì CNN có khả năng “Bất biến dịch chuyển” (Translation Invariance) - nhận ra đối tượng dù nó nằm ở vị trí nào trong ảnh.
+B. Vì CNN hoạt động hoàn toàn không cần dữ liệu huấn luyện mẫu và có thể tự động suy luận nhãn phân lớp thông qua các quy tắc heuristic đơn giản.
+C. Vì CNN chỉ có khả năng xử lý định dạng ảnh nhị phân hoặc ảnh xám đơn sắc, giúp triệt tiêu hoàn toàn nguy cơ xuất hiện hiện tượng quá khớp dữ liệu.
+D. Vì cấu trúc toán học của CNN mô phỏng chính xác tuyệt đối 100% từng cơ chế truyền dẫn chất hóa học giữa các synap trong tế bào thần kinh sinh học.
+ANSWER: A
+
+Khi một bộ lọc (filter) quét qua ảnh, đầu ra của nó được gọi là gì?
+A. Bức ảnh màu nguyên bản ban đầu (Raw RGB Image).
+B. Bản đồ đặc trưng (Feature Map).
+C. Biểu đồ tần suất phân bố màu sắc (Histogram).
+D. Điểm ảnh chết không mang thông tin (Dead Pixels).
+ANSWER: B
+
+Nếu bạn sử dụng một bộ lọc kích thước 3x3 với padding='same' và strides=1, kích thước của bản đồ đặc trưng đầu ra so với ảnh đầu vào sẽ như thế nào?
+A. Nhỏ hơn kích thước ảnh gốc.
+B. Bằng nhau.
+C. Lớn hơn kích thước ảnh gốc.
+D. Bằng 0 (ảnh bị triệt tiêu).
+ANSWER: B
+
+Lớp “Gộp cực đại” (Max Pooling) hoạt động như thế nào?
+A. Tính giá trị trung bình cộng của tất cả các pixel nằm trong vùng cửa sổ trượt để làm mịn và giảm kích thước ma trận.
+B. Chỉ giữ lại giá trị lớn nhất (pixel sáng nhất/nổi bật nhất) trong vùng cửa sổ trượt, loại bỏ các giá trị khác.
+C. Ngẫu nhiên loại bỏ một tỷ lệ cố định các nơ-ron và trọng số liên kết nhằm ngăn ngừa hiện tượng quá khớp (overfitting).
+D. Tính tổng tích lũy tất cả giá trị điểm ảnh trong vùng cửa sổ rồi nhân với hệ số suy giảm gradient theo thời gian.
+ANSWER: B
+
+Mục đích chính của việc sử dụng nhiều lớp Tích chập xếp chồng lên nhau (Deep CNN) là gì?
+A. Để làm tăng thời gian suy luận và kiểm thử nhằm kiểm tra khả năng chịu tải của phần cứng.
+B. Để tạo ra sự phân cấp đặc trưng: từ cạnh hình dạng bộ phận vật thể hoàn chỉnh.
+C. Để mở rộng dung lượng bộ nhớ RAM đồ họa và tránh hiện tượng tràn bộ đệm khi nạp ma trận.
+D. Để chuyển đổi luân phiên ảnh màu RGB thành ảnh nhị phân ở từng giai đoạn trích xuất cạnh.
+ANSWER: B
+
+“Stride” (Sải bước) trong lớp tích chập ảnh hưởng như thế nào đến bản đồ đặc trưng?
+A. Stride càng lớn, bản đồ đặc trưng đầu ra có độ phân giải không gian càng cao và chi tiết hơn.
+B. Stride càng lớn, bản đồ đặc trưng đầu ra càng nhỏ (giảm kích thước không gian).
+C. Stride hoàn toàn không làm thay đổi kích thước không gian của bản đồ đặc trưng mà chỉ đổi kênh màu.
+D. Stride làm thay đổi giá trị kênh màu RGB của hình ảnh từ quang phổ nhìn thấy sang dải sóng hồng ngoại.
+ANSWER: B
+
+Trong một mạng CNN điển hình để phân loại (ví dụ: LeNet-5 hoặc AlexNet), các lớp cuối cùng thường là loại lớp nào?
+A. Lớp Tích chập trích xuất đặc trưng không gian (Convolutional Layer).
+B. Lớp Gộp giảm kích thước không gian bản đồ đặc trưng (Pooling Layer).
+C. Lớp Kết nối đầy đủ (Fully Connected / Dense Layers).
+D. Lớp Tiền xử lý và chuẩn hóa dải giá trị điểm ảnh đầu vào mạng nơ-ron.
+ANSWER: C
+
+Khi huấn luyện CNN, các giá trị trong bộ lọc (filter weights) được xác định như thế nào?
+A. Do các kỹ sư thị giác máy tính thiết lập thủ công các ma trận hằng số cố định như bộ lọc Sobel hoặc Canny trước khi đưa vào mô hình.
+B. Được khởi tạo ngẫu nhiên và tự động điều chỉnh (học) thông qua quá trình huấn luyện (Backpropagation) để tối ưu hóa nhiệm vụ.
+C. Được tải tự động từ các cơ sở dữ liệu bách khoa toàn thư mở trên Internet và giữ nguyên cố định không bao giờ thay đổi trong toàn bộ chu kỳ học.
+D. Được định sẵn là các ma trận đơn vị chỉ chứa các giá trị số 0 và 1 xen kẽ nhau một cách tuần hoàn nhằm đơn giản hóa tối đa các phép toán số học.
+ANSWER: B
+
+Theo Chapter 2, tại sao các phương pháp phát hiện bệnh táo truyền thống (kiểm tra trực quan bởi chuyên gia) lại trở nên không hiệu quả trong nền nông nghiệp hiện đại?
+A. Vì các chuyên gia bệnh học thực vật luôn yêu cầu mức chi phí thù lao quá cao và các phòng thí nghiệm kiểm định của họ thường đặt ở rất xa khu vực canh tác nông nghiệp.
+B. Vì phương pháp này tốn nhiều thời gian, công sức, tốn kém và dễ xảy ra sai sót do tính chủ quan của con người, đặc biệt là trên các trang trại lớn.
+C. Vì các giống cây táo thương mại hiện đại đã được biến đổi gen hoàn toàn để kháng mọi loại nấm mốc và vi khuẩn gây hại nên không còn nguy cơ phát sinh mầm bệnh trong thực tế.
+D. Vì các chủ nhà vườn ngày nay chỉ ưu tiên sử dụng thiết bị bay không người lái để quay phim quảng bá phong cảnh thay vì duy trì các hoạt động khảo sát bệnh học định kỳ.
+ANSWER: B
+
+Các bệnh phổ biến trên cây táo được liệt kê trong tài liệu nghiên cứu (Chapter 2) bao gồm những loại nào?
+A. Bệnh đốm lá Alternaria, Bệnh ghẻ táo (Apple Scab), Bệnh phấn trắng (Powdery Mildew) và Bệnh rỉ sét (Cedar Apple Rust).
+B. Bệnh héo xanh vi khuẩn trên cây cà chua, Bệnh đạo ôn trên cây lúa nước, Bệnh đốm mắt cua trên thân cao su và Bệnh rỉ sắt cà phê vối.
+C. Bệnh nghẹt rễ sinh lý do ngập úng nước kéo dài, Bệnh thối cổ rễ do nấm đất kỵ khí và Hiện tượng vàng lá do đất canh tác bị nhiễm mặn nghiêm trọng.
+D. Hiện tượng cháy chóp lá do thời tiết khô hạn cực đoan, Khuyết tật thiếu hụt vi lượng kẽm và Hiện tượng rụng lá sinh lý theo chu kỳ mùa thu hàng năm.
+ANSWER: A
+
+Mục tiêu kinh tế chính của việc áp dụng Học máy (ML) vào phát hiện bệnh táo là gì?
+A. Nhằm độc quyền công nghệ canh tác nông nghiệp công nghệ cao để nâng giá thành bán quả táo ra thị trường quốc tế lên gấp hai hoặc ba lần so với trước.
+B. Giảm chi phí cho người trồng (giảm thuốc trừ sâu lãng phí) và tăng năng suất/chất lượng quả, từ đó đáp ứng nhu cầu tiêu dùng.
+C. Nhằm thay thế toàn bộ lực lượng lao động nông dân bằng dây chuyền cơ giới hóa tự động để loại bỏ hoàn toàn các tổ chức công đoàn nông trại truyền thống.
+D. Nhằm thương mại hóa độc quyền các gói phần mềm thị giác máy tính cho các viện nghiên cứu khí tượng thủy văn và tổ chức môi trường quốc tế phi lợi nhuận.
+ANSWER: B
+
+Trong dự án “Nhận dạng loài hoa” (Chapter 11), tại sao chúng ta cần AI trong khi con người có thể tự phân biệt các loài hoa bằng mắt thường?
+A. Vì các chuyên gia thực vật học hoàn toàn không muốn thực hiện công việc phân loại ngoài thực địa và có xu hướng giao phó mọi nhiệm vụ phân tích cho các kỹ sư công nghệ thông tin.
+B. Vì có hàng ngàn loài thực vật, một người không thể ghi nhớ hết được, và việc tra cứu thủ công rất mất thời gian. AI cung cấp kết quả nhanh và chi tiết hơn.
+C. Vì các hệ thống trí tuệ nhân tạo có khả năng cảm nhận trực tiếp hương thơm hóa học và phân tích chi tiết cấu trúc phân tử phấn hoa thông qua cảm biến quang phổ nhìn thấy thông thường.
+D. Vì thị giác máy tính có khả năng tự động biến đổi hình thái sinh học và màu sắc của các loài hoa trong tự nhiên nhằm phục vụ cho mục đích trang trí cảnh quan công viên đô thị hiện đại.
+ANSWER: B
+
+Dự án nhận dạng loài hoa trong Chapter 11 là sự kết hợp của các nhánh AI nào?
+A. Hệ thống Robot tự hành (Robotics), Cơ điện tử chính xác và Kỹ thuật điều khiển cánh tay gắp công nghiệp.
+B. Học máy (Machine Learning), Học sâu (Deep Learning) và Thị giác máy tính (Computer Vision).
+C. Xử lý ngôn ngữ tự nhiên (NLP), Nhận dạng tiếng nói tự động và Mô hình dịch thuật đa ngữ thông minh.
+D. Công nghệ chuỗi khối (Blockchain), Tính toán đám mây phân tán và Mạng truyền dẫn ngang hàng bảo mật cao.
+ANSWER: B
+
+Để triển khai dự án nhận dạng hoa bằng Python, thư viện nào sau đây là KHÔNG cần thiết hoặc ít liên quan nhất trong danh sách cài đặt?
+A. TensorFlow & Keras (để xây dựng mô hình DL).
+B. OpenCV & Pillow (để xử lý ảnh).
+C. Matplotlib & Seaborn (để vẽ biểu đồ).
+D. PyGame (để làm game).
+ANSWER: D
+
+Trong bài toán phân loại hoa, đặc điểm hình thái học nào của thực vật thường được AI phân tích kỹ lưỡng nhất?
+A. Chiều cao sinh trưởng và độ nghiêng thân cây gỗ.
+B. Hình dạng, kết cấu và màu sắc của lá và hoa.
+C. Độ sâu tầng rễ cọc và mật độ lông hút trong đất.
+D. Tọa độ kinh độ và vĩ độ địa lý nơi trồng cây hoa.
+ANSWER: B
+
+Trong quá trình chuẩn bị dữ liệu cho mô hình CNN nhận diện hoa, thao tác “Resize” (thay đổi kích thước ảnh) có ý nghĩa gì?
+A. Tăng dung lượng lưu trữ của từng tệp ảnh lên mức tối đa nhằm bảo tồn nguyên vẹn toàn bộ các hạt nhiễu quang học thu được từ các cảm biến camera độ phân giải cao.
+B. Đưa tất cả các ảnh đầu vào về cùng một kích thước cố định (ví dụ: 64x64 hoặc 128x128 pixel) để phù hợp với kiến trúc mạng nơ-ron.
+C. Cắt bỏ hoàn toàn vùng hoa và tán lá để mạng nơ-ron chỉ tập trung trích xuất thông tin môi trường nền đất và các loài cỏ dại mọc xung quanh đối tượng cần khảo sát.
+D. Tự động chuyển đổi toàn bộ ảnh chụp đa sắc sang không gian ảnh xám đơn kênh nhằm giảm thiểu độ bão hòa màu sắc và đơn giản hóa hình thái học của mẫu vật thực vật.
+ANSWER: B
+
+Thư viện tqdm được cài đặt trong dự án Chapter 11 có tác dụng gì?
+A. Tối ưu hóa tốc độ tính toán phần cứng GPU bằng cách tự động song song hóa các phép nhân ma trận trọng số trong quá trình huấn luyện mô hình học sâu tích chập.
+B. Hiển thị thanh tiến trình (progress bar) khi chạy các vòng lặp xử lý dữ liệu lâu, giúp người dùng biết chương trình đang chạy đến đâu.
+C. Tự động thu thập và tải về hàng loạt hình ảnh thực vật mới từ các công cụ tìm kiếm trên Internet mỗi khi phát hiện tập dữ liệu huấn luyện cục bộ bị thiếu hụt mẫu.
+D. Xây dựng giao diện tương tác người dùng đồ họa hoàn chỉnh với các nút bấm trực quan và bảng điều khiển để triển khai mô hình phân loại hoa lên nền tảng web dịch vụ.
+ANSWER: B
+
+Khi một hệ thống CV được ứng dụng để “Phân loại nông sản” (ví dụ: phân loại cà chua chín/xanh), nó dựa vào đặc trưng nào là chủ yếu?
+A. Âm thanh va chạm và biên độ dao động khi quả rơi tự do trên hệ thống băng chuyền.
+B. Màu sắc (Color Histogram) và Hình dạng (Shape/Contour).
+C. Hàm lượng đường hòa tan tổng số và vị giác cảm quan nếm thử trực tiếp của quả.
+D. Tỷ trọng chất lỏng và khối lượng riêng của từng quả khi thả ngập hoàn toàn trong nước.
+ANSWER: B
+
+Một trong những lợi ích “phi kỹ thuật” quan trọng của việc áp dụng các ứng dụng nhận diện bệnh trên điện thoại di động cho nông dân là gì?
+A. Cung cấp thêm các trò chơi giải trí đa phương tiện trên điện thoại giúp người nông dân giảm bớt áp lực tinh thần trong những giờ lao động vất vả ngoài đồng ruộng.
+B. Tăng cường khả năng tiếp cận kiến thức chuyên gia cho nông dân ở vùng sâu vùng xa (những người thiếu tiếp cận dịch vụ khuyến nông).
+C. Thúc đẩy thị trường tiêu thụ điện thoại thông minh phân khúc cao cấp tại các vùng nông thôn nhờ yêu cầu cấu hình phần cứng xử lý đồ họa cực kỳ phức tạp của mô hình.
+D. Hỗ trợ bà con nông dân trực tiếp livestream bán đấu giá các lô nông sản tươi sống tới người tiêu dùng tại các đô thị lớn trên các nền tảng mạng xã hội phổ biến.
+ANSWER: B
+
+Trong sơ đồ khối của một hệ thống giám sát cây trồng bằng CV, sau khi Camera thu thập ảnh và Máy tính xử lý ra kết quả (ví dụ: phát hiện sâu), bước tiếp theo thường là gì trong hệ thống tự động hóa?
+A. Tự động ngắt toàn bộ nguồn điện của trạm điều hành trung tâm và đưa máy tính xử lý vào chế độ ngủ đông dài hạn để tiết kiệm tối đa năng lượng pin mặt trời.
+B. Kích hoạt cơ cấu chấp hành (Actuators) như cánh tay robot phun thuốc hoặc gửi cảnh báo đến điện thoại người quản lý.
+C. Lập tức xóa bỏ vĩnh viễn toàn bộ cơ sở dữ liệu ảnh chụp hiện trường và các file tham số trọng số mô hình vừa suy luận xong nhằm giải phóng dung lượng ổ cứng.
+D. Tự động điều chỉnh tăng độ sáng màn hình hiển thị tại trạm giám sát lên mức tối đa nhằm xua đuổi các loài chim và côn trùng bay xung quanh khu vực nhà lưới.
+ANSWER: B

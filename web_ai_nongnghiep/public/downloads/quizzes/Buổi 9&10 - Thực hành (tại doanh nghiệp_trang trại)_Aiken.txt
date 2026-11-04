@@ -1,0 +1,104 @@
+Theo tài liệu [AI-Agri] Chapter 7, ngôn ngữ lập trình phổ biến nhất hiện nay để triển khai các dự án AI trong nông nghiệp là gì?
+A. Ngôn ngữ C++.
+B. Python.
+C. Ngôn ngữ Java.
+D. Ngôn ngữ PHP.
+ANSWER: B
+
+Công cụ “Google Colaboratory” (Google Colab) được khuyến nghị sử dụng cho sinh viên thực hành vì lý do chính nào?
+A. Nó cung cấp giao diện đồ họa kéo thả 3D bắt mắt và tự động sinh mã nguồn thuật toán mà không cần người dùng phải học bất kỳ dòng lệnh nào.
+B. Nó chạy trên trình duyệt (đám mây), không yêu cầu cài đặt phần mềm phức tạp trên máy cá nhân và cung cấp miễn phí quyền truy cập GPU.
+C. Nó có khả năng chạy ngoại tuyến hoàn toàn mà không cần kết nối mạng Internet, đồng thời tự động đồng bộ hóa dữ liệu với thiết bị phần cứng ngoại vi.
+D. Nó chỉ dành riêng cho các dòng máy tính cấu hình cao có tích hợp sẵn card đồ họa chuyên dụng và yêu cầu phải mua bản quyền phần mềm định kỳ hàng tháng.
+ANSWER: B
+
+Để vẽ biểu đồ (ví dụ: biểu đồ biến thiên độ ẩm đất theo thời gian) trong báo cáo, thư viện Python nào thường được sử dụng nhất?
+A. Thư viện đồ họa mô phỏng trò chơi PyGame.
+B. Matplotlib (hoặc Seaborn).
+C. Thư viện học sâu mạng nơ-ron TensorFlow.
+D. Thư viện xử lý chuỗi và biểu thức chính quy Regex.
+ANSWER: B
+
+Khi bạn muốn chia sẻ code và kết quả thực hành của mình cho giảng viên hoặc thành viên nhóm qua Google Colab, bạn có thể làm gì?
+A. Chụp ảnh toàn bộ từng đoạn code trên màn hình máy tính rồi gửi qua các ứng dụng nhắn tin cá nhân như Zalo hay Messenger.
+B. Nhấn nút “Share” để tạo liên kết (Link) có thể truy cập hoặc mời qua email, tương tự như Google Docs.
+C. Bắt buộc phải tải toàn bộ tệp lệnh mã nguồn về máy rồi in ra giấy nộp trực tiếp tại văn phòng khoa thì mới chấm điểm được.
+D. Chỉ có thể chia sẻ khi các máy tính của nhóm được cắm chung một sợi dây cáp mạng LAN vật lý nối trực tiếp trong phòng thí nghiệm.
+ANSWER: B
+
+Thư viện nào đóng vai trò quan trọng trong việc xử lý dữ liệu dạng bảng (như file Excel chứa dữ liệu cảm biến) trong Python?
+A. Pandas.
+B. OpenCV (Chuyên về xử lý hình ảnh và thị giác máy tính).
+C. Keras (Chuyên về xây dựng và huấn luyện mô hình mạng nơ-ron).
+D. Pygame (Chuyên về phát triển trò chơi và đồ họa tương tác 2D).
+ANSWER: A
+
+“AI Biên” (Edge AI) - công nghệ thường thấy trong các hệ thống nông nghiệp hiện đại (Chapter 4) - hoạt động theo nguyên lý nào?
+A. Truyền toàn bộ dữ liệu thô thu thập được từ cảm biến lên máy chủ đám mây (Cloud) từ xa để phân tích rồi mới nhận kết quả gửi về.
+B. Xử lý dữ liệu cục bộ ngay trên thiết bị phần cứng (như Camera, Gateway) tại trang trại, không cần gửi về Cloud.
+C. Yêu cầu nhân công vận hành phải túc trực 24/24 giờ trước máy tính trạm để trực tiếp nhập các thông số tính toán thủ công cho hệ thống.
+D. Chỉ thu thập dữ liệu và lưu trữ cục bộ vào thẻ nhớ SD mà không thực thi bất kỳ thuật toán suy luận hoặc xử lý thông minh nào tại chỗ.
+ANSWER: B
+
+Tại sao Edge AI lại quan trọng đối với việc “Vận hành” hệ thống tại các vùng nông thôn hẻo lánh?
+A. Vì chi phí đầu tư mua sắm và triển khai các thiết bị phần cứng Edge AI luôn rẻ hơn rất nhiều so với mọi loại cảm biến cơ học thông thường.
+B. Vì nó giúp hệ thống vẫn hoạt động và ra quyết định được ngay cả khi mất kết nối Internet hoặc mạng chập chờn (giảm độ trễ).
+C. Vì hình thức mẫu mã thiết kế của các mạch Edge AI luôn đẹp mắt, tinh tế hơn và giúp khu vườn nông nghiệp trở nên hiện đại hơn về mặt mỹ quan.
+D. Vì công nghệ này giúp loại bỏ hoàn toàn nhu cầu sử dụng nguồn điện năng lượng mặt trời cũng như pin lưu trữ tại các trạm đo đạc ngoài đồng ruộng.
+ANSWER: B
+
+Thiết bị nào sau đây là ví dụ điển hình của một thiết bị Edge AI mà sinh viên có thể gặp khi đi thực tế?
+A. Hệ thống máy chủ siêu máy tính (Supercomputer) đặt tại trung tâm dữ liệu quốc gia.
+B. Raspberry Pi, Jetson Nano hoặc các vi điều khiển nhúng (Embedded systems).
+C. Các dòng máy tính xách tay chuyên chơi game (Laptop Gaming) công suất tiêu thụ điện cực lớn.
+D. Màn hình hiển thị TV thông minh cỡ lớn được gắn cố định tại phòng họp của ban quản lý trang trại.
+ANSWER: B
+
+Phần đầu tiên của một báo cáo thực hành/nghiên cứu khoa học (như các Case Study trong sách) thường là gì, có chức năng tóm tắt toàn bộ nội dung?
+A. Phần Kết luận (Conclusion).
+B. Tóm tắt (Abstract).
+C. Danh mục Tài liệu tham khảo (References).
+D. Phần Phụ lục số liệu (Appendix).
+ANSWER: B
+
+Trong phần “Phương pháp nghiên cứu” (Methodology) của báo cáo thực hành, bạn cần trình bày điều gì?
+A. Chia sẻ toàn bộ cảm nghĩ, ấn tượng cá nhân và những khó khăn chủ quan của từng thành viên trong nhóm gặp phải trong suốt chuyến đi thực tế tại trang trại.
+B. Mô tả chi tiết các bước đã thực hiện, công cụ đã sử dụng (phần cứng, phần mềm), và cách thu thập dữ liệu để người khác có thể lặp lại thí nghiệm.
+C. Liệt kê trực tiếp toàn bộ các bảng số liệu đo đạc thực tế cuối cùng kèm theo đồ thị và những phát hiện trọng tâm mà chưa cần giải thích quy trình thực hiện.
+D. Trình bày dự toán kinh phí tài chính chi tiết cho việc mua sắm trang thiết bị và kế hoạch phân chia doanh thu thương mại hóa sản phẩm sau khi thử nghiệm.
+ANSWER: B
+
+Khi trình bày “Kết quả” (Results), ngoài việc đưa ra các con số, bạn cần làm gì để báo cáo trực quan hơn?
+A. Viết các đoạn văn bản mô tả thật dài và chi tiết mà không cần kèm theo bất kỳ minh họa nào.
+B. Sử dụng Biểu đồ (Charts), Hình ảnh minh họa (Figures) và Bảng số liệu (Tables).
+C. Thay đổi liên tục nhiều kiểu phông chữ và tô các màu sắc sặc sỡ ngẫu nhiên cho từng dòng văn bản.
+D. Ghi âm giọng đọc kết quả thành các tệp âm thanh rồi đính kèm liên kết vào trong bài báo cáo in giấy.
+ANSWER: B
+
+Phần “Thảo luận” (Discussion) trong báo cáo dùng để làm gì?
+A. Để dành toàn bộ dung lượng khen ngợi và đánh giá mức độ đóng góp công sức của từng thành viên trong ban cán sự nhóm nghiên cứu.
+B. Để giải thích ý nghĩa của kết quả, so sánh với lý thuyết, phân tích nguyên nhân sai số (nếu có) và đề xuất hướng cải thiện.
+C. Để sao chép lặp lại nguyên văn toàn bộ các bảng số liệu và hình ảnh đồ thị đã được trình bày trước đó trong phần Kết quả nghiên cứu.
+D. Để công bố danh mục các nguồn tài trợ tài chính và gửi lời tri ân trang trọng tới các đối tác doanh nghiệp đồng hành cùng dự án.
+ANSWER: B
+
+Tại sao việc trích dẫn “Tài liệu tham khảo” (References) ở cuối báo cáo là bắt buộc?
+A. Để làm tăng tổng số trang cho tập tài liệu báo cáo nhằm đạt yêu cầu số lượng trang tối thiểu quy định.
+B. Để tôn trọng quyền sở hữu trí tuệ, tránh đạo văn và giúp người đọc kiểm chứng nguồn thông tin.
+C. Để thể hiện việc nhóm tác giả đã đọc qua rất nhiều sách giáo trình khác nhau dù không sử dụng vào bài viết.
+D. Để người chấm thi có thể tìm thấy thông tin liên lạc cá nhân của các tác giả thuộc những nghiên cứu liên quan.
+ANSWER: B
+
+Mục tiêu cuối cùng của việc ứng dụng AI và Chuyển đổi số trong nông nghiệp (xuyên suốt khóa học này) là gì?
+A. Thay thế hoàn toàn vai trò của người nông dân bằng robot tự hành để con người không cần ra đồng ruộng nữa.
+B. Tối ưu hóa năng suất, giảm chi phí/rủi ro, bảo vệ môi trường và phát triển nông nghiệp bền vững.
+C. Làm gia tăng chi phí sản xuất và đẩy giá thành nông sản lên mức cao nhất nhằm thu lại lợi nhuận độc quyền.
+D. Thương mại hóa tối đa các phần mềm công nghệ ngoại nhập mà không cần chú trọng đến hiệu quả canh tác thực tế.
+ANSWER: B
+
+Theo bạn, rào cản lớn nhất để nông dân Việt Nam tiếp cận các công nghệ này (như đã thảo luận trong phần Đạo đức) là gì?
+A. Nông dân hoàn toàn không có nhu cầu nâng cao năng suất hay ứng dụng khoa học kỹ thuật.
+B. Chi phí đầu tư ban đầu cao và yêu cầu về kỹ năng/kiến thức vận hành.
+C. Hầu hết các vùng nông nghiệp trọng điểm hiện nay đều chưa có hệ thống lưới điện quốc gia.
+D. Đất đai canh tác tại Việt Nam có tính chất cơ lý không phù hợp với bất kỳ loại cảm biến điện tử nào.
+ANSWER: B

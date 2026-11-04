@@ -1,0 +1,279 @@
+Theo định nghĩa chung trong tài liệu, mục tiêu chính của Trí tuệ nhân tạo (AI) là gì?
+A. Thay thế hoàn toàn con người và tự động hóa toàn diện tất cả các khía cạnh của đời sống xã hội.
+B. Làm cho máy móc trở nên thông minh, có thể bắt chước hành vi và suy nghĩ của con người.
+C. Chỉ tập trung vào việc tối ưu tốc độ tính toán số học thuần túy của các bộ vi xử lý máy tính.
+D. Chế tạo các robot cơ học hình người chuyên phục vụ công việc gia đình và các dịch vụ cơ bản.
+ANSWER: B
+
+Trí tuệ nhân tạo hẹp (ANI) còn được gọi là gì?
+A. AI mạnh (Strong AI).
+B. AI siêu việt (Super AI).
+C. AI yếu (Weak AI).
+D. AI tự nhận thức (Self-Aware AI).
+ANSWER: C
+
+Đâu là ví dụ của Trí tuệ nhân tạo hẹp (ANI) hiện nay?
+A. Một hệ thống có ý thức và cảm xúc như con người.
+B. Robot có khả năng vượt qua trí tuệ của toàn nhân loại.
+C. Siri, Alexa, xe tự lái, Alpha Go.
+D. Hệ thống có thể suy đoán tâm lý của người đối diện.
+ANSWER: C
+
+Đặc điểm chính của “Trí tuệ nhân tạo phản ứng” (Reactive Machine AI) là gì?
+A. Có khả năng lưu trữ toàn diện ký ức trong quá khứ để phân tích xu hướng và dự đoán chính xác các kịch bản tương lai.
+B. Có khả năng thấu hiểu trạng thái cảm xúc, niềm tin cũng như suy nghĩ của con người nhằm tương tác một cách đồng cảm.
+C. Chỉ nhận đầu vào là dữ liệu hiện tại và thực hiện nhiệm vụ dựa trên tình huống hiện tại, không dự đoán tương lai.
+D. Sở hữu ý thức độc lập, nhận thức rõ ràng về sự tồn tại của bản thân và có khả năng tự đưa ra quyết định có mục đích riêng.
+ANSWER: C
+
+Loại AI nào chủ yếu dựa trên dữ liệu đã lưu trữ và thực hiện nhiệm vụ bằng cách nghiên cứu các nhiệm vụ đã thực hiện trước đó?
+A. AI máy phản ứng tức thời (Reactive Machine AI).
+B. AI có bộ nhớ hạn chế (Limited Memory AI).
+C. AI Lý thuyết về Tâm trí (Theory of Mind AI).
+D. Siêu trí tuệ nhân tạo tương lai (Super AI - ASI).
+ANSWER: B
+
+Trí tuệ nhân tạo chung (AGI) hay “AI mạnh” được định nghĩa như thế nào?
+A. Là hệ thống chuyên biệt chỉ có khả năng thực hiện thành công một nhiệm vụ đơn lẻ được lập trình sẵn.
+B. Là hệ thống sở hữu khả năng suy nghĩ và đưa ra quyết định giống như con người.
+C. Là hệ thống sở hữu năng lực nhận thức siêu việt, vượt xa toàn bộ giới hạn trí tuệ tập thể của nhân loại.
+D. Là hệ thống máy móc thuần phản ứng, chỉ hoạt động dựa trên tín hiệu tức thời mà không có ký ức quá khứ.
+ANSWER: B
+
+Giai đoạn nào của AI được xem là một tình huống giả định mà khả năng của hệ thống sẽ vượt qua mọi giới hạn và lấn át con người?
+A. ANI (Trí tuệ nhân tạo hẹp chuyên biệt).
+B. AGI (Trí tuệ nhân tạo tổng quát ngang con người).
+C. ASI (Siêu trí tuệ nhân tạo).
+D. ML (Học máy thuật toán thống kê cơ bản).
+ANSWER: C
+
+Đâu KHÔNG phải là một nhánh công nghệ chính của Trí tuệ nhân tạo được liệt kê trong tài liệu?
+A. Học máy thống kê (Machine Learning).
+B. Mạng nơ-ron học sâu (Deep Learning).
+C. Thị giác máy tính (Computer Vision).
+D. Công nghệ in 3D (3D Printing).
+ANSWER: D
+
+“AI Lý thuyết về Tâm trí” (Theory of Mind AI) đóng vai trò chính trong lĩnh vực nào và liên quan đến yếu tố gì?
+A. Lĩnh vực khí tượng học và liên quan đến dự báo biến đổi khí hậu toàn cầu.
+B. Lĩnh vực tâm lý học và liên quan đến Trí tuệ cảm xúc.
+C. Lĩnh vực kỹ thuật cơ khí và điều khiển tự động hóa dây chuyền sản xuất xe hơi.
+D. Lĩnh vực khoa học máy tính và tối ưu hóa hạ tầng lưu trữ cơ sở dữ liệu lớn.
+ANSWER: B
+
+Theo tài liệu, tại sao việc sử dụng AI trong nông nghiệp lại quan trọng trong bối cảnh hiện nay?
+A. Vì ứng dụng công nghệ AI giúp triệt tiêu hoàn toàn chi phí sản xuất nông nghiệp trong ngắn hạn.
+B. Vì dân số gia tăng dẫn đến tiêu thụ lương thực tăng, trong khi sản lượng sản xuất giảm.
+C. Vì toàn bộ lực lượng lao động nông nghiệp nông thôn đang dịch chuyển hoàn toàn sang các đô thị lớn.
+D. Vì AI có thể tạo ra các nguồn thực phẩm nhân tạo thay thế hoàn toàn nhu cầu trồng trọt ngoài đồng ruộng.
+ANSWER: B
+
+Ngành nông nghiệp đóng góp khoảng bao nhiêu phần trăm vào doanh thu hàng năm cho nền kinh tế (theo bối cảnh trong tài liệu)?
+A. 50%.
+B. 17%.
+C. 25%.
+D. 30%.
+ANSWER: B
+
+Giai đoạn cuối cùng của Trí tuệ nhân tạo, nơi hệ thống có ý thức và tự nhận thức được mọi thứ, được gọi là gì?
+A. AI Phản ứng cấp thấp (Reactive Machine AI).
+B. AI Tự nhận thức (Self-Aware AI).
+C. AI Bộ nhớ giới hạn (Limited Memory AI).
+D. AI Hẹp chuyên biệt (Artificial Narrow AI).
+ANSWER: B
+
+Định nghĩa cốt lõi của “Nông nghiệp chính xác” (Precision Farming) được mô tả trong tài liệu là gì?
+A. Làm mọi việc nhanh nhất có thể bằng máy móc hạng nặng.
+B. Làm đúng việc, đúng cách, đúng nơi và đúng thời điểm.
+C. Thay thế hoàn toàn con người bằng robot trong mọi khâu sản xuất.
+D. Trồng trọt trong nhà kính để tránh tác động của thời tiết.
+ANSWER: B
+
+Mục tiêu trọng tâm của Hệ thống Nông nghiệp Chính xác (PFS) là quản lý yếu tố nào trên cánh đồng?
+A. Sự biến động liên tục về giá cả và cung cầu thị trường tiêu thụ nông sản trên quy mô quốc tế.
+B. Sự biến động về nguồn nhân lực lao động và cơ cấu nhân sự quản lý vận hành nông trại mùa vụ.
+C. Sự biến đổi theo không gian và thời gian trong quá trình phát triển của cây trồng.
+D. Sự thay đổi trong quy hoạch sử dụng đất và các chính sách pháp lý nông nghiệp của địa phương.
+ANSWER: C
+
+Thuật ngữ SSCM trong bối cảnh nông nghiệp chính xác là viết tắt của khái niệm nào?
+A. Site-Specific Crop Management (Quản lý canh tác theo địa điểm cụ thể).
+B. Smart System Crop Monitoring (Hệ thống giám sát cây trồng thông minh toàn diện).
+C. Soil Science Crop Management (Quản lý cây trồng dựa trên khoa học thổ nhưỡng).
+D. Sustainable System Crop Method (Phương pháp cây trồng hệ thống bền vững).
+ANSWER: A
+
+Theo Segarra (2002), đâu KHÔNG phải là một trong những lợi ích chính của nông nghiệp chính xác?
+A. Tăng tổng sản lượng (nhờ đáp ứng tối ưu yêu cầu cây trồng).
+B. Giảm chi phí sản xuất (nhờ giảm lượng hóa chất đầu vào).
+C. Loại bỏ hoàn toàn sự cần thiết của nước tưới.
+D. Giảm tác động đến khí hậu (tránh dư lượng hóa chất trong đất/nước).
+ANSWER: C
+
+Bước đầu tiên và quan trọng nhất trong quy trình nông nghiệp chính xác là gì?
+A. Mua sắm hệ thống máy bay không người lái (Drone quan trắc).
+B. Đánh giá sự biến đổi (Assessing variability).
+C. Tiến hành gieo sạ hạt giống đồng loạt trên quy mô toàn cánh đồng.
+D. Thu hoạch nông sản tự động bằng máy gặt đập liên hợp thông minh.
+ANSWER: B
+
+Trong bước “Quản lý sự biến đổi”, nông dân cần thực hiện hành động gì?
+A. Áp dụng đồng đều một định mức phân bón và thuốc trừ sâu cho toàn bộ cánh đồng để tiết kiệm tối đa thời gian.
+B. Điều chỉnh các yếu tố đầu vào (nước, phân bón) cho phù hợp với điều kiện cụ thể của từng địa điểm.
+C. Ngừng thu thập thêm dữ liệu số hóa và quay lại phương thức canh tác truyền thống theo thói quen kinh nghiệm.
+D. Chủ động tăng gấp đôi lượng phân bón hóa học và thuốc bảo vệ thực vật để đảm bảo an toàn tuyệt đối cho vụ mùa.
+ANSWER: B
+
+Quy trình triển khai Trí tuệ nhân tạo (AI) trong nông nghiệp chính xác gồm 3 bước chính theo thứ tự nào?
+A. Phân tích dữ liệu Thu thập dữ liệu Hành động cuối cùng.
+B. Thu thập dữ liệu Hành động hiện trường Báo cáo tổng kết.
+C. Thu thập dữ liệu Phân tích dữ liệu Hành động cuối cùng.
+D. Mua sắm thiết bị Lắp đặt cơ sở hạ tầng Vận hành nông trại.
+ANSWER: C
+
+Công nghệ nào sau đây giúp xác định thời điểm tưới cây tốt nhất từ xa thông qua việc đo độ ẩm đất?
+A. Robot thu hoạch nông sản tự hành đa năng.
+B. Cảm biến IoT (Internet of Things).
+C. Máy kéo tự hành dẫn đường định vị vệ tinh.
+D. Công nghệ in 3D chế tạo phụ tùng cơ khí.
+ANSWER: B
+
+Việc sử dụng phương pháp quang phổ và quét cánh đồng để bón phân chính xác (chỉ bón vào điểm cần thiết) có thể giúp giảm lượng phân bón sử dụng lên đến bao nhiêu phần trăm?
+A. 10%.
+B. 30%.
+C. 50%.
+D. 70%.
+ANSWER: B
+
+Đâu là một trong những thách thức lớn nhất về mặt “Kết nối” (Connectivity) đối với việc triển khai nông nghiệp chính xác hiện đại?
+A. Hạ tầng lưới điện quốc gia chưa thể phủ sóng cấp điện liên tục đến các vùng nông thôn hẻo lánh.
+B. Cần mạng 5G để truyền tải dữ liệu lớn, an toàn và nhanh chóng từ cảm biến/drone.
+C. Phần lớn người nông dân chưa có kỹ năng sử dụng điện thoại thông minh để đồng bộ hóa dữ liệu số.
+D. Đường dây truyền dẫn cáp quang viễn thông hoàn toàn không thể chôn ngầm dưới nền đất canh tác ruộng lúa.
+ANSWER: B
+
+Trong quy trình dự đoán năng suất cây trồng bằng Học máy (ML), bước “Kỹ thuật đặc trưng” (Feature Engineering) liên quan đến hoạt động nào?
+A. Lập dự toán đầu tư và tổ chức mua sắm các hệ thống cảm biến quang phổ hiện đại nhất để đo đạc trực tiếp các chỉ tiêu nông học.
+B. Chọn và thiết kế các đặc trưng liên quan từ dữ liệu đã thu thập (nhiệt độ, lượng mưa, độ ẩm đất) có ảnh hưởng đến năng suất.
+C. Triển khai hoạt động cày xới, xử lý cơ học đất và trực tiếp tiến hành gieo sạ các giống hạt lai tạo mới xuống mặt ruộng thực tế.
+D. Xây dựng chuỗi cung ứng logistics, đóng gói bao bì đạt chuẩn xuất khẩu và đưa sản phẩm nông nghiệp sau thu hoạch ra thị trường.
+ANSWER: B
+
+Công nghệ nào được coi là “yếu tố thay đổi cuộc chơi” cho phép phát hiện sớm bệnh trên cây trồng bằng cách phân tích hình ảnh lá cây?
+A. Công nghệ sổ cái chuỗi khối (Blockchain) truy xuất nguồn gốc.
+B. Thị giác máy tính (Computer Vision) và Phân tích hình ảnh.
+C. Kỹ thuật tạo mẫu nhanh bằng công nghệ in ba chiều (3D Printing).
+D. Hệ thống điều áp và tưới nhỏ giọt tự động vận hành thủ công.
+ANSWER: B
+
+Robot nông nghiệp (Agricultural Bots) sử dụng AI tiên tiến có khả năng thực hiện tác vụ phức tạp nào sau đây mà máy móc truyền thống khó làm được?
+A. Chỉ có thể tự động di chuyển tịnh tiến thẳng hàng theo các luống cây đã được cắm cọc định vị cơ học.
+B. Phát hiện trái cây chín, điều chỉnh theo hình dạng/kích thước và hái cẩn thận khỏi cành.
+C. Thực hiện việc cày xới và san phẳng bề mặt đồng ruộng một cách ngẫu nhiên mà không cần theo dõi bản đồ đất.
+D. Phun đều hóa chất bảo vệ thực vật lên toàn bộ bề mặt cánh đồng mà không cần phân biệt vị trí có cây hay cỏ.
+ANSWER: B
+
+Hệ thống giám sát vật nuôi tự động sử dụng thiết bị đeo (wearables) và cảm biến để theo dõi các chỉ số sinh tồn nào?
+A. Mật độ phân bố và độ bóng mượt của lớp lông trên cơ thể gia súc.
+B. Nhiệt độ cơ thể, nhịp tim, nhịp thở và mức độ hoạt động.
+C. Biến động mức định giá thương phẩm của từng cá thể trên sàn đấu giá.
+D. Danh tính, thông tin liên lạc và giấy phép đăng ký của chủ trang trại.
+ANSWER: B
+
+Mục tiêu chính của việc áp dụng Học máy (ML) trong “Tối ưu hóa thức ăn chăn nuôi” là gì?
+A. Liên tục cung cấp khẩu phần thức ăn ở mức tối đa mà không cần quan tâm đến khả năng hấp thụ của đàn vật nuôi.
+B. Tối đa hóa năng suất động vật (sản lượng sữa, tăng trọng) trong khi giảm thiểu chi phí thức ăn.
+C. Thay thế hoàn toàn thức ăn tự nhiên và cỏ xanh bằng các hợp chất dinh dưỡng hóa học tổng hợp nhân tạo trong phòng thí nghiệm.
+D. Chủ động hạn chế trọng lượng cơ thể của vật nuôi ở mức thấp nhằm tiết kiệm diện tích chuồng trại và dễ dàng đóng thùng vận chuyển.
+ANSWER: B
+
+Trong ứng dụng “Chọn lọc giống” (Species Breeding), các thuật toán Học sâu (Deep Learning) cần dữ liệu gì để dự đoán gen tốt nhất?
+A. Chuỗi dữ liệu lịch sử về biến động giá cổ phiếu nông nghiệp trên thị trường chứng khoán quốc tế.
+B. Hàng thập kỷ dữ liệu thực địa về hiệu quả sử dụng nước, khả năng chịu khí hậu, kháng bệnh.
+C. Số liệu điều tra nhân khẩu học về cơ cấu giới tính và độ tuổi của lao động nông nghiệp trong khu vực.
+D. Hệ thống thông số kỹ thuật chi tiết cùng lịch sử bảo trì định kỳ của các dòng máy kéo cơ giới trên đồng.
+ANSWER: B
+
+Học tăng cường sâu (Deep Reinforcement Learning) được ứng dụng như thế nào trong hệ thống tưới tiêu thông minh?
+A. Hệ thống tự động kích hoạt tưới nước theo một khung giờ cố định bất kể mọi sự biến động của độ ẩm đất hay diễn biến thời tiết.
+B. Nó học và thích ứng với điều kiện môi trường qua cơ chế “thử và sai” để tối đa hóa phần thưởng (độ ẩm đất tối ưu).
+C. Mô hình liên tục gửi tin nhắn cảnh báo yêu cầu người nông dân phải tự tay kiểm tra và đóng mở van nước cơ học mỗi ngày.
+D. Thuật toán chỉ kích hoạt máy bơm vận hành trong những thời điểm trời đổ mưa lớn nhằm kiểm tra hệ thống thoát nước mặt ruộng.
+ANSWER: B
+
+Công nghệ nào giúp nông dân tiêu diệt cỏ dại một cách chính xác bằng một liều thuốc diệt cỏ hoặc laser, giảm thiểu tác động môi trường?
+A. Phương pháp rải thảm thuốc bảo vệ thực vật trên toàn bộ diện tích cánh đồng.
+B. Robot/Máy chạy bằng năng lượng mặt trời tích hợp AI nhận dạng cỏ dại.
+C. Kỹ thuật cày xới sâu liên tục toàn bộ bề mặt đất để chôn vùi rễ cây cỏ dại.
+D. Biện pháp phát quang đốt nương rẫy truyền thống để tiêu diệt mầm cỏ dại.
+ANSWER: B
+
+AI hỗ trợ “Thu hoạch trong nhà” (Indoor Harvest) như thủy canh hoặc aquaponics như thế nào?
+A. Bằng cách vận chuyển toàn bộ khối lượng đất canh tác từ ngoài đồng ruộng vào lấp đầy các bồn nuôi thủy canh.
+B. Tự động hóa quá trình thu hoạch và phân tích mọi thứ (ánh sáng, môi trường) trong không gian khép kín.
+C. Bằng cách tháo dỡ toàn bộ mái che nhà kính để tận dụng tối đa ánh sáng mặt trời và các yếu tố thời tiết tự nhiên.
+D. Bằng cách tự động đàm phán hợp đồng thương mại nhằm giảm bớt chi phí thuê mặt bằng nhà màng cho chủ trang trại.
+ANSWER: B
+
+Vai trò của “Hệ thống chuyên gia nông nghiệp” (Agriculture Expert Systems) là gì?
+A. Thay thế hoàn toàn vai trò nghiên cứu lý thuyết cũng như công tác thực nghiệm của các nhà khoa học nông nghiệp đầu ngành.
+B. Lưu trữ kiến thức cấp chuyên gia và cung cấp hướng dẫn phù hợp cho nông dân dựa trên các tình huống khác nhau.
+C. Đơn thuần chỉ đóng vai trò là bảng hiển thị cập nhật thông tin dự báo thời tiết và nhiệt độ không khí theo thời gian thực.
+D. Đảm nhận toàn bộ nghiệp vụ kế toán thu chi, quản lý dòng tiền và kê khai quyết toán tài chính định kỳ cho trang trại.
+ANSWER: B
+
+Một trong những lợi ích của việc sử dụng AI kết hợp với Máy bay không người lái (Drones) là gì?
+A. Giảm chi phí lao động và cung cấp thông tin thời gian thực về nhu cầu nước, phân bón của cây trồng.
+B. Đảm nhận việc vận chuyển thương phẩm nông nghiệp khối lượng hàng chục tấn từ cánh đồng đến các trung tâm logistics.
+C. Làm gia tăng chi phí vận hành nhưng chỉ mang lại giá trị quảng bá hình ảnh trang trại và làm đẹp cảnh quan sinh thái.
+D. Thay thế hoàn toàn các loại máy kéo cơ giới hạng nặng trong việc cày lật đất sâu và xử lý cơ học nền đất trước vụ mùa.
+ANSWER: A
+
+AI giúp “Quản lý đất đai” (Soil Management) hiệu quả hơn thông qua cơ chế nào?
+A. Thay thế toàn bộ lớp đất canh tác tự nhiên bằng các giá thể nhân tạo vô cơ biến tính.
+B. Nghiên cứu quá trình bốc hơi, độ ẩm và nhiệt độ đất để hiểu động thái hệ sinh thái.
+C. Chỉ đơn thuần đo đạc bản đồ địa chính và xác lập ranh giới phân lô của từng thửa đất.
+D. Dự đoán xu hướng biến động giá thị trường bất động sản đất nông nghiệp trong tương lai.
+ANSWER: B
+
+Một trong những thách thức kỹ thuật lớn nhất về “Phần cứng” (Hardware) khi triển khai Nông nghiệp chính xác là gì?
+A. Vật liệu phần cứng quá nhẹ nên dễ bị gió giật và lốc xoáy cuốn trôi khỏi vị trí đặt trạm.
+B. Chi phí phát triển, bảo trì và vận hành các cảm biến/drone còn cao.
+C. Thiết kế vỏ ngoài phần cứng thiếu màu sắc nổi bật gây khó khăn cho việc phát hiện định vị.
+D. Hệ thống phân phối thương mại chưa tiếp cận được nông dân khiến họ không tìm được điểm bán.
+ANSWER: B
+
+Tại sao “Thay đổi thời tiết” lại là một thách thức đối với độ chính xác của dữ liệu trong hệ thống AI nông nghiệp?
+A. Vì nước mưa và độ ẩm không khí tăng cao làm sai lệch trực tiếp các tham số trọng số toán học bên trong mạng nơ-ron AI.
+B. Vì mưa, gió, và các xáo trộn khí quyển có thể làm gián đoạn tín hiệu không dây và ảnh hưởng đến độ nhạy của cảm biến.
+C. Vì mưa giông và gió bão ngăn cản người nông dân trực tiếp đi ra thực địa để thực hiện thao tác khởi động các trạm đo.
+D. Vì toàn bộ các vệ tinh viễn thám nông nghiệp chỉ hoạt động vào ban ngày và hoàn toàn ngắt cảm biến khi trời chuyển tối.
+ANSWER: B
+
+Vấn đề đạo đức về “Quyền sở hữu dữ liệu” (Data Ownership) nảy sinh từ mâu thuẫn nào?
+A. Sự bất đồng và tranh chấp gay gắt về mặt lợi ích kinh tế giữa các hộ nông dân lân cận trong việc phân chia nguồn nước tưới và ranh giới bờ ruộng.
+B. Sự căng thẳng giữa việc doanh nghiệp bảo vệ tài sản trí tuệ (thuật toán) và việc nông dân bảo vệ quyền kiểm soát dữ liệu họ tạo ra.
+C. Mâu thuẫn phát sinh trong công tác bồi thường giải phóng mặt bằng đất nông nghiệp khi cơ quan nhà nước thực hiện quy hoạch dự án mới.
+D. Tâm lý bảo thủ của các chủ trang trại cá thể khi kiên quyết từ chối chia sẻ kinh nghiệm canh tác cổ truyền cho các nông hộ xung quanh.
+ANSWER: B
+
+“Sự phân chia kỹ thuật số” (Digital Divide) trong nông nghiệp thông minh đề cập đến nguy cơ gì?
+A. Sự mất cân đối nghiêm trọng về cơ cấu diện tích canh tác giữa các loại cây trồng truyền thống và cây biến đổi gen thương mại.
+B. Nguy cơ các trang trại lớn, giàu có tiếp cận được công nghệ AI, trong khi các nông hộ nhỏ, nghèo bị bỏ lại phía sau.
+C. Sự chia rẽ thị phần do xung đột phần mềm giữa các dòng thiết bị di động chạy nền tảng Android và hệ điều hành Apple iOS.
+D. Hiện tượng chia cắt đất đai thừa kế thành các mảnh vườn quá nhỏ khiến máy móc cơ giới hóa không thể tiếp cận và di chuyển.
+ANSWER: B
+
+Về vấn đề “Việc làm” (Employment), các công ty cung cấp giải pháp AI thường lập luận như thế nào để trấn an công chúng?
+A. AI được tạo ra nhằm thay thế toàn bộ người lao động vì con người có năng suất làm việc và sức bền kém hơn máy móc.
+B. AI được thiết kế để bổ sung cho chuyên gia con người (như nhà nông học), chứ không phải thay thế họ.
+C. Lực lượng lao động nông thôn là yếu tố thứ yếu và sự sụt giảm việc làm nông nghiệp hoàn toàn không ảnh hưởng đến xã hội.
+D. AI cam kết sẽ chuyển dịch toàn bộ nông dân mất việc trở thành kỹ sư công nghệ làm việc tại các nhà máy chế tạo robot nông nghiệp.
+ANSWER: B
+
+Tại sao “Quyền riêng tư” (Privacy) vẫn là mối lo ngại dù dữ liệu nông nghiệp có vẻ không nhạy cảm như dữ liệu y tế?
+A. Vì người nông dân thường có tâm lý e ngại và phản đối quyết liệt khi các thiết bị bay không người lái vô tình chụp lại hình ảnh đời sống cá nhân của họ.
+B. Vì dữ liệu thu thập bao gồm thông tin cá nhân như mức thu nhập, vị trí tài sản và thói quen canh tác, có thể bị lạm dụng bởi đối thủ cạnh tranh.
+C. Vì toàn bộ bản đồ quy hoạch và dữ liệu canh tác cây trồng luôn được xếp vào nhóm tài liệu mật cấp quốc gia cần được quân đội bảo vệ nghiêm ngặt.
+D. Vì các hệ thống AI hiện đại đã phát triển khả năng phân tích sóng não từ xa để nhận biết chính xác cảm xúc và suy nghĩ nội tâm của người nông dân trên đồng.
+ANSWER: B

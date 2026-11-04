@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc nghiệm Buổi 4: Thị giác máy tính (Computer Vision) ứng dụng</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #15803d;
+            --primary-hover: #166534;
+            --primary-light: #dcfce7;
+            --accent: #22c55e;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --success: #16a34a;
+            --success-bg: #f0fdf4;
+            --success-border: #bbf7d0;
+            --error: #dc2626;
+            --error-bg: #fef2f2;
+            --error-border: #fecaca;
+            --radius: 12px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 24px 16px;
+        }
+
+        .quiz-wrapper {
+            width: 100%;
+            max-width: 840px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        /* Header Bar */
+        .quiz-header {
+            padding: 20px 28px;
+            background: linear-gradient(135deg, #14532d 0%, #166534 100%);
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .quiz-header h1 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .session-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+
+        .quiz-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-palette {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-palette:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Progress Bar */
+        .progress-track {
+            width: 100%;
+            height: 6px;
+            background-color: #e2e8f0;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            width: 0%;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Quiz Body */
+        .quiz-body {
+            padding: 32px 28px;
+        }
+
+        .question-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .counter-badge {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .tags-cluster {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .tag-pill {
+            font-size: 0.78rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            background: #f1f5f9;
+            color: var(--text-muted);
+        }
+
+        .tag-pill.diff-de { background: #dcfce7; color: #166534; }
+        .tag-pill.diff-tb { background: #fef3c7; color: #92400e; }
+        .tag-pill.diff-kho { background: #fee2e2; color: #991b1b; }
+
+        .question-title {
+            font-size: 1.22rem;
+            font-weight: 700;
+            line-height: 1.55;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+
+        /* Options Grid */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .option-card {
+            display: flex;
+            align-items: flex-start;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #ffffff;
+            user-select: none;
+        }
+
+        .option-card:hover:not(.locked) {
+            border-color: var(--accent);
+            background: #f8fafc;
+            transform: translateY(-1px);
+        }
+
+        .option-card.selected:not(.locked) {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-card.locked {
+            cursor: default;
+        }
+
+        .option-card.is-correct {
+            border-color: var(--success) !important;
+            background-color: var(--success-bg) !important;
+        }
+
+        .option-card.is-wrong {
+            border-color: var(--error) !important;
+            background-color: var(--error-bg) !important;
+        }
+
+        .option-letter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-right: 14px;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .option-card.selected .option-letter {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .option-card.is-correct .option-letter {
+            background: var(--success);
+            color: #ffffff;
+        }
+
+        .option-card.is-wrong .option-letter {
+            background: var(--error);
+            color: #ffffff;
+        }
+
+        .option-text {
+            font-size: 1.02rem;
+            line-height: 1.5;
+            color: var(--text-main);
+            padding-top: 3px;
+        }
+
+        /* Feedback Box */
+        .feedback-box {
+            display: none;
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            animation: slideDown 0.3s ease;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background-color: var(--success-bg);
+            border: 1px solid var(--success-border);
+        }
+
+        .feedback-box.incorrect {
+            background-color: var(--error-bg);
+            border: 1px solid var(--error-border);
+        }
+
+        .feedback-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .correct .feedback-title { color: var(--success); }
+        .incorrect .feedback-title { color: var(--error); }
+
+        .feedback-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #334155;
+        }
+
+        /* Action Buttons */
+        .actions-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn {
+            padding: 12px 26px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        /* Result Screen */
+        .result-screen {
+            display: none;
+            text-align: center;
+            padding: 40px 24px;
+        }
+
+        .score-ring-wrap {
+            position: relative;
+            width: 170px;
+            height: 170px;
+            margin: 0 auto 28px;
+        }
+
+        .score-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent) 0%, #e2e8f0 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .score-inner {
+            width: 136px;
+            height: 136px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .score-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .result-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .result-summary {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 500px;
+            margin: 0 auto 36px;
+        }
+
+        .stat-card {
+            padding: 16px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .stat-val {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Palette Drawer */
+        .drawer-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 100;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -360px;
+            width: 340px;
+            height: 100%;
+            background: #ffffff;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+            z-index: 101;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+        }
+
+        .drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .drawer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 4px;
+        }
+
+        .palette-item {
+            height: 42px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .palette-item:hover {
+            border-color: var(--primary);
+            background: #e2e8f0;
+        }
+
+        .palette-item.active {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .palette-item.correct {
+            background: var(--success);
+            color: #ffffff;
+            border-color: var(--success);
+        }
+
+        .palette-item.wrong {
+            background: var(--error);
+            color: #ffffff;
+            border-color: var(--error);
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 10px; }
+            .quiz-body { padding: 20px 16px; }
+            .quiz-header { padding: 16px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-wrapper">
+    <!-- Header -->
+    <div class="quiz-header">
+        <h1>
+            <span>🌾</span>
+            <span>Buổi 4: Thị giác máy tính (Computer Vision) ứng dụng</span>
+        </h1>
+        <div class="quiz-meta">
+            <span class="session-badge">Buổi 4</span>
+            <button class="btn-palette" onclick="toggleDrawer()">📋 Mục lục câu</button>
+        </div>
+    </div>
+
+    <!-- Progress Track -->
+    <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <!-- Screen 1: Quiz Active -->
+    <div class="quiz-body" id="quiz-screen">
+        <div class="question-meta-row">
+            <div class="counter-badge" id="question-counter">Câu hỏi 1 / 40</div>
+            <div class="tags-cluster">
+                <span class="tag-pill" id="section-tag">Tổng quan</span>
+                <span class="tag-pill" id="difficulty-tag">Dễ</span>
+            </div>
+        </div>
+
+        <h2 class="question-title" id="question-text">Đang tải câu hỏi...</h2>
+
+        <div class="options-list" id="options-container">
+            <!-- Dynamic Options -->
+        </div>
+
+        <!-- Feedback Container -->
+        <div class="feedback-box" id="feedback-box">
+            <div class="feedback-title" id="feedback-title"></div>
+            <div class="feedback-desc" id="feedback-desc"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions-row">
+            <button class="btn btn-secondary" id="btn-prev" onclick="navigatePrev()">← Câu trước</button>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-primary" id="btn-check" onclick="checkAnswer()" disabled>Kiểm tra</button>
+                <button class="btn btn-primary" id="btn-next" onclick="navigateNext()" style="display: none;">Câu tiếp theo →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 2: Results -->
+    <div class="result-screen" id="result-screen">
+        <div class="score-ring-wrap">
+            <div class="score-circle" id="score-circle">
+                <div class="score-inner">
+                    <span class="score-number" id="final-score">0</span>
+                    <span class="score-label" id="final-total">/ 40</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="result-title" id="result-title">Chúc mừng bạn đã hoàn thành!</h2>
+        <p class="result-summary" id="result-summary">Bạn đã trả lời xuất sắc hầu hết các câu hỏi trong phần này.</p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--success);" id="stat-correct">0</div>
+                <div class="stat-label">Số câu đúng</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--error);" id="stat-wrong">0</div>
+                <div class="stat-label">Số câu sai</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--primary);" id="stat-accuracy">0%</div>
+                <div class="stat-label">Độ chính xác</div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="restartQuiz()">🔄 Làm lại bài</button>
+            <button class="btn btn-secondary" onclick="viewAllAnswers()">🔍 Xem lại chi tiết đáp án</button>
+        </div>
+    </div>
+</div>
+
+<!-- Drawer / Question Palette -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<div class="drawer" id="drawer">
+    <div class="drawer-header">
+        <h3 style="font-size: 1.1rem; font-weight: 700;">Danh sách câu hỏi</h3>
+        <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.85rem;" onclick="toggleDrawer()">Đóng ✕</button>
+    </div>
+    <div class="drawer-grid" id="palette-grid">
+        <!-- Palette numbers -->
+    </div>
+</div>
+
+<script>
+    const questions = [{"id": 119, "local_id": 1, "section": "PHẦN 1: NGUYÊN LÝ CƠ BẢN CỦA THỊ GIÁC MÁY TÍNH & XỬ LÝ ẢNH", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Định nghĩa cơ bản nhất của “Thị giác máy tính” (Computer Vision) là gì?", "options": [{"id": "A", "text": "Là một chuyên ngành thuộc kỹ thuật đồ họa máy tính nhằm tổng hợp, kết xuất và mô phỏng trực quan các mô hình hình học không gian 3D phức tạp."}, {"id": "B", "text": "Là một lĩnh vực của AI dùng để trích xuất thông tin hữu ích từ hình ảnh kỹ thuật số (nhận dạng, đo lường, điều hướng)."}, {"id": "C", "text": "Là công nghệ phần cứng sinh trắc học chuyên về thiết kế chế tạo các hệ thống cảm biến quang học cấy ghép thay thế giác mạc mắt người trong phẫu thuật."}, {"id": "D", "text": "Là công nghệ truyền thông đa phương tiện chuyên xử lý các chuẩn nén luồng video và phân phối nội dung truyền hình độ trễ thấp trên mạng máy tính diện rộng."}], "answer": "B", "explanation": "Thị giác máy tính được mô tả như một lĩnh vực của AI dùng để trích xuất thông tin từ hình ảnh kỹ thuật số."}, {"id": 120, "local_id": 2, "section": "PHẦN 1: NGUYÊN LÝ CƠ BẢN CỦA THỊ GIÁC MÁY TÍNH & XỬ LÝ ẢNH", "difficulty": "Dễ", "difficulty_code": "NB", "question": "So với thị giác của con người, thị giác máy tính khác biệt ở điểm nào về mặt “đầu vào”?", "options": [{"id": "A", "text": "Con người nhìn thấy ánh sáng; Máy tính nhìn thấy các ma trận số (giá trị pixel)."}, {"id": "B", "text": "Con người cảm nhận quang phổ liên tục; Máy tính chỉ tiếp nhận tín hiệu từ các hình ảnh đen trắng đơn sắc."}, {"id": "C", "text": "Con người cảm nhận hình ảnh trực tiếp; Máy tính chỉ có thể tiếp nhận và đọc hiểu hình ảnh dưới dạng văn bản."}, {"id": "D", "text": "Không có bất kỳ sự khác biệt nào vì cả mắt người và máy tính đều trực tiếp xử lý các ma trận điểm ảnh rời rạc."}], "answer": "A", "explanation": "Con người trải nghiệm thế giới vật lý qua mắt và não, trong khi máy tính phải xử lý dữ liệu số hóa (ma trận pixel) để “hiểu” hình ảnh."}, {"id": 121, "local_id": 3, "section": "PHẦN 1: NGUYÊN LÝ CƠ BẢN CỦA THỊ GIÁC MÁY TÍNH & XỬ LÝ ẢNH", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Bước đầu tiên trong quy trình xử lý ảnh điển hình là gì?", "options": [{"id": "A", "text": "Tiền xử lý nâng cao chất lượng ảnh (Preprocessing)."}, {"id": "B", "text": "Thu thập hình ảnh (Image Acquisition)."}, {"id": "C", "text": "Phân đoạn tách vùng quan tâm (Segmentation)."}, {"id": "D", "text": "Trích xuất đặc trưng và ra quyết định phân loại."}], "answer": "B", "explanation": "Quy trình bắt đầu bằng việc thu thập hình ảnh thông qua các cảm biến (camera)."}, {"id": 122, "local_id": 4, "section": "PHẦN 1: NGUYÊN LÝ CƠ BẢN CỦA THỊ GIÁC MÁY TÍNH & XỬ LÝ ẢNH", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Kỹ thuật “Chuyển đổi sang ảnh xám” (Grayscale Conversion) thường được thực hiện ở giai đoạn nào và mục đích là gì?", "options": [{"id": "A", "text": "Ở giai đoạn Hậu xử lý; nhằm chuẩn hóa định dạng màu sắc cho máy in công nghiệp và phục vụ việc lưu trữ dữ liệu bản vẽ kỹ thuật dạng vector."}, {"id": "B", "text": "Ở giai đoạn Tiền xử lý; để giảm độ phức tạp tính toán (từ 3 kênh màu RGB xuống 1 kênh) mà vẫn giữ được thông tin cấu trúc."}, {"id": "C", "text": "Ở giai đoạn Phân đoạn; nhằm loại bỏ hoàn toàn các đường viền góc cạnh để làm mịn không gian phông nền trong suốt quá trình nhận dạng đối tượng."}, {"id": "D", "text": "Ở giai đoạn Trích xuất đặc trưng; nhằm bổ sung thêm thông tin độ sâu 3D và tăng cường mật độ điểm ảnh cho các lớp tích chập của mô hình học sâu."}], "answer": "B", "explanation": "Trong xử lý ảnh, chuyển đổi sang ảnh xám là bước tiền xử lý phổ biến để đơn giản hóa dữ liệu đầu vào cho các thuật toán tiếp theo (như phát hiện cạnh)."}, {"id": 123, "local_id": 5, "section": "PHẦN 1: NGUYÊN LÝ CƠ BẢN CỦA THỊ GIÁC MÁY TÍNH & XỬ LÝ ẢNH", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Ảnh nhị phân (Binary Image) là loại ảnh như thế nào?", "options": [{"id": "A", "text": "Ảnh chứa đầy đủ ba kênh màu RGB với giá trị mỗi kênh từ 0 đến 255."}, {"id": "B", "text": "Ảnh chỉ có hai giá trị màu: Đen (0) và Trắng (1 hoặc 255)."}, {"id": "C", "text": "Ảnh xám có 256 mức độ sáng khác nhau từ đen tuyền đến trắng sáng."}, {"id": "D", "text": "Ảnh đa phổ ghi nhận dữ liệu bức xạ hồng ngoại và phản xạ nhiệt độ."}], "answer": "B", "explanation": "Ảnh nhị phân (như kết quả của kỹ thuật Thresholding) chỉ chứa các pixel đen và trắng, giúp tách đối tượng khỏi nền."}, {"id": 124, "local_id": 6, "section": "PHẦN 1: NGUYÊN LÝ CƠ BẢN CỦA THỊ GIÁC MÁY TÍNH & XỬ LÝ ẢNH", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Kỹ thuật “Lọc nhiễu” (Filtering), ví dụ như sử dụng bộ lọc trung bình (Mean filter), có tác dụng gì?", "options": [{"id": "A", "text": "Làm tăng độ tương phản cục bộ và làm sắc nét các đường biên cạnh phân cách giữa các đối tượng."}, {"id": "B", "text": "Làm mờ ảnh nhẹ để loại bỏ các điểm nhiễu (noise) lấm tấm không mong muốn."}, {"id": "C", "text": "Thay đổi kích thước và tỷ lệ khung hình không gian của bức ảnh để chuẩn hóa đầu vào cho mô hình."}, {"id": "D", "text": "Xoay góc chụp và đảo chiều ma trận điểm ảnh theo trục đối xứng để tăng cường dữ liệu huấn luyện."}], "answer": "B", "explanation": "Lọc nhiễu giúp loại bỏ các tín hiệu nhiễu ngẫu nhiên trong ảnh (như trong hình minh họa “Filtered image”) để chuẩn bị cho các bước xử lý sau."}, {"id": 125, "local_id": 7, "section": "PHẦN 1: NGUYÊN LÝ CƠ BẢN CỦA THỊ GIÁC MÁY TÍNH & XỬ LÝ ẢNH", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Trong xử lý hình thái học (Morphological Operations), phép “Co” (Erosion) có tác dụng gì đối với đối tượng trong ảnh nhị phân?", "options": [{"id": "A", "text": "Làm giãn nở và mở rộng ranh giới đối tượng, giúp hàn gắn các vết đứt gãy hoặc lấp đầy lỗ thủng bên trong."}, {"id": "B", "text": "Làm mỏng đối tượng, giúp loại bỏ các nhiễu nhỏ ở biên hoặc tách hai vật thể bị dính liền nhau."}, {"id": "C", "text": "Tự động gán nhãn màu sắc giả lập cho các phân vùng đối tượng để chuẩn bị cho bước phân lớp phân đoạn."}, {"id": "D", "text": "Đảo ngược hoàn toàn các giá trị điểm ảnh nhị phân từ đen thành trắng và ngược lại trên toàn bức ảnh."}], "answer": "B", "explanation": "Phép co (Erosion) làm xói mòn biên của đối tượng, giúp loại bỏ nhiễu nhỏ và tách rời các đối tượng dính nhau."}, {"id": 126, "local_id": 8, "section": "PHẦN 1: NGUYÊN LÝ CƠ BẢN CỦA THỊ GIÁC MÁY TÍNH & XỬ LÝ ẢNH", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Ngược lại với phép Co, phép “Giãn” (Dilation) làm gì?", "options": [{"id": "A", "text": "Làm bào mòn ranh giới đối tượng, giúp loại bỏ các nhánh nhiễu nhỏ nhô ra ngoài đường viền biên."}, {"id": "B", "text": "Làm dày/nở rộng đối tượng, giúp lấp đầy các lỗ hổng nhỏ bên trong đối tượng."}, {"id": "C", "text": "Cắt phân đôi đối tượng thành hai phần hoàn toàn độc lập dựa trên trục đối xứng hình học không gian."}, {"id": "D", "text": "Xóa bỏ hoàn toàn phần phông nền xung quanh và chỉ giữ lại một điểm ảnh trọng tâm tọa độ duy nhất."}], "answer": "B", "explanation": "Phép giãn (Dilation) thêm pixel vào biên của đối tượng, làm nó to ra và lấp đầy các khoảng trống."}, {"id": 127, "local_id": 9, "section": "PHẦN 1: NGUYÊN LÝ CƠ BẢN CỦA THỊ GIÁC MÁY TÍNH & XỬ LÝ ẢNH", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Thuật toán Canny hoặc Sobel thường được sử dụng cho mục đích gì trong thị giác máy tính?", "options": [{"id": "A", "text": "Phát hiện khuôn mặt và nhận diện các tọa độ mốc giải phẫu sinh trắc học trên gương mặt đối tượng."}, {"id": "B", "text": "Phát hiện cạnh (Edge Detection) - tìm ranh giới giữa các vùng có độ sáng thay đổi mạnh."}, {"id": "C", "text": "Nhận dạng tiếng nói tự động và khử tạp âm nền cho tín hiệu âm thanh thu được từ microphone trường gần."}, {"id": "D", "text": "Nén dung lượng tập tin hình ảnh dựa trên thuật toán biến đổi cosin rời rạc (chuẩn nén JPEG/DCT)."}], "answer": "B", "explanation": "Trong hình minh họa quy trình, bước cuối cùng thường là “Edge detect” để xác định biên dạng của hạt gạo hoặc vật thể."}, {"id": 128, "local_id": 10, "section": "PHẦN 1: NGUYÊN LÝ CƠ BẢN CỦA THỊ GIÁC MÁY TÍNH & XỬ LÝ ẢNH", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Thư viện mã nguồn mở phổ biến nhất được sử dụng trong Python cho các tác vụ xử lý ảnh này là gì?", "options": [{"id": "A", "text": "Pandas (chuyên dùng phân tích dữ liệu dạng bảng)."}, {"id": "B", "text": "OpenCV (cv2)."}, {"id": "C", "text": "NumPy (thư viện tính toán khoa học cho mảng đa chiều)."}, {"id": "D", "text": "ReactJS (thư viện JavaScript phát triển giao diện web)."}], "answer": "B", "explanation": "Tài liệu nhắc đến OpenCV (Open Source Computer Vision Library) như là công cụ chính để triển khai các thuật toán này."}, {"id": 129, "local_id": 11, "section": "PHẦN 1: NGUYÊN LÝ CƠ BẢN CỦA THỊ GIÁC MÁY TÍNH & XỬ LÝ ẢNH", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Trong ví dụ phân loại hạt gạo (Chapter 5), hệ thống tính toán “Tỷ lệ khung hình” (Aspect Ratio) bằng cách nào?", "options": [{"id": "A", "text": "Chia Chiều rộng cho Chiều cao của hình chữ nhật bao quanh hạt gạo."}, {"id": "B", "text": "Lấy khối lượng hạt gạo chia cho thể tích thực nghiệm đo bằng cảm biến tải trọng."}, {"id": "C", "text": "Lấy tổng chu vi đường bao hạt gạo chia cho giá trị diện tích bề mặt tính theo pixel."}, {"id": "D", "text": "Đếm tổng số pixel mức xám cao nhất trong vùng lõi chia cho số pixel vùng biên hạt gạo."}], "answer": "A", "explanation": "Kết quả đầu ra hiển thị “Average Aspect Ratio = 2.3”, được tính từ các kích thước hình học của đối tượng sau khi phân đoạn."}, {"id": 130, "local_id": 12, "section": "PHẦN 1: NGUYÊN LÝ CƠ BẢN CỦA THỊ GIÁC MÁY TÍNH & XỬ LÝ ẢNH", "difficulty": "Dễ", "difficulty_code": "NB", "question": "Tại sao bước “Phân đoạn” (Segmentation) lại quan trọng trong bài toán đếm số lượng hạt gạo?", "options": [{"id": "A", "text": "Vì nó giúp hệ thống đếm tổng số lượng điểm ảnh (pixels) của toàn bộ bức ảnh nhằm tối ưu hóa dung lượng bộ nhớ đệm RAM khi huấn luyện mô hình."}, {"id": "B", "text": "Vì nó giúp tách biệt từng hạt gạo ra khỏi nền và ra khỏi các hạt gạo khác, để máy tính có thể đếm từng đối tượng riêng lẻ."}, {"id": "C", "text": "Vì nó giúp tăng cường màu sắc và độ tương phản quang học để bức ảnh chụp hạt gạo hiển thị trực quan, sắc nét và thẩm mỹ hơn trên màn hình người dùng."}, {"id": "D", "text": "Vì nó giúp giảm thiểu công suất tiêu thụ điện năng của camera và card đồ họa xử lý trong suốt chu trình thu thập tín hiệu tại dây chuyền sản xuất."}], "answer": "B", "explanation": "Phân đoạn giúp xác định vùng quan tâm (ROI), tách hạt gạo khỏi nền để thực hiện đo lường và đếm."}, {"id": 131, "local_id": 13, "section": "PHẦN 2: CÁCH MÁY TÍNH “NHÌN” BẰNG CNN (CONVOLUTIONAL NEURAL NETWORKS)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Cảm hứng sinh học cho sự ra đời của Mạng Nơ-ron Tích chập (CNN) đến từ nghiên cứu về bộ phận nào của con người/động vật?", "options": [{"id": "A", "text": "Màng nhĩ và hệ thống thính giác ốc tai."}, {"id": "B", "text": "Vỏ não thị giác (Visual Cortex)."}, {"id": "C", "text": "Hệ thống thần kinh tiêu hóa và dạ dày."}, {"id": "D", "text": "Mạng lưới dây thần kinh vận động ngoại biên."}], "answer": "B", "explanation": "CNN ra đời từ nghiên cứu về vỏ não thị giác của não bộ (đặc biệt là nghiên cứu của Hubel và Wiesel trên mèo), nơi các nơ-ron chỉ phản ứng với một vùng nhỏ của trường thị giác."}, {"id": 132, "local_id": 14, "section": "PHẦN 2: CÁCH MÁY TÍNH “NHÌN” BẰNG CNN (CONVOLUTIONAL NEURAL NETWORKS)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Khái niệm “Trường tiếp nhận” (Receptive Field) trong CNN có nghĩa là gì?", "options": [{"id": "A", "text": "Toàn bộ không gian ma trận điểm ảnh đầu vào được truyền đồng thời và kết nối trực tiếp tới tất cả các nơ-ron trong cùng một lớp ẩn."}, {"id": "B", "text": "Một vùng nhỏ cụ thể của hình ảnh đầu vào mà một nơ-ron đơn lẻ trong lớp tích chập “nhìn thấy” và phản ứng lại."}, {"id": "C", "text": "Dung lượng bộ nhớ đệm đồ họa GPU được cấp phát chuyên biệt để lưu trữ tạm thời các trọng số mô hình trong toàn bộ pha lan truyền xuôi."}, {"id": "D", "text": "Kích thước màn hình hiển thị kết quả phân loại nhằm trực quan hóa các hộp bao đối tượng cho người vận hành dễ dàng theo dõi ngoài thực tế."}], "answer": "B", "explanation": "Trong vỏ não thị giác, nhiều nơ-ron có trường tiếp nhận cục bộ nhỏ, nghĩa là chúng chỉ phản ứng với các kích thích thị giác nằm trong một vùng hạn chế."}, {"id": 133, "local_id": 15, "section": "PHẦN 2: CÁCH MÁY TÍNH “NHÌN” BẰNG CNN (CONVOLUTIONAL NEURAL NETWORKS)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Trong kiến trúc CNN, các nơ-ron ở các lớp đầu tiên (cấp thấp) thường phát hiện các đặc trưng gì?", "options": [{"id": "A", "text": "Các bộ phận phức tạp như toàn bộ cấu trúc khuôn mặt hoặc thân cây."}, {"id": "B", "text": "Các mẫu đơn giản như đường thẳng, cạnh ngang, cạnh dọc."}, {"id": "C", "text": "Tên nhãn định danh cụ thể và phân lớp phân loại của đối tượng mục tiêu."}, {"id": "D", "text": "Trạng thái biểu cảm và các thuộc tính ngữ nghĩa trừu tượng cấp cao."}], "answer": "B", "explanation": "Các nơ-ron cấp thấp phản ứng với các mẫu đơn giản (như đường ngang/dọc), và các nơ-ron cấp cao hơn kết hợp chúng thành các mẫu phức tạp hơn."}, {"id": 134, "local_id": 16, "section": "PHẦN 2: CÁCH MÁY TÍNH “NHÌN” BẰNG CNN (CONVOLUTIONAL NEURAL NETWORKS)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Một “Bộ lọc” (Filter) hay Kernel trong lớp Tích chập thực chất là gì?", "options": [{"id": "A", "text": "Một lớp kính phân cực vật lý gắn trước ống kính camera để lọc bớt ánh sáng chói lóa ngoài thực địa."}, {"id": "B", "text": "Một ma trận các trọng số (weights) nhỏ trượt qua ảnh để tìm kiếm một đặc trưng cụ thể."}, {"id": "C", "text": "Một thuật toán phần mềm bảo mật chuyên kiểm tra mã độc và loại bỏ các gói tin bị lỗi đường truyền."}, {"id": "D", "text": "Một bảng tra cứu bảng mã màu chuẩn xác định danh sách các dải quang phổ hồng ngoại của ảnh vệ tinh."}], "answer": "B", "explanation": "Bộ lọc là một tập hợp các trọng số được học, trượt qua ảnh để tạo ra bản đồ đặc trưng."}, {"id": 135, "local_id": 17, "section": "PHẦN 2: CÁCH MÁY TÍNH “NHÌN” BẰNG CNN (CONVOLUTIONAL NEURAL NETWORKS)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Tại sao CNN lại ưu việt hơn mạng kết nối đầy đủ (Dense Network) khi xử lý hình ảnh?", "options": [{"id": "A", "text": "Vì CNN có khả năng “Bất biến dịch chuyển” (Translation Invariance) - nhận ra đối tượng dù nó nằm ở vị trí nào trong ảnh."}, {"id": "B", "text": "Vì CNN hoạt động hoàn toàn không cần dữ liệu huấn luyện mẫu và có thể tự động suy luận nhãn phân lớp thông qua các quy tắc heuristic đơn giản."}, {"id": "C", "text": "Vì CNN chỉ có khả năng xử lý định dạng ảnh nhị phân hoặc ảnh xám đơn sắc, giúp triệt tiêu hoàn toàn nguy cơ xuất hiện hiện tượng quá khớp dữ liệu."}, {"id": "D", "text": "Vì cấu trúc toán học của CNN mô phỏng chính xác tuyệt đối 100% từng cơ chế truyền dẫn chất hóa học giữa các synap trong tế bào thần kinh sinh học."}], "answer": "A", "explanation": "Một khi CNN học được một mẫu ở một vị trí, nó có thể nhận ra mẫu đó ở bất kỳ vị trí nào khác (nhờ chia sẻ trọng số), trong khi mạng Dense phải học lại từ đầu."}, {"id": 136, "local_id": 18, "section": "PHẦN 2: CÁCH MÁY TÍNH “NHÌN” BẰNG CNN (CONVOLUTIONAL NEURAL NETWORKS)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Khi một bộ lọc (filter) quét qua ảnh, đầu ra của nó được gọi là gì?", "options": [{"id": "A", "text": "Bức ảnh màu nguyên bản ban đầu (Raw RGB Image)."}, {"id": "B", "text": "Bản đồ đặc trưng (Feature Map)."}, {"id": "C", "text": "Biểu đồ tần suất phân bố màu sắc (Histogram)."}, {"id": "D", "text": "Điểm ảnh chết không mang thông tin (Dead Pixels)."}], "answer": "B", "explanation": "Mỗi bộ lọc tạo ra một bản đồ đặc trưng (feature map), làm nổi bật những nơi mà đặc trưng đó xuất hiện trong ảnh."}, {"id": 137, "local_id": 19, "section": "PHẦN 2: CÁCH MÁY TÍNH “NHÌN” BẰNG CNN (CONVOLUTIONAL NEURAL NETWORKS)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Nếu bạn sử dụng một bộ lọc kích thước 3x3 với padding='same' và strides=1, kích thước của bản đồ đặc trưng đầu ra so với ảnh đầu vào sẽ như thế nào?", "options": [{"id": "A", "text": "Nhỏ hơn kích thước ảnh gốc."}, {"id": "B", "text": "Bằng nhau."}, {"id": "C", "text": "Lớn hơn kích thước ảnh gốc."}, {"id": "D", "text": "Bằng 0 (ảnh bị triệt tiêu)."}], "answer": "B", "explanation": "padding='same' sử dụng đệm zero để đảm bảo kích thước đầu ra bằng kích thước đầu vào (chia cho stride, nếu stride=1 thì bằng nhau)."}, {"id": 138, "local_id": 20, "section": "PHẦN 2: CÁCH MÁY TÍNH “NHÌN” BẰNG CNN (CONVOLUTIONAL NEURAL NETWORKS)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Lớp “Gộp cực đại” (Max Pooling) hoạt động như thế nào?", "options": [{"id": "A", "text": "Tính giá trị trung bình cộng của tất cả các pixel nằm trong vùng cửa sổ trượt để làm mịn và giảm kích thước ma trận."}, {"id": "B", "text": "Chỉ giữ lại giá trị lớn nhất (pixel sáng nhất/nổi bật nhất) trong vùng cửa sổ trượt, loại bỏ các giá trị khác."}, {"id": "C", "text": "Ngẫu nhiên loại bỏ một tỷ lệ cố định các nơ-ron và trọng số liên kết nhằm ngăn ngừa hiện tượng quá khớp (overfitting)."}, {"id": "D", "text": "Tính tổng tích lũy tất cả giá trị điểm ảnh trong vùng cửa sổ rồi nhân với hệ số suy giảm gradient theo thời gian."}], "answer": "B", "explanation": "Max pooling hoạt động bằng cách trượt cửa sổ và chỉ lấy giá trị lớn nhất trong mỗi cửa sổ."}, {"id": 139, "local_id": 21, "section": "PHẦN 2: CÁCH MÁY TÍNH “NHÌN” BẰNG CNN (CONVOLUTIONAL NEURAL NETWORKS)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Mục đích chính của việc sử dụng nhiều lớp Tích chập xếp chồng lên nhau (Deep CNN) là gì?", "options": [{"id": "A", "text": "Để làm tăng thời gian suy luận và kiểm thử nhằm kiểm tra khả năng chịu tải của phần cứng."}, {"id": "B", "text": "Để tạo ra sự phân cấp đặc trưng: từ cạnh hình dạng bộ phận vật thể hoàn chỉnh."}, {"id": "C", "text": "Để mở rộng dung lượng bộ nhớ RAM đồ họa và tránh hiện tượng tràn bộ đệm khi nạp ma trận."}, {"id": "D", "text": "Để chuyển đổi luân phiên ảnh màu RGB thành ảnh nhị phân ở từng giai đoạn trích xuất cạnh."}], "answer": "B", "explanation": "Cấu trúc phân cấp cho phép các nơ-ron cấp cao tổng hợp đầu ra của nơ-ron cấp thấp để nhận diện các mẫu phức tạp hơn."}, {"id": 140, "local_id": 22, "section": "PHẦN 2: CÁCH MÁY TÍNH “NHÌN” BẰNG CNN (CONVOLUTIONAL NEURAL NETWORKS)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "“Stride” (Sải bước) trong lớp tích chập ảnh hưởng như thế nào đến bản đồ đặc trưng?", "options": [{"id": "A", "text": "Stride càng lớn, bản đồ đặc trưng đầu ra có độ phân giải không gian càng cao và chi tiết hơn."}, {"id": "B", "text": "Stride càng lớn, bản đồ đặc trưng đầu ra càng nhỏ (giảm kích thước không gian)."}, {"id": "C", "text": "Stride hoàn toàn không làm thay đổi kích thước không gian của bản đồ đặc trưng mà chỉ đổi kênh màu."}, {"id": "D", "text": "Stride làm thay đổi giá trị kênh màu RGB của hình ảnh từ quang phổ nhìn thấy sang dải sóng hồng ngoại."}], "answer": "B", "explanation": "Sải bước là khoảng cách giữa hai cửa sổ tiếp nhận liên tiếp. Sải bước lớn giúp giảm kích thước đầu ra."}, {"id": 141, "local_id": 23, "section": "PHẦN 2: CÁCH MÁY TÍNH “NHÌN” BẰNG CNN (CONVOLUTIONAL NEURAL NETWORKS)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Trong một mạng CNN điển hình để phân loại (ví dụ: LeNet-5 hoặc AlexNet), các lớp cuối cùng thường là loại lớp nào?", "options": [{"id": "A", "text": "Lớp Tích chập trích xuất đặc trưng không gian (Convolutional Layer)."}, {"id": "B", "text": "Lớp Gộp giảm kích thước không gian bản đồ đặc trưng (Pooling Layer)."}, {"id": "C", "text": "Lớp Kết nối đầy đủ (Fully Connected / Dense Layers)."}, {"id": "D", "text": "Lớp Tiền xử lý và chuẩn hóa dải giá trị điểm ảnh đầu vào mạng nơ-ron."}], "answer": "C", "explanation": "Sau khi trích xuất đặc trưng qua các lớp Conv/Pool, dữ liệu được làm phẳng và đưa vào các lớp Dense để thực hiện phân loại cuối cùng."}, {"id": 142, "local_id": 24, "section": "PHẦN 2: CÁCH MÁY TÍNH “NHÌN” BẰNG CNN (CONVOLUTIONAL NEURAL NETWORKS)", "difficulty": "Trung bình", "difficulty_code": "TH", "question": "Khi huấn luyện CNN, các giá trị trong bộ lọc (filter weights) được xác định như thế nào?", "options": [{"id": "A", "text": "Do các kỹ sư thị giác máy tính thiết lập thủ công các ma trận hằng số cố định như bộ lọc Sobel hoặc Canny trước khi đưa vào mô hình."}, {"id": "B", "text": "Được khởi tạo ngẫu nhiên và tự động điều chỉnh (học) thông qua quá trình huấn luyện (Backpropagation) để tối ưu hóa nhiệm vụ."}, {"id": "C", "text": "Được tải tự động từ các cơ sở dữ liệu bách khoa toàn thư mở trên Internet và giữ nguyên cố định không bao giờ thay đổi trong toàn bộ chu kỳ học."}, {"id": "D", "text": "Được định sẵn là các ma trận đơn vị chỉ chứa các giá trị số 0 và 1 xen kẽ nhau một cách tuần hoàn nhằm đơn giản hóa tối đa các phép toán số học."}], "answer": "B", "explanation": "Các trọng số của bộ lọc là các tham số có thể học được (learnable parameters), thay đổi dần dần để giảm thiểu hàm mất mát."}, {"id": 143, "local_id": 25, "section": "PHẦN 3: ỨNG DỤNG - GIÁM SÁT BỆNH & PHÂN LOẠI NÔNG SẢN", "difficulty": "Khó", "difficulty_code": "VD", "question": "Theo Chapter 2, tại sao các phương pháp phát hiện bệnh táo truyền thống (kiểm tra trực quan bởi chuyên gia) lại trở nên không hiệu quả trong nền nông nghiệp hiện đại?", "options": [{"id": "A", "text": "Vì các chuyên gia bệnh học thực vật luôn yêu cầu mức chi phí thù lao quá cao và các phòng thí nghiệm kiểm định của họ thường đặt ở rất xa khu vực canh tác nông nghiệp."}, {"id": "B", "text": "Vì phương pháp này tốn nhiều thời gian, công sức, tốn kém và dễ xảy ra sai sót do tính chủ quan của con người, đặc biệt là trên các trang trại lớn."}, {"id": "C", "text": "Vì các giống cây táo thương mại hiện đại đã được biến đổi gen hoàn toàn để kháng mọi loại nấm mốc và vi khuẩn gây hại nên không còn nguy cơ phát sinh mầm bệnh trong thực tế."}, {"id": "D", "text": "Vì các chủ nhà vườn ngày nay chỉ ưu tiên sử dụng thiết bị bay không người lái để quay phim quảng bá phong cảnh thay vì duy trì các hoạt động khảo sát bệnh học định kỳ."}], "answer": "B", "explanation": "Tài liệu nhấn mạnh việc kiểm tra thủ công tốn kém, chậm chạp và dễ sai sót, dẫn đến việc phát hiện chậm và lây lan dịch bệnh."}, {"id": 144, "local_id": 26, "section": "PHẦN 3: ỨNG DỤNG - GIÁM SÁT BỆNH & PHÂN LOẠI NÔNG SẢN", "difficulty": "Khó", "difficulty_code": "VD", "question": "Các bệnh phổ biến trên cây táo được liệt kê trong tài liệu nghiên cứu (Chapter 2) bao gồm những loại nào?", "options": [{"id": "A", "text": "Bệnh đốm lá Alternaria, Bệnh ghẻ táo (Apple Scab), Bệnh phấn trắng (Powdery Mildew) và Bệnh rỉ sét (Cedar Apple Rust)."}, {"id": "B", "text": "Bệnh héo xanh vi khuẩn trên cây cà chua, Bệnh đạo ôn trên cây lúa nước, Bệnh đốm mắt cua trên thân cao su và Bệnh rỉ sắt cà phê vối."}, {"id": "C", "text": "Bệnh nghẹt rễ sinh lý do ngập úng nước kéo dài, Bệnh thối cổ rễ do nấm đất kỵ khí và Hiện tượng vàng lá do đất canh tác bị nhiễm mặn nghiêm trọng."}, {"id": "D", "text": "Hiện tượng cháy chóp lá do thời tiết khô hạn cực đoan, Khuyết tật thiếu hụt vi lượng kẽm và Hiện tượng rụng lá sinh lý theo chu kỳ mùa thu hàng năm."}], "answer": "A", "explanation": "Đây là các bệnh do nấm, vi khuẩn và virus gây ra, ảnh hưởng trực tiếp đến chất lượng và năng suất quả táo."}, {"id": 145, "local_id": 27, "section": "PHẦN 3: ỨNG DỤNG - GIÁM SÁT BỆNH & PHÂN LOẠI NÔNG SẢN", "difficulty": "Khó", "difficulty_code": "VD", "question": "Mục tiêu kinh tế chính của việc áp dụng Học máy (ML) vào phát hiện bệnh táo là gì?", "options": [{"id": "A", "text": "Nhằm độc quyền công nghệ canh tác nông nghiệp công nghệ cao để nâng giá thành bán quả táo ra thị trường quốc tế lên gấp hai hoặc ba lần so với trước."}, {"id": "B", "text": "Giảm chi phí cho người trồng (giảm thuốc trừ sâu lãng phí) và tăng năng suất/chất lượng quả, từ đó đáp ứng nhu cầu tiêu dùng."}, {"id": "C", "text": "Nhằm thay thế toàn bộ lực lượng lao động nông dân bằng dây chuyền cơ giới hóa tự động để loại bỏ hoàn toàn các tổ chức công đoàn nông trại truyền thống."}, {"id": "D", "text": "Nhằm thương mại hóa độc quyền các gói phần mềm thị giác máy tính cho các viện nghiên cứu khí tượng thủy văn và tổ chức môi trường quốc tế phi lợi nhuận."}], "answer": "B", "explanation": "Bệnh tật làm giảm năng suất và tăng chi phí. Phát hiện sớm giúp giảm thiểu thiệt hại kinh tế và tối ưu hóa đầu vào."}, {"id": 146, "local_id": 28, "section": "PHẦN 3: ỨNG DỤNG - GIÁM SÁT BỆNH & PHÂN LOẠI NÔNG SẢN", "difficulty": "Khó", "difficulty_code": "VD", "question": "Trong dự án “Nhận dạng loài hoa” (Chapter 11), tại sao chúng ta cần AI trong khi con người có thể tự phân biệt các loài hoa bằng mắt thường?", "options": [{"id": "A", "text": "Vì các chuyên gia thực vật học hoàn toàn không muốn thực hiện công việc phân loại ngoài thực địa và có xu hướng giao phó mọi nhiệm vụ phân tích cho các kỹ sư công nghệ thông tin."}, {"id": "B", "text": "Vì có hàng ngàn loài thực vật, một người không thể ghi nhớ hết được, và việc tra cứu thủ công rất mất thời gian. AI cung cấp kết quả nhanh và chi tiết hơn."}, {"id": "C", "text": "Vì các hệ thống trí tuệ nhân tạo có khả năng cảm nhận trực tiếp hương thơm hóa học và phân tích chi tiết cấu trúc phân tử phấn hoa thông qua cảm biến quang phổ nhìn thấy thông thường."}, {"id": "D", "text": "Vì thị giác máy tính có khả năng tự động biến đổi hình thái sinh học và màu sắc của các loài hoa trong tự nhiên nhằm phục vụ cho mục đích trang trí cảnh quan công viên đô thị hiện đại."}], "answer": "B", "explanation": "Tài liệu nêu rõ: “có hàng ngàn loài thực vật mà một người không thể nhận dạng hết được… sử dụng AI thu được kết quả nhanh hơn và chi tiết hơn”."}, {"id": 147, "local_id": 29, "section": "PHẦN 3: ỨNG DỤNG - GIÁM SÁT BỆNH & PHÂN LOẠI NÔNG SẢN", "difficulty": "Khó", "difficulty_code": "VD", "question": "Dự án nhận dạng loài hoa trong Chapter 11 là sự kết hợp của các nhánh AI nào?", "options": [{"id": "A", "text": "Hệ thống Robot tự hành (Robotics), Cơ điện tử chính xác và Kỹ thuật điều khiển cánh tay gắp công nghiệp."}, {"id": "B", "text": "Học máy (Machine Learning), Học sâu (Deep Learning) và Thị giác máy tính (Computer Vision)."}, {"id": "C", "text": "Xử lý ngôn ngữ tự nhiên (NLP), Nhận dạng tiếng nói tự động và Mô hình dịch thuật đa ngữ thông minh."}, {"id": "D", "text": "Công nghệ chuỗi khối (Blockchain), Tính toán đám mây phân tán và Mạng truyền dẫn ngang hàng bảo mật cao."}], "answer": "B", "explanation": "Dự án sử dụng kết hợp các nhánh khác nhau: ML, DL và CV để xây dựng hệ thống."}, {"id": 148, "local_id": 30, "section": "PHẦN 3: ỨNG DỤNG - GIÁM SÁT BỆNH & PHÂN LOẠI NÔNG SẢN", "difficulty": "Khó", "difficulty_code": "VD", "question": "Để triển khai dự án nhận dạng hoa bằng Python, thư viện nào sau đây là KHÔNG cần thiết hoặc ít liên quan nhất trong danh sách cài đặt?", "options": [{"id": "A", "text": "TensorFlow & Keras (để xây dựng mô hình DL)."}, {"id": "B", "text": "OpenCV & Pillow (để xử lý ảnh)."}, {"id": "C", "text": "Matplotlib & Seaborn (để vẽ biểu đồ)."}, {"id": "D", "text": "PyGame (để làm game)."}], "answer": "D", "explanation": "Tài liệu liệt kê các thư viện cần thiết: NumPy, Pandas, Matplotlib, Seaborn, Pillow, TensorFlow, Keras. PyGame không được nhắc đến."}, {"id": 149, "local_id": 31, "section": "PHẦN 3: ỨNG DỤNG - GIÁM SÁT BỆNH & PHÂN LOẠI NÔNG SẢN", "difficulty": "Khó", "difficulty_code": "VD", "question": "Trong bài toán phân loại hoa, đặc điểm hình thái học nào của thực vật thường được AI phân tích kỹ lưỡng nhất?", "options": [{"id": "A", "text": "Chiều cao sinh trưởng và độ nghiêng thân cây gỗ."}, {"id": "B", "text": "Hình dạng, kết cấu và màu sắc của lá và hoa."}, {"id": "C", "text": "Độ sâu tầng rễ cọc và mật độ lông hút trong đất."}, {"id": "D", "text": "Tọa độ kinh độ và vĩ độ địa lý nơi trồng cây hoa."}], "answer": "B", "explanation": "AI phân tích “hình thái của lá” (leaf morphology) và các đặc tính thị giác khác để phân biệt loài."}, {"id": 150, "local_id": 32, "section": "PHẦN 3: ỨNG DỤNG - GIÁM SÁT BỆNH & PHÂN LOẠI NÔNG SẢN", "difficulty": "Khó", "difficulty_code": "VD", "question": "Trong quá trình chuẩn bị dữ liệu cho mô hình CNN nhận diện hoa, thao tác “Resize” (thay đổi kích thước ảnh) có ý nghĩa gì?", "options": [{"id": "A", "text": "Tăng dung lượng lưu trữ của từng tệp ảnh lên mức tối đa nhằm bảo tồn nguyên vẹn toàn bộ các hạt nhiễu quang học thu được từ các cảm biến camera độ phân giải cao."}, {"id": "B", "text": "Đưa tất cả các ảnh đầu vào về cùng một kích thước cố định (ví dụ: 64x64 hoặc 128x128 pixel) để phù hợp với kiến trúc mạng nơ-ron."}, {"id": "C", "text": "Cắt bỏ hoàn toàn vùng hoa và tán lá để mạng nơ-ron chỉ tập trung trích xuất thông tin môi trường nền đất và các loài cỏ dại mọc xung quanh đối tượng cần khảo sát."}, {"id": "D", "text": "Tự động chuyển đổi toàn bộ ảnh chụp đa sắc sang không gian ảnh xám đơn kênh nhằm giảm thiểu độ bão hòa màu sắc và đơn giản hóa hình thái học của mẫu vật thực vật."}], "answer": "B", "explanation": "Mạng CNN yêu cầu kích thước đầu vào đồng nhất (vector input cố định), do đó việc resize là bắt buộc trong bước tiền xử lý."}, {"id": 151, "local_id": 33, "section": "PHẦN 3: ỨNG DỤNG - GIÁM SÁT BỆNH & PHÂN LOẠI NÔNG SẢN", "difficulty": "Khó", "difficulty_code": "VD", "question": "Thư viện tqdm được cài đặt trong dự án Chapter 11 có tác dụng gì?", "options": [{"id": "A", "text": "Tối ưu hóa tốc độ tính toán phần cứng GPU bằng cách tự động song song hóa các phép nhân ma trận trọng số trong quá trình huấn luyện mô hình học sâu tích chập."}, {"id": "B", "text": "Hiển thị thanh tiến trình (progress bar) khi chạy các vòng lặp xử lý dữ liệu lâu, giúp người dùng biết chương trình đang chạy đến đâu."}, {"id": "C", "text": "Tự động thu thập và tải về hàng loạt hình ảnh thực vật mới từ các công cụ tìm kiếm trên Internet mỗi khi phát hiện tập dữ liệu huấn luyện cục bộ bị thiếu hụt mẫu."}, {"id": "D", "text": "Xây dựng giao diện tương tác người dùng đồ họa hoàn chỉnh với các nút bấm trực quan và bảng điều khiển để triển khai mô hình phân loại hoa lên nền tảng web dịch vụ."}], "answer": "B", "explanation": "tqdm là thư viện Python phổ biến dùng để hiển thị thanh tiến trình (progress bars) trong terminal."}, {"id": 152, "local_id": 34, "section": "PHẦN 3: ỨNG DỤNG - GIÁM SÁT BỆNH & PHÂN LOẠI NÔNG SẢN", "difficulty": "Khó", "difficulty_code": "VD", "question": "Khi một hệ thống CV được ứng dụng để “Phân loại nông sản” (ví dụ: phân loại cà chua chín/xanh), nó dựa vào đặc trưng nào là chủ yếu?", "options": [{"id": "A", "text": "Âm thanh va chạm và biên độ dao động khi quả rơi tự do trên hệ thống băng chuyền."}, {"id": "B", "text": "Màu sắc (Color Histogram) và Hình dạng (Shape/Contour)."}, {"id": "C", "text": "Hàm lượng đường hòa tan tổng số và vị giác cảm quan nếm thử trực tiếp của quả."}, {"id": "D", "text": "Tỷ trọng chất lỏng và khối lượng riêng của từng quả khi thả ngập hoàn toàn trong nước."}], "answer": "B", "explanation": "Màu sắc là chỉ dấu rõ nhất cho độ chín, và hình dạng giúp phát hiện dị tật. CV sử dụng các đặc trưng này để phân loại."}, {"id": 153, "local_id": 35, "section": "PHẦN 3: ỨNG DỤNG - GIÁM SÁT BỆNH & PHÂN LOẠI NÔNG SẢN", "difficulty": "Khó", "difficulty_code": "VD", "question": "Một trong những lợi ích “phi kỹ thuật” quan trọng của việc áp dụng các ứng dụng nhận diện bệnh trên điện thoại di động cho nông dân là gì?", "options": [{"id": "A", "text": "Cung cấp thêm các trò chơi giải trí đa phương tiện trên điện thoại giúp người nông dân giảm bớt áp lực tinh thần trong những giờ lao động vất vả ngoài đồng ruộng."}, {"id": "B", "text": "Tăng cường khả năng tiếp cận kiến thức chuyên gia cho nông dân ở vùng sâu vùng xa (những người thiếu tiếp cận dịch vụ khuyến nông)."}, {"id": "C", "text": "Thúc đẩy thị trường tiêu thụ điện thoại thông minh phân khúc cao cấp tại các vùng nông thôn nhờ yêu cầu cấu hình phần cứng xử lý đồ họa cực kỳ phức tạp của mô hình."}, {"id": "D", "text": "Hỗ trợ bà con nông dân trực tiếp livestream bán đấu giá các lô nông sản tươi sống tới người tiêu dùng tại các đô thị lớn trên các nền tảng mạng xã hội phổ biến."}], "answer": "B", "explanation": "Hệ thống giúp “dân chủ hóa” kiến thức, cho phép nông dân không có chuyên môn sâu vẫn có thể chẩn đoán bệnh chính xác như chuyên gia."}, {"id": 154, "local_id": 36, "section": "PHẦN 3: ỨNG DỤNG - GIÁM SÁT BỆNH & PHÂN LOẠI NÔNG SẢN", "difficulty": "Khó", "difficulty_code": "VD", "question": "Trong sơ đồ khối của một hệ thống giám sát cây trồng bằng CV, sau khi Camera thu thập ảnh và Máy tính xử lý ra kết quả (ví dụ: phát hiện sâu), bước tiếp theo thường là gì trong hệ thống tự động hóa?", "options": [{"id": "A", "text": "Tự động ngắt toàn bộ nguồn điện của trạm điều hành trung tâm và đưa máy tính xử lý vào chế độ ngủ đông dài hạn để tiết kiệm tối đa năng lượng pin mặt trời."}, {"id": "B", "text": "Kích hoạt cơ cấu chấp hành (Actuators) như cánh tay robot phun thuốc hoặc gửi cảnh báo đến điện thoại người quản lý."}, {"id": "C", "text": "Lập tức xóa bỏ vĩnh viễn toàn bộ cơ sở dữ liệu ảnh chụp hiện trường và các file tham số trọng số mô hình vừa suy luận xong nhằm giải phóng dung lượng ổ cứng."}, {"id": "D", "text": "Tự động điều chỉnh tăng độ sáng màn hình hiển thị tại trạm giám sát lên mức tối đa nhằm xua đuổi các loài chim và côn trùng bay xung quanh khu vực nhà lưới."}], "answer": "B", "explanation": "Mục đích của giám sát là để hành động. Hệ thống sẽ kích hoạt phản ứng (phun thuốc chính xác vị trí sâu bệnh) hoặc báo cáo để con người can thiệp."}];
+
+    let currentIndex = 0;
+    let selectedOption = null;
+    let userAnswers = {}; // { index: { selected: 'A', isCorrect: true, checked: true } }
+    let isChecked = false;
+
+    // Elements
+    const qCounter = document.getElementById('question-counter');
+    const secTag = document.getElementById('section-tag');
+    const diffTag = document.getElementById('difficulty-tag');
+    const qText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const feedbackBox = document.getElementById('feedback-box');
+    const feedbackTitle = document.getElementById('feedback-title');
+    const feedbackDesc = document.getElementById('feedback-desc');
+    const btnCheck = document.getElementById('btn-check');
+    const btnNext = document.getElementById('btn-next');
+    const btnPrev = document.getElementById('btn-prev');
+    const progressFill = document.getElementById('progress-fill');
+    const quizScreen = document.getElementById('quiz-screen');
+    const resultScreen = document.getElementById('result-screen');
+    const paletteGrid = document.getElementById('palette-grid');
+
+    function initQuiz() {
+        buildPalette();
+        renderQuestion(currentIndex);
+    }
+
+    function buildPalette() {
+        paletteGrid.innerHTML = '';
+        questions.forEach((q, idx) => {
+            const item = document.createElement('div');
+            item.className = 'palette-item';
+            item.id = `palette-${idx}`;
+            item.innerText = idx + 1;
+            item.onclick = () => {
+                toggleDrawer();
+                jumpToQuestion(idx);
+            };
+            paletteGrid.appendChild(item);
+        });
+    }
+
+    function updatePalette() {
+        questions.forEach((q, idx) => {
+            const el = document.getElementById(`palette-${idx}`);
+            if (!el) return;
+            el.className = 'palette-item';
+            if (idx === currentIndex) el.classList.add('active');
+            if (userAnswers[idx] && userAnswers[idx].checked) {
+                if (userAnswers[idx].isCorrect) el.classList.add('correct');
+                else el.classList.add('wrong');
+            }
+        });
+    }
+
+    function renderQuestion(index) {
+        currentIndex = index;
+        const q = questions[index];
+        const state = userAnswers[index] || null;
+
+        qCounter.innerText = `Câu hỏi ${index + 1} / ${questions.length}`;
+        secTag.innerText = q.section || 'Nội dung trọng tâm';
+        
+        diffTag.innerText = q.difficulty || 'Trung bình';
+        diffTag.className = 'tag-pill';
+        if (q.difficulty === 'Dễ') diffTag.classList.add('diff-de');
+        else if (q.difficulty === 'Khó') diffTag.classList.add('diff-kho');
+        else diffTag.classList.add('diff-tb');
+
+        qText.innerText = q.question;
+        progressFill.style.width = `${((index + 1) / questions.length) * 100}%`;
+
+        btnPrev.disabled = (index === 0);
+
+        // Build Options
+        optionsContainer.innerHTML = '';
+        selectedOption = state ? state.selected : null;
+        isChecked = state ? state.checked : false;
+
+        q.options.forEach(opt => {
+            const card = document.createElement('div');
+            card.className = 'option-card';
+            card.id = `opt-${opt.id}`;
+
+            if (selectedOption === opt.id) {
+                card.classList.add('selected');
+            }
+
+            if (isChecked) {
+                card.classList.add('locked');
+                if (opt.id === q.answer) {
+                    card.classList.add('is-correct');
+                } else if (opt.id === selectedOption && selectedOption !== q.answer) {
+                    card.classList.add('is-wrong');
+                }
+            } else {
+                card.onclick = () => selectOption(opt.id);
+            }
+
+            card.innerHTML = `
+                <div class="option-letter">${opt.id}</div>
+                <div class="option-text">${opt.text}</div>
+            `;
+            optionsContainer.appendChild(card);
+        });
+
+        // Feedback
+        if (isChecked) {
+            btnCheck.style.display = 'none';
+            btnNext.style.display = 'inline-flex';
+            btnNext.innerText = (index === questions.length - 1) ? 'Xem kết quả 🏁' : 'Câu tiếp theo →';
+            showFeedback(state.isCorrect, q);
+        } else {
+            feedbackBox.className = 'feedback-box';
+            btnCheck.style.display = 'inline-flex';
+            btnCheck.disabled = !selectedOption;
+            btnNext.style.display = 'none';
+        }
+
+        updatePalette();
+    }
+
+    function selectOption(optId) {
+        if (isChecked) return;
+        selectedOption = optId;
+        document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+        const target = document.getElementById(`opt-${optId}`);
+        if (target) target.classList.add('selected');
+        btnCheck.disabled = false;
+    }
+
+    function checkAnswer() {
+        if (!selectedOption || isChecked) return;
+        const q = questions[currentIndex];
+        const isCorrect = (selectedOption === q.answer);
+
+        isChecked = true;
+        userAnswers[currentIndex] = {
+            selected: selectedOption,
+            isCorrect: isCorrect,
+            checked: true
+        };
+
+        // Lock options & mark colors
+        document.querySelectorAll('.option-card').forEach(c => c.classList.add('locked'));
+        const correctCard = document.getElementById(`opt-${q.answer}`);
+        if (correctCard) correctCard.classList.add('is-correct');
+
+        if (!isCorrect) {
+            const wrongCard = document.getElementById(`opt-${selectedOption}`);
+            if (wrongCard) wrongCard.classList.add('is-wrong');
+        }
+
+        showFeedback(isCorrect, q);
+
+        btnCheck.style.display = 'none';
+        btnNext.style.display = 'inline-flex';
+        btnNext.innerText = (currentIndex === questions.length - 1) ? 'Xem kết quả 🏁' : 'Câu tiếp theo →';
+
+        updatePalette();
+    }
+
+    function showFeedback(isCorrect, q) {
+        feedbackBox.className = `feedback-box show ${isCorrect ? 'correct' : 'incorrect'}`;
+        if (isCorrect) {
+            feedbackTitle.innerHTML = `<span>🎉</span> Chính xác!`;
+        } else {
+            feedbackTitle.innerHTML = `<span>❌</span> Chưa chính xác. Đáp án đúng là: <b>${q.answer}</b>`;
+        }
+        feedbackDesc.innerHTML = `<b>💡 Giải thích:</b> ${q.explanation || 'Không có giải thích bổ sung.'}`;
+    }
+
+    function navigateNext() {
+        if (currentIndex < questions.length - 1) {
+            renderQuestion(currentIndex + 1);
+        } else {
+            showResults();
+        }
+    }
+
+    function navigatePrev() {
+        if (currentIndex > 0) {
+            renderQuestion(currentIndex - 1);
+        }
+    }
+
+    function jumpToQuestion(idx) {
+        renderQuestion(idx);
+    }
+
+    function showResults() {
+        quizScreen.style.display = 'none';
+        resultScreen.style.display = 'block';
+
+        let correctCount = 0;
+        let wrongCount = 0;
+        questions.forEach((q, idx) => {
+            if (userAnswers[idx] && userAnswers[idx].isCorrect) {
+                correctCount++;
+            } else {
+                wrongCount++;
+            }
+        });
+
+        const total = questions.length;
+        const percent = Math.round((correctCount / total) * 100);
+
+        document.getElementById('final-score').innerText = correctCount;
+        document.getElementById('final-total').innerText = `/ ${total}`;
+        document.getElementById('stat-correct').innerText = correctCount;
+        document.getElementById('stat-wrong').innerText = wrongCount;
+        document.getElementById('stat-accuracy').innerText = `${percent}%`;
+
+        const scoreCircle = document.getElementById('score-circle');
+        scoreCircle.style.background = `conic-gradient(var(--accent) ${percent}%, #e2e8f0 ${percent}%)`;
+
+        const rTitle = document.getElementById('result-title');
+        const rSummary = document.getElementById('result-summary');
+
+        if (percent >= 90) {
+            rTitle.innerText = "🌟 Xuất sắc! Nắm vững kiến thức";
+            rSummary.innerText = "Bạn đã hoàn thành bài thi với kết quả tuyệt vời. Bạn đã hiểu rất sâu về nội dung của buổi học!";
+        } else if (percent >= 75) {
+            rTitle.innerText = "👏 Rất tốt! Đạt yêu cầu cao";
+            rSummary.innerText = "Kết quả rất ấn tượng! Bạn đã nắm chắc hầu hết các khái niệm trọng tâm.";
+        } else if (percent >= 50) {
+            rTitle.innerText = "👍 Đạt yêu cầu cơ bản";
+            rSummary.innerText = "Bạn đã vượt qua bài kiểm tra. Hãy xem lại các câu giải thích chi tiết để củng cố thêm phần còn yếu nhé!";
+        } else {
+            rTitle.innerText = "📖 Cần ôn tập thêm!";
+            rSummary.innerText = "Bạn nên đọc lại slide bài giảng và tài liệu học tập rồi thử sức lại lần nữa nhé.";
+        }
+    }
+
+    function restartQuiz() {
+        userAnswers = {};
+        currentIndex = 0;
+        selectedOption = null;
+        isChecked = false;
+        resultScreen.style.display = 'none';
+        quizScreen.style.display = 'block';
+        initQuiz();
+    }
+
+    function viewAllAnswers() {
+        resultScreen.style.display = 'none';
+        quizScreen.style.display = 'block';
+        renderQuestion(0);
+    }
+
+    function toggleDrawer() {
+        const drawer = document.getElementById('drawer');
+        const overlay = document.getElementById('drawer-overlay');
+        const isOpen = drawer.classList.contains('open');
+        if (isOpen) {
+            drawer.classList.remove('open');
+            overlay.style.display = 'none';
+        } else {
+            drawer.classList.add('open');
+            overlay.style.display = 'block';
+        }
+    }
+
+    // Khởi động
+    initQuiz();
+</script>
+
+</body>
+</html>

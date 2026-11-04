@@ -1,0 +1,244 @@
+“Internet vạn vật” (IoT) trong nông nghiệp được định nghĩa tốt nhất là gì?
+A. Một hệ thống sàn giao dịch thương mại điện tử chuyên biệt kết nối trực tiếp nông dân với người tiêu dùng nhằm tối ưu hóa chuỗi cung ứng nông sản.
+B. Một mạng lưới các vật thể vật lý (cảm biến, máy móc) được kết nối điện tử để thu thập, chia sẻ dữ liệu và giám sát từ xa.
+C. Một nền tảng mạng xã hội và diễn đàn trực tuyến cho phép các nhà nông và chuyên gia khuyến nông trao đổi kinh nghiệm canh tác cùng các giải pháp mùa vụ.
+D. Một phần mềm quản lý sổ sách kế toán nông trại độc lập được cài đặt trên các máy tính để bàn cục bộ mà không cần kết nối mạng viễn thông hay internet.
+ANSWER: B
+
+Trong kiến trúc hệ thống IoT 3 lớp điển hình, lớp dưới cùng có nhiệm vụ thu thập dữ liệu trực tiếp từ môi trường được gọi là gì?
+A. Lớp Mạng và Truyền thông dữ liệu (Network & Communication Layer).
+B. Lớp Ứng dụng và Dịch vụ người dùng (Application & Services Layer).
+C. Lớp Cảm biến/Nhận thức (Perception/Sensor Layer).
+D. Lớp Xử lý Trung tâm và Đám mây (Cloud Computing & Analytics Layer).
+ANSWER: C
+
+Cảm biến độ ẩm đất (Soil Moisture Sensor) đóng vai trò gì trong hệ thống tưới tiêu thông minh?
+A. Thu thập dữ liệu lượng mưa tự nhiên rơi xuống bề mặt nông trại nhằm kích hoạt mái che tự động.
+B. Đo hàm lượng nước hiện có trong đất để quyết định xem cây có cần tưới hay không.
+C. Ghi nhận nhiệt độ bề mặt tán lá cây trồng bằng hồng ngoại nhằm phát hiện tình trạng bốc thoát hơi nước.
+D. Phân tích nồng độ ion hydro (chỉ số pH) và độ mặn hòa tan của nguồn nước trong hệ thống đường ống dẫn tưới.
+ANSWER: B
+
+Vai trò của “Lớp Mạng” (Network Layer) hoặc Gateway trong hệ thống IoT là gì?
+A. Trực tiếp thực hiện các thuật toán máy học chuyên sâu để ra quyết định điều khiển tưới tiêu tự động.
+B. Trực tiếp cắm sâu vào tầng đất canh tác nhằm cảm nhận các biến động vật lý và hóa học tại chỗ.
+C. Truyền tải dữ liệu từ các cảm biến lên máy chủ đám mây (Cloud) hoặc trung tâm xử lý.
+D. Cung cấp giao diện đồ họa hiển thị trực quan biểu đồ quan trắc trên ứng dụng di động cho nông dân.
+ANSWER: C
+
+Tại sao dữ liệu “Thời gian thực” (Real-time data) lại quan trọng đối với quản lý tưới tiêu và dinh dưỡng?
+A. Vì nó chủ yếu cung cấp tài liệu lưu trữ toàn diện về nhật ký canh tác của các niên vụ trước nhằm phục vụ mục đích thống kê và làm hồ sơ báo cáo kiểm toán tài chính định kỳ.
+B. Vì điều kiện môi trường (nắng, gió, độ ẩm) thay đổi liên tục; dữ liệu tức thời giúp hệ thống phản ứng ngay lập tức (ví dụ: dừng tưới khi trời bắt đầu mưa).
+C. Vì việc thu thập dòng dữ liệu liên tục này sẽ giúp kiểm tra khả năng lưu trữ tối đa của hệ thống máy chủ và gia tăng dung lượng bộ nhớ đệm cho cơ sở dữ liệu viễn thám nông trại.
+D. Vì chỉ cần gắn nhãn sản phẩm có dữ liệu thời gian thực là nông sản sẽ tự động được các chuỗi siêu thị thu mua với mức giá cao gấp đôi mà không cần kiểm định chất lượng thực tế.
+ANSWER: B
+
+Thiết bị nào sau đây thường được sử dụng như một bộ điều khiển trung tâm nhỏ gọn (Edge device) tại trang trại để thu thập dữ liệu từ cảm biến trước khi gửi lên Cloud?
+A. Hệ thống siêu máy tính Cray hiệu năng cao.
+B. Raspberry Pi hoặc Arduino.
+C. Máy phát điện công nghiệp dự phòng cỡ lớn.
+D. Đầu máy cày kéo cơ giới hóa hạng nặng.
+ANSWER: B
+
+Một trong những thách thức lớn nhất khi triển khai hệ thống cảm biến IoT trên các cánh đồng rộng lớn ở vùng nông thôn là gì?
+A. Trọng lượng vật lý của các cảm biến quá nặng nề khiến máy kéo không vận chuyển nổi.
+B. Vấn đề kết nối mạng (Connectivity) và nguồn năng lượng (Pin/Điện).
+C. Không gian canh tác trên cánh đồng quá chật hẹp nên không thể tìm được vị trí cắm cảm biến.
+D. Tán cây xanh che khuất hoàn toàn tầm nhìn làm cho các thiết bị cảm biến bị suy giảm tính năng quang học.
+ANSWER: B
+
+Công nghệ “Viễn thám” (Remote Sensing) qua vệ tinh khác với Cảm biến IoT tại chỗ (In-situ sensors) ở điểm nào?
+A. Viễn thám vệ tinh bắt buộc các kỹ sư nông nghiệp phải trực tiếp cắm các đầu dò điện tử sâu vào từng luống đất canh tác để tiếp xúc trực tiếp với rễ cây.
+B. Viễn thám cung cấp cái nhìn tổng quan trên diện rộng (vĩ mô) nhưng độ chi tiết thấp hơn; IoT cung cấp dữ liệu chính xác tại điểm đo (vi mô).
+C. Việc đầu tư phóng vệ tinh viễn thám riêng biệt luôn có tổng chi phí tài chính thấp hơn rất nhiều so với việc mua sắm một bộ thiết bị cảm biến IoT thông thường.
+D. Công nghệ viễn thám chỉ có thể vận hành trong môi trường nhà kính kín gió hoàn toàn chứ không thể thu thập tín hiệu quang phổ ở ngoài trời tự nhiên.
+ANSWER: B
+
+Cảm biến NPK được sử dụng để đo thông số gì?
+A. Nồng độ muối hòa tan và độ dẫn điện (EC) trong các nguồn nước tưới ngầm tại địa phương.
+B. Hàm lượng các chất dinh dưỡng đa lượng (Nitơ, Phốt pho, Kali) trong đất.
+C. Vận tốc gió thổi, hướng gió và áp suất khí quyển xung quanh khu vực canh tác nông trại.
+D. Mật độ côn trùng gây hại và số lượng các cá thể sâu bướm bám trên thân lá của cây trồng.
+ANSWER: B
+
+Tại sao cần đưa dữ liệu từ cảm biến lên “Điện toán đám mây” (Cloud Computing)?
+A. Để hạ nhiệt độ vật lý của các vi mạch cảm biến ngoài trời bằng luồng điện toán đám mây tầng cao giúp thiết bị hoạt động bền bỉ hơn mà không lo bị nóng máy.
+B. Để tận dụng khả năng lưu trữ khổng lồ và sức mạnh tính toán mạnh mẽ của Cloud để chạy các thuật toán AI phức tạp mà thiết bị nhỏ không làm được.
+C. Để phong tỏa và che giấu hoàn toàn dữ liệu môi trường nông nghiệp vào các vùng lưu trữ tối mật nhằm ngăn chặn người tiêu dùng truy xuất nguồn gốc sản phẩm.
+D. Để tự động thanh lọc và xóa bỏ vĩnh viễn toàn bộ lịch sử đo đạc sau mỗi giờ truyền tin nhằm giúp các thiết bị phần cứng tại đồng ruộng giải phóng bộ nhớ.
+ANSWER: B
+
+Khái niệm “Khả năng tương tác” (Interoperability) trong IoT nông nghiệp đề cập đến vấn đề gì?
+A. Khả năng các thiết bị từ các nhà sản xuất khác nhau có thể giao tiếp và làm việc cùng nhau.
+B. Mức độ bền bỉ và khả năng chống nước, chống bụi xâm nhập theo tiêu chuẩn công nghiệp IP67 của thiết bị.
+C. Khả năng chống chịu nhiệt độ cao và bức xạ mặt trời gay gắt trong thời gian dài của vỏ bọc cảm biến.
+D. Mức độ thân thiện của giao diện giúp người dùng điều khiển máy móc thông qua các nút bấm cơ học đơn giản.
+ANSWER: A
+
+Hệ thống IoT trong nông nghiệp thường kết hợp với công nghệ nào để xác định vị trí chính xác của dữ liệu thu thập được?
+A. Công nghệ tệp âm thanh kỹ thuật số MP3.
+B. GPS (Hệ thống định vị toàn cầu).
+C. Cổng giao tiếp truyền dữ liệu có dây USB.
+D. Công nghệ sóng ngắn Bluetooth tầm gần.
+ANSWER: B
+
+Hạn chế lớn nhất của phương pháp tưới tiêu truyền thống “theo lịch trình cố định” (Fixed Schedule) là gì?
+A. Làm tiêu hao lượng điện năng vô cùng lớn do máy bơm bắt buộc phải vận hành liên tục suốt ngày đêm ở công suất tối đa mà không có bất kỳ bộ điều tốc biến tần nào hỗ trợ kiểm soát.
+B. Không tính đến sự thay đổi của thời tiết hay độ ẩm thực tế của đất, dẫn đến lãng phí nước (tưới khi đất còn ướt) hoặc làm cây thiếu nước (không tưới khi trời quá nóng).
+C. Đòi hỏi lực lượng kỹ thuật viên và nhân công túc trực 24/7 tại từng van cơ khí dọc khắp các lô đất để đóng mở bằng tay theo từng giờ quy định trong sổ tay hướng dẫn vận hành.
+D. Thường xuyên tạo ra áp lực nước biến thiên đột ngột vượt quá định mức chịu tải của đường ống dẫn, làm vỡ các đầu béc phun và gây rò rỉ cơ học nghiêm trọng trong mạng lưới ống ngầm.
+ANSWER: B
+
+“Học tăng cường sâu” (Deep Reinforcement Learning - DRL) là sự kết hợp của hai công nghệ nào?
+A. Mạng nơ-ron sâu (Deep Neural Networks) và Học tăng cường (Reinforcement Learning).
+B. Học máy truyền thống (Machine Learning) và Sổ cái phân tán chuỗi khối (Blockchain Technology).
+C. Hệ thống mạng lưới Internet vạn vật (IoT) và Cơ sở dữ liệu lớn phân tán (Big Data Analytics).
+D. Điện toán đám mây (Cloud Computing) và Mạng viễn thông di động không dây băng thông rộng 5G.
+ANSWER: A
+
+Trong mô hình Học tăng cường áp dụng cho tưới tiêu, “Tác nhân” (Agent) đóng vai trò là gì?
+A. Người nông dân trực tiếp quan sát và thao tác tưới nước bằng tay.
+B. Hệ thống tưới tiêu thông minh (phần mềm ra quyết định).
+C. Cây trồng sinh trưởng trên đồng ruộng nhận nước và chất dinh dưỡng.
+D. Động cơ máy bơm thủy lực thực hiện việc hút và đẩy dòng nước tưới.
+ANSWER: B
+
+“Môi trường” (Environment) trong bài toán tưới tiêu bao gồm những yếu tố nào?
+A. Chỉ bao gồm tổ hợp máy bơm nước ly tâm và các van điện từ đóng mở trên đường ống.
+B. Cánh đồng, đất đai, cây trồng và các yếu tố khí hậu (nắng, mưa, gió).
+C. Khu vực kho bãi bảo quản sau thu hoạch và các container trữ nông sản lạnh khép kín.
+D. Thị trường bán buôn nông sản và các sàn thương mại điện tử kết nối người tiêu dùng.
+ANSWER: B
+
+“Hành động” (Action) mà Tác nhân AI thực hiện trong hệ thống tưới tiêu là gì?
+A. Điều khiển máy bay không người lái (drone) bay lượn chụp ảnh quang phổ của toàn bộ tán cây.
+B. Quyết định lượng nước cần tưới (ví dụ: 0 lít, 5 lít, 10 lít) tại một thời điểm cụ thể.
+C. Quyết định liều lượng hóa chất bảo vệ thực vật cần phun xịt để phòng trừ sâu bệnh trên lá cây.
+D. Vận hành xe máy gặt đập liên hợp để cắt và thu gom toàn bộ nông sản khi đến độ chín sinh học.
+ANSWER: B
+
+Cơ chế “Phần thưởng” (Reward) giúp AI học cách tưới tiêu tối ưu như thế nào?
+A. Nếu độ ẩm đất vượt quá giới hạn, phần mềm AI sẽ ngay lập tức bị gỡ cài đặt và xóa toàn bộ mã nguồn ra khỏi hệ điều hành của bộ điều khiển biên.
+B. AI nhận điểm thưởng (+) nếu duy trì độ ẩm đất ở mức lý tưởng và nhận điểm phạt (-) nếu để đất quá khô hoặc quá ướt (gây lãng phí nước).
+C. Mỗi khi chu trình tưới cây hoàn tất, hệ thống AI sẽ tự động được người nông dân chuyển khoản một khoản tiền hoa hồng vào tài khoản ngân hàng điện tử.
+D. Hệ thống AI sẽ tự động nạp thêm các bài báo khoa học quốc tế mới nhất về sinh học nông nghiệp từ internet vào bộ nhớ sau mỗi lần đóng mở van nước.
+ANSWER: B
+
+Dữ liệu đầu vào để mô tả “Trạng thái” (State) của cánh đồng cho AI thường bao gồm những gì?
+A. Độ ẩm đất hiện tại, nhiệt độ không khí, dự báo lượng mưa, giai đoạn phát triển của cây.
+B. Bảng biểu giá nước sinh hoạt đô thị và mức phí dịch vụ thoát nước tại địa phương theo biểu giá bán lẻ của công ty cấp nước.
+C. Danh sách chấm công điểm danh hằng ngày và số lượng công nhân đang làm việc theo ca trên cánh đồng của doanh nghiệp nông nghiệp.
+D. Mã định danh thương hiệu, thông số công suất tiêu thụ điện và nguồn gốc xuất xứ cơ khí của máy bơm nước đang lắp đặt.
+ANSWER: A
+
+Khái niệm “Thử và Sai” (Trial and Error) trong Học tăng cường có nghĩa là gì?
+A. Hệ thống thử tưới nước ngẫu nhiên và xem kết quả, từ đó rút kinh nghiệm để làm tốt hơn ở lần sau.
+B. Hệ thống được lập trình hoàn hảo để thực hiện chính xác tuyệt đối mọi hành vi điều khiển ngay từ lần vận hành đầu tiên.
+C. Hệ thống ghi lại nhật ký làm việc của người nông dân có kinh nghiệm lâu năm rồi bắt chước máy móc lại toàn bộ quy trình đó.
+D. Hệ thống sẽ lập tức khóa mọi chức năng và phát tín hiệu cảnh báo ngừng vận hành vĩnh viễn khi có sai số đo lường vượt ngưỡng.
+ANSWER: A
+
+Tại sao DRL lại ưu việt hơn các hệ thống tưới tự động dựa trên quy tắc (Rule-based, ví dụ: “Nếu độ ẩm < 30% thì tưới”)?
+A. Vì các mô hình DRL có chi phí đầu tư ban đầu cực kỳ thấp, không đòi hỏi trang bị bất kỳ máy tính cấu hình cao nào và hoàn toàn miễn phí bản quyền triển khai cho mọi hộ nông dân nhỏ lẻ canh tác truyền thống.
+B. Vì DRL có khả năng học và thích ứng với các điều kiện phức tạp, phi tuyến tính (ví dụ: dự báo ngày mai mưa to thì hôm nay sẽ không tưới dù đất đang hơi khô), điều mà quy tắc cứng nhắc khó làm được.
+C. Vì DRL hoàn toàn có thể tự đưa ra các quyết định tưới tiêu chuẩn xác mà không cần dựa vào bất kỳ cảm biến độ ẩm, nhiệt độ hay thiết bị đo đạc môi trường vật lý nào được lắp đặt ngoài thực địa nông trại.
+D. Vì thuật toán DRL có tốc độ thực thi lệnh trong phần triệu giây trên các chip nhúng giá rẻ, nhanh hơn hàng nghìn lần so với các câu lệnh logic điều kiện If-Else thông thường của các hệ thống dựa trên quy tắc.
+ANSWER: B
+
+Trong nghiên cứu điển hình về tưới tiêu cho cây hạnh nhân (Almond trees) được nhắc đến trong tài liệu, hệ thống DRL đã giúp tiết kiệm được bao nhiêu phần trăm lượng nước so với phương pháp thông thường?
+A. Khoảng 7.8%.
+B. Khoảng 50.0%.
+C. Khoảng 90.0%.
+D. Không tiết kiệm được gì.
+ANSWER: A
+
+Thuật toán DRL nào thường được sử dụng trong các bài toán điều khiển liên tục như tưới tiêu (quyết định lượng nước là số thực)?
+A. Thuật toán Q-Learning truyền thống sử dụng bảng tra cứu giá trị rời rạc Q-table trên bộ nhớ RAM.
+B. DDPG (Deep Deterministic Policy Gradient) hoặc PPO (Proximal Policy Optimization).
+C. Thuật toán phân cụm không giám sát K-Means Clustering dùng để nhóm dữ liệu vector không gian.
+D. Mô hình phân loại xác suất Naïve Bayes dựa trên định lý Bayes với giả định độc lập có điều kiện.
+ANSWER: B
+
+Một thách thức lớn khi huấn luyện mô hình DRL cho nông nghiệp trong thực tế là gì?
+A. Cây trồng cần rất nhiều thời gian để phát triển (một mùa vụ kéo dài vài tháng), nên việc “thử và sai” trực tiếp trên thực địa rất chậm và rủi ro (làm chết cây).
+B. Các thiết bị máy chủ máy tính chuyên dụng dùng để huấn luyện AI sẽ lập tức bị hỏng hóc vật lý và chập cháy toàn bộ vi mạch khi đặt trực tiếp dưới ánh nắng mặt trời và mưa bão ngoài trời.
+C. Quy định pháp lý nghiêm ngặt của địa phương cấm hoàn toàn người nông dân lắp đặt bất kỳ thiết bị điện tử thông minh hoặc máy móc tự động nào bên trong phạm vi đất canh tác nông nghiệp.
+D. Hoàn toàn không xuất hiện bất kỳ trở ngại kỹ thuật hay khó khăn thực tế nào vì cây trồng trên thực địa luôn phát triển tức thì và không bao giờ bị ảnh hưởng tiêu cực bởi các thử nghiệm sai.
+ANSWER: A
+
+Hệ thống tưới tiêu thông minh DRLIC (Deep Reinforcement Learning for Irrigation Control) xem xét yếu tố nào để ra quyết định?
+A. Chỉ xem xét duy nhất giá trị độ ẩm tức thời đo được tại thời điểm kích hoạt máy bơm mà bỏ qua mọi dự báo khí tượng tương lai.
+B. Xem xét cả độ ẩm đất hiện tại và sự mất độ ẩm dự kiến trong tương lai (do bốc hơi/thoát hơi nước).
+C. Chỉ phụ thuộc hoàn toàn vào lưu lượng mưa rơi đo được từ các trạm đo vũ kế trong vòng hai mươi tư giờ vừa qua tại khu vực lân cận.
+D. Chỉ căn cứ vào mốc thời gian cố định theo đồng hồ cơ học (ví dụ: kích hoạt máy bơm đúng 6 giờ sáng và 5 giờ chiều mỗi ngày).
+ANSWER: B
+
+Khái niệm “Quản lý canh tác theo địa điểm cụ thể” (Site-Specific Crop Management - SSCM) trong bón phân nghĩa là gì?
+A. Áp dụng phương pháp rải đều đồng loạt một định mức phân bón cố định duy nhất trên toàn bộ diện tích cánh đồng mà không cần quan tâm đến sự khác biệt dinh dưỡng giữa các khu vực.
+B. Chia cánh đồng thành các vùng quản lý nhỏ (Management Zones) và áp dụng lượng phân bón khác nhau tùy theo nhu cầu dinh dưỡng của từng vùng.
+C. Chỉ tập trung rải phân bón tại các dải đất bao quanh chu vi ngoài rìa bờ rào của cánh đồng nhằm ngăn chặn sâu bệnh và cỏ dại xâm lấn từ bên ngoài vào khu vực trồng trọt trung tâm.
+D. Loại bỏ hoàn toàn các chất dinh dưỡng khoáng đa lượng và chỉ sử dụng duy nhất nước tinh khiết để phun tưới thay thế hoàn toàn cho toàn bộ nhu cầu phân bón của cây trồng trong vụ mùa.
+ANSWER: B
+
+Công nghệ “VRT” trong máy rải phân bón thông minh là viết tắt của từ gì?
+A. Virtual Reality Technology (Công nghệ không gian thực tế ảo đa chiều).
+B. Variable Rate Technology (Công nghệ tỷ lệ biến đổi).
+C. Very Rapid Tractor (Công nghệ vận hành máy kéo cơ giới siêu tốc).
+D. Visual Recognition Technology (Công nghệ nhận dạng hình ảnh thị giác máy tính).
+ANSWER: B
+
+Trước khi thực hiện bón phân chính xác, bước quan trọng nhất để hiểu tình trạng dinh dưỡng của đất là gì?
+A. Tra cứu bản tin dự báo thời tiết và lượng mưa trong vòng 30 ngày tới.
+B. Lấy mẫu đất (Soil Sampling) và lập bản đồ dinh dưỡng.
+C. Đầu tư mua sắm một dàn máy kéo cơ giới hóa đời mới nhất với công suất lớn.
+D. Thu thập ý kiến tham khảo và phỏng vấn thói quen canh tác của nông dân xung quanh.
+ANSWER: B
+
+Việc áp dụng bón phân quá mức (Over-fertilization) theo phương pháp truyền thống gây ra hậu quả môi trường nghiêm trọng nào?
+A. Làm cho bề mặt cấu trúc đất bị nén chặt và hóa cứng vĩnh viễn khiến bộ rễ cây trồng không thể hô hấp được qua các tầng đất canh tác.
+B. Dư lượng phân bón (nitrate) ngấm xuống nước ngầm hoặc trôi ra sông hồ gây ô nhiễm nguồn nước (hiện tượng phú dưỡng).
+C. Làm suy giảm hoàn toàn hơi nước trong bầu khí quyển tầng thấp, dẫn đến hiện tượng không khí xung quanh nông trại bị khô hạn cực độ.
+D. Kích thích thân cây trồng phát triển chiều cao đột biến vượt qua tầm với của các loại máy bay không người lái và thiết bị thu hoạch cơ giới.
+ANSWER: B
+
+Phương pháp “Quang phổ học” (Spectroscopy) giúp ích gì trong quản lý dinh dưỡng cây trồng?
+A. Chụp các bức ảnh chân dung nghệ thuật cận cảnh độ phân giải cao cho từng cây trồng để đăng tải phục vụ công tác truyền thông quảng bá nông sản.
+B. Phân tích nhanh hàm lượng dinh dưỡng (như Nitơ) trong lá hoặc đất thông qua sự phản xạ ánh sáng mà không cần phá hủy mẫu.
+C. Chiếu xạ bổ sung năng lượng ánh sáng nhân tạo cường độ cao nhằm thúc đẩy tốc độ quang hợp của lá cây diễn ra liên tục vào ban đêm.
+D. Đo lường cơ học khoảng cách từ gốc cây lên đến đỉnh ngọn nhằm phân loại kích thước hình học của từng hàng cây trên cánh đồng nông trại.
+ANSWER: B
+
+Bản đồ quy định liều lượng bón phân được tạo ra bởi AI thường được gọi là gì?
+A. Bản đồ địa hình bình độ (Topographic Map).
+B. Bản đồ chỉ dẫn (Prescription Map).
+C. Bản đồ kho báu địa chất (Treasure Map).
+D. Bản đồ mạng lưới giao thông đường bộ nông thôn.
+ANSWER: B
+
+Theo tài liệu [AI-Agri] Chapter 12, việc áp dụng công nghệ quét cánh đồng và bón phân chính xác có thể giảm lượng phân bón sử dụng lên đến bao nhiêu phần trăm?
+A. 05%.
+B. 10%.
+C. 30%.
+D. 90%.
+ANSWER: C
+
+“Ba đỉnh tam giác” của Nông nghiệp chính xác thường được nhắc đến là Kinh tế, Môi trường và yếu tố nào nữa?
+A. Thể chế chính trị và an ninh quốc gia.
+B. Xã hội (hoặc Bền vững/Equity).
+C. Hạ tầng công nghệ và tự động hóa phần cứng.
+D. Hoạt động du lịch giải trí và văn hóa.
+ANSWER: B
+
+Khi AI phân tích dữ liệu dinh dưỡng đất, nếu phát hiện một vùng có độ pH quá thấp (đất chua), hệ thống sẽ đề xuất hành động gì?
+A. Tăng cường bón thêm nhiều phân đạm urea với liều lượng cao vào vùng đó.
+B. Bón vôi (Lime) tại vùng đó để trung hòa độ pH.
+C. Bơm xả ngập một lượng nước thật lớn để rửa trôi toàn bộ dưỡng chất trong đất.
+D. Ngừng canh tác và bỏ hoang vĩnh viễn vùng đất đó trong suốt toàn bộ vụ mùa.
+ANSWER: B
+
+Lợi ích “Tích lũy kiến thức” (Knowledge accumulation) trong hệ thống quản lý dinh dưỡng thông minh có ý nghĩa gì?
+A. Giúp trí tuệ nhân tạo của máy tính tự động thay thế hoàn toàn năng lực tư duy sáng tạo của các kỹ sư nông học giàu kinh nghiệm trong mọi hoàn cảnh thực tiễn.
+B. Dữ liệu từ các mùa vụ trước (lượng phân đã bón, năng suất thu được) được lưu trữ và phân tích để tối ưu hóa quyết định cho mùa vụ năm sau.
+C. Tạo ra các bộ đề kiểm tra trắc nghiệm lý thuyết để bắt buộc người nông dân phải học thuộc lòng toàn bộ sách giáo khoa và giáo trình nông học cơ bản hằng tuần.
+D. Làm đầy không gian lưu trữ vật lý của các ổ đĩa cứng trên máy chủ nông trại nhằm kiểm tra độ bền tối đa của chip nhớ qua từng chu kỳ đọc ghi dữ liệu liên tục.
+ANSWER: B

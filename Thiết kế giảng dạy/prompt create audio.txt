@@ -1,0 +1,20 @@
+Tôi đang tạo audio cho 10 buổi học môn ỨNG DỤNG AI TRONG NÔNG NGHIỆP. Hãy tạo audio cho buổi 6: Chương 6: Ứng dụng AI trong Dự báo và Hoạch định Sản xuất (Tương ứng Buổi 7)
+•	6.1. Phân tích Dữ liệu lớn (Big Data) trong nông nghiệp.
+•	6.2. Xây dựng mô hình dự báo năng suất dựa trên dữ liệu lịch sử và thời tiết.
+•	6.3. Hoạch định mùa vụ: Dùng AI để đề xuất loại cây trồng và thời điểm canh tác tối ưu.
+Chương 6: Ứng dụng AI trong Dự báo và Hoạch định Sản xuất (Tương ứng Buổi 7)
+•	6.1. Phân tích Dữ liệu lớn (Big Data) trong nông nghiệp.
+o	Tài liệu chính (Định nghĩa & Bối cảnh): Data-Driven Farming... (Bukhari, 2024).pdf.
+	Phần nên dùng: Trang 2 (Introduction). Phần này định nghĩa rõ vai trò của “big data”, “IoT sensors” và “advanced analytics” trong việc ra quyết định.
+o	Tài liệu bổ sung (Định nghĩa TV): Trí tuệ nhân tạo trong nông nghiệp.pdf (Singh, TV).
+	Phần nên dùng: Tìm các chương liên quan đến “Big Data” hoặc “Điện toán đám mây” (Cloud Computing) (được đề cập ở trang 200).
+•	6.2. Xây dựng mô hình dự báo năng suất dựa trên dữ liệu lịch sử và thời tiết.
+o	Tài liệu chính (Kỹ thuật “Cách làm”): máy học_v2.pdf (Géron).
+	Phần nên dùng: Đây là một bài toán Hồi quy (Regression). Giảng viên cần sử dụng Chương 4 (Hồi quy Tuyến tính), Chương 5 (Hồi quy Đa thức), và Chương 6 (Hồi quy Logistic) hoặc Chương 7 (Máy Vector Hỗ trợ - SVR) để dạy sinh viên cách xây dựng mô hình dự báo.
+o	Tài liệu bối cảnh (Case study NN): Data-Driven Farming... (Bukhari, 2024).pdf.
+	Phần nên dùng: Tìm các case study về “Yield Prediction” (Dự báo năng suất) trong sách này.
+•	6.3. Hoạch định mùa vụ: Dùng AI để đề xuất loại cây trồng và thời điểm canh tác tối ưu.
+o	Tài liệu chính (Kỹ thuật “Cách làm”): máy học_v2.pdf (Géron).
+	Phần nên dùng: Đây là một bài toán Hỗ trợ ra quyết định, có thể được giải quyết bằng các mô hình Phân loại (Classification) phức tạp. Giảng viên có thể tham khảo Chương 3 (Phân loại), Chương 7 (Máy Vector Hỗ trợ) hoặc Chương 8 (Cây Quyết định).
+o	Tài liệu bối cảnh (Ý tưởng NN): Data-Driven Farming... (Bukhari, 2024).pdf.
+	Phần nên dùng: Tìm các chương/mục về “Decision Support Systems” (Hệ thống hỗ trợ ra quyết định) hoặc “Crop Selection” (Lựa chọn cây trồng).

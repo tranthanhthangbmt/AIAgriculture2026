@@ -1,0 +1,83 @@
+Trong tài liệu giảng dạy của bạn, có **hai kế hoạch phân bổ 10 buổi học** cho học phần này: **Kế hoạch chính thức theo Đề cương chi tiết học phần AGRI2306** (Đại học Đông Á) và **Kế hoạch bài giảng cải tiến theo mô hình Lớp học đảo ngược (Flipped Classroom)** được thiết kế riêng để tối ưu hóa bối cảnh thực tế cho sinh viên ngành Nông nghiệp không chuyên lập trình (non-code).
+
+Dưới đây là nội dung chi tiết của cả hai phương án triển khai này:
+
+---
+
+### PHẦN 1: Kế hoạch 10 buổi học theo Đề cương chi tiết học phần AGRI2306 (Chính thức)
+Học phần có thời lượng **2 tín chỉ** (19 tiết lý thuyết, 3.5 tiết bài tập/thảo luận, 5 tiết thực hành tại doanh nghiệp và 2.5 tiết báo cáo kết quả thực hành), được chia thành **10 buổi học (mỗi buổi 3 tiết / 135 phút)** trên lớp với lộ trình như sau:
+
+*   **Buổi 1: Chương 1 – Tổng quan về AI và Nông nghiệp thông minh**
+    *   Giới thiệu học phần, mục tiêu và cách thức đánh giá.
+    *   Định nghĩa và lịch sử phát triển của trí tuệ nhân tạo (AI).
+    *   Tầm quan trọng và vai trò của AI trong kỷ nguyên Nông nghiệp 4.0.
+*   **Buổi 2: Chương 2 – Học máy (Machine Learning) trong nông nghiệp**
+    *   Giới thiệu các khái niệm cơ bản về Học máy (ML).
+    *   Phân biệt các loại hình học máy (như học có giám sát, học không giám sát) và các thuật toán phổ biến.
+    *   Ứng dụng thực tế của ML trong phân loại đất đai và dự báo thời tiết.
+*   **Buổi 3: Chương 3 – Học sâu (Deep Learning) và Mạng Nơ-ron**
+    *   Giới thiệu về Học sâu (DL) và cấu trúc Mạng Nơ-ron nhân tạo.
+    *   So sánh sự khác biệt cốt lõi giữa học sâu và học máy truyền thống.
+    *   Ứng dụng của học sâu trong nhận diện sâu bệnh hại cây trồng qua phân tích hình ảnh.
+*   **Buổi 4: Chương 4 – Thị giác máy tính (Computer Vision) ứng dụng**
+    *   Nguyên lý hoạt động cơ bản của thị giác máy tính trong nông nghiệp.
+    *   Các ứng dụng thực tiễn tiêu biểu: Giám sát sự tăng trưởng của cây trồng qua camera, đếm và ước lượng kích thước trái cây tự động, phân loại nông sản sau thu hoạch.
+*   **Buổi 5: Ôn tập và Kiểm tra giữa kỳ**
+    *   Hệ thống hóa lại kiến thức đã học từ Chương 1 đến Chương 4.
+    *   Giới thiệu sơ lược về các hệ thống AI khác như Xử lý ngôn ngữ tự nhiên (NLP) hay Robotics.
+    *   Sinh viên làm bài kiểm tra viết giữa kỳ trong 60 phút.
+*   **Buổi 6: Chương 5 – Ứng dụng AI trong quản lý nước và dinh dưỡng**
+    *   Giới thiệu hệ thống IoT và các loại cảm biến nông nghiệp (đo độ ẩm đất, pH, dinh dưỡng NPK).
+    *   Mô hình AI phân tích dữ liệu từ cảm biến để tự động hóa hoạt động điều khiển tưới tiêu và bón phân chính xác.
+*   **Buổi 7: Chương 6 – Ứng dụng AI trong dự báo & hoạch định sản xuất**
+    *   Ứng dụng AI và phân tích Dữ liệu lớn (Big Data) thu thập từ thời tiết, thị trường.
+    *   Xây dựng mô hình dự báo năng suất và sản lượng mùa vụ dựa trên dữ liệu lịch sử.
+*   **Buổi 8: Chương 7 – Báo cáo nhóm và Thảo luận dự án**
+    *   Các nhóm sinh viên thuyết trình báo cáo về dự án hoặc ý tưởng ứng dụng AI giải quyết một thách thức cụ thể trong nông nghiệp.
+    *   Giảng viên cùng cả lớp thảo luận, phản biện và đóng góp ý kiến nâng cấp giải pháp.
+*   **Buổi 9: Chương 8 – Thực hành tại doanh nghiệp/trang trại (Phần 1)**
+    *   Học tập thực tế tại trang trại hoặc doanh nghiệp đối tác.
+    *   Quan sát, ghi chép và thực hành thao tác các bước lắp đặt, kết nối cảm biến của mô hình nông nghiệp thông minh thực tế.
+*   **Buổi 10: Chương 9 – Thực hành (Phần 2 – Vận hành và Báo cáo)**
+    *   Vận hành và trải nghiệm một chức năng thực tế của hệ thống.
+    *   Giảng viên hướng dẫn viết báo cáo thực hành, tiến hành tổng kết và ôn tập cuối kỳ.
+
+---
+
+### PHẦN 2: Lộ trình 10 buổi học theo Mô hình Bài giảng cải tiến (Lớp học đảo ngược)
+Để giải quyết bài toán dạy học cho sinh viên ngành Nông nghiệp chưa có nền tảng về lập trình (non-code), kế hoạch bài giảng này đã tinh giản các yếu tố viết mã hay toán học phức tạp, thay vào đó tập trung rèn luyện tư duy **"Nhà phân tích và ra quyết định"**. Lộ trình 10 buổi được thiết kế liền mạch theo cấu trúc logic: **Tại sao cần AI? -> Huấn luyện Bộ não (ML/DL) -> Lắp Giác quan (IoT/CV) -> Gắn Tay chân hành động (Robotics) -> Ra quyết định (DSS) -> Tác động thực tế (Kinh tế & Đạo đức)**:
+
+*   **Buổi 1: Mở đầu về AI trong Nông nghiệp**
+    *   *Ở nhà:* Xem video bài giảng về định nghĩa và các thách thức toàn cầu (khí hậu, dân số); phân biệt 3 khái niệm: Smart Ag (giác quan), Nông nghiệp 4.0 (dây thần kinh kết nối), AI (bộ não ra quyết định).
+    *   *Trên lớp:* Thảo luận nhóm giải quyết tình huống thực tế áp dụng mô hình AI chi phí thấp; xem giảng viên demo chạy "phép thuật" code AI nhận diện bệnh lá.
+*   **Buổi 2: Nền tảng Học máy (Machine Learning)**
+    *   *Ở nhà:* Học khái niệm về Học có giám sát (Hồi quy – đoán SỐ, Phân loại – đoán NHÃN) và Học không giám sát (Phân cụm – gom NHÓM).
+    *   *Trên lớp:* Tổ chức workshop "Chợ Đặc trưng" (Feature Selection), hướng dẫn sinh viên thảo luận và tự chọn lọc "5 đặc trưng vàng" để huấn luyện mô hình dự báo giá cà phê.
+*   **Buổi 3: Nền tảng Học sâu (Deep Learning) & Thị giác máy tính**
+    *   *Ở nhà:* Tìm hiểu lý do tại sao ML truyền thống gặp khó khăn với dữ liệu ảnh và DL giải quyết bằng cách tự động trích xuất đặc trưng; phân biệt 3 "kiểu nhìn" của AI (Phân loại, Phát hiện đối tượng, Phân đoạn hình ảnh).
+    *   *Trên lớp:* Thực hành quy trình dán nhãn dữ liệu bệnh hại cây trồng (bệnh phấn trắng), phân tích các trường hợp mô hình AI dự báo sai để đưa ra giải pháp tinh chỉnh (Failure Analysis).
+*   **Buổi 4: Sức mạnh của Thị giác máy tính (Computer Vision) trong thực tế**
+    *   *Ở nhà:* Xem các bài giảng ứng dụng của CV (drone phân tích chỉ số NDVI, robot thu hái, camera đếm hạt giống/trái cây).
+    *   *Trên lớp:* Phân tích các thách thức thực địa ngoài đồng ruộng (ánh sáng thay đổi, lá che khuất) và giải pháp tích hợp công nghệ đa giác quan (Multi-Modal: kết hợp camera thường, camera đa phổ, bản đồ nhiệt).
+*   **Buổi 5: Xử lý Ngôn ngữ Tự nhiên (NLP) hoặc Quản lý tưới tiêu thông minh**
+    *   *Nội dung NLP:* Nghiên cứu chatbot hỗ trợ nông dân, phân tích thái độ thị trường nông sản, dịch tài liệu canh tác.
+    *   *Phương án tối ưu:* Để dành Buổi 10 cho sinh viên báo cáo tiểu luận bài báo khoa học, nội dung Quản lý Nước và Dinh dưỡng (tương ứng Buổi 6 đề cương cũ) sẽ được đẩy lên giảng dạy trực tiếp tại buổi này.
+*   **Buổi 6: IoT và Thu thập dữ liệu trang trại**
+    *   *Ở nhà:* Tìm hiểu kiến trúc 4 lớp của IoT (Cảm biến -> Gateway -> Đám mây -> Ứng dụng AI).
+    *   *Trên lớp:* Thực hành vẽ sơ đồ khối thiết kế hệ thống IoT thực tế cho trang trại, tìm hiểu các cảm biến đo độ ẩm, pH, NPK.
+*   **Buổi 7: Robotics và Tự động hóa nông nghiệp**
+    *   *Ở nhà:* Tìm hiểu các dòng robot nông nghiệp tự hành (robot gieo hạt, làm cỏ, bón phân, thu hái).
+    *   *Trên lớp:* Thảo luận cách tích hợp "Não" AI và "Mắt" CV để điều khiển "Tay chân" robot hoạt động chính xác trên đồng ruộng.
+*   **Buổi 8: Hệ thống hỗ trợ quyết định (DSS)**
+    *   *Ở nhà:* Học cách tích hợp dữ liệu đa nguồn (IoT, thời tiết, dự báo giá).
+    *   *Trên lớp:* Phân tích giao diện một Dashboard (Bảng điều khiển) tích hợp để đưa ra các khuyến nghị tối ưu (ví dụ: bón phân theo vùng bản đồ nhiệt NDVI, tưới tiêu chính xác).
+*   **Buổi 9: Phân tích kinh tế và Quản lý dự án AI**
+    *   *Ở nhà:* Tìm hiểu cách tính toán hiệu quả đầu tư dự án AI.
+    *   *Trên lớp:* Thực hành phân tích Chi phí - Lợi ích (Cost-Benefit) và thảo luận các rào cản thực tế khi triển khai tại địa phương (vốn lớn, thiếu hạ tầng, rào cản kỹ thuật).
+*   **Buổi 10: Đạo đức, Pháp lý, Tương lai & Báo cáo bài tập lớn**
+    *   *Ở nhà:* Tìm hiểu các câu hỏi đạo đức lớn: Quyền sở hữu dữ liệu thuộc về ai? Ai chịu trách nhiệm khi robot/AI ra quyết định sai phá hỏng mùa màng? Tác động của tự động hóa tới việc làm của nông dân lao động chân tay.
+    *   *Trên lớp:* Tổ chức cho các nhóm sinh viên thuyết trình, phản biện các bài báo khoa học đã nghiên cứu hoặc báo cáo đồ án đề xuất giải pháp ứng dụng AI thực tế (lấy điểm đánh giá giữa kỳ dời từ buổi 5 về).
+
+---
+
+💡 **Gợi ý tiếp theo dành cho bạn:** Bạn có muốn tôi giúp xây dựng chi tiết nội dung, các câu hỏi trắc nghiệm (Quiz) hoặc chủ đề thảo luận (Discussion) cho một buổi học cụ thể nào (ví dụ như Buổi 2 về Học máy hay Buổi 6 về IoT) để bạn sẵn sàng đưa lên hệ thống LMS Canvas không?

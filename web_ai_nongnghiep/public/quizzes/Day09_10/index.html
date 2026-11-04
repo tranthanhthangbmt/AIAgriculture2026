@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc nghiệm Buổi 9&10: Thực hành (tại doanh nghiệp/trang trại)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #15803d;
+            --primary-hover: #166534;
+            --primary-light: #dcfce7;
+            --accent: #22c55e;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --success: #16a34a;
+            --success-bg: #f0fdf4;
+            --success-border: #bbf7d0;
+            --error: #dc2626;
+            --error-bg: #fef2f2;
+            --error-border: #fecaca;
+            --radius: 12px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 24px 16px;
+        }
+
+        .quiz-wrapper {
+            width: 100%;
+            max-width: 840px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        /* Header Bar */
+        .quiz-header {
+            padding: 20px 28px;
+            background: linear-gradient(135deg, #14532d 0%, #166534 100%);
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .quiz-header h1 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .session-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+
+        .quiz-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-palette {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-palette:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Progress Bar */
+        .progress-track {
+            width: 100%;
+            height: 6px;
+            background-color: #e2e8f0;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            width: 0%;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Quiz Body */
+        .quiz-body {
+            padding: 32px 28px;
+        }
+
+        .question-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .counter-badge {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .tags-cluster {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .tag-pill {
+            font-size: 0.78rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            background: #f1f5f9;
+            color: var(--text-muted);
+        }
+
+        .tag-pill.diff-de { background: #dcfce7; color: #166534; }
+        .tag-pill.diff-tb { background: #fef3c7; color: #92400e; }
+        .tag-pill.diff-kho { background: #fee2e2; color: #991b1b; }
+
+        .question-title {
+            font-size: 1.22rem;
+            font-weight: 700;
+            line-height: 1.55;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+
+        /* Options Grid */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .option-card {
+            display: flex;
+            align-items: flex-start;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #ffffff;
+            user-select: none;
+        }
+
+        .option-card:hover:not(.locked) {
+            border-color: var(--accent);
+            background: #f8fafc;
+            transform: translateY(-1px);
+        }
+
+        .option-card.selected:not(.locked) {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-card.locked {
+            cursor: default;
+        }
+
+        .option-card.is-correct {
+            border-color: var(--success) !important;
+            background-color: var(--success-bg) !important;
+        }
+
+        .option-card.is-wrong {
+            border-color: var(--error) !important;
+            background-color: var(--error-bg) !important;
+        }
+
+        .option-letter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-right: 14px;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .option-card.selected .option-letter {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .option-card.is-correct .option-letter {
+            background: var(--success);
+            color: #ffffff;
+        }
+
+        .option-card.is-wrong .option-letter {
+            background: var(--error);
+            color: #ffffff;
+        }
+
+        .option-text {
+            font-size: 1.02rem;
+            line-height: 1.5;
+            color: var(--text-main);
+            padding-top: 3px;
+        }
+
+        /* Feedback Box */
+        .feedback-box {
+            display: none;
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            animation: slideDown 0.3s ease;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background-color: var(--success-bg);
+            border: 1px solid var(--success-border);
+        }
+
+        .feedback-box.incorrect {
+            background-color: var(--error-bg);
+            border: 1px solid var(--error-border);
+        }
+
+        .feedback-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .correct .feedback-title { color: var(--success); }
+        .incorrect .feedback-title { color: var(--error); }
+
+        .feedback-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #334155;
+        }
+
+        /* Action Buttons */
+        .actions-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn {
+            padding: 12px 26px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        /* Result Screen */
+        .result-screen {
+            display: none;
+            text-align: center;
+            padding: 40px 24px;
+        }
+
+        .score-ring-wrap {
+            position: relative;
+            width: 170px;
+            height: 170px;
+            margin: 0 auto 28px;
+        }
+
+        .score-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent) 0%, #e2e8f0 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .score-inner {
+            width: 136px;
+            height: 136px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .score-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .result-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .result-summary {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 500px;
+            margin: 0 auto 36px;
+        }
+
+        .stat-card {
+            padding: 16px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .stat-val {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Palette Drawer */
+        .drawer-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 100;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -360px;
+            width: 340px;
+            height: 100%;
+            background: #ffffff;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+            z-index: 101;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+        }
+
+        .drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .drawer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 4px;
+        }
+
+        .palette-item {
+            height: 42px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .palette-item:hover {
+            border-color: var(--primary);
+            background: #e2e8f0;
+        }
+
+        .palette-item.active {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .palette-item.correct {
+            background: var(--success);
+            color: #ffffff;
+            border-color: var(--success);
+        }
+
+        .palette-item.wrong {
+            background: var(--error);
+            color: #ffffff;
+            border-color: var(--error);
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 10px; }
+            .quiz-body { padding: 20px 16px; }
+            .quiz-header { padding: 16px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-wrapper">
+    <!-- Header -->
+    <div class="quiz-header">
+        <h1>
+            <span>🌾</span>
+            <span>Buổi 9&10: Thực hành (tại doanh nghiệp/trang trại)</span>
+        </h1>
+        <div class="quiz-meta">
+            <span class="session-badge">Buổi 9&10</span>
+            <button class="btn-palette" onclick="toggleDrawer()">📋 Mục lục câu</button>
+        </div>
+    </div>
+
+    <!-- Progress Track -->
+    <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <!-- Screen 1: Quiz Active -->
+    <div class="quiz-body" id="quiz-screen">
+        <div class="question-meta-row">
+            <div class="counter-badge" id="question-counter">Câu hỏi 1 / 40</div>
+            <div class="tags-cluster">
+                <span class="tag-pill" id="section-tag">Tổng quan</span>
+                <span class="tag-pill" id="difficulty-tag">Dễ</span>
+            </div>
+        </div>
+
+        <h2 class="question-title" id="question-text">Đang tải câu hỏi...</h2>
+
+        <div class="options-list" id="options-container">
+            <!-- Dynamic Options -->
+        </div>
+
+        <!-- Feedback Container -->
+        <div class="feedback-box" id="feedback-box">
+            <div class="feedback-title" id="feedback-title"></div>
+            <div class="feedback-desc" id="feedback-desc"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions-row">
+            <button class="btn btn-secondary" id="btn-prev" onclick="navigatePrev()">← Câu trước</button>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-primary" id="btn-check" onclick="checkAnswer()" disabled>Kiểm tra</button>
+                <button class="btn btn-primary" id="btn-next" onclick="navigateNext()" style="display: none;">Câu tiếp theo →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 2: Results -->
+    <div class="result-screen" id="result-screen">
+        <div class="score-ring-wrap">
+            <div class="score-circle" id="score-circle">
+                <div class="score-inner">
+                    <span class="score-number" id="final-score">0</span>
+                    <span class="score-label" id="final-total">/ 40</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="result-title" id="result-title">Chúc mừng bạn đã hoàn thành!</h2>
+        <p class="result-summary" id="result-summary">Bạn đã trả lời xuất sắc hầu hết các câu hỏi trong phần này.</p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--success);" id="stat-correct">0</div>
+                <div class="stat-label">Số câu đúng</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--error);" id="stat-wrong">0</div>
+                <div class="stat-label">Số câu sai</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" style="color: var(--primary);" id="stat-accuracy">0%</div>
+                <div class="stat-label">Độ chính xác</div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="restartQuiz()">🔄 Làm lại bài</button>
+            <button class="btn btn-secondary" onclick="viewAllAnswers()">🔍 Xem lại chi tiết đáp án</button>
+        </div>
+    </div>
+</div>
+
+<!-- Drawer / Question Palette -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<div class="drawer" id="drawer">
+    <div class="drawer-header">
+        <h3 style="font-size: 1.1rem; font-weight: 700;">Danh sách câu hỏi</h3>
+        <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.85rem;" onclick="toggleDrawer()">Đóng ✕</button>
+    </div>
+    <div class="drawer-grid" id="palette-grid">
+        <!-- Palette numbers -->
+    </div>
+</div>
+
+<script>
+    const questions = [{"id": 263, "local_id": 1, "section": "Phần 3: Kỹ năng Viết Báo cáo Thực hành (Case Study Reporting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Theo tài liệu [AI-Agri] Chapter 7, ngôn ngữ lập trình phổ biến nhất hiện nay để triển khai các dự án AI trong nông nghiệp là gì?", "options": [{"id": "A", "text": "Ngôn ngữ C++."}, {"id": "B", "text": "Python."}, {"id": "C", "text": "Ngôn ngữ Java."}, {"id": "D", "text": "Ngôn ngữ PHP."}], "answer": "B", "explanation": "Python được chọn làm ngôn ngữ chính xuyên suốt tài liệu vì sự đơn giản và hệ sinh thái thư viện phong phú hỗ trợ AI/ML."}, {"id": 264, "local_id": 2, "section": "Phần 3: Kỹ năng Viết Báo cáo Thực hành (Case Study Reporting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Công cụ “Google Colaboratory” (Google Colab) được khuyến nghị sử dụng cho sinh viên thực hành vì lý do chính nào?", "options": [{"id": "A", "text": "Nó cung cấp giao diện đồ họa kéo thả 3D bắt mắt và tự động sinh mã nguồn thuật toán mà không cần người dùng phải học bất kỳ dòng lệnh nào."}, {"id": "B", "text": "Nó chạy trên trình duyệt (đám mây), không yêu cầu cài đặt phần mềm phức tạp trên máy cá nhân và cung cấp miễn phí quyền truy cập GPU."}, {"id": "C", "text": "Nó có khả năng chạy ngoại tuyến hoàn toàn mà không cần kết nối mạng Internet, đồng thời tự động đồng bộ hóa dữ liệu với thiết bị phần cứng ngoại vi."}, {"id": "D", "text": "Nó chỉ dành riêng cho các dòng máy tính cấu hình cao có tích hợp sẵn card đồ họa chuyên dụng và yêu cầu phải mua bản quyền phần mềm định kỳ hàng tháng."}], "answer": "B", "explanation": "Colab cho phép viết và thực thi Python trên trình duyệt với cấu hình zero, truy cập miễn phí GPU, rất phù hợp cho giáo dục."}, {"id": 265, "local_id": 3, "section": "Phần 3: Kỹ năng Viết Báo cáo Thực hành (Case Study Reporting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Để vẽ biểu đồ (ví dụ: biểu đồ biến thiên độ ẩm đất theo thời gian) trong báo cáo, thư viện Python nào thường được sử dụng nhất?", "options": [{"id": "A", "text": "Thư viện đồ họa mô phỏng trò chơi PyGame."}, {"id": "B", "text": "Matplotlib (hoặc Seaborn)."}, {"id": "C", "text": "Thư viện học sâu mạng nơ-ron TensorFlow."}, {"id": "D", "text": "Thư viện xử lý chuỗi và biểu thức chính quy Regex."}], "answer": "B", "explanation": "Matplotlib là thư viện tiêu chuẩn để tạo ra các trực quan hóa dữ liệu tĩnh, động và tương tác."}, {"id": 266, "local_id": 4, "section": "Phần 3: Kỹ năng Viết Báo cáo Thực hành (Case Study Reporting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Khi bạn muốn chia sẻ code và kết quả thực hành của mình cho giảng viên hoặc thành viên nhóm qua Google Colab, bạn có thể làm gì?", "options": [{"id": "A", "text": "Chụp ảnh toàn bộ từng đoạn code trên màn hình máy tính rồi gửi qua các ứng dụng nhắn tin cá nhân như Zalo hay Messenger."}, {"id": "B", "text": "Nhấn nút “Share” để tạo liên kết (Link) có thể truy cập hoặc mời qua email, tương tự như Google Docs."}, {"id": "C", "text": "Bắt buộc phải tải toàn bộ tệp lệnh mã nguồn về máy rồi in ra giấy nộp trực tiếp tại văn phòng khoa thì mới chấm điểm được."}, {"id": "D", "text": "Chỉ có thể chia sẻ khi các máy tính của nhóm được cắm chung một sợi dây cáp mạng LAN vật lý nối trực tiếp trong phòng thí nghiệm."}], "answer": "B", "explanation": "Colab hỗ trợ tính năng chia sẻ dễ dàng qua liên kết hoặc email, giúp cộng tác nhóm hiệu quả."}, {"id": 267, "local_id": 5, "section": "Phần 3: Kỹ năng Viết Báo cáo Thực hành (Case Study Reporting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Thư viện nào đóng vai trò quan trọng trong việc xử lý dữ liệu dạng bảng (như file Excel chứa dữ liệu cảm biến) trong Python?", "options": [{"id": "A", "text": "Pandas."}, {"id": "B", "text": "OpenCV (Chuyên về xử lý hình ảnh và thị giác máy tính)."}, {"id": "C", "text": "Keras (Chuyên về xây dựng và huấn luyện mô hình mạng nơ-ron)."}, {"id": "D", "text": "Pygame (Chuyên về phát triển trò chơi và đồ họa tương tác 2D)."}], "answer": "A", "explanation": "Pandas được sử dụng để thao tác và phân tích dữ liệu, đặc biệt là dữ liệu dạng bảng và chuỗi thời gian. PHẦN 2: HIỂU VỀ VẬN HÀNH HỆ THỐNG (AI BIÊN - EDGE AI)"}, {"id": 268, "local_id": 6, "section": "Phần 3: Kỹ năng Viết Báo cáo Thực hành (Case Study Reporting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "“AI Biên” (Edge AI) - công nghệ thường thấy trong các hệ thống nông nghiệp hiện đại (Chapter 4) - hoạt động theo nguyên lý nào?", "options": [{"id": "A", "text": "Truyền toàn bộ dữ liệu thô thu thập được từ cảm biến lên máy chủ đám mây (Cloud) từ xa để phân tích rồi mới nhận kết quả gửi về."}, {"id": "B", "text": "Xử lý dữ liệu cục bộ ngay trên thiết bị phần cứng (như Camera, Gateway) tại trang trại, không cần gửi về Cloud."}, {"id": "C", "text": "Yêu cầu nhân công vận hành phải túc trực 24/24 giờ trước máy tính trạm để trực tiếp nhập các thông số tính toán thủ công cho hệ thống."}, {"id": "D", "text": "Chỉ thu thập dữ liệu và lưu trữ cục bộ vào thẻ nhớ SD mà không thực thi bất kỳ thuật toán suy luận hoặc xử lý thông minh nào tại chỗ."}], "answer": "B", "explanation": "Edge AI thực hiện tính toán tại rìa của mạng (trên thiết bị), giúp giảm độ trễ và băng thông."}, {"id": 269, "local_id": 7, "section": "Phần 3: Kỹ năng Viết Báo cáo Thực hành (Case Study Reporting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Tại sao Edge AI lại quan trọng đối với việc “Vận hành” hệ thống tại các vùng nông thôn hẻo lánh?", "options": [{"id": "A", "text": "Vì chi phí đầu tư mua sắm và triển khai các thiết bị phần cứng Edge AI luôn rẻ hơn rất nhiều so với mọi loại cảm biến cơ học thông thường."}, {"id": "B", "text": "Vì nó giúp hệ thống vẫn hoạt động và ra quyết định được ngay cả khi mất kết nối Internet hoặc mạng chập chờn (giảm độ trễ)."}, {"id": "C", "text": "Vì hình thức mẫu mã thiết kế của các mạch Edge AI luôn đẹp mắt, tinh tế hơn và giúp khu vườn nông nghiệp trở nên hiện đại hơn về mặt mỹ quan."}, {"id": "D", "text": "Vì công nghệ này giúp loại bỏ hoàn toàn nhu cầu sử dụng nguồn điện năng lượng mặt trời cũng như pin lưu trữ tại các trạm đo đạc ngoài đồng ruộng."}], "answer": "B", "explanation": "Nông thôn thường có kết nối kém. Edge AI đảm bảo các tác vụ quan trọng (như phát hiện sâu bệnh, đóng ngắt bơm) diễn ra tức thì mà không phụ thuộc vào đường truyền Internet ổn định."}, {"id": 270, "local_id": 8, "section": "Phần 3: Kỹ năng Viết Báo cáo Thực hành (Case Study Reporting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Thiết bị nào sau đây là ví dụ điển hình của một thiết bị Edge AI mà sinh viên có thể gặp khi đi thực tế?", "options": [{"id": "A", "text": "Hệ thống máy chủ siêu máy tính (Supercomputer) đặt tại trung tâm dữ liệu quốc gia."}, {"id": "B", "text": "Raspberry Pi, Jetson Nano hoặc các vi điều khiển nhúng (Embedded systems)."}, {"id": "C", "text": "Các dòng máy tính xách tay chuyên chơi game (Laptop Gaming) công suất tiêu thụ điện cực lớn."}, {"id": "D", "text": "Màn hình hiển thị TV thông minh cỡ lớn được gắn cố định tại phòng họp của ban quản lý trang trại."}], "answer": "B", "explanation": "Các hệ thống nhúng năng lượng thấp như Raspberry Pi thường được sử dụng để triển khai các mô hình AI nhẹ tại biên. PHẦN 3: KỸ NĂNG VIẾT BÁO CÁO THỰC HÀNH"}, {"id": 271, "local_id": 9, "section": "Phần 3: Kỹ năng Viết Báo cáo Thực hành (Case Study Reporting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Phần đầu tiên của một báo cáo thực hành/nghiên cứu khoa học (như các Case Study trong sách) thường là gì, có chức năng tóm tắt toàn bộ nội dung?", "options": [{"id": "A", "text": "Phần Kết luận (Conclusion)."}, {"id": "B", "text": "Tóm tắt (Abstract)."}, {"id": "C", "text": "Danh mục Tài liệu tham khảo (References)."}, {"id": "D", "text": "Phần Phụ lục số liệu (Appendix)."}], "answer": "B", "explanation": "Abstract cung cấp cái nhìn tổng quan ngắn gọn về mục tiêu, phương pháp, kết quả và kết luận của báo cáo."}, {"id": 272, "local_id": 10, "section": "Phần 3: Kỹ năng Viết Báo cáo Thực hành (Case Study Reporting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Trong phần “Phương pháp nghiên cứu” (Methodology) của báo cáo thực hành, bạn cần trình bày điều gì?", "options": [{"id": "A", "text": "Chia sẻ toàn bộ cảm nghĩ, ấn tượng cá nhân và những khó khăn chủ quan của từng thành viên trong nhóm gặp phải trong suốt chuyến đi thực tế tại trang trại."}, {"id": "B", "text": "Mô tả chi tiết các bước đã thực hiện, công cụ đã sử dụng (phần cứng, phần mềm), và cách thu thập dữ liệu để người khác có thể lặp lại thí nghiệm."}, {"id": "C", "text": "Liệt kê trực tiếp toàn bộ các bảng số liệu đo đạc thực tế cuối cùng kèm theo đồ thị và những phát hiện trọng tâm mà chưa cần giải thích quy trình thực hiện."}, {"id": "D", "text": "Trình bày dự toán kinh phí tài chính chi tiết cho việc mua sắm trang thiết bị và kế hoạch phân chia doanh thu thương mại hóa sản phẩm sau khi thử nghiệm."}], "answer": "B", "explanation": "Phần này mô tả “Làm thế nào” (How) dự án được thực hiện, bao gồm mô tả hệ thống, dữ liệu và thuật toán."}, {"id": 273, "local_id": 11, "section": "Phần 3: Kỹ năng Viết Báo cáo Thực hành (Case Study Reporting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Khi trình bày “Kết quả” (Results), ngoài việc đưa ra các con số, bạn cần làm gì để báo cáo trực quan hơn?", "options": [{"id": "A", "text": "Viết các đoạn văn bản mô tả thật dài và chi tiết mà không cần kèm theo bất kỳ minh họa nào."}, {"id": "B", "text": "Sử dụng Biểu đồ (Charts), Hình ảnh minh họa (Figures) và Bảng số liệu (Tables)."}, {"id": "C", "text": "Thay đổi liên tục nhiều kiểu phông chữ và tô các màu sắc sặc sỡ ngẫu nhiên cho từng dòng văn bản."}, {"id": "D", "text": "Ghi âm giọng đọc kết quả thành các tệp âm thanh rồi đính kèm liên kết vào trong bài báo cáo in giấy."}], "answer": "B", "explanation": "Các Case study trong sách luôn đi kèm với Hình ảnh (ví dụ: ảnh lá cây bị bệnh, biểu đồ độ chính xác) để minh chứng cho kết quả."}, {"id": 274, "local_id": 12, "section": "Phần 3: Kỹ năng Viết Báo cáo Thực hành (Case Study Reporting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Phần “Thảo luận” (Discussion) trong báo cáo dùng để làm gì?", "options": [{"id": "A", "text": "Để dành toàn bộ dung lượng khen ngợi và đánh giá mức độ đóng góp công sức của từng thành viên trong ban cán sự nhóm nghiên cứu."}, {"id": "B", "text": "Để giải thích ý nghĩa của kết quả, so sánh với lý thuyết, phân tích nguyên nhân sai số (nếu có) và đề xuất hướng cải thiện."}, {"id": "C", "text": "Để sao chép lặp lại nguyên văn toàn bộ các bảng số liệu và hình ảnh đồ thị đã được trình bày trước đó trong phần Kết quả nghiên cứu."}, {"id": "D", "text": "Để công bố danh mục các nguồn tài trợ tài chính và gửi lời tri ân trang trọng tới các đối tác doanh nghiệp đồng hành cùng dự án."}], "answer": "B", "explanation": "Đây là phần thể hiện tư duy phản biện, giải thích tại sao lại ra kết quả như vậy và nó có ý nghĩa gì trong thực tế."}, {"id": 275, "local_id": 13, "section": "Phần 3: Kỹ năng Viết Báo cáo Thực hành (Case Study Reporting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Tại sao việc trích dẫn “Tài liệu tham khảo” (References) ở cuối báo cáo là bắt buộc?", "options": [{"id": "A", "text": "Để làm tăng tổng số trang cho tập tài liệu báo cáo nhằm đạt yêu cầu số lượng trang tối thiểu quy định."}, {"id": "B", "text": "Để tôn trọng quyền sở hữu trí tuệ, tránh đạo văn và giúp người đọc kiểm chứng nguồn thông tin."}, {"id": "C", "text": "Để thể hiện việc nhóm tác giả đã đọc qua rất nhiều sách giáo trình khác nhau dù không sử dụng vào bài viết."}, {"id": "D", "text": "Để người chấm thi có thể tìm thấy thông tin liên lạc cá nhân của các tác giả thuộc những nghiên cứu liên quan."}], "answer": "B", "explanation": "Trích dẫn nguồn là chuẩn mực đạo đức trong nghiên cứu khoa học và báo cáo kỹ thuật. TỔNG KẾT KHÓA HỌC (ÔN TẬP)"}, {"id": 276, "local_id": 14, "section": "Phần 3: Kỹ năng Viết Báo cáo Thực hành (Case Study Reporting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Mục tiêu cuối cùng của việc ứng dụng AI và Chuyển đổi số trong nông nghiệp (xuyên suốt khóa học này) là gì?", "options": [{"id": "A", "text": "Thay thế hoàn toàn vai trò của người nông dân bằng robot tự hành để con người không cần ra đồng ruộng nữa."}, {"id": "B", "text": "Tối ưu hóa năng suất, giảm chi phí/rủi ro, bảo vệ môi trường và phát triển nông nghiệp bền vững."}, {"id": "C", "text": "Làm gia tăng chi phí sản xuất và đẩy giá thành nông sản lên mức cao nhất nhằm thu lại lợi nhuận độc quyền."}, {"id": "D", "text": "Thương mại hóa tối đa các phần mềm công nghệ ngoại nhập mà không cần chú trọng đến hiệu quả canh tác thực tế."}], "answer": "B", "explanation": "Tổng hợp kiến thức từ tất cả các chương: Precision Farming, Smart Irrigation, Yield Prediction đều hướng tới sự Bền vững và Hiệu quả."}, {"id": 277, "local_id": 15, "section": "Phần 3: Kỹ năng Viết Báo cáo Thực hành (Case Study Reporting)", "difficulty": "Khó", "difficulty_code": "VD", "question": "Theo bạn, rào cản lớn nhất để nông dân Việt Nam tiếp cận các công nghệ này (như đã thảo luận trong phần Đạo đức) là gì?", "options": [{"id": "A", "text": "Nông dân hoàn toàn không có nhu cầu nâng cao năng suất hay ứng dụng khoa học kỹ thuật."}, {"id": "B", "text": "Chi phí đầu tư ban đầu cao và yêu cầu về kỹ năng/kiến thức vận hành."}, {"id": "C", "text": "Hầu hết các vùng nông nghiệp trọng điểm hiện nay đều chưa có hệ thống lưới điện quốc gia."}, {"id": "D", "text": "Đất đai canh tác tại Việt Nam có tính chất cơ lý không phù hợp với bất kỳ loại cảm biến điện tử nào."}], "answer": "B", "explanation": "Vấn đề chi phí (Digital Divide) và kỹ năng là những rào cản thực tế nhất khi triển khai công nghệ cao."}];
+
+    let currentIndex = 0;
+    let selectedOption = null;
+    let userAnswers = {}; // { index: { selected: 'A', isCorrect: true, checked: true } }
+    let isChecked = false;
+
+    // Elements
+    const qCounter = document.getElementById('question-counter');
+    const secTag = document.getElementById('section-tag');
+    const diffTag = document.getElementById('difficulty-tag');
+    const qText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const feedbackBox = document.getElementById('feedback-box');
+    const feedbackTitle = document.getElementById('feedback-title');
+    const feedbackDesc = document.getElementById('feedback-desc');
+    const btnCheck = document.getElementById('btn-check');
+    const btnNext = document.getElementById('btn-next');
+    const btnPrev = document.getElementById('btn-prev');
+    const progressFill = document.getElementById('progress-fill');
+    const quizScreen = document.getElementById('quiz-screen');
+    const resultScreen = document.getElementById('result-screen');
+    const paletteGrid = document.getElementById('palette-grid');
+
+    function initQuiz() {
+        buildPalette();
+        renderQuestion(currentIndex);
+    }
+
+    function buildPalette() {
+        paletteGrid.innerHTML = '';
+        questions.forEach((q, idx) => {
+            const item = document.createElement('div');
+            item.className = 'palette-item';
+            item.id = `palette-${idx}`;
+            item.innerText = idx + 1;
+            item.onclick = () => {
+                toggleDrawer();
+                jumpToQuestion(idx);
+            };
+            paletteGrid.appendChild(item);
+        });
+    }
+
+    function updatePalette() {
+        questions.forEach((q, idx) => {
+            const el = document.getElementById(`palette-${idx}`);
+            if (!el) return;
+            el.className = 'palette-item';
+            if (idx === currentIndex) el.classList.add('active');
+            if (userAnswers[idx] && userAnswers[idx].checked) {
+                if (userAnswers[idx].isCorrect) el.classList.add('correct');
+                else el.classList.add('wrong');
+            }
+        });
+    }
+
+    function renderQuestion(index) {
+        currentIndex = index;
+        const q = questions[index];
+        const state = userAnswers[index] || null;
+
+        qCounter.innerText = `Câu hỏi ${index + 1} / ${questions.length}`;
+        secTag.innerText = q.section || 'Nội dung trọng tâm';
+        
+        diffTag.innerText = q.difficulty || 'Trung bình';
+        diffTag.className = 'tag-pill';
+        if (q.difficulty === 'Dễ') diffTag.classList.add('diff-de');
+        else if (q.difficulty === 'Khó') diffTag.classList.add('diff-kho');
+        else diffTag.classList.add('diff-tb');
+
+        qText.innerText = q.question;
+        progressFill.style.width = `${((index + 1) / questions.length) * 100}%`;
+
+        btnPrev.disabled = (index === 0);
+
+        // Build Options
+        optionsContainer.innerHTML = '';
+        selectedOption = state ? state.selected : null;
+        isChecked = state ? state.checked : false;
+
+        q.options.forEach(opt => {
+            const card = document.createElement('div');
+            card.className = 'option-card';
+            card.id = `opt-${opt.id}`;
+
+            if (selectedOption === opt.id) {
+                card.classList.add('selected');
+            }
+
+            if (isChecked) {
+                card.classList.add('locked');
+                if (opt.id === q.answer) {
+                    card.classList.add('is-correct');
+                } else if (opt.id === selectedOption && selectedOption !== q.answer) {
+                    card.classList.add('is-wrong');
+                }
+            } else {
+                card.onclick = () => selectOption(opt.id);
+            }
+
+            card.innerHTML = `
+                <div class="option-letter">${opt.id}</div>
+                <div class="option-text">${opt.text}</div>
+            `;
+            optionsContainer.appendChild(card);
+        });
+
+        // Feedback
+        if (isChecked) {
+            btnCheck.style.display = 'none';
+            btnNext.style.display = 'inline-flex';
+            btnNext.innerText = (index === questions.length - 1) ? 'Xem kết quả 🏁' : 'Câu tiếp theo →';
+            showFeedback(state.isCorrect, q);
+        } else {
+            feedbackBox.className = 'feedback-box';
+            btnCheck.style.display = 'inline-flex';
+            btnCheck.disabled = !selectedOption;
+            btnNext.style.display = 'none';
+        }
+
+        updatePalette();
+    }
+
+    function selectOption(optId) {
+        if (isChecked) return;
+        selectedOption = optId;
+        document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+        const target = document.getElementById(`opt-${optId}`);
+        if (target) target.classList.add('selected');
+        btnCheck.disabled = false;
+    }
+
+    function checkAnswer() {
+        if (!selectedOption || isChecked) return;
+        const q = questions[currentIndex];
+        const isCorrect = (selectedOption === q.answer);
+
+        isChecked = true;
+        userAnswers[currentIndex] = {
+            selected: selectedOption,
+            isCorrect: isCorrect,
+            checked: true
+        };
+
+        // Lock options & mark colors
+        document.querySelectorAll('.option-card').forEach(c => c.classList.add('locked'));
+        const correctCard = document.getElementById(`opt-${q.answer}`);
+        if (correctCard) correctCard.classList.add('is-correct');
+
+        if (!isCorrect) {
+            const wrongCard = document.getElementById(`opt-${selectedOption}`);
+            if (wrongCard) wrongCard.classList.add('is-wrong');
+        }
+
+        showFeedback(isCorrect, q);
+
+        btnCheck.style.display = 'none';
+        btnNext.style.display = 'inline-flex';
+        btnNext.innerText = (currentIndex === questions.length - 1) ? 'Xem kết quả 🏁' : 'Câu tiếp theo →';
+
+        updatePalette();
+    }
+
+    function showFeedback(isCorrect, q) {
+        feedbackBox.className = `feedback-box show ${isCorrect ? 'correct' : 'incorrect'}`;
+        if (isCorrect) {
+            feedbackTitle.innerHTML = `<span>🎉</span> Chính xác!`;
+        } else {
+            feedbackTitle.innerHTML = `<span>❌</span> Chưa chính xác. Đáp án đúng là: <b>${q.answer}</b>`;
+        }
+        feedbackDesc.innerHTML = `<b>💡 Giải thích:</b> ${q.explanation || 'Không có giải thích bổ sung.'}`;
+    }
+
+    function navigateNext() {
+        if (currentIndex < questions.length - 1) {
+            renderQuestion(currentIndex + 1);
+        } else {
+            showResults();
+        }
+    }
+
+    function navigatePrev() {
+        if (currentIndex > 0) {
+            renderQuestion(currentIndex - 1);
+        }
+    }
+
+    function jumpToQuestion(idx) {
+        renderQuestion(idx);
+    }
+
+    function showResults() {
+        quizScreen.style.display = 'none';
+        resultScreen.style.display = 'block';
+
+        let correctCount = 0;
+        let wrongCount = 0;
+        questions.forEach((q, idx) => {
+            if (userAnswers[idx] && userAnswers[idx].isCorrect) {
+                correctCount++;
+            } else {
+                wrongCount++;
+            }
+        });
+
+        const total = questions.length;
+        const percent = Math.round((correctCount / total) * 100);
+
+        document.getElementById('final-score').innerText = correctCount;
+        document.getElementById('final-total').innerText = `/ ${total}`;
+        document.getElementById('stat-correct').innerText = correctCount;
+        document.getElementById('stat-wrong').innerText = wrongCount;
+        document.getElementById('stat-accuracy').innerText = `${percent}%`;
+
+        const scoreCircle = document.getElementById('score-circle');
+        scoreCircle.style.background = `conic-gradient(var(--accent) ${percent}%, #e2e8f0 ${percent}%)`;
+
+        const rTitle = document.getElementById('result-title');
+        const rSummary = document.getElementById('result-summary');
+
+        if (percent >= 90) {
+            rTitle.innerText = "🌟 Xuất sắc! Nắm vững kiến thức";
+            rSummary.innerText = "Bạn đã hoàn thành bài thi với kết quả tuyệt vời. Bạn đã hiểu rất sâu về nội dung của buổi học!";
+        } else if (percent >= 75) {
+            rTitle.innerText = "👏 Rất tốt! Đạt yêu cầu cao";
+            rSummary.innerText = "Kết quả rất ấn tượng! Bạn đã nắm chắc hầu hết các khái niệm trọng tâm.";
+        } else if (percent >= 50) {
+            rTitle.innerText = "👍 Đạt yêu cầu cơ bản";
+            rSummary.innerText = "Bạn đã vượt qua bài kiểm tra. Hãy xem lại các câu giải thích chi tiết để củng cố thêm phần còn yếu nhé!";
+        } else {
+            rTitle.innerText = "📖 Cần ôn tập thêm!";
+            rSummary.innerText = "Bạn nên đọc lại slide bài giảng và tài liệu học tập rồi thử sức lại lần nữa nhé.";
+        }
+    }
+
+    function restartQuiz() {
+        userAnswers = {};
+        currentIndex = 0;
+        selectedOption = null;
+        isChecked = false;
+        resultScreen.style.display = 'none';
+        quizScreen.style.display = 'block';
+        initQuiz();
+    }
+
+    function viewAllAnswers() {
+        resultScreen.style.display = 'none';
+        quizScreen.style.display = 'block';
+        renderQuestion(0);
+    }
+
+    function toggleDrawer() {
+        const drawer = document.getElementById('drawer');
+        const overlay = document.getElementById('drawer-overlay');
+        const isOpen = drawer.classList.contains('open');
+        if (isOpen) {
+            drawer.classList.remove('open');
+            overlay.style.display = 'none';
+        } else {
+            drawer.classList.add('open');
+            overlay.style.display = 'block';
+        }
+    }
+
+    // Khởi động
+    initQuiz();
+</script>
+
+</body>
+</html>

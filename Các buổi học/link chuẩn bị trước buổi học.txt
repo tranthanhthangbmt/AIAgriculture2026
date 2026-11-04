@@ -1,0 +1,26 @@
+Chương 1: Tổng quan về AI và Nông nghiệp thông minh
+https://notebooklm.google.com/notebook/9146c2cd-ab7a-4ae0-85a8-29b1e3a10509?authuser=1
+
+Chương 2: Học máy (Machine Learning) trong nông nghiệp
+https://notebooklm.google.com/notebook/265ea77f-1bc0-4902-9f69-1b3fca2eae82?authuser=1
+
+Chương 3: Học sâu (Deep Learning) và Mạng Nơ-ron
+https://notebooklm.google.com/notebook/4c803418-bb96-4787-a7b0-96213f232510?authuser=1
+
+Chương 4: Thị giác máy tính (Computer Vision) ứng dụng
+https://notebooklm.google.com/notebook/4218d659-4a64-4378-8af0-212655e83598?authuser=1
+
+Chương 5: Ứng dụng AI trong quản lý nước và dinh dưỡng
+
+
+Chương 6: Ứng dụng AI trong dự báo & hoạch định sản xuất
+https://notebooklm.google.com/notebook/6124a970-cdaf-4740-b750-acd3d451dcfe?authuser=1
+
+Chương 7: Báo cáo nhóm và Thảo luận dự án
+https://notebooklm.google.com/notebook/f8ad4828-3c35-432c-9299-ce039f60e0ab
+
+Chương 8: Thực hành (Phần 1 - tại doanh nghiệp/trang trại)
+https://notebooklm.google.com/notebook/8a29fbaa-aa67-4764-88fd-65f4cb9401f8
+
+Chương 9&10: Thực hành (Phần 2 - Vận hành và Báo cáo)
+https://notebooklm.google.com/notebook/ea7806a4-67ac-4f9b-b449-8cac9840d13e

@@ -1,0 +1,1 @@
+dựa trên cấu trúc của các hệ chuyên gia về nông nghiệp, luật đất đai đang có. Hãy xây dựng gem instruction cho hệ chuyên gia chăn nuôi dê ở Tây Nguyên. Xuất ra hộp code để tôi dễ copy paste.

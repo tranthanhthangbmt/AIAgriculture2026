@@ -1,0 +1,17 @@
+KẾ HOẠCH VIẾT SCRIPT THUYẾT TRÌNH BÀI 2: HỌC MÁY (MACHINE LEARNING) TRONG NÔNG NGHIỆP
+
+1. Mục tiêu:
+- Tạo script thuyết trình chi tiết (scriptB02.txt) dựa trên 24 slides của file PDF "slide Chương 2_ Học máy (Machine Learning) trong nông nghiệp.pdf".
+- Định dạng chuẩn: Người 1 (Thầy giảng viên) và Người 2 (Sinh viên).
+- Tham khảo thêm dữ liệu từ 5 file PDF trong thư mục "Tuần 2 Học máy (Machine Learning) trong nông nghiệp" để làm phong phú nội dung (Chapter 3 Machine Learning, Chapter 9 ML Algorithms, Chapter 14 Weather Forecasting, Chapter 5 Crop Recommender, The Machine Learning Landscape).
+
+2. Phân vai:
+- Người 1 (Giảng viên): Chuyên gia về AI/ML, chịu trách nhiệm giải thích các khái niệm trừu tượng (như sự khác biệt giữa Lập trình truyền thống và ML, các họ thuật toán, cách RNN và Ensemble learning hoạt động), dẫn dắt các Case Study.
+- Người 2 (Sinh viên): Đóng vai trò cầu nối, tóm tắt ý chính của thầy thành ngôn ngữ dễ hiểu, đưa ra các ví dụ đời thường để so sánh (như việc phân loại thư rác, hay cách máy tính tự học giống một đứa trẻ), và đặt các câu hỏi phản biện về tính khả thi, giới hạn của dữ liệu.
+
+3. Kế hoạch triển khai (Các bước thực hiện):
+- Bước 1 (Chuẩn bị kiến thức): Tích hợp kiến thức từ các tài liệu về dự báo thời tiết (RNN) và hệ thống gợi ý cây trồng (Bagging, Decision Tree) để viết kịch bản cho các Case Study chân thực nhất với số liệu có sẵn (như trạm Jammu, Srinagar, Leh).
+- Bước 2 (Phác thảo Phần 1 - Lý thuyết ML): Slide 1 - 12. Tập trung làm rõ 3 họ chính của ML (Giám sát, Không giám sát, Tăng cường) và các thuật toán nền tảng (Hồi quy, K-Means, Neural Network). Giải thích vòng đời dự án ML (từ thu thập dữ liệu đến triển khai).
+- Bước 3 (Phác thảo Phần 2 - Case Studies): Slide 13 - 20. Trình bày chi tiết 2 Case Study: Dự báo thời tiết bằng RNN (làm mịn, chuẩn hóa dữ liệu, kiến trúc memory) và Hệ thống gợi ý cây trồng bằng Ensemble Bagging (Bootstrap, Trí tuệ tập thể).
+- Bước 4 (Phác thảo Phần 3 - Thách thức & Đạo đức): Slide 21 - 24. Nhấn mạnh câu nói "Dữ liệu quan trọng hơn thuật toán". Phân tích kỹ Vấn đề Dữ liệu (chất lượng kém, thiên lệch) và các rào cản triển khai thực tế.
+- Bước 5 (Kiểm tra & Hoàn thiện): Rà soát định dạng, đảm bảo độ chi tiết cao và tính tương tác tự nhiên giữa 2 nhân vật. Lưu vào file scriptB02.txt.

@@ -1,0 +1,59 @@
+Slide 1: CHƯƠNG 3: HỌC MÁY (MACHINE LEARNING)
+Người 1: Chào mừng các bạn trở lại với Khóa học AI-Agri. Hôm nay chúng ta bước vào Chương 3 với chủ đề cốt lõi: Học Máy, hay Machine Learning. Chúng ta sẽ cùng tìm hiểu nền tảng công nghệ, các thuật toán và đặc biệt là những ứng dụng đột phá của nó trong Nông nghiệp hiện đại.
+Người 2: Xin chào các bạn. Như chúng ta đã biết, AI đang làm thay đổi bộ mặt của nông nghiệp. Nhưng chính xác thì Học máy hoạt động như thế nào để mang lại những thay đổi đó? Khác biệt cốt lõi của nó là gì? Hãy cùng bắt đầu nhé.
+
+Slide 2: SỰ DỊCH CHUYỂN KỶ NGUYÊN: HỌC MÁY KHÁC BIỆT THẾ NÀO?
+Người 1: Để hiểu sự đột phá, hãy so sánh với khoa học máy tính truyền thống. Trước đây, chúng ta cung cấp dữ liệu và một tập hợp các quy tắc lập trình tĩnh để tạo ra kết quả. Nhưng với Học Máy thì quá trình này bị đảo ngược.
+Người 2: Đúng vậy. Trong Học máy, chúng ta cung cấp dữ liệu cùng với kết quả mong muốn. Thuật toán sẽ tự động phân tích thống kê, tự học hỏi để "Tạo ra mô hình" gồm các quy tắc ẩn. Kết quả là một hệ thống có khả năng liên tục học hỏi từ dữ liệu mà không cần con người can thiệp, tự động đưa ra các quyết định thiết yếu.
+
+Slide 3: VÒNG LẶP HỌC MÁY: QUY TRÌNH TẠO RA MÔ HÌNH
+Người 1: Quá trình tự học đó diễn ra qua một vòng lặp liên tục. Thuật toán phân tích Dữ liệu huấn luyện (Training Data) để tìm ra các mẫu (patterns) và liên kết cốt lõi. Có những mô hình trực tuyến (Online) cập nhật liên tục với dữ liệu mới, trong khi mô hình ngoại tuyến (Offline) thì chốt kết quả sau khi huấn luyện xong.
+Người 2: Bất kể là loại nào, mục tiêu cuối cùng là tạo ra một Mô hình thành công. Sự thành công này được định nghĩa là khi mô hình nhận một Dữ liệu mới chưa từng thấy (New Input Data) và đưa ra được phán đoán chính xác trong thời gian thực. Nếu dự đoán sai, nó lại quay về vòng lặp để tự điều chỉnh.
+
+Slide 4: BA TRỤ CỘT CỦA HỌC MÁY
+Người 1: Dựa trên cách học, người ta chia Học Máy thành ba trụ cột chính. Đầu tiên là Học có giám sát (Supervised Learning), nơi máy học từ dữ liệu đã được gán nhãn sẵn, giống như có thầy giáo hướng dẫn.
+Người 2: Trụ cột thứ hai là Học không giám sát (Unsupervised Learning), dùng để khám phá các quy luật ẩn từ một biển dữ liệu chưa gán nhãn. Và cuối cùng, độc đáo nhất là Học tăng cường (Reinforcement Learning), hệ thống tự học thông qua hành vi thử-và-sai (trial and error) dựa trên cơ chế phần thưởng.
+
+Slide 5: 1. HỌC CÓ GIÁM SÁT: DỰ ĐOÁN & PHÂN LOẠI
+Người 1: Đi sâu vào Học Có Giám Sát, mục tiêu toán học của nó là xấp xỉ hàm ánh xạ Y = f(x) để dự đoán đầu ra (Y) khi có đầu vào mới (x). 
+Người 2: Trụ cột này giải quyết hai bài toán chính. Thứ nhất là Phân loại (Classification), khi đầu ra là danh mục rời rạc, ví dụ như phân loại hình ảnh cây trồng bị bệnh hay khỏe mạnh. Thứ hai là Hồi quy (Regression), khi đầu ra là giá trị thực liên tục, chẳng hạn như dự báo sản lượng lúa tính bằng kilogram.
+
+Slide 6: 2. HỌC KHÔNG GIÁM SÁT: KHÁM PHÁ QUY LUẬT ẨN
+Người 1: Sang Học Không Giám Sát, máy tính tự lực cánh sinh hoàn toàn. Nó xử lý lượng lớn dữ liệu không gán nhãn và tự phân đoạn dữ liệu.
+Người 2: Ứng dụng phổ biến nhất là Phân cụm (Clustering), ví dụ như hệ thống tự động phân nhóm các khoảnh ruộng có cùng tính chất sinh thái. Một bài toán khác là Kết hợp (Association), giúp tìm ra các quy tắc liên hệ, chẳng hạn như khám phá ra mối liên kết ngầm giữa một loại sâu bệnh này với một loại vi khuẩn khác.
+
+Slide 7: 3. HỌC TĂNG CƯỜNG: HÀNH VI & THỬ SAI
+Người 1: Với Học Tăng Cường, mô hình phức tạp hơn. Nó có một Tác nhân (Agent) tương tác liên tục với Môi trường. Nó thực hiện Hành động, nếu tốt sẽ nhận Phần thưởng, nếu tệ sẽ bị phạt.
+Người 2: Hệ thống này không cần bộ dữ liệu mẫu. Nó học hoàn toàn qua thử nghiệm và sai sót. Điểm mấu chốt là nó phải tính toán "Tính trì hoãn", tức là hy sinh lợi ích trước mắt để tối đa hóa phần thưởng dài hạn. Tác nhân cũng liên tục phải đánh đổi (Trade-off) giữa việc Thăm dò trạng thái mới và Khai thác kiến thức cũ.
+
+Slide 8: MA TRẬN TỔNG HỢP: SO SÁNH 3 TRỤ CỘT HỌC MÁY
+Người 1: Để dễ hình dung, chúng ta có ma trận so sánh. Về loại dữ liệu: Có giám sát dùng dữ liệu gán nhãn, Không giám sát dùng dữ liệu không nhãn, còn Tăng cường thì tương tác trực tiếp với môi trường chứ không có dữ liệu tĩnh.
+Người 2: Về phương pháp: Có giám sát ánh xạ đầu vào tới đầu ra, Không giám sát nhận dạng mẫu ẩn, Tăng cường dùng thử và sai. Do đó, loại bài toán của chúng cũng khác nhau: Lần lượt là Hồi quy/Phân loại, Kết hợp/Phân cụm, và Tối ưu hóa hành vi.
+
+Slide 9: BẢN ĐỒ THUẬT TOÁN: BỘ CÔNG CỤ CỐT LÕI
+Người 1: Vậy trong mỗi trụ cột có những thuật toán nào? Bản đồ này liệt kê những công cụ cốt lõi nhất. Trong Học có giám sát, chúng ta có Hồi quy tuyến tính, Hồi quy Logistic, Cây quyết định, Máy Vector hỗ trợ (SVM), Naive Bayes, KNN, và Rừng ngẫu nhiên (Random Forest).
+Người 2: Bên nhánh Học không giám sát, nổi bật nhất là thuật toán Phân cụm K-Means để chia nhóm, và thuật toán Apriori để tìm quy tắc kết hợp.
+
+Slide 10: GIẢI PHẪU THUẬT TOÁN: CÂY QUYẾT ĐỊNH (DECISION TREE)
+Người 1: Lấy ví dụ về Cây quyết định, đây là thuật toán có cấu trúc đệ quy vô cùng trực quan. Nó phân chia dữ liệu thành các phân vùng thông qua các Nút (nodes).
+Người 2: Mọi thứ bắt đầu từ Nút gốc (Root) ở trên cùng. Sau đó nó rẽ nhánh liên tục dựa trên các câu hỏi điều kiện "Đúng/Sai", và cuối cùng đi đến các Nút lá (Judgment nodes) để đưa ra quyết định phân loại cuối cùng, giống hệt cách tư duy logic của con người.
+
+Slide 11: CÁC THUẬT TOÁN PHÂN TÍCH NÂNG CAO
+Người 1: Đối với các bài toán phức tạp hơn, chúng ta dùng các thuật toán nâng cao. Máy Vector hỗ trợ (SVM) sẽ vẽ một đường thẳng chia cắt tối ưu không gian dữ liệu nhiều chiều. Trong khi đó, Naive Bayes lại dựa trên xác suất và định lý Bayes, cực kỳ hiệu quả và tốc độ cho các tập dữ liệu khổng lồ.
+Người 2: Rừng ngẫu nhiên (Random Forest) là sự kết hợp của nhiều Cây quyết định lại với nhau rồi bỏ phiếu, giúp chống hiện tượng học vẹt (overfitting). Và đối với phân cụm, thuật toán K-Means sẽ liên tục tính toán lại tâm cụm cho đến khi dữ liệu hoàn toàn hội tụ thành các nhóm đồng nhất.
+
+Slide 12: KHỞI NGUỒN CHO NÔNG NGHIỆP CHÍNH XÁC (PRECISION AGRICULTURE)
+Người 1: Nhưng Học máy không chỉ là lý thuyết khô khan trên bảng mạch. Đích đến thực sự của nó là tạo ra nền Nông nghiệp Chính xác.
+Người 2: Bằng cách biến hàng thập kỷ dữ liệu thực địa - từ thời tiết, đất đai đến hình ảnh cây trồng - thành các dự đoán chuẩn xác, AI đang giúp nông dân tối ưu hóa năng suất tới mức tối đa, bảo vệ hệ sinh thái và định hình lại toàn bộ tương lai của ngành nông nghiệp truyền thống.
+
+Slide 13: TRỤ CỘT ỨNG DỤNG 1: QUẢN LÝ MÙA MÀNG & CÂY TRỒNG
+Người 1: Hãy xem xét các ứng dụng cụ thể. Trụ cột đầu tiên là Quản lý cây trồng. ML giúp Lai tạo giống bằng cách dự đoán cấu trúc gen chịu hạn. Nó nhận dạng loài cây qua hình thái lá nhanh và chuẩn xác hơn mắt người. Và quan trọng nhất là Dự báo năng suất dựa trên đa biến thời tiết, kinh tế.
+Người 2: Chưa hết, bằng cách phân tích hình ảnh viễn thám hoặc drone, mô hình AI có thể Tự động phát hiện bệnh và dịch hạch trên quy mô hàng ngàn hecta. Nó cũng đánh giá chất lượng vi mô của nông sản và thậm chí điều khiển robot nhận diện rồi tiêu diệt chính xác từng cây cỏ dại, giảm triệt để việc dùng hóa chất.
+
+Slide 14: TRỤ CỘT ỨNG DỤNG 2: HỆ SINH THÁI & TỰ ĐỘNG HÓA
+Người 1: Trụ cột ứng dụng thứ hai là Hệ sinh thái và Tự động hóa. Robot nông nghiệp (Agri Bots) được trang bị ML để tự động xử lý hạt giống, gặt hái, vượt qua giới hạn sức lao động con người. Về môi trường, AI nghiên cứu độ ẩm, bốc hơi để quản lý đất, đối phó với biến đổi khí hậu.
+Người 2: Đối với quản lý nước, mô hình dự báo nhiệt độ điểm sương để tối ưu hóa chính xác lượng nước tưới tiêu từng ngày. Cuối cùng, trong chăn nuôi, ML tính toán chế độ ăn tối ưu và dự báo trọng lượng vật nuôi trước cả khi thu hoạch đến 150 ngày!
+
+Slide 15: TỔNG KẾT CHƯƠNG
+Người 1: Để tổng kết lại, Học máy thực sự là mũi nhọn sắc bén nhất của Trí tuệ Nhân tạo hiện đại. 
+Người 2: Bằng việc làm chủ và linh hoạt áp dụng các mô hình Có giám sát, Không giám sát và Tăng cường, chúng ta đang khai phóng sức mạnh vô tận của dữ liệu để bảo vệ cây trồng, tối ưu tài nguyên. Đó chính là chìa khóa để xây dựng một nền Nông Nghiệp Thông Minh và bền vững cho tương lai. Bài giảng xin kết thúc tại đây, hẹn gặp lại các bạn!

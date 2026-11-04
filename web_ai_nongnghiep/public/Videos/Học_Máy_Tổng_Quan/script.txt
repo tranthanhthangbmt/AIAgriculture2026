@@ -1,0 +1,55 @@
+Slide 1: KHÁM PHÁ BỨC TRANH TỔNG QUAN VỀ HỌC MÁY
+Người 1: Chào các bạn sinh viên. Hôm nay chúng ta sẽ bước vào một hành trình đầy thú vị: "Khám phá bức tranh tổng quan về Học Máy". Bài học này sẽ dẫn dắt chúng ta đi từ những khái niệm nền tảng sơ khai nhất cho đến quy trình chi tiết để xây dựng một mô hình thực tế.
+Người 2: Xin chào tất cả các bạn. Học Máy, hay Machine Learning, đang định hình lại cách thế giới vận hành. Việc hiểu rõ bức tranh tổng thể này là bước đệm vững chắc trước khi các bạn bắt tay vào lập trình bất kỳ thuật toán phức tạp nào.
+
+Slide 2: HỌC MÁY (MACHINE LEARNING) LÀ GÌ?
+Người 1: Hãy bắt đầu với định nghĩa cơ bản nhất. Học Máy là gì? Một cách trực quan, chúng ta có phương trình: Nhiệm vụ (T) cộng Kinh nghiệm (E) tạo ra Hiệu suất (P).
+Người 2: Lấy ví dụ bộ lọc thư rác. Nhiệm vụ (T) ở đây là đánh dấu email nào là thư rác. Kinh nghiệm (E) chính là hàng ngàn ví dụ email thư rác và bình thường mà chúng ta cung cấp cho máy. Khi đó, Hiệu suất (P) sẽ được đo bằng tỷ lệ phân loại email chính xác. Như Arthur Samuel đã định nghĩa từ năm 1959: "Học máy là lĩnh vực nghiên cứu cung cấp cho máy tính khả năng học hỏi mà không cần được lập trình rõ ràng."
+
+Slide 3: SỰ CHUYỂN DỊCH MÔ HÌNH: TẠI SAO CẦN HỌC MÁY?
+Người 1: Tại sao chúng ta không dùng cách lập trình truyền thống? Hãy nhìn vào biểu đồ so sánh. Lập trình truyền thống rất cứng nhắc. Bạn phải nghiên cứu bài toán, viết ra một danh sách dài các quy tắc phức tạp If-Then, đánh giá, phân tích lỗi rồi lại sửa luật. Nó vô cùng khó bảo trì.
+Người 2: Trái ngược lại, phương pháp Học Máy có khả năng tự động thích nghi. Chúng ta cung cấp dữ liệu cho máy, thuật toán sẽ tự động phát hiện các mẫu ngầm định và tự tạo ra luật. Kết quả là mã nguồn ngắn gọn hơn rất nhiều và hệ thống có thể dễ dàng thích ứng mỗi khi có dữ liệu mới xuất hiện.
+
+Slide 4: ỨNG DỤNG THỰC TẾ: ML GIẢI QUYẾT BÀI TOÁN GÌ?
+Người 1: Nhờ tính linh hoạt đó, Học Máy len lỏi vào vô số lĩnh vực. Từ việc dùng Mạng nơ-ron tích chập (CNNs) để phân loại sản phẩm lỗi trong nhà máy, hay phân đoạn hình ảnh y tế để phát hiện khối u.
+Người 2: Không chỉ vậy, nó còn xử lý ngôn ngữ tự nhiên (NLP) cho chatbot, dùng hồi quy để dự báo doanh thu, nhận dạng giọng nói, phát hiện bất thường trong giao dịch thẻ tín dụng, xây dựng hệ thống gợi ý sản phẩm cho thương mại điện tử, và cả dùng Học tăng cường (RL) để huấn luyện bot chơi cờ thông minh.
+
+Slide 5: BẢN ĐỒ LỤC ĐỊA HỌC MÁY: 3 TIÊU CHÍ PHÂN LOẠI
+Người 1: Để khỏi lạc lối trong thế giới ML, chúng ta có một "bản đồ" phân loại gồm 3 tiêu chí chính.
+Người 2: Thứ nhất là "Mức độ giám sát" - hệ thống nhận được bao nhiêu sự trợ giúp từ con người. Thứ hai là "Khả năng thích ứng" - hệ thống có thể học liên tục từ dữ liệu mới hay không. Và thứ ba là "Cách thức khái quát hóa" - máy học thuộc lòng dữ liệu hay cố gắng tìm ra một quy luật tổng quát.
+
+Slide 6: TIÊU CHÍ 1: MỨC ĐỘ GIÁM SÁT (CÓ NHÃN VS. KHÔNG CÓ NHÃN)
+Người 1: Đi vào tiêu chí đầu tiên: Mức độ giám sát. Phổ biến nhất là Học có giám sát (Supervised Learning). Ở đây, dữ liệu huấn luyện đã được con người gắn sẵn câu trả lời mong muốn, tức là "nhãn". Các bài toán phân loại thư rác hay dự đoán giá nhà bằng hồi quy đều thuộc nhóm này.
+Người 2: Ngược lại, Học không giám sát (Unsupervised Learning) giống như việc ném dữ liệu cho máy và bảo nó tự tìm hiểu. Không có "giáo viên" hay nhãn nào cả. Hệ thống tự cố gắng tìm ra các cấu trúc ẩn, ví dụ như phân cụm khách hàng có chung sở thích, hoặc trực quan hóa dữ liệu phức tạp.
+
+Slide 7: TIÊU CHÍ 1 (TIẾP): TỰ GIÁM SÁT & HỌC TĂNG CƯỜNG
+Người 1: Một xu hướng đang rất hot hiện nay là Học tự giám sát (Self-Supervised Learning). Máy tính sẽ tự tạo ra dữ liệu có nhãn từ chính dữ liệu không nhãn bằng cách che giấu một phần (ví dụ che nửa bức ảnh con mèo) và yêu cầu mô hình học cách khôi phục lại phần bị thiếu.
+Người 2: Đỉnh cao của tính tự chủ là Học tăng cường (Reinforcement Learning). Ở đây, một Tác nhân (Agent) tự quan sát môi trường và thử nghiệm các hành động. Nếu làm tốt, nó nhận được phần thưởng (Reward), làm sai sẽ bị phạt (Penalty). Nhờ vậy, nó tự học được chiến lược tối ưu, giống hệt cách AlphaGo tự rèn luyện để đánh bại nhà vô địch cờ vây thế giới.
+
+Slide 8: TIÊU CHÍ 2: KHẢ NĂNG HỌC LIÊN TỤC (THEO LÔ VS. TRỰC TUYẾN)
+Người 1: Tiêu chí thứ hai xét đến khả năng tiếp thu dữ liệu mới. Học theo lô (Batch Learning) yêu cầu bạn phải huấn luyện mô hình offline bằng toàn bộ dữ liệu. Nó rất nặng nề và tốn thời gian. Khi có dữ liệu mới, bạn phải huấn luyện lại từ đầu. Nếu bỏ bẵng không cập nhật, mô hình sẽ dần "phân rã" (model rot).
+Người 2: Giải pháp cho vấn đề này là Học trực tuyến (Online Learning). Dữ liệu được chia thành các nhóm nhỏ (mini-batches) và đưa vào hệ thống liên tục. Mô hình được cập nhật ngay lập tức. Tham số quan trọng nhất ở đây là Tốc độ học (Learning Rate), nó quyết định hệ thống sẽ nhạy cảm với dữ liệu mới đến đâu so với việc quên đi dữ liệu cũ.
+
+Slide 9: TIÊU CHÍ 3: CÁCH THỨC KHÁI QUÁT HÓA
+Người 1: Tiêu chí cuối cùng là cách hệ thống đưa ra dự đoán. Cách đơn giản nhất là Học dựa trên thực thể (Instance-based). Nó giống như việc máy tính "học thuộc lòng" toàn bộ quá khứ. Khi gặp dữ liệu mới, nó đi đo lường sự tương đồng để tìm xem dữ liệu mới giống với ví dụ nào nhất trong bộ nhớ.
+Người 2: Chuyên nghiệp hơn là Học dựa trên mô hình (Model-based). Thay vì nhớ máy móc, hệ thống sẽ cố gắng xây dựng một hàm toán học tổng quát từ dữ liệu. Nhờ mô hình này, nó có thể vẽ ra một ranh giới quyết định rõ ràng để phân định các lớp dữ liệu trong tương lai.
+
+Slide 10: QUY TRÌNH HỌC MÁY: TỪ DỮ LIỆU ĐẾN LỰA CHỌN MÔ HÌNH
+Người 1: Nắm vững các tiêu chí rồi, vậy quy trình thực tế diễn ra như thế nào? Bước 1 luôn là Khám phá Dữ liệu. Như ví dụ trên biểu đồ, khi kết hợp dữ liệu GDP và Chỉ số hài lòng cuộc sống, chúng ta nhìn bằng mắt thường cũng nhận thấy một xu hướng tăng tuyến tính.
+Người 2: Dựa vào trực giác đó, chúng ta bước sang Bước 2: Chọn Mô hình. Ở đây, chúng ta định nghĩa sự hài lòng bằng một hàm tuyến tính của GDP: Hài lòng = Theta_0 + Theta_1 * GDP. Nhiệm vụ của máy tính bây giờ chuyển thành bài toán tìm ra bộ tham số (Theta_0, Theta_1) sao cho đường thẳng này khớp nhất với dữ liệu.
+
+Slide 11: QUY TRÌNH HỌC MÁY: HUẤN LUYỆN & SUY LUẬN (DỰ ĐOÁN)
+Người 1: Để tìm ra bộ tham số đó, chúng ta tiến hành Bước 3: Huấn luyện Mô hình. Chúng ta chạy thuật toán để giảm thiểu "hàm chi phí" (cost function) - tức là đo lường xem đường thẳng hiện tại đang sai lệch so với thực tế bao nhiêu. Thuật toán sẽ điều chỉnh tham số cho đến khi tìm ra đường khớp nhất.
+Người 2: Cuối cùng, ở Bước 4: Đưa ra Dự đoán (Inference), mô hình đã sẵn sàng hoạt động. Chẳng hạn, chúng ta đưa cho mô hình dữ liệu của một quốc gia chưa từng xuất hiện trong tập huấn luyện như Síp (Cyprus) với GDP 37,655 USD. Áp dụng công thức, mô hình ngay lập tức dự đoán độ hài lòng cuộc sống của họ là 6.30.
+
+Slide 12: THÁCH THỨC THỰC TẾ: HIỆU QUẢ "KHÔNG HỢP LÝ" CỦA DỮ LIỆU
+Người 1: Tuy nhiên, thực tế không trải đầy hoa hồng. Có một nghịch lý thú vị được gọi là Hiệu quả "không hợp lý" của Dữ liệu. Đôi khi, với các vấn đề phức tạp, dù bạn dùng thuật toán đơn giản hay phức tạp, hiệu suất của chúng sẽ tiệm cận nhau... miễn là bạn cung cấp ĐỦ DỮ LIỆU.
+Người 2: Lời khuyên vàng ở đây là: Một kho dữ liệu khổng lồ thường mang lại sức mạnh lớn hơn là một thuật toán phức tạp. Đừng vội vàng lao vào tối ưu tinh chỉnh thuật toán khi mà chất lượng và số lượng dữ liệu của bạn còn quá mỏng manh.
+
+Slide 13: THÁCH THỨC THỰC TẾ: SAI LỆCH & CHẤT LƯỢNG DỮ LIỆU
+Người 1: Nói về chất lượng dữ liệu, có hai cái bẫy chết người. Một là Sai lệch lấy mẫu (Sampling Bias). Nếu bạn lấy mẫu không đại diện, mô hình sẽ học sai hoàn toàn. Điển hình là đợt bầu cử Mỹ 1936, các chuyên gia dự đoán sai bét kết quả chỉ vì họ khảo sát dựa trên danh bạ điện thoại - thứ mà lúc bấy giờ chỉ người giàu mới có.
+Người 2: Cái bẫy thứ hai là "Garbage In, Garbage Out" - rác đầu vào tạo ra rác đầu ra. Dữ liệu chứa đầy lỗi, nhiễu hoặc các điểm ngoại lai (outliers) có thể phá hỏng hoàn toàn một mô hình tuyến tính đơn giản, làm đường dự đoán chệch hẳn so với bản chất thực sự của vấn đề.
+
+Slide 14: TỔNG KẾT: KIẾN TRÚC CỦA MỘT DỰ ÁN HỌC MÁY THÀNH CÔNG
+Người 1: Khép lại bài học, đây là kim chỉ nam cho các bạn: Kiến trúc của một Dự án Học Máy thành công. Nó bắt đầu bằng một Nền tảng (Foundation) vững chắc, tức là Dữ liệu phải chất lượng và đủ lớn. Sau đó là Lựa chọn Chiến lược (Taxonomy) phù hợp: dùng giám sát hay không, học online hay offline.
+Người 2: Tiếp đến, hãy nghiêm túc thực thi Quy trình cốt lõi (Workflow): Khám phá dữ liệu, chọn mô hình và tối ưu tham số. Tất cả nhằm hướng tới Đích đến cuối cùng là khả năng tổng quát hóa, đưa ra dự đoán chính xác trên những dữ liệu hoàn toàn mới mẻ. Nhớ nhé, Học Máy không phải là phép thuật; nó là sự kết hợp chặt chẽ giữa Toán học, Kỹ thuật và Dữ liệu chất lượng. Cảm ơn các bạn đã lắng nghe!

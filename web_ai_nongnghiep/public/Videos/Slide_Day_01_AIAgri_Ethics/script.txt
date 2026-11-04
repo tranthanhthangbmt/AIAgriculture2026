@@ -1,0 +1,59 @@
+Slide 1: ĐẠO ĐỨC TRONG VIỆC SỬ DỤNG AI VÀ DỮ LIỆU LỚN TRONG NÔNG NGHIỆP
+Người 1: Xin chào các bạn. Chào mừng các bạn đến với một khía cạnh vô cùng quan trọng nhưng lại ít được thảo luận của khóa học: "Đạo đức trong việc sử dụng AI và Dữ liệu lớn trong Nông nghiệp".
+Người 2: Xin chào. Công nghệ mang lại sức mạnh, nhưng sức mạnh luôn đi kèm với trách nhiệm. Hôm nay, chúng ta sẽ xem xét khía cạnh đạo đức thông qua một Nghiên cứu trường hợp (Case Study) của một Tập đoàn Nông nghiệp Đa quốc gia.
+
+Slide 2: NỘI DUNG CHÍNH
+Người 1: Bài giảng này sẽ được chia làm 5 phần. Đầu tiên, chúng ta có một giới thiệu chung về bối cảnh toàn cầu. Sau đó, chúng ta sẽ tìm hiểu cách Hệ thống Thông tin Thông minh (SIS) thu thập dữ liệu trên đồng ruộng.
+Người 2: Phần trọng tâm sẽ là mổ xẻ các vấn đề Đạo đức dưới góc độ lý thuyết, trước khi đối chiếu chúng với một nghiên cứu tình huống thực tế tại một công ty công nghệ lớn, và cuối cùng là rút ra kết luận.
+
+Slide 3: GIỚI THIỆU CHUNG
+Người 1: Hãy nhìn vào bức tranh vĩ mô. Ngành nông nghiệp đang nuôi sống 26,5% dân số thế giới. Để bắt kịp tốc độ tăng trưởng dân số, thế giới cần phải tăng 70% sản lượng lương thực vào năm 2050.
+Người 2: Để đạt được mục tiêu khổng lồ này, Hệ thống Thông tin Thông minh (SIS), sự kết hợp giữa Dữ liệu lớn (Big Data) và AI, chính là giải pháp hứa hẹn nhất nhờ khả năng tự động hóa và dự báo nhanh. Tuy nhiên, nó kéo theo những lo ngại nghiêm trọng về: Tính chính xác, Xung đột sở hữu dữ liệu, Sự phân chia kỹ thuật số (bất bình đẳng giàu nghèo), và Quyền riêng tư.
+
+Slide 4: VIỆC SỬ DỤNG SIS TRONG NÔNG NGHIỆP
+Người 1: Cụ thể thì SIS đang thu thập những gì? Nó thu thập mọi thứ trên cánh đồng của người nông dân.
+Người 2: Từ thói quen chăn thả, độ ẩm đất, hệ thống tưới tiêu, lượng mưa, cho tới hình ảnh bề mặt đất, tốc độ sinh trưởng của cây trồng và thậm chí cả dữ liệu về giá cả thị trường.
+
+Slide 5: CÁC LĨNH VỰC HỨA HẸN ĐƯỢC CẢI THIỆN
+Người 1: Việc thu thập dữ liệu khổng lồ này mang lại những lời hứa hẹn rất hấp dẫn từ các công ty công nghệ. Họ hứa hẹn sẽ cải thiện chất lượng nước, không khí, sức khỏe của đất và chất lượng thực phẩm.
+Người 2: Sâu xa hơn, nó hứa hẹn đảm bảo an ninh lương thực toàn cầu, bảo vệ đa dạng sinh học, nâng cao chất lượng cuộc sống cho người nông dân và tối đa hóa sản lượng đầu ra.
+
+Slide 6: CÁC VẤN ĐỀ ĐẠO ĐỨC KHI SỬ DỤNG SIS
+Người 1: Lời hứa thì rất đẹp, nhưng đi kèm với nó là 5 vấn đề đạo đức cốt lõi mà lý thuyết đã chỉ ra.
+Người 2: Đó là: Accuracy (Tính chính xác của hệ thống), Data ownership (Quyền sở hữu dữ liệu), Economic issues (Các vấn đề về kinh tế), Privacy and security (Quyền riêng tư và bảo mật), và Environmental protection (Bảo vệ môi trường). Chúng ta hãy đi sâu vào từng vấn đề.
+
+Slide 7: 1. TÍNH CHÍNH XÁC CỦA DỮ LIỆU VÀ KHUYẾN NGHỊ
+Người 1: Vấn đề đầu tiên: Tính chính xác. Các thuật toán AI đôi khi bị quá tải, không cân bằng được tốc độ tính toán kịp thời và tính chính xác, dẫn đến việc đưa ra những kết luận sai lệch.
+Người 2: Hơn nữa, môi trường nông nghiệp rất khắc nghiệt. Sự thay đổi đột ngột về nhiệt độ hay độ ẩm có thể làm cảm biến đọc sai dữ liệu. Nghiêm trọng nhất, nếu thuật toán AI được lập trình tại Mỹ mà lại áp dụng nguyên xi tại Việt Nam, không tính đến đặc thù địa phương, nó có thể đưa ra khuyến nghị sai khiến nông dân mất trắng cả một mùa vụ.
+
+Slide 8: 2. QUYỀN SỞ HỮU DỮ LIỆU VÀ SỞ HỮU TRÍ TUỆ
+Người 1: Vấn đề thứ hai: Ai làm chủ dữ liệu? Nông dân đang rất lo sợ rằng dữ liệu cánh đồng của họ sẽ bị thu thập và bán cho các công ty giao dịch hàng hóa, từ đó bị sử dụng để ép giá chính sản phẩm của họ.
+Người 2: Trên thực tế, các công ty công nghệ (ATP) thường gài vào hợp đồng điều khoản "miễn phí bản quyền", cho phép họ tự do sử dụng dữ liệu của nông dân. Một ví dụ điển hình là hãng máy kéo John Deere: Nông dân bỏ tiền mua máy kéo, nhưng không được phép tự sửa chữa máy khi hỏng hóc vì hãng lý luận rằng việc đó vi phạm "Sở hữu trí tuệ" phần mềm của họ!
+
+Slide 9: 3. CÁC VẤN ĐỀ KINH TẾ VÀ PHÂN CHIA KỸ THUẬT SỐ
+Người 1: Vấn đề thứ ba là Kinh tế. Hệ thống AI rất đắt đỏ. Dẫn đến việc các trang trại nhỏ, dù chiếm số lượng lớn, lại không thể tiếp cận được công nghệ này.
+Người 2: Hậu quả là tạo ra "Sự phân chia kỹ thuật số". Các trang trại công nghiệp lớn càng ngày càng giàu và tối ưu hơn, trong khi các nông hộ nghèo bị bỏ lại phía sau, làm khoét sâu thêm hố ngăn cách bất bình đẳng, đặc biệt là ở các nước đang phát triển - nơi hạ tầng kỹ thuật và hành lang pháp lý bảo vệ dữ liệu còn rất yếu kém.
+
+Slide 10: 4. QUYỀN RIÊNG TƯ & 5. BẢO VỆ MÔI TRƯỜNG
+Người 1: Vấn đề thứ 4 là Quyền riêng tư. Dữ liệu về năng suất, thu nhập và địa điểm canh tác là những dữ liệu nhạy cảm rất dễ bị tin tặc tấn công hoặc bị đối thủ cạnh tranh lạm dụng. Drone bay lượn trên trời cũng có thể xâm phạm riêng tư của các trang trại lân cận.
+Người 2: Vấn đề thứ 5, đáng ngạc nhiên, lại là Môi trường và Phúc lợi động vật. Việc đeo các thiết bị cảm biến liên tục có thể gây căng thẳng hay thương tích cho vật nuôi. Hơn nữa, nếu AI chỉ nhăm nhăm tối ưu "tăng sản lượng", nó có thể đưa ra khuyến nghị lạm dụng hóa chất, vô tình gây ô nhiễm nguồn nước và phá hủy hệ sinh thái xung quanh.
+
+Slide 11: NGHIÊN CỨU TÌNH HUỐNG: CÔNG TY ĐA QUỐC GIA LỚN
+Người 1: Giờ hãy đối chiếu lý thuyết với thực tế. Một nghiên cứu đã tiến hành phỏng vấn 3 nhân sự cấp cao tại một tập đoàn nông nghiệp đa quốc gia đang trực tiếp phát triển hệ thống SIS.
+Người 2: Hệ thống của công ty này bao gồm 3 thành phần cốt lõi: Dự báo thời tiết và rủi ro, Dự báo năng suất và phát hiện cỏ dại, và cuối cùng là Mô hình hóa tư vấn hình ảnh bệnh tật.
+
+Slide 12: CÁC VẤN ĐỀ ĐẠO ĐỨC TẠI CÔNG TY
+Người 1: Khá thú vị là, những người quản lý cấp cao này cũng thừa nhận rằng họ đang đối mặt với chính xác những vấn đề đạo đức mà lý thuyết đã nêu.
+Người 2: Họ cũng đau đầu giải quyết các bài toán về: Tính chính xác của thuật toán, Quyền sở hữu dữ liệu của khách hàng, Các vấn đề kinh tế vĩ mô, Bảo mật quyền riêng tư, Bảo vệ môi trường và cả vấn đề Công ăn việc làm cho người lao động.
+
+Slide 13: SO SÁNH THỰC TẾ VÀ LÝ THUYẾT
+Người 1: Từ góc độ công ty, họ giải quyết những vấn đề này ra sao? Về việc làm, họ khẳng định SIS chỉ là "công cụ bổ sung", không thể thay thế một nhà nông học thực thụ, bởi nông dân vẫn luôn tin tưởng con người hơn là một phần mềm vô cảm.
+Người 2: Về quyền sở hữu, công ty này cam kết nông dân vẫn giữ quyền làm chủ dữ liệu của mình, và dữ liệu đó được mã hóa cao cấp để chống hacker. Về tính chính xác, họ thừa nhận AI không phải thần thánh. Ví dụ thuật toán nhận diện lá chuối bị bệnh chỉ hoạt động tốt nếu kho dữ liệu đủ sắc nét. Khi có ngoại lệ, sự can thiệp của con người vẫn là bắt buộc.
+
+Slide 14: KẾT LUẬN & Ý NGHĨA
+Người 1: Để kết luận, mặc dù AI mang lại vô vàn lo ngại về đạo đức, bảo mật và kinh tế, nhưng thực tế các công ty công nghệ lớn đang nỗ lực điều chỉnh nền tảng của họ. Họ hướng tới sự minh bạch, bảo vệ dữ liệu nông dân và canh tác bền vững.
+Người 2: Báo cáo này để lại một câu hỏi pháp lý rất lớn cho tương lai: "Ai sẽ chịu trách nhiệm bồi thường khi hệ thống AI đưa ra khuyến nghị sai khiến nông dân mất trắng cả mùa vụ?". Điều này nhấn mạnh rằng, trước khi áp dụng AI, giữa công ty công nghệ và người nông dân phải có một sự "đồng thuận đầy đủ thông tin" và rõ ràng về trách nhiệm pháp lý.
+
+Slide 15: XIN CẢM ƠN!
+Người 1: Bài học về Đạo đức trong AI Nông nghiệp xin được phép khép lại tại đây. Một khía cạnh tưởng chừng khô khan nhưng lại là sống còn đối với quyền lợi của người nông dân.
+Người 2: Xin cảm ơn các bạn đã lắng nghe. Hẹn gặp lại các bạn trong những chủ đề thú vị tiếp theo!

@@ -1,0 +1,59 @@
+Slide 1: DỰ BÁO THỜI TIẾT NGẮN HẠN CHO NÔNG NGHIỆP BẰNG HỌC SÂU
+Người 1: Xin chào các bạn sinh viên. Hôm nay chúng ta sẽ bước sang một ứng dụng vô cùng thiết thực của Trí tuệ Nhân tạo trong nông nghiệp. Bài giảng này có chủ đề: "Dự báo thời tiết ngắn hạn cho nông nghiệp bằng Học Sâu". Cụ thể, chúng ta sẽ tìm hiểu cách ứng dụng Mạng Nơ-ron Hồi quy (RNN) thông qua một nghiên cứu tình huống tại khu vực Jammu & Kashmir.
+Người 2: Chào các bạn. Dự báo thời tiết luôn là bài toán khó. Hệ thống chúng ta tìm hiểu hôm nay dựa trên nền tảng dữ liệu chuỗi thời gian (Time-Series), sử dụng kiến trúc mạng RNN và LSTM. Mục tiêu tối thượng là cung cấp một công cụ dự báo chính xác, nhưng lại đủ nhẹ (lightweight) để có thể chạy độc lập tại các trạm khí tượng địa phương.
+
+Slide 2: KHI THỜI TIẾT QUYẾT ĐỊNH ĐƯỢC MÙA HAY MẤT TRẮNG
+Người 1: Tại sao bài toán này lại quan trọng đến vậy? Bởi vì trong nông nghiệp, thời tiết quyết định sự sống còn. Sự khó lường của tự nhiên như tuyết rơi, sóng nhiệt hay lũ lụt bất ngờ có thể làm sụt giảm nghiêm trọng năng suất.
+Người 2: Đúng vậy. Chỉ một sai lầm về thời điểm như tưới tiêu sai lịch, hay thu hoạch không đúng lúc do dự báo sai cũng mang lại gánh nặng kinh tế khổng lồ. Do đó, dự báo thời tiết ngắn hạn chính xác không chỉ là những con số khí tượng khô khan, nó chính là tấm khiên bảo vệ sinh kế của người nông dân.
+
+Slide 3: SỰ DỊCH CHUYỂN SANG KỶ NGUYÊN DỮ LIỆU
+Người 1: Trước đây, chúng ta thường dùng các mô hình thống kê truyền thống như NWP hay ARMA. Mặc dù có ích, nhưng chúng yêu cầu năng lực tính toán khổng lồ bằng siêu máy tính, hiệu suất phụ thuộc quá nhiều vào chất lượng dữ liệu và tỏ ra yếu kém khi xử lý dữ liệu chuỗi thời gian không dừng qua các mùa.
+Người 2: Đó là lúc các Mô hình Học sâu như ANN, RNN, LSTM lên ngôi. Chúng rất nhẹ, thậm chí có thể chạy trên máy tính cá nhân. Hơn nữa, những "bộ não AI" này có khả năng tự động học các mẫu ngầm ẩn từ dữ liệu lịch sử và nắm bắt xuất sắc các hiện tượng phi tuyến tính phức tạp trong hệ thống thời tiết.
+
+Slide 4: TẠI SAO CHỌN RNN? BỘ NÃO CÓ KHẢ NĂNG GHI NHỚ
+Người 1: Vậy tại sao chúng ta lại chọn Mạng Nơ-ron Hồi quy (RNN) mà không phải mạng truyền thẳng thông thường? Mạng truyền thẳng có một điểm yếu chí mạng: nó giả định các đầu vào và đầu ra hoàn toàn độc lập với nhau. Điều này khiến nó dễ gặp hiện tượng "Tiêu biến Gradient" và không thể duy trì được sự phụ thuộc dài hạn.
+Người 2: Ngược lại, RNN sở hữu một "Bộ nhớ trong" tuyệt vời. Như các bạn thấy trên sơ đồ, nó có các vòng lặp phản hồi, nghĩa là đầu ra của bước trước sẽ trở thành đầu vào cho bước sau. Chính kết nối thời gian này giúp RNN nhớ được quá khứ, khiến dự báo hiện tại bị ảnh hưởng một cách logic bởi toàn bộ chuỗi sự kiện trước đó.
+
+Slide 5: GIẢI PHẪU KIẾN TRÚC TOÁN HỌC CỦA RNN
+Người 1: Đi sâu vào cấu trúc bên trong, khi chúng ta trải phẳng mạng RNN theo thời gian, chúng ta sẽ thấy 4 thành phần chính. Đầu tiên là Đầu vào (xt), đại diện cho dữ liệu thời tiết tại bước thời gian hiện tại.
+Người 2: Kế tiếp là Trạng thái Ẩn (ft) - đây chính là nơi lưu trữ ký ức. Các trọng số được chia sẻ qua tất cả các lớp. Mạng còn sử dụng một Hàm Kích hoạt, hoạt động như một bộ lọc phi tuyến tính giúp học các mẫu phức tạp. Và cuối cùng là Đầu ra (yt), tức là dự báo thời tiết được sinh ra nhờ kết hợp cả dữ liệu hiện tại và ký ức từ quá khứ.
+
+Slide 6: BPTT: CÁCH MẠNG RNN TỰ HỌC TỪ QUÁ KHỨ
+Người 1: Làm sao để RNN tự sửa sai và học hỏi? Bí quyết nằm ở thuật toán Lan truyền ngược Theo Thời gian, viết tắt là BPTT. Nó gồm 4 bước liên hoàn. Bước 1: Lan truyền xuôi để tính toán trạng thái ẩn và đưa ra dự báo.
+Người 2: Bước 2 là Đo lường Lỗi bằng hàm mất mát MSE. Từ đó, Bước 3 tiến hành Lan truyền ngược, truyền các Gradient ngược qua các bước thời gian trước đó để tìm ra nguyên nhân gây lỗi. Cuối cùng ở Bước 4, các thuật toán như Adam hay SGD sẽ Cập nhật Trọng số để hệ thống thông minh hơn trong lần dự báo tiếp theo.
+
+Slide 7: KHỞI ĐỘNG DỰ ÁN: CASE STUDY TẠI JAMMU & KASHMIR
+Người 1: Để minh chứng cho lý thuyết, chúng ta sẽ xem xét Case Study tại khu vực Jammu & Kashmir của Ấn Độ. Mục tiêu là xây dựng một khung mô hình gọn nhẹ, giúp nông dân lập kế hoạch tự chủ.
+Người 2: Dữ liệu được cung cấp bởi Cục Khí tượng Ấn Độ (IMD) tại 3 trạm quan trọng là Jammu, Srinagar, và Leh. Chúng ta tập trung vào hai biến số quan trắc cốt lõi là Nhiệt độ (tối thiểu, tối đa) và Lượng mưa. Với hơn 8.400 điểm dữ liệu thu thập từ năm 2010 đến 2022, chúng ta có một bộ dữ liệu rất phong phú để huấn luyện.
+
+Slide 8: BẢN THIẾT KẾ HỆ THỐNG DỰ BÁO TOÀN DIỆN
+Người 1: Đây là bản thiết kế tổng thể của hệ thống. Dữ liệu thô đi vào sẽ trải qua giai đoạn Tinh chế để làm mịn, làm dừng và chuẩn hóa, nhằm loại bỏ nhiễu và xu hướng.
+Người 2: Sau đó, một kỹ thuật cực kỳ quan trọng được áp dụng là Cửa sổ trượt (Sliding Window) để chia tách dữ liệu thành các chuỗi đầu vào và đầu ra. Dữ liệu này được đưa vào huấn luyện các mô hình RNN và LSTM. Siêu tham số sẽ được tinh chỉnh, và cuối cùng mô hình được đánh giá bằng các thang đo sai số như MSE, RMSE trước khi sẵn sàng triển khai.
+
+Slide 9: TINH CHẾ DỮ LIỆU: TỪ THÔ SANG SẠCH
+Người 1: Cụ thể hơn về quá trình tinh chế, Bước 1 là Làm mịn bằng Trung bình Trượt Lũy thừa (EMA) với hệ số alpha bằng 0.5. Việc này như một chiếc bàn ủi, ủi phẳng các biến động nhiễu để làm rõ xu hướng cốt lõi.
+Người 2: Bước 2 là Làm dừng dữ liệu bằng phép Sai phân bậc 1, giúp cô lập các biến động cụ thể. Bước 3 là Chuẩn hóa MinMax, đưa mọi dữ liệu về cùng một thang đo từ 0 đến 1, giúp mạng nơ-ron không bị ngợp và hoạt động mượt mà hơn. Dữ liệu sau đó được chia theo tỷ lệ 80% để Train và 20% để Test, với kích thước cửa sổ trượt là 7 ngày.
+
+Slide 10: CHIẾN LƯỢC KIẾN TRÚC: SISO VS. MIMO
+Người 1: Khi xây dựng mô hình, chúng ta phải đưa ra một lựa chọn kiến trúc: MIMO hay SISO? MIMO (Nhiều Vào - Nhiều Ra) đưa cả 3 biến (như lượng mưa, nhiệt độ max, min) vào cùng lúc để dự báo. Nó tiện lợi vì chỉ cần 1 mô hình duy nhất.
+Người 2: Trong khi đó, SISO (Đơn Vào - Đơn Ra) lại dùng lịch sử của MỘT biến duy nhất để dự đoán tương lai của CHÍNH NÓ. Yêu cầu của SISO là bạn phải tạo ra 3 mô hình độc lập cho 3 biến tại mỗi trạm. Nghe có vẻ cồng kềnh hơn, nhưng hãy chờ xem kết quả nhé!
+
+Slide 11: TỐI ƯU HÓA BỘ NÃO AI BẰNG GRIDSEARCHCV
+Người 1: Để "bộ não AI" hoạt động ở đỉnh cao phong độ, chúng ta sử dụng GridSearchCV để quét qua toàn bộ cấu hình siêu tham số. Đầu tiên là Số lượng Epoch, dao động từ 50 đến 300 để tìm điểm cân bằng, tránh học chưa tới hoặc học quá mức (overfitting).
+Người 2: Cùng với đó, chúng ta thử nghiệm các Kích thước lô (Batch Size) như 16, 32, 64, 128 để tối ưu tài nguyên RAM. Việc chọn Thuật toán Tối ưu giữa Adam, SGD hay RMSprop sẽ quyết định tốc độ mô hình hội tụ. Cuối cùng là chọn Hàm kích hoạt phù hợp nhất như ReLU, Sigmoid hay Tanh.
+
+Slide 12: CÁCH CHÚNG TA ĐO LƯỜNG SỰ THÀNH CÔNG
+Người 1: Sau khi huấn luyện, làm sao chúng ta biết mô hình dự báo tốt đến đâu? Nghiên cứu này dùng 4 thước đo. MAE (Lỗi Tuyệt đối Trung bình) đo lường biên độ lỗi thực tế. MSE (Lỗi Bình phương Trung bình) thì phạt rất nặng các sai số lớn.
+Người 2: Quan trọng nhất là RMSE (Lỗi Bình phương Gốc), đây là thước đo tiêu chuẩn vì nó đưa giá trị lỗi về lại đúng đơn vị gốc như độ C hay mm lượng mưa, giúp chúng ta dễ dàng hình dung. Cuối cùng, MAPE (Lỗi Phần trăm Tuyệt đối) cho phép đánh giá sai số dưới dạng tỷ lệ phần trăm tương đối.
+
+Slide 13: KẾT QUẢ ĐỘT PHÁ: SỰ LÊN NGÔI CỦA KIẾN TRÚC SISO
+Người 1: Và đây là kết quả vô cùng bất ngờ: Kiến trúc SISO đã đánh bại MIMO trên mọi mặt trận! Bởi vì thời tiết có tính chất nội tại đơn biến, việc tự dự báo chính mình hóa ra lại mang lại độ chính xác tối đa.
+Người 2: Nhìn vào biểu đồ RMSE tại trạm Jammu, các bạn sẽ thấy: Mô hình MIMO tổng thể có sai số lên tới 0.1011. Nhưng khi tách ra, mô hình SISO cho Nhiệt độ tối đa chỉ sai số 0.0091, và đặc biệt SISO cho Lượng mưa đạt mức sai số không tưởng là 0.0006! Rõ ràng, tách biệt các biến dự báo độc lập mang lại ưu thế tuyệt đối.
+
+Slide 14: TỪ DỮ LIỆU MÁY TÍNH ĐẾN CÁNH ĐỒNG THỰC TẾ
+Người 1: Những con số sai số cực thấp này không chỉ nằm trên máy tính, nó mang lại tác động thực tế ở 4 cấp độ. Ở Nền tảng IT, chúng ta có một mô hình nhẹ, chạy được trên máy tính trạm cục bộ mà không cần siêu máy tính đắt tiền.
+Người 2: Về Khí tượng học, nó khai thác tối đa dữ liệu địa phương hóa để dự báo chính xác hiện tượng cực đoan. Nhờ đó, ở góc độ Nông nghiệp, nông dân có thể lên lịch tưới tiêu và thu hoạch chù động trước vài ngày. Cuối cùng, Về mặt Kinh tế, nó trực tiếp bảo vệ năng suất và giải phóng nông dân khỏi thảm họa thời tiết.
+
+Slide 15: TƯƠNG LAI CỦA NÔNG NGHIỆP THÔNG MINH
+Người 1: Cột mốc tại Jammu & Kashmir chứng minh rằng một hệ thống dự báo độc lập, nhẹ và chính xác hoàn toàn có thể thay thế xuất sắc cho các mô hình thống kê NWP cồng kềnh.
+Người 2: Tuy nhiên, tương lai không dừng lại ở đây. Chúng ta sẽ hướng tới việc Mở rộng dữ liệu, tích hợp thêm các biến số phức tạp như Tốc độ gió, độ ẩm. Và xa hơn nữa là phát triển kiến trúc MIMO 2.0, một siêu mô hình tối ưu hóa được sức mạnh tổng hợp nhưng vẫn duy trì được độ chính xác tuyệt đối như chuẩn SISO hiện tại. Cảm ơn các bạn đã lắng nghe bài giảng!

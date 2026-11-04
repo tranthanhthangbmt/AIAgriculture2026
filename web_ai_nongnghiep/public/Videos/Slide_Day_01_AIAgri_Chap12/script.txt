@@ -1,0 +1,59 @@
+Slide 1: ỨNG DỤNG AI TRONG NÔNG NGHIỆP - CHƯƠNG 12
+Người 1: Chào mừng các bạn sinh viên đã quay trở lại. Hôm nay, chúng ta sẽ bước sang một chuyên đề mang tính đột phá của khóa học: Chương 12 - Nông nghiệp chính xác.
+Người 2: Xin chào các bạn. Trí tuệ nhân tạo không chỉ dừng ở lý thuyết mà nó đang trực tiếp tạo ra khái niệm "Nông nghiệp chính xác". Hãy cùng tìm hiểu xem khái niệm này là gì và nó đang thay đổi bức tranh nông nghiệp toàn cầu ra sao.
+
+Slide 2: NỘI DUNG CHÍNH
+Người 1: Bài giảng hôm nay gồm 8 nội dung chính. Chúng ta sẽ bắt đầu từ giới thiệu chung, tìm hiểu khái niệm, lợi ích của Nông nghiệp chính xác, cho đến các bước cơ bản để triển khai hệ thống AI.
+Người 2: Tiếp theo, chúng ta sẽ phân tích sâu các ứng dụng cụ thể, đồng thời cũng nhìn nhận một cách khách quan những thách thức và hạn chế khi đưa công nghệ này vào thực tiễn, và cuối cùng là phần tóm tắt đúc kết.
+
+Slide 3: GIỚI THIỆU CHUNG
+Người 1: Ngành nông nghiệp luôn đóng vai trò quan trọng, đặc biệt ở các nước đang phát triển. Tuy nhiên, chúng ta đang đối mặt với nghịch lý: diện tích đất canh tác ngày càng giảm, trong khi dân số và nhu cầu lương thực lại tăng lên.
+Người 2: Để giải bài toán này, Nông nghiệp chính xác (Precision Agriculture) ra đời. Mục tiêu tối thượng của nó là "Làm đúng việc, đúng cách, đúng nơi và đúng thời điểm". Nó thu thập và phân tích dữ liệu không gian, thời gian để hỗ trợ ra quyết định, từ đó nâng cao năng suất, chất lượng và lợi nhuận.
+
+Slide 4: KHÁI NIỆM NÔNG NGHIỆP CHÍNH XÁC
+Người 1: Về khái niệm, Hệ thống Nông nghiệp Chính xác (PFS) tập trung vào việc nhận diện sự biến đổi theo không gian và thời gian trong suốt quá trình phát triển của cây trồng để quản lý, nhằm tăng năng suất và giảm thiểu rủi ro môi trường.
+Người 2: Đây là một tập hợp các công nghệ cho phép chúng ta: Thứ nhất, thu thập dữ liệu đúng quy mô và thời điểm. Thứ hai, diễn giải và phân tích dữ liệu đó. Và thứ ba, áp dụng các biện pháp quản lý với mức độ chính xác tuyệt đối.
+
+Slide 5: LỢI ÍCH
+Người 1: Lợi ích của Nông nghiệp chính xác là vô cùng to lớn. Nó giúp tăng tổng sản lượng bằng cách áp dụng đúng loại và liều lượng phân bón. Nó cũng cải thiện hiệu quả lao động đáng kinh ngạc, ví dụ như dùng máy móc có thể trồng 1 héc-ta ngô chỉ trong 2 giờ.
+Người 2: Hơn thế nữa, nó giúp giảm chi phí sản xuất, đưa ra các quyết định dựa trên dữ liệu đáng tin cậy. Về mặt vĩ mô, nó bảo vệ môi trường bằng cách tránh để dư thừa hóa chất ngấm vào đất và nước, đồng thời tích lũy một kho tàng tri thức dữ liệu cho nông dân các thế hệ sau.
+
+Slide 6: CÁC BƯỚC CƠ BẢN TRONG NÔNG NGHIỆP CHÍNH XÁC (1/2)
+Người 1: Vậy làm sao để vận hành Nông nghiệp chính xác? Có 4 bước cơ bản. Bước 1 là Đánh giá sự biến đổi. Có câu nói "Không thể quản lý những gì bạn không biết". AI, Big Data và Thị giác máy tính giúp chúng ta thu thập và đánh giá sự biến đổi của đất đai, thời tiết một cách nhanh chóng.
+Người 2: Bước 2 là Quản lý sự biến đổi. Sau khi có dữ liệu, chúng ta tiến hành điều chỉnh các yếu tố đầu vào như nước, phân bón cho phù hợp với đặc thù từng địa điểm. Chúng ta ghi nhớ tọa độ bằng GPS và sử dụng các Bot hoặc Drone để giám sát đồng ruộng trên diện rộng.
+
+Slide 7: CÁC BƯỚC CƠ BẢN TRONG NÔNG NGHIỆP CHÍNH XÁC (2/2)
+Người 1: Bước 3 là Đánh giá (Evaluation). Chúng ta không áp dụng công nghệ một cách mù quáng. Phải luôn phân tích lợi ích kinh tế thu được so với chi phí bỏ ra, đồng thời đánh giá những tác động tích cực tới môi trường như giảm ô nhiễm hay thoái hóa đất.
+Người 2: Và Bước 4 là Hành động cuối cùng. Lúc này, công nghệ được chuyển giao thực sự vào thực tiễn canh tác. Các trang trại sẽ được kết nối với nhau thông qua hệ thống cơ sở hạ tầng mạng đồng bộ.
+
+Slide 8: TRIỂN KHAI TRÍ TUỆ NHÂN TẠO TRONG NÔNG NGHIỆP CHÍNH XÁC
+Người 1: Đi sâu vào cốt lõi kỹ thuật, quá trình triển khai AI được tóm gọn qua quy trình 3 bước. Bước thứ nhất là Thu thập dữ liệu (Acquiring of Data) bằng các cảm biến IoT và Drone.
+Người 2: Bước thứ hai là Phân tích Dữ liệu (Analysis of Data) sử dụng các thuật toán AI. Và bước cuối cùng là Hành động cuối cùng (Final Action), hệ thống sẽ hiển thị kết quả và tự động thực thi các thao tác trên thực địa dựa trên kết luận của AI.
+
+Slide 9: BƯỚC 1: THU THẬP DỮ LIỆU
+Người 1: Phân tích kỹ hơn về bước thu thập dữ liệu, Internet vạn vật (IoT) đóng vai trò sống còn. Các cảm biến quang phổ, cảm biến độ ẩm đo đạc chính xác lượng N-P-K trong đất, giúp giảm lãng phí phân bón lên đến 30%.
+Người 2: Bên cạnh đó, các "con mắt bay" như Drone chụp ảnh cận cảnh, kết hợp vệ tinh chụp toàn cảnh để tạo ra bản đồ đánh giá dòng chảy và dự báo năng suất. Còn ở dưới mặt đất, các Robot máy kéo tự lái theo GPS có khả năng tự động nhận diện và nhổ chính xác từng cây cỏ dại.
+
+Slide 10: BƯỚC 2 & 3: PHÂN TÍCH DỮ LIỆU VÀ HÀNH ĐỘNG
+Người 1: Chuyển sang Bước 2, khối lượng dữ liệu khổng lồ đó sẽ được bơm vào các mô hình Học máy (ML), Học sâu (DL) và Thị giác máy tính để tìm ra các mẫu quy luật có giá trị nhất.
+Người 2: Nhờ vậy ở Bước 3, hệ thống sẽ tự động hóa được nhiều công việc cụ thể. Bot nông nghiệp có thể tự xử lý hạt giống, thu hoạch. AI dự đoán và chọn ra loại gen chịu hạn, kháng bệnh tốt nhất dựa trên hàng thập kỷ dữ liệu. Thậm chí, máy móc có thể phân loại hình thái lá để chỉ phun thuốc vào cỏ dại, tiết kiệm triệt để hóa chất.
+
+Slide 11: CÁC ỨNG DỤNG QUẢN LÝ BẰNG AI
+Người 1: Có thể tóm tắt các ứng dụng quản lý nổi bật của AI như sau. Thứ nhất, Dự đoán năng suất: AI khớp nối thời tiết, thị trường và đa chiều dữ liệu để tối ưu hóa lợi nhuận. Thứ hai, Dự báo và phát hiện bệnh ngay lập tức trên hàng nghìn héc-ta thông qua viễn thám.
+Người 2: Thứ ba là Quản lý đất đai và nguồn nước bằng cách phân tích sự bốc hơi và điểm sương để tưới tiêu thông minh. Cuối cùng, trong chăn nuôi, AI có khả năng ước tính và dự báo trọng lượng gia súc trước ngày giết mổ để điều chỉnh chế độ dinh dưỡng một cách hoàn hảo.
+
+Slide 12: THÁCH THỨC TRONG VIỆC ÁP DỤNG AI (PHẦN 1)
+Người 1: Mặc dù mang lại lợi ích to lớn, Nông nghiệp chính xác ở các nước đang phát triển như Việt Nam hay Ấn Độ vẫn gặp rào cản. Rào cản lớn nhất là Quy mô đồng ruộng còn nhỏ manh mún, rất khó áp dụng máy móc cỡ lớn.
+Người 2: Kế đến là Chi phí phần cứng cao: Drone, trạm thu phát sóng rất đắt đỏ để vận hành. Sự Thiếu hụt kỹ năng công nghệ số của người nông dân địa phương cũng là một điểm nghẽn. Ngoài ra, Biến đổi thời tiết cực đoan như mưa bão cũng thường xuyên làm nhiễu sóng hoặc che khuất camera vệ tinh.
+
+Slide 13: THÁCH THỨC TRONG VIỆC ÁP DỤNG AI (PHẦN 2)
+Người 1: Đứng ở góc độ kỹ thuật, Quản lý dữ liệu dư thừa (Big Data) là bài toán đau đầu. Khối lượng ảnh mỗi ngày đòi hỏi Cloud Server cấu hình rất cao và đối mặt với rủi ro bảo mật hacker.
+Người 2: Hơn nữa, Hạ tầng kết nối tại vùng nông thôn cần phải có mạng 5G phủ sóng rộng để thiết bị IoT giao tiếp theo thời gian thực (Real-time). Khả năng tương tác giữa các thiết bị từ nhiều hãng khác nhau cũng là một rào cản vì hiện tại chưa có chuẩn kết nối chung, gây khó khăn cho việc đồng bộ.
+
+Slide 14: TÓM TẮT
+Người 1: Tóm lại, Nông nghiệp chính xác là cách tiếp cận hiện đại sử dụng IoT, AI, Cloud Computing và Drone để tối ưu hóa nguồn lực dựa trên sự biến đổi thực tế của đất đai và cây trồng.
+Người 2: Về mặt triển vọng, dù còn nhiều thách thức về chi phí và hạ tầng, nhưng việc áp dụng AI không còn là lựa chọn mà là giải pháp BẮT BUỘC để hướng tới một nền nông nghiệp cạnh tranh, năng suất vượt trội và bền vững với môi trường.
+
+Slide 15: XIN CẢM ƠN!
+Người 1: Chương 12 về Nông nghiệp chính xác xin được khép lại tại đây. Hy vọng các bạn đã thấy rõ bức tranh chuyển đổi số đang diễn ra trên những cánh đồng toàn cầu.
+Người 2: Xin cảm ơn các bạn đã theo dõi. Hẹn gặp lại các bạn trong những buổi học thực hành thú vị tiếp theo!

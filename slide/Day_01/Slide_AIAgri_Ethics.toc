@@ -1,0 +1,6 @@
+\babel@toc {vietnamese}{}\relax 
+\beamer@sectionintoc {1}{Giới thiệu chung}{3}{0}{1}
+\beamer@sectionintoc {2}{Sử dụng SIS và Thu thập dữ liệu}{4}{0}{2}
+\beamer@sectionintoc {3}{Các vấn đề Đạo đức trong Lý thuyết}{6}{0}{3}
+\beamer@sectionintoc {4}{Nghiên cứu tình huống}{11}{0}{4}
+\beamer@sectionintoc {5}{Kết luận}{14}{0}{5}

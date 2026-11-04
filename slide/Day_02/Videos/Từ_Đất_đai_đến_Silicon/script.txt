@@ -1,0 +1,59 @@
+Slide 1: HỆ KHUYẾN NGHỊ CÂY TRỒNG: TỪ ĐẤT ĐAI ĐẾN SILICON
+Người 1: Chào mừng các bạn sinh viên! Tiếp nối chuỗi ứng dụng Học máy trong nông nghiệp, hôm nay chúng ta sẽ tìm hiểu một dự án thực tế mang tên "Từ Đất đai đến Silicon". Cụ thể, chúng ta sẽ phân tích một Hệ Khuyến nghị Cây trồng ứng dụng Học Máy dựa trên đặc điểm Đất và Môi trường.
+Người 2: Xin chào các bạn. Đây là một nghiên cứu đột phá đến từ Viện Quốc gia về Điện tử và Công nghệ Thông tin (NIELIT) của Ấn Độ. Nghiên cứu này sẽ cho chúng ta thấy cách các thuật toán AI phức tạp được đưa xuống những cánh đồng thực tế để giải quyết các bài toán sát sườn của người nông dân.
+
+Slide 2: BÀI TOÁN NÔNG NGHIỆP TRONG KỶ NGUYÊN KHẮC NGHIỆT
+Người 1: Bối cảnh của nghiên cứu này bắt nguồn từ việc nông nghiệp đang phải đối mặt với một "Kỷ nguyên Khắc nghiệt". Nông nghiệp là trụ cột kinh tế, nhưng việc quản lý đồng ruộng hiện nay vẫn là một điểm nghẽn lớn khi nông dân chủ yếu dựa vào bản năng và kinh nghiệm truyền miệng.
+Người 2: Tệ hơn nữa, cuộc Khủng hoảng Khí hậu với những biến đổi thời tiết cực đoan đã làm sai lệch hoàn toàn mọi kinh nghiệm truyền thống đó. Hậu quả là thu nhập của người nông dân trong nhiều khu vực đã sụt giảm nghiêm trọng, lên tới hơn 20% do những quyết định gieo trồng sai lầm.
+
+Slide 3: TRÍ TUỆ NHÂN TẠO LÀM "CỐ VẤN ĐỒNG RUỘNG"
+Người 1: Để giải quyết bế tắc đó, các nhà nghiên cứu đã biến AI thành một "Cố vấn Đồng ruộng". Hệ thống thu thập dữ liệu thô chia làm 2 nhóm: Đặc điểm đất (gồm tỷ lệ Nitơ, Phốt pho, Kali và độ pH) và Khí hậu (gồm Nhiệt độ, Độ ẩm, Lượng mưa).
+Người 2: Tất cả nguồn dữ liệu đa chiều này được bơm vào "Não bộ AI". Bằng sức mạnh của Học máy, hệ thống sẽ phân tích tương quan và đưa ra Khuyến nghị Chính xác: Xác định đâu là loại cây trồng tối ưu nhất trong số 22 loại cây trồng phổ biến như Lúa, Ngô, Cà phê, Táo, Xoài...
+
+Slide 4: SỰ TIẾN HÓA CỦA CÁC HỆ KHUYẾN NGHỊ CÂY TRỒNG
+Người 1: Việc dùng máy tính khuyên trồng cây gì không phải là mới. Thế hệ Cơ bản trước đây đã dùng các mô hình đơn lẻ như Cây quyết định hay KNN. Sau đó là Thế hệ Phức tạp với Mạng nơ-ron (NN) và Máy Vector hỗ trợ (SVM).
+Người 2: Nhưng nghiên cứu mà chúng ta đang xem xét thuộc về Thế hệ Đột phá. Sự chuyển dịch cốt lõi ở đây là: Thay vì tin cậy vào một thuật toán duy nhất, các nhà khoa học sử dụng Học tập hợp (Ensemble, cụ thể là Bagging). Họ tổng hợp sức mạnh của một "đám đông thuật toán" đồng nhất để tối đa hóa độ chính xác và giảm thiểu sai số.
+
+Slide 5: HÀNH TRÌNH CỦA DỮ LIỆU: KIẾN TRÚC KHUNG CỦA HỆ THỐNG
+Người 1: Hãy nhìn vào kiến trúc khung của toàn bộ dự án. Nó trải qua 5 bước nghiêm ngặt. Bước 01 là Thu thập Dữ liệu từ Kaggle với hơn 6.300 mẫu và chia theo tỷ lệ Huấn luyện/Kiểm tra là 7:3.
+Người 2: Các bước tiếp theo là: 02 Trực quan hóa dữ liệu để tìm tương quan; 03 Tiền xử lý để loại bỏ nhiễu và chuẩn hóa; 04 Xây dựng Mô hình bằng cách huấn luyện Bagging DT và Bagging NN. Cuối cùng, bước 05 là Đánh giá thông qua Kiểm định chéo K-lần (KFCV) và phân tích đường cong AUROC.
+
+Slide 6: BƯỚC 1 & 2: GIẢI MÃ TÍN HIỆU TỪ TỰ NHIÊN (EDA)
+Người 1: Ở bước đầu tiên khi Giải mã Tín hiệu, Phân tích đơn biến chỉ ra một cách trực quan lượng mưa đặc thù cần thiết cho từng loại cây. Ví dụ nhìn vào biểu đồ, Lúa nước yêu cầu lượng mưa áp đảo so với các cây khác.
+Người 2: Sâu hơn nữa, Ma trận Tương quan (Heatmap) giúp AI phát hiện ra các quy luật sinh học. Chẳng hạn, nó tìm thấy sự tương quan dương mạnh mẽ giữa Phốt pho (P) và Kali (K) trong đất, nhưng lại chỉ ra tương quan âm giữa Phốt pho và Lượng mưa. Đây là những hiểu biết sâu sắc mà não người khó lòng bao quát hết khi nhìn vào bảng số liệu thô.
+
+Slide 7: BƯỚC 3: LÀM SẠCH ĐẤT, LÀM SẠCH DỮ LIỆU
+Người 1: Trước khi đưa vào huấn luyện, dữ liệu phải được làm sạch. Trong thực tế, cảm biến đo đạc thường bị lỗi tạo ra các điểm dữ liệu dị thường. Giải pháp là sử dụng biểu đồ hộp Boxplot và kỹ thuật Khoảng tứ phân vị (IQR) kết hợp Capping để cắt bỏ các điểm ngoại lai này.
+Người 2: Một thao tác tối quan trọng nữa là Co giãn Đặc trưng (Feature Scaling). Vì độ C, mm hay mg/kg là các thang đo hoàn toàn khác nhau, nó dễ gây thiên vị cho mô hình. Việc áp dụng công thức Chuẩn hóa Min-Max sẽ ép tất cả các giá trị về cùng một hệ quy chiếu chung từ 0 đến 1, giúp AI học một cách công bằng.
+
+Slide 8: BƯỚC 4: SỨC MẠNH CỦA ĐÁM ĐÔNG (HỌC TẬP HỢP - BAGGING)
+Người 1: Đây là trái tim của hệ thống: Kỹ thuật Bagging. Quá trình bắt đầu bằng việc Lấy mẫu Bootstrap (có thay thế) từ dữ liệu gốc để tạo ra nhiều tập dữ liệu con khác nhau.
+Người 2: Mỗi tập dữ liệu con này sẽ được đem đi huấn luyện song song cho một Base Model (mô hình cơ sở). Khi có dữ liệu mới cần dự đoán, thay vì chỉ hỏi một mô hình, hệ thống sẽ tổ chức một cuộc "Bỏ phiếu Đa số" (Voting) từ tất cả các mô hình cơ sở. Thông điệp ở đây là: Một tập thể các mô hình trung bình luôn thông minh và ổn định hơn một cá nhân xuất chúng.
+
+Slide 9: THUẬT TOÁN 1: CÂY QUYẾT ĐỊNH (MÔ PHỎNG TƯ DUY)
+Người 1: Bên trong cái đám đông Bagging đó, thuật toán nền tảng đầu tiên được dùng là Cây Quyết Định. Thuật toán này phân tách liên tục dựa trên các điều kiện như "Nhiệt độ > 25 độ C" hay "Độ ẩm < 60%".
+Người 2: Cơ sở toán học đằng sau sự rẽ nhánh này là Entropy (đo lường độ hỗn loạn). Thuật toán sẽ tính toán Lợi ích thông tin (Information Gain) bằng cách lấy Entropy trước trừ đi Entropy sau khi chia. Thuộc tính nào (như lượng mưa hay Kali) mang lại giá trị Gain cao nhất sẽ được chọn làm Nút phân chia, giúp hệ thống phân loại nhánh nhanh và chuẩn nhất.
+
+Slide 10: THUẬT TOÁN 2: MẠNG NƠ-RON (MÔ PHỎNG NÃO BỘ)
+Người 1: Đám đông thứ hai sử dụng thuật toán Mạng Nơ-ron (NN), mô phỏng lại cách não bộ sinh học hoạt động với 3 khối: Lớp Đầu vào (Input Layer), Lớp Ẩn xử lý thông tin (Hidden Layer) và Lớp Đầu ra (Output Layer).
+Người 2: Mạng Nơ-ron học thông qua một chu trình khép kín: Đầu tiên là Truyền xuôi tín hiệu để dự đoán; sau đó Tính Chi phí bằng cách so sánh với thực tế; và cốt lõi nhất là Lan truyền ngược (Backprop) dùng Gradient Descent để cập nhật lại Trọng số. Vòng lặp này (Epoch) diễn ra hàng ngàn lần cho đến khi "não bộ" đạt độ chính xác.
+
+Slide 11: DEEP DIVE: NHỮNG "CỬA NGÕ" QUYẾT ĐỊNH CỦA NƠ-RON
+Người 1: Bên trong Mạng Nơ-ron, các Hàm kích hoạt đóng vai trò là những "cửa ngõ" quyết định. Hàm ReLU (Rectified Linear Unit) hoạt động như một cái van: ép mọi giá trị âm về 0 và giữ nguyên giá trị dương. Nó giúp phá vỡ tính tuyến tính để học được các quy luật phức tạp.
+Người 2: Ở lớp cuối cùng, chúng ta có Hàm Softmax chuyên trị bài toán Phân loại Đa lớp. Hàm này sẽ chuyển đổi các điểm số thô thành Phân phối Xác suất (có tổng bằng 1). Nó giúp AI không chỉ đưa ra câu trả lời, mà còn nói lên mức độ tự tin của mình, ví dụ: 90% chắc chắn mảnh đất này hợp trồng Lúa, 10% hợp trồng Ngô.
+
+Slide 12: BƯỚC 5: THƯỚC ĐO HIỆU SUẤT MÔ HÌNH (EVALUATION)
+Người 1: Sau khi đã xây dựng xong, chúng ta phải đo lường hiệu suất. Dựa trên ma trận nhầm lẫn với 4 thông số (TP, FP, FN, TN), hệ thống dùng 4 thước đo chuyên sâu. Độ chính xác (Accuracy) là tỷ lệ đoán trúng tổng thể.
+Người 2: Kế tiếp là Độ đặc hiệu (Specificity) để đánh giá khả năng nhận diện đúng các trường hợp âm tính, và Độ nhạy (Sensitivity/Recall) để tìm kiếm các trường hợp dương tính. Cuối cùng, F1-Score là một công thức toán học tuyệt vời giúp cân bằng hoàn hảo giữa Độ chuẩn xác (Precision) và Độ nhạy.
+
+Slide 13: BẰNG CHỨNG THÉP: SỰ HOÀN HẢO CỦA ĐƯỜNG CONG AUROC
+Người 1: Một bằng chứng thép cho sự ưu việt của mô hình là Đường cong AUROC. Đường cong này đo lường khả năng phân biệt giữa Tín hiệu thật và Nhiễu. Đường cong càng ôm sát góc trên cùng bên trái thì mô hình càng hoàn hảo.
+Người 2: Kết quả của nghiên cứu này thực sự đột phá: Giá trị AUROC đạt mức 0.998. Điều này có nghĩa là khả năng hệ thống này phân biệt chính xác đâu là cây trồng phù hợp nhất trong số 22 loại đạt mức độ gần như tuyệt đối hoàn hảo, sai số là cực kỳ nhỏ.
+
+Slide 14: BẢNG VÀNG HIỆU SUẤT: BAGGING ÁP ĐẢO MÔ HÌNH ĐƠN LẺ
+Người 1: Bảng vàng hiệu suất một lần nữa khẳng định chiến lược "Đám đông". Qua phương pháp Kiểm định chéo K-lần (với K=9), biểu đồ đường cho thấy tính ổn định cực cao của hệ thống trên các nếp gấp dữ liệu khác nhau, không hề bị hiện tượng Overfitting.
+Người 2: Nếu chỉ dùng Cây quyết định đơn lẻ, độ chính xác là 98%; Mạng Nơ-ron đơn lẻ là 96%. Nhưng khi áp dụng Học tập hợp (Bagging), cả Bagging DT và Bagging NN đều chạm mốc 99%. Kỹ thuật Ensemble thực sự đã đánh bại hoàn toàn các thuật toán đơn lẻ khi đối mặt với sự phức tạp của thế giới tự nhiên.
+
+Slide 15: CHÂN TRỜI MỚI: DỮ LIỆU LÀ NGUỒN PHÂN BÓN TƯƠNG LAI
+Người 1: Để kết luận, nghiên cứu "Từ Đất đai đến Silicon" đã mang lại một thành tựu to lớn. Hệ thống AI Bagging đã chính thức giải phóng người nông dân khỏi cảnh "nhắm mắt làm liều". Nó tự động tối ưu hóa năng suất bằng cách phân tích hàng triệu kịch bản biến đổi vi khí hậu chỉ trong tích tắc.
+Người 2: Tầm nhìn tương lai của hệ thống này là sẵn sàng tích hợp thêm vô số các thông số vi lượng đất đai mới để đối phó với sự phức tạp bất tận của Mẹ Thiên Nhiên. Rõ ràng, nguồn phân bón tốt nhất cho nông nghiệp tương lai không nằm ở hóa chất, mà nằm ở "Dữ liệu". Tương lai của nông nghiệp chính là nông nghiệp tính toán. Xin cảm ơn các bạn đã lắng nghe bài giảng!

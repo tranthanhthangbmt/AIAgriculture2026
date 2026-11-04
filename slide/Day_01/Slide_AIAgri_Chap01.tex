@@ -1,0 +1,193 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{lmodern}
+
+% Theme (Based on standard academic style)
+\usetheme{Madrid}
+\usecolortheme{whale}
+
+% Metadata
+\title[AI trong NN]{Ứng dụng AI trong Nông nghiệp}
+\subtitle{Chương 1: Nền tảng của Trí tuệ Nhân tạo}
+\author{Giảng viên}
+\institute{Đại học Đông Á}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Nội dung chính}
+    \tableofcontents
+\end{frame}
+
+\section{Giới thiệu chung}
+\begin{frame}{Giới thiệu chung}
+    \begin{itemize}
+        \item Thế giới trí tuệ nhân tạo (AI) đang phát triển nhanh chóng và vươn tới nhiều ngành công nghiệp.
+        \item Nông nghiệp là một trong những nhánh quan trọng nhất, đóng góp gần \textbf{17\% doanh thu} cho nền kinh tế.
+        \item Trong bối cảnh biến đổi khí hậu và dân số gia tăng, AI giúp:
+        \begin{itemize}
+            \item Tăng cường năng suất cây trồng.
+            \item Bảo vệ mùa màng hiệu quả hơn.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Trí tuệ nhân tạo là gì?}
+\begin{frame}{Trí tuệ nhân tạo là gì?}
+    \begin{block}{Định nghĩa cốt lõi}
+        Trí tuệ nhân tạo (AI) là một lĩnh vực của Khoa học Máy tính cố gắng định nghĩa lại các nhiệm vụ của con người bằng máy móc với kết quả tốt hơn và độ chính xác tối đa.
+    \end{block}
+    
+    \vspace{0.3cm}
+    \textbf{Các góc nhìn về AI}:
+    \begin{itemize}
+        \item Kết hợp kỹ thuật và khoa học để làm máy móc trở nên thông minh.
+        \item Máy móc có thể bắt chước hành vi, suy nghĩ và học hỏi giống con người.
+        \item \textit{"Nhân tạo"} = không có sự can thiệp của con người. \textit{"Trí tuệ"} = khả năng thực hiện nhiệm vụ giống não bộ.
+    \end{itemize}
+\end{frame}
+
+\section{AI trong Nông nghiệp}
+\begin{frame}{Sự cần thiết của AI trong Nông nghiệp}
+    \begin{itemize}
+        \item Nông nghiệp là nghề lâu đời. Qua nhiều thế hệ, dân số luôn tăng dẫn đến nhu cầu lương thực tăng, nhưng sản lượng lại có xu hướng giảm.
+        \item \textbf{Giải pháp từ AI}:
+        \begin{itemize}
+            \item Tự động hóa sản xuất nông nghiệp mà không cần sự can thiệp thủ công.
+            \item Phân tích đồng ruộng để thu hoạch, giám sát cây trồng và điều kiện đất đai theo thời gian.
+            \item Dự báo thời tiết.
+            \item Cải thiện kỹ thuật canh tác bằng cách cung cấp dữ liệu chính xác theo yêu cầu.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Các giai đoạn của AI}
+\begin{frame}{Các giai đoạn của Trí tuệ nhân tạo}
+    \begin{enumerate}
+        \item \textbf{Trí tuệ nhân tạo hẹp (ANI - Artificial Narrow Intelligence)}:
+        \begin{itemize}
+            \item Còn gọi là \textit{AI yếu}. Chỉ thực hiện được các nhiệm vụ được xác định trước, không có khả năng tự nhận thức.
+            \item \textit{Ví dụ}: Siri, xe tự lái, Alpha Go.
+        \end{itemize}
+        \item \textbf{Trí tuệ nhân tạo chung (AGI - Artificial General Intelligence)}:
+        \begin{itemize}
+            \item Còn gọi là \textit{AI mạnh}. Khả năng suy nghĩ và ra quyết định giống con người. (Hiện tại chưa hoàn thiện).
+        \end{itemize}
+        \item \textbf{Siêu trí tuệ nhân tạo (ASI - Artificial Super Intelligence)}:
+        \begin{itemize}
+            \item Giai đoạn giả định trong tương lai, nơi AI vượt qua mọi giới hạn và lấn át con người.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\section{Phân loại AI theo chức năng}
+\begin{frame}{Phân loại hệ thống AI theo chức năng}
+    \begin{itemize}
+        \item \textbf{AI phản ứng (Reactive Machine)}: Dựa trên dữ liệu hiện tại để giải quyết tình huống hiện tại. Không lưu trữ bộ nhớ, phạm vi hẹp.
+        \item \textbf{AI bộ nhớ hạn chế (Limited Memory)}: Lưu trữ dữ liệu quá khứ để học hỏi và dự đoán nhiệm vụ trong tương lai.
+        \item \textbf{AI Lý thuyết Tâm trí (Theory of Mind)}: Hệ thống tiên tiến suy đoán và thấu hiểu cảm xúc con người trong các tình huống.
+        \item \textbf{AI Tự nhận thức (Self-Aware)}: Giai đoạn cuối cùng nơi hệ thống AI có ý thức độc lập và tự nhận thức.
+    \end{itemize}
+\end{frame}
+
+\section{Công nghệ lõi của AI}
+\begin{frame}{Các công nghệ nhánh của Trí tuệ nhân tạo}
+    Các hệ thống AI trong thực tế được xây dựng dựa trên sự kết hợp của các công nghệ:
+    \vspace{0.3cm}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item Học máy (Machine Learning)
+                \item Học sâu (Deep Learning)
+                \item Thị giác máy tính (Computer Vision)
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item Khoa học dữ liệu (Data Science)
+                \item Dữ liệu lớn (Big Data)
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    \vspace{0.5cm}
+    $\rightarrow$ \textit{Các công nghệ này được ứng dụng rộng rãi trong nông nghiệp để cải thiện sản xuất và mang lại hiệu quả thu hoạch.}
+\end{frame}
+
+\section{Ứng dụng thực tiễn}
+\begin{frame}{Ứng dụng AI trong Nông nghiệp (Phần 1)}
+    \begin{enumerate}
+        \item \textbf{Bot Nông nghiệp Trí tuệ nhân tạo}:
+        \begin{itemize}
+            \item Hỗ trợ tìm ra kỹ thuật thu hoạch hiệu quả.
+            \item Bảo vệ cây trồng khỏi cỏ dại.
+            \item Sử dụng \textit{Thị giác máy tính} để phát hiện bệnh và phun thuốc trừ sâu đúng thời điểm.
+            \item Thu hoạch với khối lượng lớn và tốc độ nhanh hơn lao động con người.
+        \end{itemize}
+        \vspace{0.3cm}
+        \item \textbf{Giám sát sức khỏe cây trồng và đất}:
+        \begin{itemize}
+            \item Nhận dạng hình ảnh để phát hiện khiếm khuyết của cây.
+            \item Sử dụng học sâu để phân tích thiếu hụt dinh dưỡng, sâu bệnh.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Ứng dụng AI trong Nông nghiệp (Phần 2)}
+    \begin{enumerate}
+        \setcounter{enumi}{2}
+        \item \textbf{Hệ thống chuyên gia nông nghiệp}:
+        \begin{itemize}
+            \item Lưu trữ kiến thức từ nhiều chuyên gia.
+            \item Cung cấp hướng dẫn phù hợp và đưa ra quyết định thực tiễn cho nông dân.
+        \end{itemize}
+        \vspace{0.3cm}
+        \item \textbf{Dữ liệu thời tiết dự báo}:
+        \begin{itemize}
+            \item Cập nhật thay đổi thời tiết đột ngột.
+            \item Giúp nông dân có biện pháp phòng ngừa bảo vệ cây trồng khỏi rủi ro thời tiết.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Ứng dụng AI trong Nông nghiệp (Phần 3)}
+    \begin{enumerate}
+        \setcounter{enumi}{4}
+        \item \textbf{Máy bay không người lái (Drones)}:
+        \begin{itemize}
+            \item Lập trình tuyến đường bay trên không.
+            \item Chụp dữ liệu hình ảnh, quét tìm cây trồng nhiễm bệnh, phun thuốc mục tiêu.
+            \item Cung cấp thông tin thời gian thực về nhu cầu nước, phân bón.
+        \end{itemize}
+        \vspace{0.3cm}
+        \item \textbf{Thu hoạch trong nhà (Indoor Farming)}:
+        \begin{itemize}
+            \item Tự động hóa quá trình thu hoạch, cung cấp ánh sáng nhân tạo.
+            \item Phân tích môi trường khép kín (như thủy canh, aquaponics) giúp việc canh tác trở nên đơn giản hơn.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\section{Tóm tắt}
+\begin{frame}{Tóm tắt}
+    \begin{block}{Kết luận}
+        Trí tuệ nhân tạo (AI) giúp tăng năng suất và bảo vệ cây trồng trong thời gian thực. Bằng cách ứng dụng AI, nông dân có thể giải quyết các thách thức truyền thống như biến đổi khí hậu, sâu bệnh và cỏ dại.
+    \end{block}
+    
+    \vspace{0.5cm}
+    \textbf{Thông điệp}:
+    Do sự tiến bộ không ngừng của công nghệ, người nông dân cũng cần nâng cấp kỹ thuật canh tác để tiết kiệm thời gian, công sức và tối ưu hóa sản lượng, trong đó AI đóng vai trò hạt nhân.
+\end{frame}
+
+\begin{frame}
+    \centering \Huge \textbf{Xin Cảm Ơn!}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,9 @@
+\babel@toc {vietnamese}{}\relax 
+\beamer@sectionintoc {1}{Giới thiệu chung}{3}{0}{1}
+\beamer@sectionintoc {2}{Dự đoán năng suất}{4}{0}{2}
+\beamer@sectionintoc {3}{Quản lý dịch hại}{6}{0}{3}
+\beamer@sectionintoc {4}{Sức khỏe đất}{7}{0}{4}
+\beamer@sectionintoc {5}{Tối ưu hóa tưới tiêu}{8}{0}{5}
+\beamer@sectionintoc {6}{Quản lý vật nuôi}{11}{0}{6}
+\beamer@sectionintoc {7}{Tối ưu thức ăn chăn nuôi}{13}{0}{7}
+\beamer@sectionintoc {8}{Kết luận}{14}{0}{8}

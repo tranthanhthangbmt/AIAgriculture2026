@@ -1,0 +1,51 @@
+Slide 1: ỨNG DỤNG AI TRONG NÔNG NGHIỆP - CHƯƠNG 1
+Người 1: Xin chào các bạn sinh viên. Chào mừng các bạn đến với khóa học Ứng dụng AI trong Nông nghiệp. Hôm nay, chúng ta sẽ bắt đầu với Chương 1: Nền tảng của Trí tuệ Nhân tạo.
+Người 2: Xin chào các bạn. Trí tuệ nhân tạo không còn là khoa học viễn tưởng, nó đang len lỏi vào mọi ngóc ngách của đời sống, đặc biệt là trong sản xuất nông nghiệp. Hãy cùng tìm hiểu xem nền tảng cốt lõi của nó là gì nhé.
+
+Slide 2: NỘI DUNG CHÍNH
+Người 1: Bài giảng hôm nay bao gồm 8 phần chính. Chúng ta sẽ đi từ giới thiệu chung, tìm hiểu AI là gì, tại sao cần AI trong nông nghiệp, cho đến các giai đoạn phát triển, phân loại AI theo chức năng và các công nghệ lõi.
+Người 2: Cuối cùng, chúng ta sẽ xem xét các ứng dụng thực tiễn của AI trong nông nghiệp để thấy rõ công nghệ này đang thay đổi phương thức sản xuất như thế nào.
+
+Slide 3: GIỚI THIỆU CHUNG
+Người 1: Thế giới Trí tuệ nhân tạo (AI) đang phát triển vô cùng nhanh chóng và vươn tới nhiều ngành công nghiệp. Trong khi đó, nông nghiệp là một ngành xương sống, đóng góp gần 17% doanh thu cho nền kinh tế.
+Người 2: Tuy nhiên, với bối cảnh biến đổi khí hậu khắc nghiệt và dân số toàn cầu không ngừng gia tăng, nông nghiệp truyền thống đang chịu áp lực rất lớn. AI xuất hiện như một giải pháp giúp tăng cường năng suất cây trồng và bảo vệ mùa màng hiệu quả hơn.
+
+Slide 4: TRÍ TUỆ NHÂN TẠO LÀ GÌ?
+Người 1: Vậy định nghĩa cốt lõi của Trí tuệ nhân tạo là gì? Về bản chất, AI là một lĩnh vực của Khoa học Máy tính, nơi các kỹ sư cố gắng dùng máy móc để thực hiện các nhiệm vụ của con người, nhưng với kết quả tốt hơn và độ chính xác tối đa.
+Người 2: Dưới các góc nhìn khác nhau, AI là sự kết hợp kỹ thuật và khoa học để máy móc trở nên thông minh, có thể bắt chước hành vi, suy nghĩ và học hỏi giống con người. "Nhân tạo" nghĩa là không có sự can thiệp của con người, và "Trí tuệ" là khả năng thực hiện nhiệm vụ giống như não bộ sinh học.
+
+Slide 5: SỰ CẦN THIẾT CỦA AI TRONG NÔNG NGHIỆP
+Người 1: Nông nghiệp là một nghề lâu đời. Qua nhiều thế hệ, dân số luôn tăng dẫn đến nhu cầu lương thực tăng, nhưng sản lượng lại có xu hướng giảm do đất đai và khí hậu. AI mang đến những giải pháp thực sự cần thiết.
+Người 2: Cụ thể, AI giúp tự động hóa sản xuất mà không cần can thiệp thủ công. Nó phân tích đồng ruộng để thu hoạch, giám sát cây trồng và điều kiện đất đai theo thời gian thực. Hơn nữa, AI cung cấp dự báo thời tiết và dữ liệu chính xác để người nông dân cải thiện kỹ thuật canh tác.
+
+Slide 6: CÁC GIAI ĐOẠN CỦA TRÍ TUỆ NHÂN TẠO
+Người 1: AI không tự nhiên xuất hiện hoàn hảo, nó có 3 giai đoạn. Giai đoạn 1 là Trí tuệ nhân tạo hẹp (ANI), hay còn gọi là AI yếu. Hệ thống chỉ thực hiện các nhiệm vụ xác định trước, không có tự nhận thức. Ví dụ như Siri, xe tự lái hay Alpha Go.
+Người 2: Giai đoạn 2 là Trí tuệ nhân tạo chung (AGI), hay AI mạnh, với khả năng suy nghĩ và ra quyết định như con người, nhưng hiện tại vẫn chưa hoàn thiện. Giai đoạn 3 là Siêu trí tuệ nhân tạo (ASI), một viễn cảnh tương lai khi AI vượt qua mọi giới hạn và lấn át trí tuệ con người.
+
+Slide 7: PHÂN LOẠI HỆ THỐNG AI THEO CHỨC NĂNG
+Người 1: Về mặt chức năng, AI được chia làm 4 loại. Thứ nhất là AI Phản ứng (Reactive Machine), chỉ dựa trên dữ liệu hiện tại để giải quyết tình huống tức thời, không có bộ nhớ. Thứ hai là AI bộ nhớ hạn chế (Limited Memory), có thể lưu trữ dữ liệu quá khứ để dự đoán tương lai.
+Người 2: Thứ ba là AI Lý thuyết Tâm trí (Theory of Mind), một hệ thống tiên tiến có thể suy đoán và thấu hiểu cảm xúc con người. Cuối cùng, mức cao nhất là AI Tự nhận thức (Self-Aware), nơi hệ thống có ý thức độc lập và tự nhận thức được bản thân. Hiện tại, chúng ta chủ yếu ứng dụng AI bộ nhớ hạn chế.
+
+Slide 8: CÁC CÔNG NGHỆ NHÁNH CỦA TRÍ TUỆ NHÂN TẠO
+Người 1: Để xây dựng các hệ thống AI thực tế, chúng ta phải kết hợp nhiều công nghệ nhánh. Các trụ cột đó bao gồm Học máy (Machine Learning), Học sâu (Deep Learning), và Thị giác máy tính (Computer Vision).
+Người 2: Bổ trợ cho chúng là Khoa học dữ liệu (Data Science) và Dữ liệu lớn (Big Data). Tất cả các công nghệ này đang được ứng dụng rộng rãi trong nông nghiệp để phân tích tự động, cải thiện sản xuất và mang lại hiệu quả thu hoạch vượt trội.
+
+Slide 9: ỨNG DỤNG AI TRONG NÔNG NGHIỆP (PHẦN 1)
+Người 1: Giờ hãy đi vào các ứng dụng thực tiễn. Ứng dụng đầu tiên là Bot Nông nghiệp Trí tuệ nhân tạo. Các robot này hỗ trợ thu hoạch với khối lượng lớn, tốc độ nhanh hơn lao động con người. Chúng còn giúp nhổ cỏ dại và dùng Thị giác máy tính để phát hiện bệnh, phun thuốc đúng thời điểm.
+Người 2: Ứng dụng thứ hai là Giám sát sức khỏe cây trồng và đất. Bằng công nghệ nhận dạng hình ảnh và học sâu, hệ thống có thể ngay lập tức phát hiện ra khiếm khuyết của cây, phân tích nguyên nhân thiếu hụt dinh dưỡng hay sự lây lan của sâu bệnh.
+
+Slide 10: ỨNG DỤNG AI TRONG NÔNG NGHIỆP (PHẦN 2)
+Người 1: Ứng dụng thứ ba là Hệ thống chuyên gia nông nghiệp. Đây giống như một kho lưu trữ kiến thức tổng hợp từ nhiều chuyên gia, từ đó cung cấp hướng dẫn phù hợp và hỗ trợ nông dân đưa ra quyết định thực tiễn.
+Người 2: Thứ tư là khả năng Dữ liệu thời tiết dự báo. Nhờ năng lực tính toán siêu việt, AI có thể cập nhật các thay đổi thời tiết đột ngột, giúp nông dân có biện pháp phòng ngừa và bảo vệ cây trồng khỏi các rủi ro thiên tai.
+
+Slide 11: ỨNG DỤNG AI TRONG NÔNG NGHIỆP (PHẦN 3)
+Người 1: Sẽ thật thiếu sót nếu không nhắc đến Máy bay không người lái (Drones). AI giúp lập trình tuyến đường bay trên không, chụp ảnh quét tìm vùng cây nhiễm bệnh để phun thuốc mục tiêu, và cung cấp thông tin thời gian thực về nhu cầu nước, phân bón.
+Người 2: Ứng dụng cuối cùng là Thu hoạch trong nhà (Indoor Farming). AI tự động hóa quá trình thu hoạch, phân tích môi trường khép kín như thủy canh, aquaponics, và tự động điều chỉnh ánh sáng nhân tạo, giúp việc canh tác trong nhà trở nên đơn giản hơn bao giờ hết.
+
+Slide 12: TÓM TẮT
+Người 1: Để kết luận, Trí tuệ nhân tạo giúp tăng năng suất và bảo vệ cây trồng trong thời gian thực. Bằng cách ứng dụng AI, nông dân có thể giải quyết các thách thức truyền thống như biến đổi khí hậu, sâu bệnh và cỏ dại.
+Người 2: Thông điệp quan trọng của chương này là: Do sự tiến bộ không ngừng của công nghệ, người nông dân cũng cần nâng cấp kỹ thuật canh tác để tiết kiệm thời gian, công sức và tối ưu hóa sản lượng, trong đó AI đóng vai trò hạt nhân trung tâm.
+
+Slide 13: XIN CẢM ƠN!
+Người 1: Bài giảng Chương 1 của chúng ta hôm nay đến đây là kết thúc. Hy vọng các bạn đã nắm được nền tảng cơ bản về Trí tuệ nhân tạo trong nông nghiệp.
+Người 2: Xin cảm ơn các bạn đã chú ý lắng nghe! Hẹn gặp lại các bạn trong những bài học tiếp theo.

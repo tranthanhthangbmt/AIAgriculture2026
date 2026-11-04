@@ -1,0 +1,60 @@
+Slide 1: CÁC THUẬT TOÁN HỌC MÁY
+Người 1: Chào mừng các bạn sinh viên đã trở lại. Trong chương 9 này, chúng ta sẽ đi sâu vào "Các Thuật Toán Học Máy", tập trung vào nền tảng toán học, phân tích logic và cách chúng ta có thể triển khai chúng với Python.
+Người 2: Chào các bạn. Ở các bài học trước, chúng ta đã có cái nhìn tổng quan về AI. Hôm nay, chúng ta sẽ thực sự đi vào cốt lõi của Học Máy, tìm hiểu xem đằng sau những dự đoán thông minh là những thuật toán nào đang hoạt động.
+
+Slide 2: CƠ CHẾ HOẠT ĐỘNG CỦA HỌC CÓ GIÁM SÁT
+Người 1: Trước tiên, chúng ta cùng nhắc lại cơ chế hoạt động của Học Có Giám Sát. Về cơ bản, nó dựa trên nguyên lý: Dữ liệu cộng với Thuật toán sẽ tạo ra Mô hình. Mục tiêu là dự đoán một nhãn chưa biết dựa trên các đầu vào đã biết nhãn từ trước.
+Người 2: Đúng vậy, như các bạn thấy trên hình minh họa, chúng ta sẽ đưa các dữ liệu như âm thanh, hình ảnh cùng với nhãn của chúng qua một cỗ máy thuật toán. Kết quả thu được là một Mô hình, và từ mô hình này, chúng ta có thể đưa ra những dự đoán cho các dữ liệu mới trong tương lai.
+
+Slide 3: HỒI QUY TUYẾN TÍNH (LINEAR REGRESSION)
+Người 1: Hãy bắt đầu với thuật toán cơ bản nhất: Hồi quy Tuyến tính. Bằng phương trình toán học quen thuộc f(x) = mx + b, thuật toán này giúp chúng ta tìm ra đường thẳng phù hợp nhất đi qua các điểm dữ liệu phân tán.
+Người 2: Mục tiêu cốt lõi ở đây là giảm thiểu "Hàm chi phí", cụ thể là Sai số toàn phương trung bình (MSE). Để làm được điều đó, chúng ta sử dụng một kỹ thuật tối ưu hóa gọi là Gradient Descent, lặp lại các bước đi ngược hướng đạo hàm để giảm dần lỗi cho đến khi đạt mức tối ưu.
+
+Slide 4: HỒI QUY LOGISTIC: BƯỚC NGOẶT PHÂN LOẠI
+Người 1: Dù có tên là "Hồi quy", nhưng Hồi quy Logistic lại được sử dụng cho bài toán phân loại. Điểm khác biệt lớn nhất là nó sử dụng đường cong chữ S, hay còn gọi là hàm Sigmoid, để ánh xạ mọi giá trị về khoảng xác suất từ 0 đến 1.
+Người 2: Thay vì bị ảnh hưởng mạnh bởi các điểm ngoại lệ như hồi quy tuyến tính, Hồi quy Logistic ép xác suất vào khoảng an toàn. Nó rất phù hợp cho phân loại nhị phân như 0 hoặc 1, và cũng có thể mở rộng cho đa lớp bằng phương pháp One-vs-Rest. Ở đây chúng ta dùng Ước lượng Hợp lý Tối đa (MLE) để đánh giá thay vì MSE.
+
+Slide 5: ĐIỂM CHUẨN: KHÁM PHÁ BỘ DỮ LIỆU IRIS
+Người 1: Để hiểu rõ hơn về phân loại, chúng ta sẽ làm quen với bộ dữ liệu chuẩn mực nhất trong Machine Learning: Bộ dữ liệu hoa Iris. 
+Người 2: Các đặc trưng đầu vào, ký hiệu là X, chính là chiều dài và chiều rộng của cánh hoa và đài hoa. Mục tiêu cần dự đoán, ký hiệu là Y, là 3 giống hoa: Setosa, Versicolor, và Virginica. Quy trình chuẩn luôn là: Chia tập dữ liệu thành Train và Test, sau đó Huấn luyện mô hình với tập Train và cuối cùng là Dự đoán trên tập Test.
+
+Slide 6: CÂY QUYẾT ĐỊNH (DECISION TREE)
+Người 1: Tiếp theo là thuật toán Cây Quyết Định. Nó mô phỏng lại cách suy nghĩ logic của con người bằng cách đặt ra các câu hỏi điều kiện tại mỗi nút, bắt đầu từ Nút gốc, đi qua các Nút quyết định, và kết thúc ở Nút lá chứa kết quả phân loại.
+Người 2: Tại mỗi bước phân chia, mô hình tính toán "Lợi ích thông tin" (Information Gain) để giảm sự hỗn loạn của dữ liệu, hay còn gọi là Entropy. Hoặc mô hình sử dụng "Chỉ số Gini", Gini càng thấp thì nhánh đó càng tinh khiết, giúp máy tính đưa ra quyết định chính xác nhất.
+
+Slide 7: RANDOM FOREST: SỨC MẠNH CỦA BIỂU QUYẾT ĐÁM ĐÔNG
+Người 1: Cây quyết định rất hay, nhưng dễ mắc lỗi. Vì thế Random Forest ra đời như một mô hình Ensemble, khởi tạo ngẫu nhiên một khu rừng gồm nhiều cây quyết định khác nhau.
+Người 2: Cơ chế hoạt động của nó rất thú vị: Mỗi cây tự chấm điểm và dự đoán độc lập, sau đó kết quả cuối cùng được lấy theo biểu quyết đa số (Plurality voting). Ưu điểm vượt trội của thuật toán này là sự linh hoạt, chống nhiễu tốt và khắc phục triệt để lỗi Quá khớp (Overfitting) thường gặp của cây đơn lẻ.
+
+Slide 8: MÁY VECTOR HỖ TRỢ (SVM): KẺ VẠCH ĐƯỜNG BIÊN
+Người 1: Thuật toán tiếp theo là Máy Vector Hỗ trợ (SVM). Hãy tưởng tượng bạn đang cố gắng kẻ một Siêu phẳng (Hyperplane) chia cắt không gian dữ liệu thành các phân vùng riêng biệt. 
+Người 2: Mục tiêu của SVM là tối đa hóa khoảng cách, gọi là Lề (Margin), từ siêu phẳng đến các Support Vectors, tức là những điểm dữ liệu gần nhất. Lề càng lớn thì mô hình tổng quát hóa càng tốt, giúp phân tách rõ ràng nhất 2 nhóm dữ liệu kể cả trong không gian nhiều chiều.
+
+Slide 9: K-NEAREST NEIGHBORS (KNN): BẠN LÀ AI, HÃY NHÌN HÀNG XÓM!
+Người 1: Một cách tiếp cận hoàn toàn khác là K-Nearest Neighbors (KNN), với triết lý "Bạn là ai, hãy nhìn hàng xóm!". KNN phân loại một dữ liệu mới bằng cách bỏ phiếu đa số từ K láng giềng gần nó nhất trong không gian.
+Người 2: Điểm cần lưu ý của KNN là nó yêu cầu chuẩn hóa dữ liệu trước khi chạy và thường ngốn nhiều bộ nhớ vì phải tính khoảng cách, như khoảng cách Euclidean hay Manhattan, tới mọi điểm dữ liệu trong tập huấn luyện.
+
+Slide 10: NAÏVE BAYES: PHÂN LOẠI BẰNG XÁC SUẤT TIỀN NGHIỆM
+Người 1: Chuyển sang góc độ xác suất, Naïve Bayes là thuật toán dựa trên Định lý Bayes nổi tiếng: Xác suất hậu nghiệm bằng Xác suất có điều kiện nhân với Xác suất tiền nghiệm, chia cho Xác suất dữ liệu.
+Người 2: Từ "Ngây thơ" (Naïve) ở đây ám chỉ việc thuật toán giả định tuyệt đối rằng tất cả các đặc trưng đều hoàn toàn độc lập với nhau, dù điều này hiếm gặp trong thực tế. Trong Python, chúng ta có 3 biến thể phổ biến là Gaussian cho phân phối chuẩn, Multinomial cho đếm rời rạc và Bernoulli cho dữ liệu nhị phân.
+
+Slide 11: K-MEANS CLUSTERING: GOM CỤM KHÔNG GIÁM SÁT
+Người 1: Tạm gác lại các thuật toán Có giám sát, chúng ta đến với Học Không Giám Sát qua thuật toán K-Means Clustering. Mục tiêu của nó là khám phá cấu trúc ngầm của các dữ liệu chưa được dán nhãn.
+Người 2: Thuật toán này lặp lại 2 bước đơn giản nhưng mạnh mẽ: Đầu tiên là gán mỗi điểm dữ liệu vào Tâm (Centroid) gần nhất để tạo thành cụm, sau đó dời Tâm về vị trí trung bình của cụm mới. Quá trình này lặp lại cho đến khi các tâm hội tụ và không thay đổi nữa.
+
+Slide 12: ĐÁNH GIÁ HIỆU SUẤT: LÀM SAO BIẾT MÁY ĐÃ HỌC ĐÚNG?
+Người 1: Khi đã có mô hình, làm sao để đánh giá hiệu suất? Chúng ta sử dụng Ma trận Nhầm lẫn để theo dõi 4 chỉ số: Dự đoán Đúng (True Positive, True Negative) và Dự đoán Sai (False Positive, False Negative).
+Người 2: Từ đó, chúng ta tính được Độ chính xác (Accuracy), tức là tỷ lệ dự đoán đúng trên tổng số mẫu. Đặc biệt cần cảnh báo về hiện tượng Overfitting - nếu mô hình đạt 100% trên tập Huấn luyện nhưng lại thất bại trên tập Kiểm tra, điều đó có nghĩa là máy chỉ đang học vẹt dữ liệu cũ mà thôi.
+
+Slide 13: MA TRẬN SO SÁNH: HỒI QUY, KHOẢNG CÁCH & XÁC SUẤT
+Người 1: Để tổng kết, chúng ta hãy cùng nhìn vào ma trận so sánh các thuật toán. Linear và Logistic Regression đơn giản, tính toán cực nhanh, có điểm xác suất nhưng lại yếu đuối trước dữ liệu phi tuyến tính phức tạp và Outlier. SVM thì phân vùng mạnh mẽ với "Lề" rõ ràng, nhưng sẽ chật vật nếu không gian dữ liệu bị chồng chéo nhiều.
+Người 2: KNN thì rất dễ hiểu, không áp đặt giả định lên dữ liệu, nhưng lại tốn RAM và tính toán ly cực chậm khi gặp Big Data. Cuối cùng, Naïve Bayes huấn luyện xuất sắc với lượng dữ liệu nhỏ, nhưng giả định các đặc trưng "độc lập" của nó đôi khi lại xa rời thực tế.
+
+Slide 14: MA TRẬN SO SÁNH: CÂY QUYẾT ĐỊNH & HỌC KHÔNG GIÁM SÁT
+Người 1: Đối với nhóm thuật toán thứ hai, Cây Quyết Định có ưu điểm là mô phỏng logic con người, mô hình minh bạch dễ giải thích, nhưng khuyết điểm là cực kỳ dễ rơi vào bẫy Quá khớp nếu cây mọc quá sâu.
+Người 2: Để khắc phục, Random Forest ra đời, siêu mạnh mẽ, miễn nhiễm tốt với Overfit và xử lý Dữ liệu khuyết. Đổi lại, nó lại là một "Hộp đen" (Black box), ngốn RAM và dự đoán chậm hơn. Trong khi đó, K-Means đem lại hiệu quả tính toán vượt trội cho bài toán gom cụm, nhưng yêu cầu chúng ta phải tự đoán số cụm (K) từ đầu và rất nhạy cảm với hình dạng dữ liệu.
+
+Slide 15: LỜI GIẢI NẰM Ở DỮ LIỆU CỦA BẠN
+Người 1: Để khép lại bài học, một thông điệp quan trọng là: "Không có thuật toán vô địch, chỉ có thuật toán Phù hợp nhất." Lời giải thực sự luôn nằm ở dữ liệu của bạn.
+Người 2: Quyết định chọn thuật toán nào sẽ dựa trên: Kích thước bộ dữ liệu, Đặc thù bài toán (Nhãn có sẵn hay Không), và Tài nguyên phần cứng của bạn như Memory hay Speed. 
+Người 1: Khi các bạn đã nắm rõ những điều này, chúng ta đã sẵn sàng để triển khai. Đã đến lúc đưa các Mô hình từ Python ra thế giới thực! Cảm ơn các bạn đã theo dõi bài giảng hôm nay.

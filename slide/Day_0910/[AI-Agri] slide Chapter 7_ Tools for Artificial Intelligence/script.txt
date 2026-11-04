@@ -1,0 +1,192 @@
+Slide 01: CÔNG CỤ CHO TRÍ TUỆ NHÂN TẠO TRONG NÔNG NGHIỆP HIỆN ĐẠI - Triển khai Trí tuệ Nhân tạo: Nền tảng và Thực hành (Chương 7)
+
+
+Người 1: Chào mừng tất cả các bạn sinh viên đã đến với buổi thực hành chuyên sâu của Tuần 9 và 10 trong học phần Ứng dụng AI trong Nông nghiệp! Hôm nay, chúng ta chính thức bước vào Phần B của chương trình học: Triển khai Trí tuệ Nhân tạo trong thực tế, mở đầu bằng Chương 7: "Các công cụ cho Trí tuệ Nhân tạo" (Tools for Artificial Intelligence). Nhìn lên Slide mở đầu, các bạn có thể chiêm ngưỡng ngay một khung cảnh đậm chất nông nghiệp công nghệ cao 4.0: một nhà màng kính hiện đại đang được giám sát từ trên không bởi một chiếc drone tự hành, quét chùm tia sáng cảm biến xuống từng luống cây xanh tốt.
+
+Người 2: Chào các bạn! Các bạn hãy chú ý đến những giao diện hiển thị số (HUD) bao quanh nhà màng trên Slide: từ "Crop Health Index: Optimum" (Chỉ số sức khỏe cây trồng tối ưu), "Pest Detection: None" (Không có sâu bệnh), cho đến "Soil Moisture: 65%" (Độ ẩm đất đạt chuẩn 65%). Và ở dưới sàn nhà màng, các vi mạch điện tử phát sáng kết nối trực tiếp đến 3 biểu tượng công nghệ trụ cột: logo Python đại diện cho ngôn ngữ lập trình, đám mây lưu trữ dữ liệu, và biểu tượng vô cực màu cam của Google Colab.
+
+Người 1: Bức tranh thị giác này truyền tải một thông điệp vô cùng thực tiễn: để đưa các mô hình toán học và lý thuyết AI từ giảng đường ra vận hành tự động trên đồng ruộng hay trong nhà kính, người kỹ sư nông nghiệp số bắt buộc phải làm chủ một bộ công cụ phần mềm chuẩn mực. Chúng ta không thể chỉ học lý thuyết suông, mà phải biết tự tay cài đặt môi trường, viết mã, quản lý gói thư viện và tận dụng hạ tầng tính toán đám mây.
+
+Người 2: Đúng vậy, thưa thầy! Trong hai tuần thực hành này, chúng ta sẽ cùng nhau thiết lập toàn bộ "vũ khí công nghệ": từ việc cài đặt Python lõi, làm chủ bộ phân phối Anaconda, sử dụng sổ tay tương tác Jupyter Notebook, cho đến việc khai thác các cỗ máy tính toán GPU/TPU siêu tốc trên Google Colab. Bây giờ, xin mời thầy và các bạn cùng bước sang Slide số 2 để khám phá bức tranh tổng thể về Hệ sinh thái công cụ AI!
+
+
+Slide 02: HỆ SINH THÁI CÔNG CỤ AI - Con Đường Từ Máy Tính Cá Nhân Đến Siêu Máy Tính Đám Mây
+
+
+Người 1: Mời các bạn quan sát Slide số 2. Toàn bộ lộ trình công cụ thực hành của chúng ta được mô hình hóa thành một con đường uốn lượn liên hoàn, dẫn dắt từ chiếc máy tính xách tay cá nhân ở góc dưới bên trái, xuyên qua 4 trạm dừng công nghệ, và tiến thẳng lên siêu máy tính đám mây ở góc trên bên phải.
+
+Người 2: Trạm dừng đầu tiên chính là "Python (Ngôn ngữ lõi)", được biểu trưng bằng chiếc lá ươm mầm cùng logo Python. Trong thế giới AI hiện đại, Python là ngôn ngữ lập trình số một nhờ cú pháp trong sáng, dễ đọc và sở hữu kho thư viện khoa học dữ liệu đồ sộ nhất hành tinh. Mọi thuật toán từ xử lý ảnh lá cây đến dự báo thời tiết đều được viết bằng Python. Tài liệu chuẩn của chúng ta xây dựng trên nền tảng Python 3.6 trở lên.
+
+Người 1: Tiến theo con đường đến trạm dừng thứ hai là "Anaconda (Quản lý môi trường)", minh họa bằng khối đất thổ nhưỡng màu mỡ mang logo vòng tròn xanh của Anaconda nuôi dưỡng những mầm cây non. Nếu xem Python là hạt giống, thì Anaconda chính là mảnh đất dinh dưỡng hoàn chỉnh. Nó giúp chúng ta đóng gói, cô lập các môi trường ảo và quản lý hàng trăm thư viện chuyên dụng, ngăn ngừa triệt để các xung đột phần mềm giữa các dự án khác nhau.
+
+Người 2: Tiếp theo là trạm thứ ba: "Jupyter (Không gian tương tác)", biểu trưng bằng mô hình nhà kính hiển thị các biểu đồ dữ liệu trực quan trên vách kính. Jupyter Notebook cho phép chúng ta vừa viết từng đoạn mã Python, vừa chạy thử nghiệm ngay lập tức, và vẽ đồ thị trực quan hóa sinh khối cây trồng ngay bên dưới mà không cần biên dịch lại từ đầu.
+
+Người 1: Và đích đến đỉnh cao ở trạm thứ tư chính là "Google Colab (Siêu máy tính đám mây)", biểu thị bằng nông trại thông minh kết nối với đám mây máy chủ server. Khi các mô hình học sâu (Deep Learning) nhận diện sâu bệnh đòi hỏi huấn luyện hàng triệu bức ảnh lá cây, phần cứng laptop cá nhân sẽ bị quá tải. Lúc này, Google Colab mở ra cánh cửa cho chúng ta tiếp cận miễn phí các bộ vi xử lý đồ họa GPU và vi xử lý chuyên dụng TPU của Google để tăng tốc tính toán gấp hàng chục lần!
+
+Người 2: Một chuỗi giá trị công nghệ vô cùng hoàn chỉnh và bổ trợ cho nhau! Để bắt đầu hành trình này, chúng ta phải đi từ bước nền móng đầu tiên: cài đặt Python trực tiếp lên hệ điều hành. Xin mời các bạn cùng theo dõi Slide số 3!
+
+
+Slide 03: THIẾT LẬP NỀN MÓNG: CÀI ĐẶT PYTHON 3.6 - Quy Trình 4 Bước Chuẩn Hóa Trên Máy Tính Cá Nhân
+
+
+Người 2: Bước sang Slide số 3, chúng ta có quy trình 4 bước trực quan để cài đặt trình thông dịch Python nguyên bản trên máy tính Windows. Thưa thầy, các bạn sinh viên cần lưu ý những thao tác kỹ thuật gì trong quy trình này ạ?
+
+Người 1: Quy trình này rất rõ ràng qua 4 cửa sổ mô phỏng từ trái qua phải. Bước 1: Các bạn mở trình duyệt và truy cập vào trang chủ chính thức python.org/downloads. Tại đây, chúng ta chọn phiên bản Python 3.6 phù hợp với hệ điều hành của mình và tải tệp cài đặt .exe về máy.
+
+Người 2: Bước 2 là bước cực kỳ quan trọng: khi chạy tệp .exe, cửa sổ cài đặt sẽ hiện ra. Các bạn hãy nhìn vào tùy chọn ở góc dưới cửa sổ: có một ô đánh dấu màu xanh "Add Python 3.6 to PATH". Các bạn bắt buộc phải tích chọn vào ô này trước khi nhấp vào nút "Install Now"! Việc thêm Python vào biến môi trường PATH sẽ giúp các bạn có thể gọi lệnh Python từ bất kỳ cửa sổ dòng lệnh nào trong máy.
+
+Người 1: Chuẩn xác! Tiếp theo ở Bước 3 là thanh tiến trình sao chép các tệp thực thi vào hệ thống ("Copying files: 60%"). Và khi màn hình chuyển sang Bước 4 với biểu tượng dấu tick xanh tròn và dòng chữ "Setup was successful", tức là trình cài đặt đã thành công, các bạn chỉ cần nhấp "Close" để hoàn tất.
+
+Người 2: Xin các bạn đặc biệt chú ý đến khung cảnh báo màu vàng nổi bật ở chân Slide: "Lưu ý quan trọng: Tất cả mã nguồn trong tài liệu chuẩn của môn học được tối ưu cho Python 3.6. Tuyệt đối tránh sử dụng các phiên bản quá cũ như Python 2.7!". Phiên bản 2.7 đã bị khai tử hoàn toàn và không còn tương thích với các thư viện học máy hiện đại.
+
+Người 1: Rất đúng! Tuy nhiên, việc cài đặt Python thuần túy thường đòi hỏi chúng ta phải tự cài thêm hàng chục thư viện bên ngoài bằng tay. Để tiết kiệm thời gian và quản lý thư viện chuyên nghiệp hơn, giải pháp tối ưu được giới chuyên gia khuyên dùng chính là Anaconda trên Slide số 4!
+
+
+Slide 04: ANACONDA TRÊN WINDOWS: QUẢN LÝ THƯ VIỆN CHUYÊN NGHIỆP - Thiết Lập Tối Ưu và Khởi Động Anaconda Prompt
+
+
+Người 1: Tại Slide số 4, chúng ta cùng phân tích hai khâu then chốt khi cài đặt Anaconda trên hệ điều hành Windows: nửa bên trái là lưu ý cốt tử trong lúc cài đặt (Installation Focus), và nửa bên phải là thao tác sau khi cài đặt (Post-Installation).
+
+Người 2: Mời các bạn nhìn vào biển báo cấm màu đỏ hình bát giác ở nửa bên trái: tại màn hình "Advanced Installation Options" của trình cài đặt Anaconda, tài liệu giáo trình đưa ra một khuyến nghị rất đặc biệt: "KHÔNG chọn tùy chọn 'Add Anaconda to my PATH environment variable'!". Thưa thầy, vì sao một công cụ mạnh mẽ như Anaconda lại được khuyên là KHÔNG nên tích vào PATH ạ?
+
+Người 1: Đây là một câu hỏi kinh điển của dân công nghệ! Lý do là vì nếu bạn đưa Anaconda vào biến môi trường PATH toàn cục của Windows, nó có thể ghi đè và làm xung đột với các phiên bản Python khác hoặc các phần mềm hệ thống đã được cài trước đó trên máy tính. Thay vào đó, Anaconda đã tạo riêng cho chúng ta một môi trường dòng lệnh độc lập, hoàn toàn cách ly và an toàn!
+
+Người 2: Và môi trường độc lập đó được hướng dẫn ở nửa bên phải: "Tìm kiếm 'Anaconda Prompt' trong Start Menu". Các mũi tên màu xanh lá chỉ rõ: sau khi cài xong, các bạn chỉ cần nhấn phím Windows, gõ "Anaconda Prompt", và mở ứng dụng này lên. Đây là một trình bao dòng lệnh (command line shell) chuyên dụng được thiết lập sẵn toàn bộ đường dẫn của Anaconda mà không hề can thiệp tiêu cực vào hệ thống Windows.
+
+Người 1: Chính xác! Từ cửa sổ Anaconda Prompt này, các bạn chỉ cần gõ lệnh python là có thể bước vào trình thông dịch tương tác REPL, hoặc sử dụng lệnh conda install để cài đặt bất kỳ thư viện nông nghiệp số nào. Vậy đối với những bạn sinh viên sử dụng máy tính chạy MacOS hoặc Linux thì quy trình sẽ như thế nào? Xin mời các bạn cùng theo dõi Slide số 5!
+
+
+Slide 05: LỆNH CÀI ĐẶT CHO HỆ SINH THÁI UNIX (MACOS & LINUX) - Chuẩn Hóa Môi Trường Trên Terminal
+
+
+Người 2: Bước sang Slide số 5, chúng ta có bảng tổng hợp các câu lệnh chuẩn xác dành cho hai hệ điều hành thuộc họ Unix: cột bên trái với biểu tượng quả táo cắn dở đại diện cho MacOS, và cột bên phải với chú chim cánh cụt Tux đại diện cho Linux.
+
+Người 1: Hãy nhìn vào cột MacOS bên trái trước: Đầu tiên, các bạn tải gói cài đặt đồ họa định dạng .pkg từ trang web Anaconda, ưu tiên phiên bản tương thích với Python 3.6. Sau khi chạy cài đặt xong, các bạn mở ứng dụng Terminal của Mac lên và thực thi lệnh: `$ cd ~` để về thư mục gốc, tiếp theo là `$ source .bashrc` (hoặc `.zshrc` trên các dòng Mac đời mới) để nạp biến môi trường. Sau đó gõ `$ python` để khởi động.
+
+Người 2: Đặc biệt, để kiểm tra xem Python đã hoạt động chuẩn xác hay chưa, tài liệu giáo trình hướng dẫn một câu lệnh rất thú vị: tại dấu nhắc `>>>`, các bạn gõ `import this`. Màn hình sẽ lập tức xuất hiện 19 triết lý kinh điển của ngôn ngữ Python - gọi là "The Zen of Python" (Thiền của Python). Nếu nhìn thấy bài thơ này, xin chúc mừng, môi trường của các bạn đã hoàn toàn sẵn sàng!
+
+Người 1: Sang cột Linux bên phải, môi trường này cực kỳ phổ biến trên các máy chủ đám mây và các trạm tính toán AI. Quy trình được thực hiện hoàn toàn bằng lệnh: Bước 1, tạo thư mục tạm bằng `$ cd ~`, sau đó `$ mkdir tmp` và `$ cd tmp`. Bước 2, dùng lệnh wget tải trực tiếp tập lệnh cài đặt bash .sh từ kho Continuum/Anaconda. Bước 3, thực thi cài đặt bằng `$ bash Anaconda3-5.2.0-Linux-x86_64.sh`. Bước 4, nạp cấu hình bằng `$ cd` và `$ source .bashrc`.
+
+Người 2: Và ở dải băng rôn chân Slide, có một cú pháp cơ bản mà mọi sinh viên cần ghi nhớ: Để thoát khỏi trình thông dịch Python REPL trên bất kỳ hệ điều hành nào, các bạn gõ lệnh `>>> exit()`, nhớ phải có cặp dấu ngoặc đơn mở đóng ở phía sau! Bây giờ, khi nền tảng đã vững vàng, chúng ta sẽ mở ra không gian làm việc trực quan nhất: Jupyter Notebook tại Slide số 6!
+
+
+Slide 06: JUPYTER NOTEBOOK: KHÔNG GIAN VIẾT MÃ TƯƠNG TÁC - Môi Trường Thực Hành Khoa Học Dữ Liệu Nông Nghiệp
+
+
+Người 1: Mời các bạn chiêm ngưỡng Slide số 6. Ở nửa bên trái là hình ảnh một cuốn sổ tay điện tử Jupyter Notebook đang mở ra với các khối mã code Python, xen kẽ với biểu đồ đường theo dõi năng suất cây trồng qua các năm và biểu đồ cột phân tích lượng phân bón. Đây chính là "phòng thí nghiệm số" nơi các nhà khoa học dữ liệu nông nghiệp làm việc mỗi ngày!
+
+Người 2: Thưa thầy, 3 tấm thẻ màu xanh lá được đánh số bên phải đã chỉ dẫn 3 phương thức để sinh viên có thể khởi động và cài đặt Jupyter Notebook tùy theo thiết bị của mình.
+
+Người 1: Đúng vậy! Phương thức số 1 là con đường "Khuyên dùng & Đơn giản nhất": Nếu các bạn đã cài đặt bộ Anaconda theo hướng dẫn ở slide trước, Jupyter Notebook đã được tích hợp sẵn 100%! Các bạn chỉ cần mở Anaconda Prompt, gõ lệnh `> jupyter notebook` và nhấn Enter. Ngay lập tức, trình duyệt web mặc định sẽ tự động bật lên giao diện quản lý tệp và sổ tay của Jupyter.
+
+Người 2: Phương thức số 2 dành cho trường hợp các bạn muốn "Cài đặt thủ công": Trong cửa sổ dòng lệnh Prompt hoặc Terminal, các bạn gõ lệnh `> conda install jupyter`, khi hệ thống hỏi xác nhận thì gõ `y` (yes). Sau khi hoàn tất, các bạn khởi động tương tự như phương thức 1.
+
+Người 1: Và Phương thức số 3 dành riêng cho người dùng MacOS không cài Anaconda: Tác giả nhấn mạnh rằng tuyệt đối không nên cài trực tiếp vào phiên bản Python mặc định có sẵn của hệ điều hành Mac, vì nó rất dễ gây xung đột quyền hệ thống (permission error) và lỗi gói. Thay vào đó, hãy dùng Homebrew để cài một phiên bản Python độc lập bằng lệnh `$ brew install Python`, sau đó dùng pip cài Jupyter bằng `$ pip install jupyter`.
+
+Người 2: Rất rõ ràng và chi tiết! Jupyter Notebook là một công cụ tuyệt vời cho máy tính cá nhân. Thế nhưng, nếu chiếc laptop của bạn không có card đồ họa rời GPU, hoặc khi tập dữ liệu ảnh bệnh cây trồng lên tới hàng chục Gigabyte thì chúng ta phải làm sao? Câu trả lời nằm ở siêu máy tính đám mây Google Colab tại Slide số 7!
+
+
+Slide 07: ĐƯA AI LÊN ĐÁM MÂY: SỨC MẠNH CỦA GOOGLE COLAB - Nền Tảng Siêu Tính Toán Miễn Phí Cho Nông Nghiệp Số
+
+
+Người 1: Bước sang Slide số 7, chúng ta tiến lên một tầm cao mới về hạ tầng tính toán: "Đưa AI lên Đám mây với Google Colab". Nhìn vào hình ảnh đám mây công nghệ ở góc trên bên phải, nó chứa đựng cả 3 dòng chip xử lý trung tâm: CPU truyền thống, vi xử lý đồ họa GPU và vi xử lý học sâu chuyên dụng TPU của Google, liên kết trực tiếp với giao diện Colab trên trình duyệt.
+
+Người 2: Mời các bạn theo dõi 4 ưu thế vượt trội được đánh dấu bằng các vòng tròn cam bên trái: Ưu thế 1: Google Colab thực chất là một môi trường Jupyter Notebook trực tuyến hoàn toàn miễn phí do Google cung cấp, chạy trực tiếp trên nền web mà không đòi hỏi bạn phải cài đặt bất kỳ phần mềm phức tạp nào lên máy tính cá nhân.
+
+Người 1: Ưu thế 2 cực kỳ ấn tượng: Colab cung cấp tới 12 giờ thực thi liên tục (12-hour continuous runtime) cho mỗi phiên làm việc. Đây là khoảng thời gian quá đủ để các bạn sinh viên chạy các bài thực hành huấn luyện mô hình mạng nơ-ron phân loại sâu bệnh hay dự báo năng suất trong môn học.
+
+Người 2: Ưu thế 3: Hoàn toàn không chiếm dụng tài nguyên phần cứng cục bộ. Dù các bạn đang sử dụng một chiếc laptop văn phòng mỏng nhẹ hay thậm chí một chiếc máy tính bảng, các bạn vẫn có thể phân tích các bộ dữ liệu ảnh viễn thám nông nghiệp khổng lồ với tốc độ xử lý của một trạm máy chủ chuyên nghiệp!
+
+Người 1: Và Ưu thế 4: Tính an toàn tuyệt đối. Mọi dòng mã lệnh và kết quả thử nghiệm được tự động lưu trữ tức thời vào tài khoản Google Drive cá nhân của bạn, không bao giờ lo bị mất bài khi máy tính sập nguồn. Ở dải băng rôn dưới cùng, các bạn chỉ cần truy cập đường dẫn colab.research.google.com, đăng nhập tài khoản Gmail và nhấp nút "NEW NOTEBOOK" là có thể bắt đầu lập trình ngay lập tức.
+
+Người 2: Thật tuyệt vời! Nhưng sức mạnh thực sự biến Colab thành "vũ khí tối thượng" cho các dự án thị giác máy tính nông nghiệp chính là khả năng bật tăng tốc phần cứng GPU và TPU. Cách kích hoạt như thế nào? Xin mời các bạn cùng xem Slide số 8!
+
+
+Slide 08: KÍCH HOẠT PHẦN CỨNG CHUYÊN DỤNG (GPU & TPU) - Tăng Tốc Huấn Luyện Mô Hình Học Sâu Vượt Bậc
+
+
+Người 1: Slide số 8 hướng dẫn các bạn thao tác quan trọng bậc nhất khi làm việc với các mô hình Học Sâu (Deep Learning) trên Google Colab: kích hoạt bộ tăng tốc phần cứng chuyên dụng.
+
+Người 2: Hãy nhìn vào hai ảnh chụp giao diện Colab thực tế trên Slide: Ở cửa sổ bên trái, trên thanh menu trên cùng, các bạn nhấp chuột vào mục `Runtime` (Thời gian chạy), sau đó chọn dòng `Change runtime type` (Thay đổi loại thời gian chạy) có biểu tượng bàn tay click chuột màu xanh.
+
+Người 1: Ngay lập tức, một hộp thoại cài đặt sổ tay "Notebook settings" sẽ xuất hiện ở cửa sổ bên phải. Tại mục `Hardware accelerator` (Bộ tăng tốc phần cứng), mặc định hệ thống sẽ để là `None` - tức là chỉ chạy bằng CPU thông thường. Các bạn hãy nhấp vào menu thả xuống và chọn một trong hai tùy chọn mạnh mẽ: `GPU` (được tô màu xanh lá) hoặc `TPU` (được tô màu cam), sau đó nhấp `Save` để lưu cấu hình.
+
+Người 2: Khung giải thích ở chân Slide đã nêu bật lý do kỹ thuật: Việc huấn luyện các mạng nơ-ron tích chập (CNN) với hàng triệu tham số để phát hiện đốm lá hay quả chín đòi hỏi hàng tỷ phép tính nhân ma trận song song. CPU thông thường sẽ mất hàng tuần trời để huấn luyện, nhưng khi chuyển đổi sang GPU hoặc TPU của Colab, thời gian đó được rút ngắn xuống chỉ còn vài chục phút!
+
+Người 1: Rất chuẩn xác! Tuy nhiên, vì đây là tài nguyên tính toán đám mây cao cấp được chia sẻ hoàn toàn miễn phí, chúng ta cần phải có văn hóa sử dụng tài nguyên văn minh và biết cách điều khiển Colab linh hoạt. Hãy cùng tìm hiểu các quy tắc này tại Slide số 9!
+
+
+Slide 09: QUẢN LÝ TÀI NGUYÊN ĐÁM MÂY & LỆNH TERMINAL - Trách Nhiệm Cộng Đồng và Kỹ Thuật Dòng Lệnh Cục Bộ
+
+
+Người 2: Bước sang Slide số 9, chúng ta được trang bị hai kỹ năng quản trị thực chiến: nửa trên là "Quản Lý Tài Nguyên Đám Mây", và nửa dưới là "Thực Thi Lệnh Terminal Trực Tiếp Trong Sổ Tay".
+
+Người 1: Mời các bạn nhìn vào khung cảnh báo màu đỏ ở nửa trên: Google Colab cung cấp tài nguyên miễn phí dựa trên cơ chế chia sẻ cộng đồng giữa hàng triệu nhà nghiên cứu trên toàn thế giới. Do đó, giáo trình nhấn mạnh một nguyên tắc đạo đức nghề nghiệp cốt lõi: Khi đã hoàn thành việc huấn luyện mô hình, các bạn hãy vào menu `Runtime` và chọn lệnh kết thúc phiên làm việc (như `Factory reset runtime` hoặc Terminate session) để giải phóng GPU/TPU cho những người khác sử dụng, tránh việc giữ máy ảo chạy ngầm lãng phí!
+
+Người 2: Chuyển xuống nửa dưới Slide là cửa sổ dòng lệnh màu đen quen thuộc của dân lập trình. Một ưu điểm cực kỳ tiện lợi của Colab là hầu hết các thư viện khoa học dữ liệu kinh điển như NumPy, Pandas, Matplotlib, Scikit-learn hay TensorFlow đều đã được Google cài đặt sẵn trong môi trường mặc định.
+
+Người 1: Thế nhưng, nếu dự án nông nghiệp của bạn cần một thư viện chuyên biệt - chẳng hạn như OpenCV để xử lý ảnh lá cây hoặc Scikit-image để đo mật độ diệp lục - thì bạn chỉ cần sử dụng cú pháp: thêm một dấu chấm than `!` ở đầu câu lệnh, ví dụ: `!pip install tên_thư_viện`. Dấu chấm than báo hiệu cho Colab biết rằng hãy thực thi dòng này như một lệnh terminal của hệ điều hành Linux!
+
+Người 2: Các bạn cũng có thể dùng các lệnh kiểm tra hệ thống như `!ls` để liệt kê các tệp tin trong thư mục hiện hành, hoặc `!pwd` để xem đường dẫn thư mục làm việc. Vậy làm thế nào để nạp các bộ dữ liệu ảnh nông nghiệp thực tế từ máy tính lên Colab để xử lý? Xin mời các bạn cùng theo dõi Slide số 10!
+
+
+Slide 10: ĐƯA DỮ LIỆU NÔNG NGHIỆP VÀO ĐÁM MÂY - So Sánh Hai Phương Thức Nạp Dữ Liệu Lên Colab
+
+
+Người 1: Slide số 10 giải quyết một mắt xích sống còn trong quy trình khoa học dữ liệu: "Đưa Dữ Liệu Nông Nghiệp Vào Đám Mây". Tác giả trình bày hai phương thức nạp dữ liệu với sự đối sánh rõ rệt về hiệu năng.
+
+Người 2: Phương thức 1 ở nửa bên trái là "Upload Trực Tiếp (Upload Files)": Các bạn mở thanh công cụ Files ở cạnh trái màn hình Colab, sau đó kéo thả tệp từ máy tính vào cây thư mục hoặc nhấn nút tải lên. Nhược điểm lớn của phương thức này là tốc độ tải qua mạng thường khá chậm, và đặc biệt là khi phiên làm việc bị ngắt kết nối (reset runtime), toàn bộ dữ liệu tải lên sẽ bị xóa sạch, buộc bạn phải tải lại từ đầu! Vì vậy, phương thức này chỉ phù hợp với các tệp dữ liệu bảng CSV rất nhỏ.
+
+Người 1: Ngược lại hoàn toàn, ở nửa bên phải là giải pháp tối ưu được giáo trình nhiệt liệt khuyến nghị: "Phương Thức 2 - Gắn Google Drive (Mount Google Drive)". Biểu tượng liên kết sợi xích màu cam kết nối logo Google Drive với logo Colab đã thể hiện mối liên kết bền chặt này. Cạnh đó là hình ảnh drone nông nghiệp và đầu dò cảm biến IoT - những nguồn tạo ra hàng nghìn bức ảnh đa phổ và chuỗi dữ liệu thời gian thực đồ sộ.
+
+Người 2: Đúng vậy, thưa thầy! Bằng cách tải trước toàn bộ tập dữ liệu ảnh bệnh cây hoặc dữ liệu cảm biến lên Google Drive cá nhân, sau đó trong Colab chỉ cần nhấp vào biểu tượng thư mục Drive hoặc chạy một dòng lệnh mount đơn giản, toàn bộ kho dữ liệu trên Drive sẽ lập tức xuất hiện trong Colab như một ổ đĩa cục bộ!
+
+Người 1: Tốc độ đọc ghi dữ liệu lúc này nhanh như chớp, và quan trọng nhất là dữ liệu nằm an toàn vĩnh viễn trên Google Drive, không bao giờ lo bị mất khi máy ảo Colab khởi động lại. Đây là phương pháp làm việc tiêu chuẩn của mọi kỹ sư AI chuyên nghiệp. Và sau khi đã huấn luyện xong mô hình, việc lưu trữ mã nguồn và chia sẻ kết quả với đồng nghiệp sẽ được thực hiện như thế nào? Xin mời các bạn cùng xem Slide số 11!
+
+
+Slide 11: LƯU TRỮ VÀ HỢP TÁC NGHIÊN CỨU TOÀN CẦU - Tích Hợp Google Drive, GitHub và Chia Sẻ Dự Án
+
+
+Người 2: Quan sát Slide số 11, chúng ta thấy một mạng lưới hợp tác đa chiều với tâm điểm là chú mèo bạch tuộc Octocat - biểu tượng của GitHub, kết nối chặt chẽ với Google Drive và hộp thư điện tử chia sẻ. Ba tấm thẻ ở hàng dưới đã đúc kết 3 trụ cột hợp tác nghiên cứu toàn cầu.
+
+Người 1: Trụ cột thứ nhất bên trái là "Tự Động Hóa (Automation)": Như chúng ta đã biết, toàn bộ sổ tay Colab được tự động lưu phiên bản định kỳ lên Google Drive. Các bạn không cần phải liên tục nhấn tổ hợp phím Ctrl + S như trong các phần mềm truyền thống, tiến trình nghiên cứu luôn được bảo toàn tuyệt đối.
+
+Người 2: Trụ cột thứ hai ở giữa là "Xuất Bản Đa Định Dạng (Multi-Format Export)": Colab cho phép bạn linh hoạt xuất bản sản phẩm trí tuệ của mình dưới nhiều định dạng. Bạn có thể tải về tệp mã nguồn Python thuần túy `*.py` để nhúng vào các hệ thống máy tính nhúng IoT ngoài đồng ruộng; hoặc tải tệp sổ tay tương tác `*.ipynb` để tiếp tục nghiên cứu; và đặc biệt là tính năng "Save a copy in GitHub" giúp lưu trực tiếp mã nguồn lên kho lưu trữ GitHub của bạn chỉ với một cú nhấp chuột!
+
+Người 1: Chuẩn xác! Việc tích hợp GitHub giúp bạn xây dựng hồ sơ năng lực (portfolio) kỹ thuật số, quản lý phiên bản mã nguồn chặt chẽ và công bố các công trình nghiên cứu nông nghiệp cho cộng đồng mã nguồn mở thế giới.
+
+Người 2: Và Trụ cột thứ ba bên phải là "Chia Sẻ Dễ Dàng (Effortless Collaboration)": Bằng cách nhấp vào nút "Share" ở góc trên bên phải màn hình Colab, bạn có thể cấp quyền xem hoặc chỉnh sửa cho các bạn cùng nhóm qua Email hoặc đường link URL, hoạt động mượt mà và trực quan y hệt như khi bạn chia sẻ một tài liệu Google Docs. Cả nhóm có thể cùng nhau viết mã, ghi chú và gỡ lỗi trên cùng một sổ tay theo thời gian thực!
+
+Người 1: Rất tiện lợi cho quá trình làm đồ án nhóm! Nhưng đến đây, chắc hẳn nhiều bạn sinh viên sẽ băn khoăn: Khi nào thì nên dùng Jupyter Notebook trên máy cá nhân, và khi nào thì nên dùng Google Colab trên đám mây? Câu trả lời được hệ thống hóa qua Ma trận quyết định tại Slide số 12!
+
+
+Slide 12: MA TRẬN QUYẾT ĐỊNH: CÁ NHÂN HAY ĐÁM MÂY? - So Sánh Toàn Diện Giữa Jupyter Cục Bộ và Google Colab
+
+
+Người 1: Slide số 12 cung cấp một bảng so sánh trực quan và sắc bén, giúp các bạn sinh viên lựa chọn đúng công cụ cho từng hoàn cảnh công việc thực tế trong nông nghiệp.
+
+Người 2: Hãy cùng điểm qua 4 tiêu chí đánh giá trong bảng: Tiêu chí 1 là "Cài đặt & Cấu hình". Với Jupyter Notebook cục bộ qua Anaconda, việc cài đặt phức tạp hơn, đòi hỏi phải thao tác dòng lệnh và phụ thuộc vào hệ điều hành của máy tính. Trong khi đó, Google Colab đạt điểm tuyệt đối: hoàn toàn không cần cài đặt, chỉ cần mở trình duyệt web lên là xong.
+
+Người 1: Tiêu chí 2 là "Sức mạnh Xử lý (Compute Power)". Jupyter cục bộ bị giới hạn hoàn toàn bởi cấu hình phần cứng của chiếc laptop bạn đang dùng. Nếu máy yếu không có GPU, bạn sẽ không thể huấn luyện nổi các mạng nơ-ron học sâu phức tạp. Ngược lại, Google Colab hoàn toàn vượt trội với các cỗ máy GPU và TPU đám mây cực mạnh được cấp miễn phí.
+
+Người 2: Nhưng các bạn hãy nhìn vào Tiêu chí 3: "Truy cập Offline (Tại trạm nghiên cứu thực địa)". Đây là điểm mấu chốt mà Jupyter cục bộ ghi điểm vượt trội hoàn toàn! Trong bối cảnh nông nghiệp Việt Nam, khi các bạn kỹ sư phải đi khảo sát thực tế tại các vùng sâu vùng xa, các cánh đồng hẻo lánh hay các nhà lưới không có sóng Wifi hoặc 4G, Google Colab sẽ hoàn toàn tê liệt vì bắt buộc phải có Internet. Lúc này, Jupyter chạy trên máy cá nhân sẽ là người bạn đồng hành tin cậy nhất!
+
+Người 1: Rất sắc bén! Và Tiêu chí 4 là "Làm việc Nhóm (Collaboration)". Jupyter cục bộ khó chia sẻ trực tiếp, bạn phải nén tệp gửi qua lại rất dễ thất lạc phiên bản; trong khi Colab chia sẻ qua liên kết mượt mà như Google Docs. Tóm lại: Hãy dùng Jupyter cục bộ khi cần bảo mật dữ liệu nội bộ hoặc làm việc ngoại tuyến ngoài thực địa; và hãy dùng Google Colab khi huấn luyện mô hình học sâu nặng ký và làm việc nhóm đồ án!
+
+Người 2: Một sự phân tích vô cùng thấu đáo và thực tế! Vậy sau khi đã nắm vững toàn bộ chuỗi công cụ này, bước tiếp theo để chúng ta đưa AI vào phục vụ sản xuất nông nghiệp là gì? Xin mời các bạn cùng bước sang Slide số 13 tổng kết chương!
+
+
+Slide 13: SẴN SÀNG CHUYỂN ĐỔI NÔNG NGHIỆP BẰNG AI - Hành Trang Kỹ Sư và Triển Khai Thực Tế Trên Máy Chủ Đám Mây
+
+
+Người 1: Mời các bạn cùng ngắm nhìn Slide số 13 - bức tranh khép lại Chương 7 đầy cảm hứng: bên phải là cánh đồng rau xanh bạt ngàn với hệ thống béc tưới phun sương tự động, các tủ điều khiển IoT gắn cảm biến thông minh và dàn drone nông nghiệp đang lướt bay trên bầu trời hoàng hôn.
+
+Người 2: Ở tấm thẻ màu trắng phía trên, chúng ta cùng nhìn lại "Tổng Quan Chuỗi Công Cụ Cốt Lõi": Qua bài giảng hôm nay, các bạn sinh viên đã được trang bị đầy đủ hành trang kỹ thuật: từ việc viết mã nguồn Python chuẩn mực, quản lý thư viện và môi trường ảo an toàn với Anaconda, thực hành phân tích dữ liệu trực quan trên Jupyter Notebook, cho đến việc khai thác sức mạnh của siêu máy tính đám mây Google Colab.
+
+Người 1: Và tấm thẻ viền cam bên dưới mở ra "Bước Tiếp Theo: Triển Khai Thực Tế". Khi các bạn đã huấn luyện thành công một mô hình AI nhận diện bệnh hại hay dự báo tưới tiêu, câu hỏi đặt ra là: Làm sao để mô hình đó chạy liên tục 24/7 phục vụ hàng nghìn nông dân? Tác giả cuốn sách gợi ý cho chúng ta bước tiến tiếp theo: khám phá dịch vụ máy chủ ảo đám mây Amazon EC2 (Elastic Compute Cloud).
+
+Người 2: Amazon Web Services hiện đang cung cấp gói dùng thử miễn phí 1 năm (Free Tier) cho máy chủ EC2. Đây là nền tảng điện toán đám mây công nghiệp tiêu chuẩn, cho phép các kỹ sư phần mềm lưu trữ (host) vĩnh viễn các API trí tuệ nhân tạo, kết nối trực tiếp với các trạm cảm biến IoT ngoài đồng và ứng dụng di động của người nông dân!
+
+Người 1: Đúng vậy! Công cụ đã nằm trọn trong tay các bạn. Từ những dòng lệnh Python cơ bản trên màn hình máy tính hôm nay, các bạn hoàn toàn có thể kiến tạo nên những giải pháp nông nghiệp thông minh, góp phần thay đổi diện mạo ngành nông nghiệp nước nhà trong tương lai.
+
+Người 2: Chúc tất cả các bạn sinh viên có những buổi thực hành thật hiệu quả, làm chủ hoàn toàn các công cụ AI và tự tin bước vào các bài thực hành chuyên sâu tiếp theo của Tuần 9 và 10. Xin cảm ơn thầy và hẹn gặp lại các bạn trong những bài học tiếp theo!

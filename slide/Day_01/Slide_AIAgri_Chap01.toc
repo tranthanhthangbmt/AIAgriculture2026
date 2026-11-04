@@ -1,0 +1,9 @@
+\babel@toc {vietnamese}{}\relax 
+\beamer@sectionintoc {1}{Giới thiệu chung}{3}{0}{1}
+\beamer@sectionintoc {2}{Trí tuệ nhân tạo là gì?}{4}{0}{2}
+\beamer@sectionintoc {3}{AI trong Nông nghiệp}{5}{0}{3}
+\beamer@sectionintoc {4}{Các giai đoạn của AI}{6}{0}{4}
+\beamer@sectionintoc {5}{Phân loại AI theo chức năng}{7}{0}{5}
+\beamer@sectionintoc {6}{Công nghệ lõi của AI}{8}{0}{6}
+\beamer@sectionintoc {7}{Ứng dụng thực tiễn}{9}{0}{7}
+\beamer@sectionintoc {8}{Tóm tắt}{12}{0}{8}

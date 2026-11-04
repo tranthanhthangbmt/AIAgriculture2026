@@ -1,0 +1,9 @@
+\babel@toc {vietnamese}{}\relax 
+\beamer@sectionintoc {1}{Giới thiệu chung}{3}{0}{1}
+\beamer@sectionintoc {2}{Khái niệm Nông nghiệp chính xác}{4}{0}{2}
+\beamer@sectionintoc {3}{Lợi ích}{5}{0}{3}
+\beamer@sectionintoc {4}{Các bước cơ bản}{6}{0}{4}
+\beamer@sectionintoc {5}{Triển khai AI trong NN Chính xác}{8}{0}{5}
+\beamer@sectionintoc {6}{Ứng dụng cụ thể}{11}{0}{6}
+\beamer@sectionintoc {7}{Thách thức \& Hạn chế}{12}{0}{7}
+\beamer@sectionintoc {8}{Tóm tắt}{14}{0}{8}

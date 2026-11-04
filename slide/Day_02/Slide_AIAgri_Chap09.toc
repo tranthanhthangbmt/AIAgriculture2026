@@ -1,0 +1,9 @@
+\babel@toc {vietnamese}{}\relax 
+\beamer@sectionintoc {1}{Giới thiệu chung}{3}{0}{1}
+\beamer@sectionintoc {2}{Hồi quy tuyến tính (Linear Regression)}{4}{0}{2}
+\beamer@sectionintoc {3}{Hồi quy Logistic}{6}{0}{3}
+\beamer@sectionintoc {4}{Cây quyết định (Decision Tree)}{8}{0}{4}
+\beamer@sectionintoc {5}{Naïve Bayes}{10}{0}{5}
+\beamer@sectionintoc {6}{Phân cụm K-Means}{11}{0}{6}
+\beamer@sectionintoc {7}{Random Forest}{14}{0}{7}
+\beamer@sectionintoc {8}{Kết luận}{15}{0}{8}

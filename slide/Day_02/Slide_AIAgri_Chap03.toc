@@ -1,0 +1,7 @@
+\babel@toc {vietnamese}{}\relax 
+\beamer@sectionintoc {1}{Giới thiệu chung}{3}{0}{1}
+\beamer@sectionintoc {2}{Phương pháp tiếp cận Học máy}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Học có giám sát}{7}{0}{2}
+\beamer@subsectionintoc {2}{2}{Học không giám sát}{10}{0}{2}
+\beamer@subsectionintoc {2}{3}{Thuật toán phổ biến}{12}{0}{2}
+\beamer@sectionintoc {3}{Kết luận}{15}{0}{3}

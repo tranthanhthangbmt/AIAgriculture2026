@@ -1,0 +1,415 @@
+CHƯƠNG 3: HỌC MÁY (MACHINE LEARNING) 
+Như chúng ta đã biết, có nhiều nhánh khác nhau của trí tuệ nhân tạo và học máy là một 
+trong số đó, đã trở thành một nhánh tiên tiến và được sử dụng rộng rãi nhất của trí tuệ 
+nhân tạo trong mọi lĩnh vực của thế hệ này, có thể là điện tử, xây dựng, cơ khí, kỹ thuật 
+sinh học, y tế hoặc nông nghiệp, v.v.. Trong chương này, chúng ta sẽ nghiên cứu về học 
+máy và các loại của nó cùng với các thuật toán học máy phổ biến nhất đang được sử dụng 
+chủ yếu trong các tình huống khác nhau và việc triển khai chúng bằng ngôn ngữ python 
+đã được thảo luận trong phần triển khai của cuốn sách này. Ở đây, chúng ta cũng sẽ xem 
+học máy có thể được sử dụng ở đâu. 
+I. Giới thiệu 
+Học máy là một tập hợp con của Trí tuệ Nhân tạo và là một trong những phần quan trọng 
+nhất của Trí tuệ Nhân tạo. Đây là một lĩnh vực của khoa học máy tính hoàn toàn khác 
+biệt so với các phương pháp tính toán truyền thống. Trong các phương pháp truyền 
+thống, một tập hợp các chỉ dẫn được cung cấp rõ ràng cho thuật toán để giải quyết bất kỳ 
+vấn đề nào. Trong khi đó, Học máy là một lĩnh vực của AI, sử dụng phân tích thống kê và 
+có thể cho phép một hệ thống luôn học hỏi từ dữ liệu của nó mà không cần bất kỳ đầu 
+vào bên ngoài nào để đưa ra một kết quả đầu ra thiết yếu. Nhờ đó, học máy giúp máy tính 
+tiến bộ hơn trong việc tạo ra mô hình cung cấp quyết định dựa trên dữ liệu đầu vào. 
+Học máy bao gồm rất nhiều thuật toán, thường dựa trên các yêu cầu và chức năng của 
+chúng để sử dụng ở đâu và khi nào. Để tạo một mô hình học máy, chúng ta luôn cần dữ 
+liệu để mô hình có thể được xây dựng dựa trên đó. Học máy sử dụng thuật toán liên tục 
+học hỏi từ dữ liệu có sẵn dưới dạng dữ liệu huấn luyện. Một mô hình học máy được tạo 
+ra sau khi thuật toán được huấn luyện từ dữ liệu. Sau khi quá trình huấn luyện hoàn tất, 
+khi mô hình đã được huấn luyện được cung cấp dữ liệu thực tế khác, bạn có thể nhận 
+được một kết quả thiết yếu. Ví dụ, trong hình 3.1 Mô hình Học máy, chúng ta sử dụng 
+một thuật toán dự đoán và tạo ra một mô hình bằng cách cung cấp cho nó một số dữ liệu, 
+và sau đó chúng ta có thể nhận được các dự đoán dựa trên dữ liệu thực tế làm đầu vào. 
+Trong bất kỳ lĩnh vực nào, người dùng công nghệ luôn được hưởng lợi từ Học máy. 
+Trong trí tuệ nhân tạo, vì Học máy luôn là lĩnh vực liên tục phát triển, và thêm vào đó, 
+luôn có những cân nhắc phải ghi nhớ khi học các thuật toán học máy và các phương pháp 
+luận của chúng hoặc phân tích của chúng trong các lĩnh vực khác nhau. 
+HỌC LẶP TỪ DỮ LIỆU (ITERATIVE LEARNING FROM DATA): Vì các mô hình 
+học máy luôn được huấn luyện từ các bộ dữ liệu khác nhau trước khi được triển khai để 
+sử dụng. Một số mô hình trực tuyến (online) và có thể thích ứng liên tục với dữ liệu mới. 
+Mặt khác, một số mô hình học máy ngoại tuyến (offline) được huấn luyện và một khi 
+được triển khai ở đâu đó thì không thể thay đổi và chúng luôn đưa ra kết quả dựa trên (dữ 
+liệu huấn luyện) đó. Các mô hình trực tuyến trong học máy thực hiện học lặp (iterative 
+learning) vì chúng liên tục nhận được dữ liệu mới, trong đó các thuật toán tạo ra các mẫu 
+(patterns) và liên kết nó với các yếu tố dữ liệu có trong dữ liệu. Sau khi một mô hình 
+
+được huấn luyện, nó có thể được sử dụng trong thời gian thực để học từ dữ liệu và cho 
+chúng ta những kết quả ý nghĩa. 
+ 
+ 
+ 
+Hình 3.1 Mô hình Học máy 
+II. Phương pháp tiếp cận Học máy 
+Khi chúng ta nói về một số loại vấn đề được giải quyết bằng học máy, chúng liên quan 
+đến các loại thuật toán khác nhau. Tương tự như vậy, chúng ta có các kỹ thuật khác nhau 
+trong học máy có thể được sử dụng trong các tình huống khác nhau. Đối với các phát 
+biểu vấn đề khác nhau, chúng ta sử dụng các kỹ thuật học máy khác nhau, có thể dựa trên 
+loại và khối lượng dữ liệu. Học máy có các danh mục khác nhau được thảo luận ở đây: 
+1. Học có giám sát (Supervised Learning)  
+Đây là (phương pháp) Học máy được sử dụng phổ biến và rộng rãi nhất. Việc xây dựng 
+mô hình luôn phụ thuộc vào dữ liệu có sẵn và loại đầu ra mà chúng ta yêu cầu. Trong học 
+có giám sát, các mô hình được cung cấp dữ liệu đã được phân loại và gán nhãn sẵn cho 
+mục đích huấn luyện hoặc để học , và sau đó bằng cách tính toán mô hình với dữ liệu 
+thực tế khác, các kết quả được so sánh với các kết quả đã được huấn luyện giả định hoặc 
+mong đợi. Nếu tìm thấy sự không khớp hoặc lỗi nhất định, mô hình sẽ được huấn luyện 
+lại với nhiều dữ liệu hơn. Vì học có giám sát luôn được sử dụng để dự đoán dựa trên các 
+mẫu được tìm thấy trong dữ liệu hoặc trên dữ liệu chưa được gán nhãn được cung cấp 
+cho mô hình. Nói cách khác, học có giám sát có thể được cho là học có hướng dẫn hoặc 
+học có “thầy”, nơi chúng ta có một bộ dữ liệu đã được gán nhãn sẵn, hoạt động như một 
+giáo viên để mô hình Học máy học hỏi. Nếu mô hình được huấn luyện, nó sẽ bắt đầu dự 
+đoán hoặc xác định nếu dữ liệu mới được đưa vào. 
+
+Các chi tiết có thể được hiểu là: Giả sử chúng ta có các biến đầu vào, 𝑥 và biến đầu ra, 𝑦 , 
+để tìm hiểu cách hàm ánh xạ (mapping function) có thể được học từ đầu vào đến đầu ra, 
+chẳng hạn như: 𝑌= 𝑓(𝑥) 
+Bây giờ, mục tiêu chính là xấp xỉ hàm ánh xạ sao cho biến đầu ra (Y) có thể được dự 
+đoán cho dữ liệu đó nếu chúng ta có đầu vào mới (x). 
+Hai loại vấn đề có thể được phân loại chủ yếu vào Học có giám sát: 
+• Phân loại (Classification): Một truy vấn phân loại được đặt tên khi chúng ta có 
+hiệu suất được phân loại (categorized performance) như “đen”, “dạy học”, “không 
+dạy học”, v.v. 
+• Hồi quy (Regression): Một vấn đề hồi quy được đặt tên nếu có giá trị đầu ra thực, 
+như “chiều rộng”, “kilogram”, v.v. 
+Các ví dụ về thuật toán học máy có giám sát là cây quyết định (decision tree), rừng ngẫu 
+nhiên (random forest), knn, hồi quy logistic (logistic regression). 
+Một ứng dụng phổ biến của học có giám sát là sử dụng dữ liệu lịch sử để dự đoán thống 
+kê các sự kiện trong tương lai. Bạn có thể dự báo các biến động sắp tới bằng cách sử 
+dụng kiến thức thị trường chứng khoán lịch sử hoặc sử dụng (bộ lọc) thư rác để lọc (thư). 
+Hình ảnh cây trồng hoặc cây lương thực được gắn thẻ (tagged) trong nông nghiệp có thể 
+được sử dụng làm dữ liệu đầu vào trong huấn luyện có giám sát để phân loại các hình ảnh 
+cây trồng và cây lương thực chưa được gắn thẻ. 
+2. Học không giám sát (Unsupervised Learning) 
+Học không giám sát là tốt nhất nếu câu hỏi liên quan đến một lượng lớn dữ liệu không 
+được gán nhãn. Việc biết ý nghĩa đằng sau dữ liệu này bao gồm các thuật toán có thể 
+được hiểu bằng cách phân loại dữ liệu trên cơ sở các mẫu hoặc cụm (clusters) được tìm 
+thấy. Do đó, học không giám sát thực hiện một quy trình xử lý dữ liệu lặp đi lặp lại mà 
+không có sự can thiệp của con người. 
+Các thuật toán trong học không giám sát phân đoạn dữ liệu thành các nhóm (cụm) nổi bật 
+hoặc các nhóm đặc trưng. Dữ liệu không được gán nhãn xác định các giá trị của tham số 
+và việc phân loại dữ liệu. Phương pháp này về cơ bản áp dụng các nhãn cho thông tin để 
+nó trở thành có giám sát và mô hình được huấn luyện. Học không giám sát sẽ (hữu ích) 
+khi có một lượng lớn dữ liệu. Nhà phát triển không biết bối cảnh của dữ liệu để phân tích 
+trong trường hợp này, vì vậy tại thời điểm này, việc dán nhãn là không thể. Đó là lý do tại 
+sao học không giám sát do đó có thể được sử dụng như bước đầu tiên trước khi dữ liệu 
+được chuyển sang một quy trình học có kiểm soát (supervised). 
+Các chi tiết có thể được hiểu là: Giả sử chúng ta có một biến đầu vào 𝑥 , và không có 
+biến đầu ra nào có sẵn như trong các thuật toán học có giám sát. Nói một cách đơn giản, 
+chúng ta có thể kết luận rằng không có câu trả lời đúng và không có người hướng dẫn 
+
+trong học không giám sát. Các thuật toán cho phép người dùng xác định các xu hướng dữ 
+liệu hấp dẫn. 
+Hai dạng vấn đề sau đây có thể được chia thành các vấn đề học không giám sát: 
+• Phân cụm (Clustering): Chúng ta phải khám phá các nhóm (groupings) cơ bản 
+của dữ liệu trong các vấn đề phân cụm. Ví dụ, phân nhóm người tiêu dùng theo 
+hành vi mua sắm. 
+• Kết hợp (Association): Một vấn đề kết hợp được đặt tên như vậy vì những vấn đề 
+này yêu cầu các quy tắc phải được khám phá để giải thích nhiều dữ liệu của chúng 
+ta, ví dụ, để tìm những khách hàng mua cả 𝑥 và 𝑦 . 
+Các thuật toán học không giám sát có thể giúp hiểu được một lượng lớn nội dung mới, 
+chưa được gán nhãn. Các thuật toán này tìm kiếm các mẫu dữ liệu tương tự như (học) có 
+giám sát. khác biệt là dữ liệu không được biết trước. Ví dụ, Các thuật toán học máy 
+Không giám sát là K-means để phân cụm, thuật toán Apriori để kết hợp. 
+Trong lĩnh vực nông nghiệp, việc thu thập một lượng lớn dữ liệu về một lĩnh vực cụ thể, 
+ví dụ, sẽ giúp nông dân hiểu rõ hơn về các xu hướng và liên kết chúng với việc thu hoạch 
+cây trồng và tăng năng suất của nó. Tất cả các điểm dữ liệu liên quan đến một tình trạng 
+như sức khỏe của cây trồng sẽ mất quá nhiều thời gian để phân loại. Chiến lược học 
+không giám sát cũng sẽ giúp đánh giá kết quả nhanh hơn so với phương pháp học có 
+giám sát. 
+3. Học tăng cường (Reinforcement Learning) 
+Học tăng cường là một mô hình học tập hành vi. Phản hồi từ phân tích dữ liệu được nhận 
+để hướng dẫn người dùng đạt được kết quả tốt nhất. Học tăng cường (Increased learning - 
+Lưu ý: từ đúng là “Reinforcement learning”) khác với các phương pháp khác vì hệ thống 
+không sử dụng một bộ dữ liệu mẫu để huấn luyện. Thay vào đó, hệ thống học bằng cách 
+thử nghiệm và sai sót (testing and error). Do đó, một loạt các lựa chọn thành công sẽ 
+“củng cố” (reinforce) quy trình vì vấn đề được giải quyết tốt nhất. 
+Hình ảnh hệ thống Tác nhân - Figure Agent system. 
+Trong Hình, phản ánh kịch bản chung của việc học tăng cường. So sánh, tác nhân (agent) 
+không nhận được dữ liệu được chỉ định (designated) ở đây, không giống như kịch bản 
+học có giám sát được xem xét trong phần trước. Thay vào đó, nó thu thập thông tin bằng 
+cách giao tiếp với thế giới, thông qua một loạt các hành động. Tác nhân nhận được hai 
+loại thông tin để phản hồi một sự kiện: (1) trạng thái của nó (state of play) trong thế giới 
+và (2) các kịch bản thực tế (real-life scenarios), điều này là duy nhất cho nhiệm vụ và 
+mục đích tương ứng của nó. Mục tiêu là để Tác nhân tối đa hóa phần thưởng (reward) của 
+mình và, để đạt được mục tiêu đó, đồng ý về hướng hành động hoặc chính sách (policy) 
+tốt nhất. Tuy nhiên, dữ liệu mà nó thu thập từ hệ thống chỉ là phần thưởng ngay lập tức 
+cho hành động mà nó đã thực hiện. Không có phản hồi nào từ hệ thống về các ưu đãi 
+
+(incentives) trong tương lai hoặc dài hạn. Một yếu tố quan trọng của việc (học) tăng 
+cường là tính đến các khoản thưởng hoặc phạt bị trì hoãn (late bonuses or penalties). 
+Tác nhân phải đối mặt với tình thế tiến thoái lưỡng nan giữa việc khám phá (exploring) 
+các trạng thái và hành động không xác định để thu thập thêm thông tin về Hệ thống và 
+các phần thưởng, và việc sử dụng (using - Lưu ý: từ đúng là “exploiting” - khai thác) 
+thông tin đã tích lũy được để tối đa hóa sự đền bù (reparation - Lưu ý: từ đúng là 
+“reward” - phần thưởng) của mình. Đây được gọi là sự đánh đổi giữa thăm dò và phát 
+triển (exploitation - Lưu ý: tài liệu gốc ghi “development”) vốn có trong học Tăng cường. 
+Hiểu rằng có nhiều biến thể (variations) giữa kịch bản học tăng cường và học có giám sát 
+trong một số chương trước. So sánh với học có giám sát, không có sự phân phối cố định 
+của các thực thể trong học tăng cường, vốn xác định sự phân phối qua các quan sát. Đó là 
+sự lựa chọn của chính sách. Trên thực tế, những thay đổi nhỏ về chính sách có thể ảnh 
+hưởng mạnh mẽ đến phần thưởng. Ngoài ra, Hệ thống không thể được thiết lập nói chung 
+và có thể khác nhau do hành vi được chọn bởi tác nhân. Điều này có thể thực tế hơn so 
+với học có giám sát thông thường đối với một số vấn đề học tập. Có hai cài đặt chính: 
+một trong đó mô hình môi trường (ambient model) được tác nhân biết đến, điều này làm 
+giảm mục tiêu tối ưu hóa số tiền xuống thành một vấn đề lập kế hoạch (planning 
+problem); và một trong đó mô hình môi trường không xác định và nơi tác nhân phải đối 
+mặt với một câu hỏi học tập. Trong trường hợp trên, tác nhân phải học hỏi từ dữ liệu 
+trạng thái và phần thưởng (recompense) thu được để có được thông tin liên quan và quyết 
+định chiến lược tốt nhất. 
+Học tăng cường không phải là Học có giám sát một cách cụ thể vì không hoàn toàn dựa 
+vào việc thu thập dữ liệu “có giám sát” (hoặc được gán nhãn) (bộ sưu tập huấn luyện). 
+Trên thực tế, phản hồi của các hành động được thực hiện có thể được kiểm soát và tính 
+toán dựa trên một khái niệm về “phần thưởng”. Tuy nhiên, nó cũng không phải là học 
+không giám sát vì chúng ta biết trước phần thưởng mong muốn khi chúng ta hình thành 
+“người học” của mình. 
+III. Học có giám sát Vs. Không giám sát Vs. Tăng cường 
+Cuối cùng, vì tất cả đều đã nhận thức rõ về học có giám sát, không giám sát và Tăng 
+cường, hãy nhìn vào khoảng cách giữa các loại hình học này. Tóm lại, học có giám sát 
+xảy ra khi một mô hình học có hướng dẫn từ một bộ dữ liệu được xác định (defined). Và 
+học không giám sát là nơi máy tính được huấn luyện mà không có bất kỳ hướng dẫn nào 
+trên cơ sở dữ liệu không được gán nhãn. Học tăng cường xảy ra khi một máy tính hoặc 
+một tác nhân giao tiếp, thực hiện các hành động và học hỏi bằng quy trình thử-và-sai 
+(test-and-error). 
+ 
+ 
+
+Bảng sau đây: 
+Tiêu 
+chí 
+(Criteria) 
+Học có giám sát 
+(Supervised 
+Learning) 
+Học 
+không 
+giám 
+sát 
+(Unsupervised learning) 
+Học 
+tăng 
+cường 
+(Reinforcement 
+Learning) 
+Định nghĩa 
+Mô hình học bằng 
+cách sử dụng dữ liệu 
+được gán nhãn hoặc 
+được phân loại. 
+Mô hình được huấn luyện 
+với dữ liệu không được 
+phân loại hoặc không được 
+gán nhãn. 
+Một tác nhân tương 
+tác với mô hình 
+bằng cách thực hiện 
+hành động & học 
+hỏi từ các lỗi và 
+phần thưởng. 
+Loại vấn đề 
+Hồi quy & Phân 
+loại. 
+Kết hợp & Phân cụm. 
+Dựa 
+trên 
+phần 
+thưởng. 
+Loại dữ liệu 
+Dữ liệu được gán 
+nhãn. 
+Dữ liệu không được gán 
+nhãn. 
+Không có dữ liệu 
+được xác định trước. 
+Huấn luyện 
+Giám sát bên ngoài. 
+Không có sự giám sát. 
+Không có sự giám 
+sát. 
+Phương 
+pháp 
+tiếp 
+cận 
+Ánh xạ các đầu vào 
+được gán nhãn hoặc 
+được phân loại tới 
+các đầu ra đã biết. 
+Nhận dạng mẫu trong dữ 
+liệu không được phân loại 
+và khám phá ra đầu ra. 
+Nó 
+tuân 
+theo 
+phương pháp thử và 
+sai (trail and error). 
+ 
+IV. Các thuật toán học máy phổ biến nhất 
+• Hồi quy tuyến tính (Linear Regression): Đây là một trong những thuật toán 
+thống kê và học máy phổ biến nhất. Hồi quy tuyến tính về cơ bản là một mô hình 
+tuyến tính (linearity) giả định mối quan hệ tuyến tính giữa các biến đầu vào 𝑥 và 𝑦 
+. Nói cách khác, bạn có thể tính toán các biến đầu vào 𝑥 từ một tổ hợp tuyến tính. 
+Nó có thể được định nghĩa bằng một đường thẳng phù hợp nhất (best line) để tạo 
+mối quan hệ giữa các biến. Hồi quy tuyến tính thường có hai loại: 
+o Hồi quy tuyến tính đơn giản (Simple Linear Regression): Một thuật toán 
+hồi quy tuyến tính được coi là hồi quy tuyến tính đơn giản vì chỉ có một 
+biến độc lập. 
+o Hồi quy tuyến tính bội (Multiple Linear Regression): Nếu có nhiều hơn 
+một biến độc lập, một thuật toán hồi quy tuyến tính được coi là hồi quy 
+tuyến tính bội. Hồi quy tuyến tính chủ yếu được sử dụng để ước tính các 
+giá trị thực dựa trên (các) biến liên tục. Ví dụ, doanh số bán hàng cả ngày 
+của một cửa hàng có thể được tính toán bằng hồi quy tuyến tính dựa trên 
+các giá trị thực. 
+• Hồi quy Logistic (Logistic Regression): Nó còn được gọi là hồi quy logit (logit 
+regression). Đây là một thuật toán phân loại. Hồi quy Logistic chủ yếu là một 
+
+thuật toán phân loại được sử dụng để ước tính các giá trị rời rạc như 0 hoặc 1, 
+đúng hoặc sai hoặc có hoặc không dựa trên một tập hợp riêng biệt các biến. Về lý 
+thuyết, nó dự đoán rằng đầu ra của nó sẽ nằm trong khoảng từ 0 đến 1. 
+• Cây quyết định (Decision Tree): Đây là một thuật toán học có giám sát chủ yếu 
+được sử dụng để phân loại vấn đề. Về cơ bản, đây là một phân vùng được phân 
+loại (graded partition) dựa trên các biến độc lập như một phần đệ quy (recursive 
+partitive). Cây quyết định có các nút cây có gốc (rooted tree nodes). Cây có gốc là 
+một cây có hướng với một nút gốc. Gốc không có cạnh vào và tất cả các nút khác 
+đều có một cạnh vào. Những nút (cuối cùng) như vậy được gọi là lá hoặc nút phán 
+đoán (judgment).  
+ 
+Hình 3.2: Cây quyết định 
+• Máy Vector hỗ trợ (Support Vector Machine - SVM): Nó được sử dụng cho 
+các bài toán phân loại và hồi quy. Tuy nhiên, nó chủ yếu được sử dụng cho các bài 
+toán phân loại. Nguyên tắc chính của SVM là gán mỗi yếu tố dữ liệu trong không 
+gian n-chiều làm giá trị của đặc trưng riêng lẻ. Ở đây 𝑛 là các đặc trưng (features) 
+chúng ta có. Sau đó, một biểu diễn đồ họa đơn giản để nắm bắt định nghĩa SVM từ 
+Hình 3.3 SVM.  
+ 
+
+Hình 3.3: SVM 
+o Các Vector hỗ trợ (Support Vectors) Trong Hình 3.3 SVM ở trên, chúng ta 
+có hai đặc trưng, do đó, trước tiên chúng ta cần ánh xạ hai biến như vậy 
+trong không gian hai chiều, nơi mỗi điểm có hai tọa độ, được gọi là các 
+vector hỗ trợ. Đường thẳng chia dữ liệu thành hai loại được phân loại riêng 
+biệt. Đường thẳng này là bộ phân loại (classifier) trong SVM. 
+• Naïve Bayes: Đây cũng là một kỹ thuật phân loại. Định lý Bayes là một nguyên 
+tắc để xây dựng các bộ phân loại đằng sau kỹ thuật phân loại này. Các yếu tố dự 
+đoán (predictors) được cho là độc lập. Nói một cách đơn giản, sự bao gồm 
+(inclusion) của một đặc trưng cụ thể trong một lớp không liên quan đến đặc trưng 
+của bất kỳ đặc trưng nào khác. Sau đây là phương trình của định lý Bayes:  
+𝑃(𝐴∣𝐵) = 𝑃(𝐵∣𝐴)𝑃(𝐴)/𝑃(𝐵) 
+Mô hình Naïve Bayes rất đơn giản để phát triển và đặc biệt hữu ích cho các tập dữ 
+liệu lớn. 
+• K-Nearest Neighbors (KNN) (K-Láng giềng gần nhất): Nó được sử dụng để 
+xác định các vấn đề và khắc phục chúng (identify problems and to rectify them - 
+Lưu ý: cách diễn đạt này không chuẩn, KNN dùng cho phân loại/hồi quy). Nó 
+thường được sử dụng để giải quyết các vấn đề với phân loại. Nguyên tắc chính của 
+thuật toán này là nó lưu trữ tất cả các trường hợp (cases) hiện có và bằng cách bỏ 
+phiếu đa số (plurality voting) của các láng giềng của nó để phân loại các trường 
+hợp mới. Trường hợp này sau đó được gán cho lớp mà, theo một hàm khoảng 
+cách, là phổ biến nhất trong số K láng giềng gần nhất của nó. Khoảng cách (The 
+gap) có thể là Minkowski, Euclidean, và Hamming. Xem xét KNN như sau: 
+o Về mặt tính toán, KNN đắt đỏ hơn các thuật toán khác được sử dụng cho 
+các bài toán phân loại. 
+o Việc chuẩn hóa các biến là cần thiết, nếu không các biến có phạm vi 
+(range) cao hơn có thể làm sai lệch nó. 
+o Tại KNN, chúng ta sẽ làm việc trên một giai đoạn như giảm nhiễu (noise 
+reduction), tiền xử lý (pre-processing). 
+• K-Means Clustering (Phân cụm K-Means): Điều này được sử dụng để giải 
+quyết vấn đề của các cụm (clusters), như tên gọi của nó. Đây là một loại Học 
+không giám sát. Nguyên tắc chính của thuật toán K-Means là gán (phân chia) tập 
+dữ liệu qua các cụm khác nhau. Hãy làm theo các bước sau để xây dựng các cụm 
+K-means: 
+o K-means chọn 𝑘 số điểm cho mỗi cụm được gọi là tâm cụm (centroids). 
+o Mỗi điểm dữ liệu bây giờ tạo thành một cụm, tức là 𝑘 cụm, với các tâm 
+cụm gần nhất. 
+o Bây giờ, các tâm, dựa trên các thành viên hiện tại của mỗi cụm, sẽ được xác 
+định (tính toán lại). 
+o Các biện pháp (bước) này cần phải được lặp lại cho đến khi sự hội tụ 
+(convergence) diễn ra. 
+
+• Rừng ngẫu nhiên (Random Forest): Đây là một thuật toán phân loại có giám sát. 
+Thuật toán rừng ngẫu nhiên có ưu điểm là nó có thể được sử dụng cho các bài toán 
+phân loại cũng như hồi quy. Về cơ bản, đây là tập hợp các cây ra quyết định (khu 
+rừng) hoặc tập hợp (ensemble) các cây ra quyết định. Nguyên tắc cơ bản của rừng 
+ngẫu nhiên là mỗi cây được phân loại (graded) và khu rừng chọn ra các phân loại 
+(grades) tốt nhất. Những ưu điểm của thuật toán Random Forest như sau: 
+o Bộ phân loại rừng ngẫu nhiên có thể được sử dụng cho các chức năng phân 
+loại và hồi quy. 
+o Các giá trị bị thiếu (missing values) có thể được quản lý. 
+o Ngay cả khi chúng ta có nhiều cây hơn trong rừng, điều này sẽ không làm 
+mô hình bị quá khớp (over suit the pattern). 
+ 
+V. Ứng dụng (Applications) 
+• Các nhà bán lẻ Học máy trong nông nghiệp được các nhà bán lẻ hạt giống sử 
+dụng để biến dữ liệu thành sản lượng cây trồng tốt hơn. Thông qua việc các công 
+ty kiểm soát dịch hại sử dụng chúng, vi khuẩn, bọ và sâu bọ (vermin) đang phát 
+triển có thể được phát hiện. 
+• Robot nông nghiệp (Agriculture Bots) Phần lớn các công ty hiện đang chuẩn bị 
+và chế tạo robot cho sứ mệnh nông nghiệp chính. Điều này bao gồm việc xử lý hạt 
+giống và làm việc hiệu quả hơn nhân lực. Đây là ví dụ mới nhất về học máy trong 
+nông nghiệp. 
+• Lai tạo giống (Species Breeding) Chọn lọc giống là một phương pháp tìm kiếm 
+lặp đi lặp lại các gen cụ thể, quyết định hiệu quả sử dụng nước và chất dinh dưỡng, 
+khả năng chịu đựng khí hậu, kháng bệnh, hàm lượng dinh dưỡng hoặc hương vị. 
+Trong việc phân tích sản xuất cây trồng ở các vùng khí hậu khác nhau và phát 
+triển các công nghệ mới, học máy, đặc biệt là các thuật toán học sâu (profound 
+learning), đòi hỏi hàng thập kỷ dữ liệu thực địa. Dựa trên dữ liệu này, một mô hình 
+thống kê có thể được phát triển để dự đoán gen nào có khả năng đóng góp nhất 
+vào lợi ích (gain) của cây trồng. 
+• Nhận dạng loài (Species Recognition) Phương pháp tiếp cận thông thường của 
+con người để phân loại thực vật là so sánh màu sắc và hình dạng của lá, nhưng 
+bằng cách sử dụng phân tích thống kê của Học máy (Machine Leaning’s) có thể 
+cung cấp kết quả nhanh hơn và chi tiết hơn bằng cách phân tích hình thái 
+(morphology) của lá và cung cấp thêm chi tiết về các đặc tính của lá. 
+• Sản lượng (Yield Production) Dự báo năng suất là một trong những chủ đề của 
+nông nghiệp chính xác cao (steep-precision agriculture), vì nó xác định việc lập 
+bản đồ và dự đoán năng suất, khớp nối nhu cầu cây trồng và quản lý cây trồng . 
+các kỹ thuật hiện đại (state-of the-art) đã vượt xa dự đoán đơn giản dựa trên dữ 
+liệu lịch sử, mà đã bao gồm các kỹ thuật học máy để cung cấp kiến thức liên quan 
+
+đến cây trồng, thời tiết và hoàn cảnh kinh tế và phân tích đa chiều sâu rộng để tối 
+ưu hóa lợi nhuận cho nông dân và cộng đồng. 
+• Phát hiện bệnh (Disease Detection) Học máy có thể được sử dụng để phát hiện 
+các bệnh lây nhiễm ở Thực vật, thường gây ra bởi dịch hạch (plague), côn trùng, 
+bệnh tật và, trừ khi được quản lý kịp thời, chúng làm giảm năng suất trên quy mô 
+lớn. Liên quan đến diện tích trồng trọt tính bằng mẫu Anh (acres), người trồng trọt 
+rất tẻ nhạt (tedious) để theo dõi cây trồng hàng ngày. Bằng cách triển khai Học 
+máy ở đây, nó cung cấp giải pháp để theo dõi khu vực canh tác một cách nhất 
+quán và cung cấp khả năng phát hiện bệnh tự động bằng hình ảnh viễn thám. 
+• Chất lượng cây trồng (Crop Quality) Sản lượng dữ liệu (Data output) có thể 
+được đo lường và xác định đầy đủ để nâng giá sản phẩm và giảm lãng phí. Trái 
+ngược với các chuyên gia con người, máy móc có thể sử dụng dữ liệu và các giao 
+diện (interfaces) dường như không liên quan để khám phá và xác định các phẩm 
+chất mới đóng vai trò trong chất lượng tổng thể của cây trồng. 
+• Phát hiện cỏ dại (Weed Detection) Cỏ dại là mối đe dọa lớn đối với sản xuất cây 
+trồng, ngoài các loại bệnh. Vấn đề chính trong cuộc chiến chống lại cỏ dại là 
+chúng khó phân biệt và nhận diện (discriminate) với cây trồng. Các thuật toán thị 
+giác máy tính (Computer vision) và ML có thể tăng cường khả năng nhận diện và 
+phân biệt cỏ dại với chi phí thấp mà không có các vấn đề môi trường hoặc tác 
+dụng phụ. Các công nghệ này sẽ thúc đẩy robot tiêu diệt cỏ dại và giảm nhu cầu sử 
+dụng thuốc diệt cỏ trong tương lai. 
+• Quản lý đất (Soil Management) Đất là một nguồn tài nguyên thiên nhiên rất đa 
+dạng với các quy trình phức tạp và các cơ chế không rõ ràng đối với các chuyên 
+gia nông nghiệp. Nhiệt độ của chính nó có thể cung cấp cái nhìn sâu sắc về tác 
+động của biến đổi khí hậu đối với lợi nhuận lãnh thổ (territorial returns). Các thuật 
+toán học máy nghiên cứu quá trình bốc hơi, độ ẩm của đất và nhiệt độ để hiểu 
+động lực của hệ sinh thái và các tác động của nông nghiệp. 
+• Quản lý nước (Water Management) Sự cân bằng thủy văn (hydrological), khí 
+hậu (climatological) và nông nghiệp của các nguồn tài nguyên nước trong nông 
+nghiệp có một ý nghĩa. Sử dụng các hệ thống tưới tiêu hiệu quả hơn và dự báo 
+nhiệt độ điểm sương (dewpoint) hàng ngày, các ứng dụng ML tiên tiến nhất cho 
+đến nay được kết nối với ước tính khí khổng (stomata) hàng ngày, hàng tuần hoặc 
+hàng tháng, giúp phân loại thời tiết dự đoán và ước tính sự bốc hơi. 
+• Chăn nuôi (Livestock Production) Học máy cung cấp dự đoán và tính toán chính 
+xác các thông số canh tác, phù hợp với quản lý cây trồng, để tối đa hóa hiệu quả 
+kinh tế của các hệ thống canh tác như chăn nuôi. Để cho phép nông dân thay đổi 
+chế độ ăn và điều kiện, ví dụ, hệ thống dự báo cân nặng sẽ ước tính trọng lượng 
+tương lai 150 ngày trước ngày họ giết mổ. 
+Tóm tắt 
+Học máy đã được sử dụng rộng rãi trong một số lĩnh vực và nó đã trở thành một nhánh 
+quan trọng nhất của Trí tuệ Nhân tạo. Như chúng ta đã thấy, có thể có rất nhiều ứng dụng 
+
+của Học máy trong lĩnh vực nông nghiệp, điều này có thể giúp nông dân tăng năng suất 
+cây trồng và cứu chúng khỏi sâu bệnh và các loại côn trùng khác khi thu hoạch trên đồng. 
+Vì vậy, chúng ta có thể thấy học máy có thể hữu ích như thế nào trong lĩnh vực nông 
+nghiệp. 

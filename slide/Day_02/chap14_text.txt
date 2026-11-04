@@ -1,0 +1,545 @@
+CHƯƠNG 14: DỰ BÁO THỜI TIẾT NGẮN HẠN CHO NÔNG NGHIỆP CHÍNH 
+XÁC Ở JAMMU VÀ KASHMIR: PHƯƠNG PHÁP TIẾP CẬN HỌC SÂU 
+Syed Nisar Hussain Bukhari và Sana Farooq Pandit Viện Công nghệ Thông tin và Điện 
+tử Quốc gia (NIELIT), Srinagar, Ấn Độ 
+ 
+14.1 GIỚI THIỆU 
+Sản xuất nông nghiệp đóng vai trò là nguồn phát triển kinh tế chính ở bất kỳ quốc gia 
+nào, và dự báo thời tiết (WF) ảnh hưởng trực tiếp hoặc gián tiếp đến lợi nhuận hoặc thua 
+lỗ hàng năm của sản xuất nông nghiệp. WF cho phép nông dân dự đoán và ngăn ngừa các 
+thiệt hại tiềm ẩn gây ra bởi các hiện tượng thời tiết khắc nghiệt, bao gồm giảm năng suất, 
+tưới tiêu sai, lựa chọn cây trồng không phù hợp và thời điểm thu hoạch không chính xác. 
+Những thay đổi thời tiết không thể đoán trước có thể cản trở đáng kể tiến bộ nông nghiệp 
+trong một thời gian dài. Khả năng dự đoán tuyết rơi, mưa, sóng nhiệt và lũ lụt sắp xảy ra 
+giúp nông dân lập chiến lược và giảm thiểu các tác động tàn phá của các sự kiện đó. 
+Với sự tiến bộ của trí tuệ nhân tạo (AI) trong WF, độ tin cậy và độ chính xác của các dự 
+đoán đã được cải thiện đáng kể. Các thuật toán AI dựa trên dữ liệu như mạng nơ-ron 
+(NN) có thể được sử dụng để phân tích dữ liệu thời tiết lịch sử và dự báo các xu hướng 
+cũng như các kiểu mẫu thời tiết trong tương lai. Các mô hình này cũng cải thiện độ chính 
+xác của các dự đoán thời tiết ngắn hạn, giúp các nhà nông nghiệp đưa ra các quyết định 
+sáng suốt. Ngược lại, hiệu suất của các kỹ thuật thống kê như Trung bình Trượt Tự hồi 
+quy (ARMA) và các biến thể của nó phụ thuộc vào cả chất lượng dữ liệu và khả năng 
+biểu diễn chính xác dữ liệu chuỗi thời gian (TS) thể hiện các mẫu không dừng (non-
+stationary) qua các mùa khác nhau. 
+Các hệ thống lập mô hình dựa trên dữ liệu có thể được sử dụng để giảm yêu cầu tính toán 
+của Dự báo Thời tiết Số trị (NWP) đồng thời tính đến sự không chắc chắn có trong các 
+quan sát và nhiễu hệ thống. Điều này có thể là do khả năng của các mô hình dựa trên dữ 
+liệu trong việc ước tính các mẫu và động lực nội tại của dữ liệu TS, ngay cả khi không có 
+kiến thức trước về các tham số. 
+Cụ thể, Mạng Nơ-ron Nhân tạo (ANN) có thể được sử dụng cho mục tiêu này nhờ vào 
+các đặc tính thích ứng và khả năng học hỏi từ kiến thức trước đó. Những đặc điểm này 
+làm cho ANN trở nên hấp dẫn trong các lĩnh vực đa dạng, đặc biệt là khi xử lý các hiện 
+tượng phi tuyến phức tạp có trong các bộ dữ liệu như bộ dữ liệu thời tiết. Các loại NN 
+khác nhau, chẳng hạn như NN truyền thẳng (feedforward NN), NN sử dụng lan truyền 
+ngược (back propagation), Mạng Nơ-ron Hồi quy (RNN), và Bộ nhớ Dài-Ngắn hạn 
+(LSTM), áp dụng một cách tiếp cận dự đoán riêng biệt, mỗi loại cung cấp một phương 
+pháp độc đáo để đạt được kết quả chính xác. 
+
+Để xử lý hiệu quả dữ liệu thời tiết, các mô hình RNN và LSTM được coi là những lựa 
+chọn vượt trội do khả năng xử lý hiệu quả dữ liệu TS. Các NN thông thường thiếu sức 
+mạnh cần thiết để nắm bắt các phụ thuộc dài hạn. Khi số lượng lớp tăng lên, chúng dễ 
+gặp phải vấn đề tiêu biến gradient (vanishing gradient). Mặt khác, Mạng Nơ-ron Hồi quy 
+(RNN) rất phù hợp để xử lý dữ liệu TS với các thang thời gian đa dạng, cho phép chúng 
+lưu trữ thông tin dài hạn. 
+Để huấn luyện RNN, một bộ dữ liệu TS bao gồm các bản ghi hàng ngày về nhiệt độ tối 
+thiểu (min temp), nhiệt độ tối đa (max temp) và giá trị lượng mưa đã được thu thập từ 
+Cục Khí tượng Ấn Độ (IMD). Nghiên cứu này nhằm mục đích thiết lập một khung mô 
+hình dự đoán cho WF ngắn hạn nhằm hỗ trợ nông dân quản lý tài nguyên nông nghiệp 
+hiệu quả và lập kế hoạch cho các hoạt động canh tác của họ trước thời hạn. Mô hình sẽ sử 
+dụng các giá trị trong quá khứ trong một bước thời gian xác định làm đầu vào để dự báo 
+các giá trị nhiệt độ tối thiểu, nhiệt độ tối đa và lượng mưa trong số ngày ngắn hơn. 
+14.1.1 Đóng góp 
+Những đóng góp chính của nghiên cứu này được tóm tắt như sau: 
+• Giảm gánh nặng kinh tế trực tiếp và gián tiếp gây ra do sự phụ thuộc của nông dân 
+vào các dự đoán thời tiết sai lầm. 
+• Chủ động giảm thiểu các thiệt hại tiềm ẩn trong ngành nông nghiệp do các tình 
+huống thời tiết khắc nghiệt gây ra. 
+• Xây dựng một mô hình học sâu (DL) được thiết kế đặc biệt cho WF ngắn hạn sử 
+dụng dữ liệu TS. 
+• Tạo ra các dự đoán thời tiết chính xác trong một khung thời gian giới hạn bằng 
+cách sử dụng dữ liệu thời tiết địa phương hóa. 
+• Xây dựng một mô hình WF thể hiện khả năng thích ứng mạnh mẽ với các xu 
+hướng đang thay đổi trong dữ liệu thời tiết và xử lý hiệu quả các sự kiện thời tiết 
+khắc nghiệt trong khi vẫn duy trì hiệu suất nhất quán. 
+ 
+14.2 CÁC CÔNG TRÌNH LIÊN QUAN 
+Nhiều kỹ thuật khác nhau dựa trên cả phương pháp thống kê và mô hình dựa trên dữ liệu 
+đã được thiết kế theo thời gian để dự báo các điều kiện thời tiết bằng cách dự đoán một 
+hoặc nhiều tham số liên quan đến thời tiết. Các nhà nghiên cứu [6] đã tiến hành một 
+nghiên cứu để dự đoán cường độ mưa bằng cách sử dụng nhiệt độ hàng ngày, độ ẩm, 
+hướng gió, tốc độ gió và tốc độ mây. Các mô hình dự đoán được xây dựng bằng Cây 
+Quyết định (DT), Hồi quy Vector Hỗ trợ (SVR), và Rừng Ngẫu nhiên (RF), đạt được 
+điểm 𝑅2 lần lượt là 0.806, 0.900, và 0.980. 
+Trong một nghiên cứu khác, các nhà nghiên cứu [7] đã huấn luyện các mô hình học máy 
+khác nhau để dự đoán lượng mưa nhằm hỗ trợ nông nghiệp chính xác ở Sri Lanka. Các 
+mô hình được huấn luyện bằng cách sử dụng các thuộc tính như máy đo mưa, độ ẩm 
+
+tương đối, nhiệt độ trung bình, tốc độ gió, hướng gió, bức xạ mặt trời và nồng độ ozone 
+đặc trưng cho khu vực Sri Lanka. Người ta quan sát thấy rằng RF hoạt động tốt nhất với 
+độ chính xác 89.16%. 
+Trong công trình của mình, các nhà nghiên cứu [8] đã kết hợp các kỹ thuật học máy với 
+các kỹ thuật khai thác dữ liệu để phát triển một mô hình dự đoán lượng mưa, và người ta 
+quan sát thấy rằng các mô hình Trung bình Trượt Tích hợp Tự hồi quy (ARIMA) và NN 
+cung cấp độ chính xác tốt nhất là 70.5%. 
+Trong thập kỷ qua, RNN đã thu hút sự chú ý đáng kể và chứng kiến sự tiến bộ đáng kể vì 
+khả năng lập mô hình mạnh mẽ và có ảnh hưởng của chúng. Trong một nghiên cứu, các 
+nhà nghiên cứu [10] đã sử dụng lưu lượng và lượng mưa hàng ngày để dự báo lũ lụt. Các 
+kết quả nghiên cứu cho thấy tiềm năng sử dụng LSTM, một biến thể của RNN, để phát 
+triển và quản lý các hệ thống cảnh báo lũ lụt thời gian thực. 
+Trong nghiên cứu thực nghiệm của mình, các nhà nghiên cứu [1] đã kết luận rằng mô 
+hình LSTM vượt trội hơn mô hình ARIMA trong việc dự đoán nhiệt độ tối thiểu và tối đa 
+với điểm lỗi bình phương trung bình gốc (RMSE) là 1.04. Nghiên cứu được thực hiện bởi 
+Gumaste và Kadam [11] đã sử dụng Thuật toán Di truyền (GA) và Biến đổi Fourier 
+Nhanh (FFT) để dự đoán thời tiết trong tương lai bằng cách sử dụng dữ liệu hiện tại. Các 
+mô hình sau đó đã được triển khai thông qua các ứng dụng di động để hỗ trợ nông dân 
+lập kế hoạch cho các công việc trước và sau nông nghiệp của họ. 
+Để đạt được các dự báo thời tiết chính xác cho làng Dellangu của Indonesia, các nhà 
+nghiên cứu đã phát triển một mô hình dự đoán thời tiết ngắn hạn sử dụng ANN để giúp 
+nông dân giải quyết các vấn đề đồng lúa của họ. Một nghiên cứu khác đã tiến hành phân 
+tích so sánh giữa mười mô hình hồi quy học máy cơ sở và một mô hình tập hợp 
+(ensemble model). Phân tích cho thấy mô hình tập hợp hoạt động tốt hơn các mô hình cơ 
+sở trong việc dự đoán lượng mưa, độ ẩm tương đối, nhiệt độ tối đa và tối thiểu. 
+Để giảm chi phí thiệt hại nông nghiệp do sương giá, các nhà nghiên cứu đã huấn luyện 
+các mô hình học máy như mạng nơ-ron tích chập, mạng nơ-ron sâu, và RF để dự đoán 
+các sự kiện sương giá. Nghiên cứu đã xác định rằng nhiệt độ đất là một yếu tố quan trọng 
+khi đưa ra dự đoán ngoài 24 giờ, trong khi đối với các dự báo ngắn hạn hơn, hầu hết các 
+thông tin liên quan được lấy từ các tham số liên quan đến nhiệt độ khác. 
+ 
+14.3 CÔNG TRÌNH ĐỀ XUẤT 
+Nghiên cứu này trình bày một mô hình WF sáng tạo và gọn nhẹ (lightweight) được thiết 
+kế đặc biệt để dự đoán ngắn hạn chính xác về nhiệt độ và lượng mưa ở Jammu và 
+Kashmir (J&K). Mô hình được thiết kế để tương thích với các máy tính cá nhân độc lập 
+và có thể dễ dàng triển khai trong khu vực địa lý J&K. Hệ thống đề xuất sử dụng một kỹ 
+thuật DL tiên tiến được gọi là RNN, phù hợp với dữ liệu tuần tự và có thể nâng cao độ 
+
+chính xác của các dự đoán. Phần dưới đây cung cấp một giải thích chi tiết về mô hình 
+RNN. 
+14.3.1 Mạng Nơ-ron Hồi quy 
+Một RNN truyền thống [15] có thể được coi là một biến thể của NN truyền thẳng sở hữu 
+một thành phần bộ nhớ trong để xử lý các chuỗi đầu vào. RNN có khả năng học các phụ 
+thuộc từ các thuật ngữ trước đó và dự đoán các thước đo tích lũy từ các chuỗi có độ dài 
+thay đổi, bao gồm cả thành phần thời gian. RNN đặc biệt hữu ích để phát triển các mô 
+hình dự đoán bằng cách sử dụng các bộ dữ liệu TS dài hạn, điều này có thể hữu ích trong 
+WF. 
+Không giống như các NN sâu truyền thống giả định đầu vào và đầu ra không liên quan 
+đến nhau, RNN tạo ra các đầu ra bị ảnh hưởng bởi các yếu tố trước đó trong chuỗi. Đối 
+với điều đó, RNN sử dụng các vòng lặp phản hồi để tận dụng đầu ra từ một bước thời 
+gian làm đầu vào cho bước tiếp theo. Bằng cách duy trì thông tin một cách tuần tự, đầu 
+vào của RNN tại mỗi bước thời gian kết hợp cả dữ liệu từ bước thời gian hiện tại trong 
+chuỗi và thông tin trước đó được truyền qua vòng lặp phản hồi. Bản chất hồi quy của 
+RNN xuất phát từ việc áp dụng nhất quán cùng một hàm để tính toán đầu ra cho mỗi đầu 
+vào, với đầu ra bị ảnh hưởng bởi các tính toán trước đó. 
+ 
+HÌNH 14.1 Hoạt động của RNN. 
+Hình 14.1 minh họa một kiến trúc RNN cơ bản trong đó 𝑥𝑡 đến 𝑥𝑡+1 đại diện cho các đầu 
+vào cho mỗi chuỗi, và 𝑦𝑡 đến 𝑦𝑡+1 đại diện cho các đầu ra tương ứng được tạo ra cho mỗi 
+chuỗi. Rõ ràng là tất cả các đầu vào được kết nối với nhau, với mỗi kết nối được ký hiệu 
+bằng một ô RNN duy nhất. Các thuật ngữ 𝑓𝑡−1 đến 𝑓𝑡+1 đề cập đến các trạng thái ẩn, và 𝜃 
+đại diện cho trọng số của các trạng thái ẩn; 𝛼 biểu thị trọng số của trạng thái đầu vào hiện 
+tại; 𝛽 đại diện cho trọng số tại trạng thái đầu ra. 
+Trái ngược với các NN truyền thẳng truyền thống nơi các trọng số là riêng biệt cho mỗi 
+nút, RNN sử dụng các tham số được chia sẻ qua các lớp, ngụ ý rằng trong mỗi lớp của 
+RNN, cùng một tham số trọng số được áp dụng. Tuy nhiên, các trọng số được chia sẻ này 
+
+vẫn được cập nhật trong quá trình lan truyền ngược và giảm gradient để cho phép học 
+tăng cường hiệu quả. 
+Hoạt động của RNN có thể được giải thích qua các bước sau: 
+Đối với một chuỗi các điểm dữ liệu x, được ký hiệu là 𝑥= [𝑥𝑡−1, 𝑥𝑡, 𝑥𝑡+1. . . ] trong đó 𝑥𝑡 
+đại diện cho đầu vào tại một bước thời gian “t” cụ thể trong chuỗi: 
+• Trạng thái ẩn tại bước thời gian “t”, ký hiệu là 𝑓𝑡 được tính toán bằng cách kết hợp 
+đầu vào hiện tại 𝑥𝑡 với trạng thái ẩn trước đó 𝑓𝑡−1 . Phép tính này được biểu thị là: 
+𝑓𝑡= 𝜎(𝛼𝑥𝑡+ 𝜃𝑓𝑡−1) , trong đó 𝜎 đại diện cho hàm kích hoạt được áp dụng cho 
+tổng của các đầu vào có trọng số; 𝛼 đại diện cho ma trận trọng số cho các kết nối 
+từ đầu vào đến trạng thái ẩn; 𝜃 đại diện cho ma trận trọng số cho các kết nối trong 
+trạng thái ẩn. 
+• Đầu ra 𝑦𝑡 tại bước thời gian “t” có thể được tính toán bằng cách sử dụng trạng thái 
+ẩn: 𝑦𝑡= 𝜎(𝛽𝑓𝑡) trong đó 𝛽 là ma trận trọng số cho các kết nối từ ẩn đến đầu ra. 
+Hàm kích hoạt là một phép toán học được sử dụng để kết hợp tính phi tuyến vào NN, cho 
+phép chúng học hiệu quả các mẫu dữ liệu phức tạp và thực hiện các thay đổi phi tuyến 
+đối với dữ liệu đầu vào. Trong RNN, hàm kích hoạt chỉ được áp dụng cho các lớp ẩn vì 
+lớp đầu vào chỉ chứa dữ liệu đầu vào và không trải qua bất kỳ phép tính nào. 
+Ngoài ra, đầu ra của RNN, đại diện cho dự đoán của mạng hoặc đầu ra được tạo ra tại 
+mỗi bước thời gian, cũng có thể trải qua một hàm kích hoạt để chuyển đổi đầu ra thô 
+thành một phạm vi hoặc định dạng ưu tiên dựa trên nhiệm vụ hoặc vấn đề cụ thể đang 
+được giải quyết. Nếu không có sự hiện diện của các hàm kích hoạt phi tuyến, một mạng 
+nơ-ron có nhiều lớp ẩn về cơ bản sẽ giống như một mô hình hồi quy tuyến tính quy mô 
+lớn và sẽ không thể học hiệu quả các mẫu phức tạp và phức tạp từ dữ liệu thế giới thực. 
+Các hàm kích hoạt thường được sử dụng là Rectified Linear Unit (ReLU), tanh, Sigmoid, 
+và Softmax. 
+14.3.1.1 Lan truyền ngược Theo Thời gian (BPTT) 
+BPTT [16] là một phương pháp huấn luyện lặp đi lặp lại được sử dụng đặc biệt cho RNN. 
+Nó mở rộng thuật toán lan truyền ngược tiêu chuẩn, thường được sử dụng để huấn luyện 
+NN truyền thẳng, và kết hợp khía cạnh thời gian của RNN bằng cách cho phép các 
+gradient lan truyền ngược theo thời gian, xem xét bản chất tuần tự của dữ liệu TS. 
+Trong RNN, trạng thái ẩn của mạng tại mỗi bước thời gian bị ảnh hưởng bởi cả đầu vào 
+hiện tại và đầu ra từ trạng thái ẩn trước đó. Điều này làm phát sinh một chuỗi các phụ 
+thuộc kéo dài ngược thời gian, cho phép BPTT mở rộng RNN theo thời gian. Một phân 
+tích đơn giản về các bước liên quan đến BPTT được đưa ra tiếp theo: 
+Đối với một chuỗi các điểm dữ liệu x, được ký hiệu là 𝑥= [𝑥𝑡−1, 𝑥𝑡, 𝑥𝑡+1. . . ] , trong đó 
+𝑥𝑡 đại diện cho đầu vào tại một bước thời gian “t” cụ thể trong chuỗi. 
+
+• Trạng thái ẩn tại bước thời gian “t”, ký hiệu là 𝑓𝑡 , được tính toán bằng cách kết 
+hợp đầu vào hiện tại 𝑥𝑡 với trạng thái ẩn trước đó 𝑓𝑡−1 . Phép tính này được biểu 
+thị là: 𝑓𝑡= 𝜎(𝛼𝑥𝑡+ 𝜃𝑓𝑡−1) , Trong đó 𝜎 , 𝛼 , và 𝜃 có ý nghĩa như thường lệ. 
+• Hàm mất mát, chẳng hạn như lỗi bình phương trung bình (MSE) hoặc mất mát 
+cross-entropy, được áp dụng để tính toán mất mát tại mỗi bước thời gian. Chúng ta 
+có thể biểu thị mất mát tại một bước thời gian “t” cụ thể là 𝑙𝑡 . 
+• Các gradient của mất mát đối với các tham số của mạng được tính toán từ bước 
+thời gian cuối cùng. Sau đó, các gradient này được lan truyền theo hướng ngược 
+lại qua các bước thời gian trước đó. Gradient tại bước thời gian “t”, biểu thị tác 
+động của mất mát lên trạng thái ẩn tại “t” có thể được biểu thị là: 
+∂𝑙𝑡
+∂𝑓𝑡 
+• Các gradient được tích lũy tại mỗi bước khi chúng lan truyền theo thời gian, đảm 
+bảo rằng các phụ thuộc giữa các bước thời gian khác nhau được nắm bắt một cách 
+hiệu quả. Các gradient tích lũy được biểu thị như sau: 
+∂𝑙
+∂𝑓𝑡 
+• Các tham số của mạng được cập nhật bằng cách sử dụng các thuật toán tối ưu hóa 
+như Adam, SGD và RMSprop. Cập nhật tham số cho mỗi trọng số có thể được 
+tính là: Δ𝑤= −𝜂∗Σ
+∂𝑙
+∂𝑤. trong đó Δ𝑤 là cập nhật trọng số, và 𝜂 là tốc độ học. 
+ 
+14.4 CÁC THÍ NGHIỆM 
+Hình 14.2 minh họa chi tiết quy trình lập mô hình toàn diện. Thí nghiệm bắt đầu với giai 
+đoạn thu thập dữ liệu và tiền xử lý dữ liệu, được trình bày chi tiết trong phần tiếp theo. 
+Sau đó, quy trình bao gồm cấu hình, huấn luyện, so sánh và đánh giá mô hình. Bước cuối 
+cùng của thí nghiệm bao gồm việc đánh giá và đối chiếu hiệu suất của các mô hình đã 
+được huấn luyện. 
+
+ 
+HÌNH 14.2 Minh họa về lập mô hình. 
+14.4.1 Thu thập Dữ liệu 
+Nghiên cứu này sử dụng dữ liệu khí tượng thực tế thu được từ trang web của IMD [17], 
+cụ thể là từ các trạm thời tiết ở Jammu, Srinagar, và Leh. Bộ dữ liệu cho mỗi trạm thời 
+tiết bao gồm một TS hàng ngày bao gồm 8.401 điểm dữ liệu, kéo dài từ ngày 1 tháng 1 
+năm 2010 đến ngày 31 tháng 12 năm 2022. Bộ dữ liệu bao gồm các biến thời tiết khác 
+nhau, bao gồm lượng mưa, nhiệt độ tối thiểu và nhiệt độ tối đa. Giá trị lượng mưa được 
+đo bằng milimét (mm), trong khi các biến nhiệt độ được ghi bằng độ C. 
+Các đặc trưng khí tượng cụ thể này được chọn vì chúng cung cấp những hiểu biết có giá 
+trị về điều kiện thời tiết hiện tại tại một địa điểm và thời gian cụ thể. Việc lựa chọn các 
+đặc trưng này nhằm mục đích nắm bắt chính xác trạng thái của thời tiết. Trong nghiên 
+cứu này, ba đặc trưng khí tượng này được sử dụng làm biến đầu vào để dự đoán nhiệt độ. 
+14.4.2 Tiền xử lý Dữ liệu 
+Thí nghiệm được tiến hành trên dữ liệu thực tế đòi hỏi một số bước tiền xử lý để phản 
+ánh chính xác hiệu suất của mô hình. Ban đầu, việc làm mịn dữ liệu đã được thực hiện để 
+giảm nhiễu và biến động, đồng thời làm cho các mẫu và xu hướng cơ bản trở nên rõ ràng 
+hơn. Dữ liệu đã được làm mịn bằng kỹ thuật Trung bình Trượt Lũy thừa (EMA). 
+
+EMA [18] là giá trị trung bình có trọng số trong đó các trọng số được giảm dần sao cho 
+tầm quan trọng được trao nhiều hơn cho các điểm dữ liệu gần đây so với các điểm dữ liệu 
+lịch sử, hoặc ngược lại. EMA thay đổi với tốc độ nhanh hơn và nhạy cảm hơn với các 
+điểm dữ liệu. Về mặt toán học, EMA của một điểm dữ liệu có thể được tính bằng Phương 
+trình 14.1: 
+EMA, = 𝑥0𝑡= 0 
+𝛼𝑥𝑡+ (1 −𝛼)𝐸𝑀𝐴𝑡−1 (14.1) 
+trong đó 𝛼 là một yếu tố làm mịn, và giá trị của nó nằm trong khoảng từ 0 đến 1. Nó đại 
+diện cho trọng số được áp dụng cho giai đoạn rất gần đây. Đối với nghiên cứu này, giá trị 
+của 𝛼 đã được giữ ở mức 0.5. 
+Để làm cho TS dừng (stationary), phép sai phân (differencing) bậc một đã được thực hiện 
+trên bộ dữ liệu thời tiết. Phép sai phân đòi hỏi tính toán sự khác biệt giữa các quan sát 
+liên tiếp bằng cách trừ giá trị trước đó khỏi giá trị hiện tại. Mục đích của phép sai phân là 
+để loại bỏ xu hướng cơ bản và cô lập các thay đổi hoặc biến động cụ thể có trong dữ liệu. 
+Đối với giai đoạn cuối cùng của tiền xử lý, dữ liệu đã được chuẩn hóa bằng kỹ thuật co 
+giãn MinMax (MinMax scaling) vì các giá trị của các biến khác nhau trong bộ dữ liệu có 
+các đơn vị khác nhau và nằm trong nhiều phạm vi. Về mặt toán học, co giãn MinMax 
+được biểu thị bằng Phương trình 14.2: 
+𝑋𝑡=
+𝑋𝑡−𝑋𝑚𝑖𝑛
+𝑋𝑚𝑎𝑥−𝑋𝑚𝑖𝑛, (14.2) 
+trong đó 𝑋𝑡 đại diện cho điểm dữ liệu tại thời điểm “t” trong TS và 𝑋𝑚𝑎𝑥 và 𝑋𝑚𝑖𝑛 lần lượt 
+đại diện cho các điểm dữ liệu tối đa và tối thiểu trong chuỗi. 
+Dữ liệu được chuẩn hóa cho phép các mô hình tổng quát hóa tốt trên dữ liệu mới và chưa 
+từng thấy. Ngoài ra, các hàm kích hoạt trong các nơ-ron RNN và LSTM hoạt động hiệu 
+quả hơn trên dữ liệu được chuẩn hóa. Bộ dữ liệu đã được chia thành một tập huấn luyện 
+và một tập kiểm tra, với tỷ lệ lần lượt là 0.8 và 0.2. Tập dữ liệu huấn luyện của mỗi trạm 
+thời tiết bao gồm 6.720 hàng chứa dữ liệu thời tiết từ ngày 1 tháng 1 năm 2000 đến ngày 
+25 tháng 5 năm 2018, trong khi tập dữ liệu kiểm tra chứa 1.680 hàng kéo dài từ ngày 26 
+tháng 5 năm 2018 đến ngày 31 tháng 12 năm 2022. Các chuỗi đầu vào và đầu ra đã được 
+thu thập bằng thuật toán cửa sổ trượt (moving window) và kích thước cửa sổ là bảy. Cả 
+chuỗi đầu vào và đầu ra đều chứa ba đặc trưng. 
+14.4.3 Cấu hình và Huấn luyện Mô hình 
+Các mô hình đề xuất đã được huấn luyện bằng hai cấu hình riêng biệt: Đầu vào Đơn Đầu 
+ra Đơn (SISO) và Đầu vào Nhiều Đầu ra Nhiều (MIMO). SISO là một sắp xếp dự báo 
+trong đó một biến đầu vào duy nhất được đưa vào mạng để dự báo các giá trị tương lai 
+của cùng một biến đó làm đầu ra. Mặt khác, trong MIMO, nhiều biến được đưa vào mạng 
+để dự đoán các biến tương tự làm đầu ra. 
+
+Sử dụng cấu hình này, chỉ cần một mô hình cho mỗi trạm thời tiết để dự đoán tất cả các 
+giá trị trong tương lai, trong khi ở SISO, cần ba mô hình khác nhau cho mỗi trạm thời tiết 
+để dự báo ba tham số thời tiết. Do đó, ba mô hình RNN đã được huấn luyện và đánh giá 
+bằng cách sử dụng cấu hình MIMO cho ba trạm thời tiết riêng biệt. Ngoài ra, tổng cộng 
+chín mô hình RNN đã được cả huấn luyện và kiểm tra trong cấu hình SISO để dự báo ba 
+biến nhiệt độ trên ba trạm thời tiết. 
+Cả hai cấu hình đã được huấn luyện trên các bộ siêu tham số khác nhau của RNN. Siêu 
+tham số (Hyperparameters) là các giá trị cụ thể phải được xác định trước khi huấn luyện 
+mô hình và không phải học hoặc điều chỉnh trong quá trình huấn luyện mô hình. Các siêu 
+tham số được tinh chỉnh trong nghiên cứu này bao gồm số lượng epoch, kích thước lô 
+(batch size), thuật toán tối ưu hóa, và các hàm kích hoạt. 
+Kỹ thuật được chọn để tinh chỉnh siêu tham số là GridSearchCV, tự động hóa quá trình 
+thử các cấu hình siêu tham số khác nhau. Nó khám phá kỹ lưỡng một lưới các giá trị siêu 
+tham số được xác định trước để xác định sự kết hợp tạo ra hiệu suất mô hình cao nhất. 
+Đối với mô hình RNN, số lượng epoch xác định số lần mô hình sẽ được huấn luyện trên 
+toàn bộ bộ dữ liệu. Trong mỗi epoch, mô hình trải qua một lượt truyền xuôi (từ đầu vào 
+đến đầu ra) và một lượt truyền ngược (điều chỉnh trọng số dựa trên gradient) cho tất cả 
+các mẫu huấn luyện. Sử dụng số lượng epoch nhỏ hơn dẫn đến tăng mất mát lỗi, trong 
+khi số lượng epoch lớn hơn có thể gây ra hiện tượng quá khớp (overfitting). Các mô hình 
+đã được huấn luyện trong khoảng 50-300 epoch. 
+Kích thước lô đề cập đến số lượng mẫu huấn luyện được mô hình xử lý cùng nhau trong 
+một lượt truyền xuôi và ngược, cho phép mô hình cập nhật trọng số sau khi xử lý một 
+nhóm mẫu. Sử dụng kích thước lô lớn hơn trong quá trình huấn luyện mô hình đi kèm với 
+chi phí tính toán cao hơn, trong khi kích thước lô nhỏ hơn gây ra nhiễu trong mô hình. Do 
+đó, các thí nghiệm huấn luyện đã được tiến hành với các kích thước lô là 16, 32, 64, và 
+128 để tìm ra cấu hình tối ưu. 
+Việc lựa chọn thuật toán tối ưu hóa ảnh hưởng đến cả tốc độ mô hình đạt được giải pháp 
+tối ưu và khả năng tổng quát hóa hiệu quả đối với dữ liệu chưa từng thấy. Để xác định 
+thuật toán tối ưu hóa phù hợp nhất, các mô hình đã trải qua quá trình huấn luyện bằng 
+cách sử dụng các trình tối ưu hóa Adam, SGD, và RMSprop. Để lựa chọn hàm kích hoạt 
+tối ưu, các mô hình đã được huấn luyện trên các hàm kích hoạt tanh, ReLU, và sigmoid. 
+14.4.4 Đánh giá Mô hình 
+Các mô hình đã được huấn luyện lặp đi lặp lại trên dữ liệu huấn luyện và được đánh giá 
+trên dữ liệu kiểm tra. Để đánh giá các mô hình hồi quy TS, các số liệu thường được sử 
+dụng là lỗi tuyệt đối trung bình (MAE), MSE, RMSE, và lỗi phần trăm tuyệt đối trung 
+bình (MAPE), được tính bằng các Phương trình 14.3-14.6: 
+𝑀𝐴𝐸= ∑
+∣
+𝑁
+𝑡=1 𝑦𝑡−𝑦̇𝑡∣ (14.3) 
+
+𝑀𝑆𝐸= ∑
+(𝑦𝑡−𝑦̇𝑡)2
+𝑁
+𝑡=1
+ (14.4) 
+RMSE = √
+1
+𝑛∣∑
+(𝑦𝑡−𝑦̇𝑡)2
+𝑁
+𝑖=1
+ (14.5) 
+MAPE = 
+100
+𝑁∑
+∣
+𝑁
+𝑖=1
+𝑦𝑡−𝑦̂𝑡
+𝑦𝑡
+∣ (14.6) 
+trong đó 𝑦𝑡 và 𝑦̂𝑡 là các giá trị thực tế và dự đoán của các biến nhiệt độ tại bước thời gian 
+“t”. 
+ 
+14.5 KẾT QUẢ VÀ THẢO LUẬN 
+Như đã đề cập trong Mục 14.3, mô hình RNN đã được huấn luyện bằng cách sử dụng các 
+bộ siêu tham số khác nhau và được kiểm tra bằng các số liệu đánh giá khác nhau. Đối với 
+mỗi trạm, người ta đã quan sát thấy rằng mô hình RNN hoạt động tốt hơn đáng kể trong 
+cấu hình SISO so với cấu hình MIMO. Các giá trị của các số liệu độ chính xác khác nhau 
+cho các mô hình RNN được liệt kê trong Bảng 14.1 cho tất cả các trạm thời tiết. Bảng 
+14.2-14.4 liệt kê các số liệu độ chính xác của mô hình RNN trong cấu hình SISO cho 
+Jammu, Srinagar, và Leh. 
+Những phát hiện này chỉ ra rằng các biến có trong dữ liệu thời tiết là tương đối đơn biến 
+(univariate) và không có các phụ thuộc lẫn nhau mạnh mẽ giữa chúng. Các mối quan hệ 
+như vậy có thể được biểu diễn đầy đủ bằng cách sử dụng một biến đầu vào duy nhất để 
+dự báo một biến đầu ra duy nhất. 
+BẢNG 14.1: Hiệu suất Mô hình trong Cấu hình MIMO cho tất cả các Trạm 
+Số liệu 
+Giá trị Tương ứng 
+cho Trạm Jammu 
+Giá trị Tương ứng 
+cho Trạm Srinagar 
+Giá trị Tương ứng 
+cho Trạm Leh 
+MAE 
+0.0636 
+0.1048 
+0.8543 
+MSE 
+0.0401 
+0.0455 
+0.0411 
+RMSE 
+0.1011 
+0.1555 
+0.1344 
+MAPE 
+0.3990 
+0.4398 
+0.3229 
+[cite: 1208] 
+ 
+ 
+ 
+BẢNG 14.2: Hiệu suất Mô hình trong Cấu hình SISO cho Trạm Jammu 
+Biến Nhiệt độ 
+𝑇𝑚𝑖𝑛 
+𝑇𝑚𝑎𝑥 
+Lượng mưa 
+MAE 
+0.0751 0.0690 0.0124 
+MSE 
+0.0095 0.0095 0.0257 
+RMSE 
+0.0977 0.0091 0.0006 
+
+Biến Nhiệt độ 
+𝑇𝑚𝑖𝑛 
+𝑇𝑚𝑎𝑥 
+Lượng mưa 
+MAPE 
+0.1863 0.1683 0.1229 
+BẢNG 14.3: Hiệu suất Mô hình trong Cấu hình SISO cho Trạm Srinagar 
+Biến Nhiệt độ 
+𝑇𝑚𝑖𝑛 
+𝑇𝑚𝑎𝑥 
+Lượng mưa 
+MAE 
+0.0658 0.0696 0.0210 
+MSE 
+0.0073 0.0926 0.0018 
+RMSE 
+0.0854 0.0085 0.0429 
+MAPE 
+0.1436 0.1696 0.1368 
+BẢNG 14.4: Hiệu suất Mô hình trong Cấu hình SISO cho Trạm Leh 
+Biến Nhiệt độ 
+𝑇𝑚𝑖𝑛 
+𝑇𝑚𝑎𝑥 
+Lượng mưa 
+MAE 
+0.0666 0.0085 0.0640 
+MSE 
+0.0075 0.0015 0.0078 
+RMSE 
+0.0866 0.0393 0.0887 
+MAPE 
+0.1547 0.0588 0.1623 
+ 
+14.6 KẾT LUẬN VÀ PHẠM VI TƯƠNG LAI 
+Nghiên cứu này nhấn mạnh tầm quan trọng của việc lựa chọn dữ liệu khu vực trong việc 
+xây dựng một mô hình WF đáng tin cậy và giải quyết vấn đề WF bằng cách tập trung vào 
+việc đạt được các dự báo chính xác mà không yêu cầu tài nguyên tính toán đáng kể, trái 
+ngược với các phương pháp NWP. Để giải quyết vấn đề này, một mô hình dự đoán dựa 
+trên DL gọn nhẹ đã được đề xuất để đảm bảo WF ngắn hạn chính xác. Mô hình được đề 
+xuất có khả năng hoạt động độc lập trên một đơn vị máy tính duy nhất và có thể dễ dàng 
+triển khai trong khu vực địa lý của J&K. 
+Trong tương lai, nhiều biến hơn như tốc độ gió, độ ẩm, và áp suất có thể được tích hợp 
+vào quá trình huấn luyện mô hình để cung cấp một dự báo thời tiết đa dạng hơn. Các kết 
+quả cũng cho thấy SISO hoạt động tốt hơn các cấu hình MIMO ; tuy nhiên, điều đó sẽ đòi 
+hỏi ba mô hình khác nhau để dự đoán ba tham số thời tiết làm đầu ra. Trong các thí 
+nghiệm tương lai, các cấu hình MIMO có thể được tối ưu hóa hơn nữa để tăng cường cả 
+hiệu suất và hiệu quả đồng thời. 
+TÀI LIỆU THAM KHẢO 
+[1] Z. Prathyusha, T. Savya, N. Alex, and C. Sobin, “A Method for Weather Forecasting 
+Using Machine Learning,” in 2021 5th Conference on Information and Communication 
+Technology, CICT 2021, Institute of Electrical and Electronics Engineers Inc., 2021. 
+doi: 10.1109/CICT53865.2020.9672403 
+
+[2] S. Poornima, and M. Pushpalatha, “Prediction of Rainfall Using Intensified LSTM 
+Based Recurrent Neural Network with Weighted Linear Units,” Atmosphere (Basel), vol. 
+10, no. 11, Nov. 2019. doi: 10.3390/atmos10110668 
+[3] M. Hayati, and Z. Mohebi, “Application of Artificial Neural Networks for Temperature 
+Forecasting”, International Science Index, Electrical and Computer Engineering, vol. 
+1, no. 4, pp. 662–666, 2007. 
+[4] F. Kratzert, D. Klotz, C. Brenner, K. Schulz, and M. Herrnegger, “Rainfall-Runoff 
+Modelling Using Long Short-Term Memory (LSTM) Networks,” Hydrology and Earth 
+System Sciences, vol. 22, no. 11, pp. 6005–6022, Nov. 2018. doi: 10.5194/hess-22-6005- 
+2018 
+[5] T. Kashiwao, K. Nakayama, S. Ando, K. Ikeda, M. Lee, and A. Bahadori, “A Neural 
+Network-Based Local Rainfall Prediction System Using Meteorological Data on the 
+Internet: A Case Study Using Data from the Japan Meteorological Agency,” Applied Soft 
+Computing Journal, vol. 56, pp. 317–330, Jul. 2017. doi: 10.1016/j.asoc.2017.03.015 
+[6] V. P. Tharun, R. Prakash, and S. R. Devi, “Prediction of Rainfall Using Data 
+Mining Techniques,” in Proceedings of the International Conference on Inventive 
+Communication and Computational Technologies, ICICCT 2018, Institute of Electrical 
+and Electronics Engineers Inc., Sep. 2018, pp. 1507–1512. doi: 10.1109/ICICCT.2018. 
+8473177 
+[7] J. S. A. N. W. Premachandra, and P. P. N. V. Kumara, “A Novel Approach for Weather 
+Prediction for Agriculture in Sri Lanka Using Machine Learning Techniques,” in 
+Proceedings - International Research Conference on Smart Computing and 
+Systems Engineering, SCSE 2021, Institute of Electrical and Electronics Engineers 
+Inc., Sep. 2021, pp. 182–189. doi: 10.1109/SCSE53661.2021.9568319 
+[8] U. Shah, S. Garg, N. Sisodiya, N. Dube, and S. Sharma, “Rainfall Prediction: Accuracy 
+Enhancement Using Machine Learning and Forecasting Techniques,” in PDGC 2018 
+- 2018 5th International Conference on Parallel, Distributed and Grid Computing, 
+Institute of Electrical and Electronics Engineers Inc., Dec. 2018, pp. 776–782. doi: 
+10.1109/PDGC.2018.8745763 
+[9] L. C. Jain and L. R. Medsker, Recurrent Neural Networks, 1999. doi: 10.1201/ 
+9781420049176 
+[10] X. H. Le, H. V. Ho, G. Lee, and S. Jung, “Application of Long Short-Term Memory 
+(LSTM) Neural Network for Flood Forecasting,” Water (Switzerland), vol. 11, no. 7, 
+2019. doi: 10.3390/w11071387 
+[11] S. S. Gumaste and A. J. Kadam, “Future Weather Prediction Using Genetic 
+Algorithm and FFT for Smart Farming.” 2016 International Conference on Computing 
+Communication Control and automation (ICCUBEA), Pune, India, 2016, pp. 1–6. doi: 
+10.1109/ICCUBEA.2016.7860028 
+[12] F. Najib and I. W. Mustika, “Weather Forecasting Using Artificial Neural Network for Rice 
+Farming in Delanggu Village,” in IOP Conference Series: Earth and Environmental 
+Science, Institute of Physics, 2022. doi: 10.1088/1755-1315/1030/1/012002 
+[13] C. Nyasulu, A. Diattara, A. Traore, A. Deme, and C. Ba, “Towards Resilient Agriculture to 
+Hostile Climate Change in the Sahel Region: A Case Study of Machine Learning- Based 
+
+Weather Prediction in Senegal,” Agriculture (Switzerland), vol. 12, no. 9, Sep. 2022. 
+doi: 10.3390/agriculture12091473 
+[14] H. Kerner, M. Alamaniotis, and C. J. Talsma, “Frost Prediction Using Machine 
+Learning and Deep Neural Network Models.” 
+[15] S. Hochreiter, and J. Schmidhuber, “Long Short-Term Memory,” Neural Computation, 
+vol. 9, no. 8, pp. 1735–1780. 1997. doi: 10.1162/neco.1997.9.8.1735 
+[16] P. J. Werbos, “Generalization of Backpropagation with Application to a Recurrent 
+Gas Market Model,” Neural Networks, vol. 1, no. 4, pp. 339–356, 1988. doi: 10.1016/ 
+0893-6080(88)90007-X 
+[17] Home. (n.d.). Accessed: Aug. 07, 2023. https://data.gov.in/catalog/climatology- 
+data-important-cities-0 
+[18] “Welles Wilder - New Concepts in Technical Trading Systems | PDF | Algorithmic 
+Trading | Financial Economics.” Accessed: Aug. 09, 2023. [Online]. Available: 
+https://www.scribd.com/doc/53093880/Welles-Wilder-New-Concepts-in- Technical-
+Trading-Systems# 
+[19] F. K. Oduro-Gyimah, and K. O. Boateng, “Forecasting Abilities of MIMO and SISO 
+Neural Networks: A Comparative Study Using Telecommunication Traffic Data,” in 
+Proceedings - 2019 International Conference on Computing, Computational 
+Modelling and Applications, ICCMA 2019, Institute of Electrical and Electronics 
+Engineers Inc., 
+Mar. 2019, pp. 81–86. doi: 10.1109/ICCMA.2019.00020 
+[20] S. N. H. Bukhari, J. Webber, and A. Mehbodniya, “Decision Tree Based Ensemble 
+Machine Learning Model for the Prediction of Zika Virus T-Cell Epitopes as 
+Potential Vaccine Candidates,” Scientific Reports, vol. 12, pp. 7810, 2022. doi: 10.1038/ 
+s41598-022-11731-6 
+[21] G. S. Raghavendra, S. Shyni Carmel Mary, Purnendu Bikash Acharjee, V. L. Varun, 
+Syed Nisar Hussain Bukhari, Chiranjit Dutta, and Issah Abubakari Samori, “An 
+Empirical Investigation in Analysing the Critical Factors of Artificial Intelligence in 
+Influencing the Food Processing Industry: A Multivariate Analysis of Variance 
+(MANOVA) Approach,” Journal of Food Quality, vol. 2022, Article ID 2197717, 7 
+pages, 2022. doi: 10.1155/2022/2197717 
+[22] S. N. H. Bukhari, A. Jain, E. Haq, A. Mehbodniya, and J. Webber, “Ensemble Machine 
+Learning Model to Predict SARS-CoV-2 T-Cell Epitopes as Potential Vaccine 
+Targets,” Diagnostics, vol. 11, no. 11, 1990. MDPI AG. Retrieved from doi: 10.3390/ 
+diagnostics11111990 
+[23] Sunil L. Bangare, Deepali Virmani, Girija Rani Karetla, Pankaj Chaudhary, Harveen 
+Kaur, Syed Nisar Hussain Bukhari, and Shahajan Miah, “Forecasting the Applied Deep Learning 
+Tools in Enhancing Food Quality for Heart Related Diseases Effectively: A Study Using 
+Structural Equation Model Analysis,” Journal of Food Quality, vol. 2022, 
+Article ID 6987569, 8 pages, 2022. doi: 10.1155/2022/6987569 
+[24] C. M. Anoruo, S. N. H. Bukhari, and O. K. Nwofor, “Modeling and Spatial 
+Characterization of Aerosols at Middle East AERONET Stations,” Theoretical and 
+Applied Climatology, vol. 152, pp. 617–625, 2023. doi: 10.1007/s00704-023-04384-6 
+
+[25] F. Masoodi, M. Quasim, S. Bukhari, S. Dixit, and S. Alam, Applications of Machine 
+Learning and Deep Learning on Biological Data, CRC Press, 2023. 
+[26] S. N. H. Bukhari, A. Jain, and E. Haq, “A Novel Ensemble Machine Learning Model for 
+Prediction of Zika Virus T-Cell Epitopes,” in Gupta, D., Polkowski, Z., Khanna, A., 
+Bhattacharyya, S., and Castillo, O. (Eds.), Proceedings of Data Analytics and 
+Management. Lecture Notes on Data Engineering and Communications 
+Technologies, vol 91. Springer, Singapore, 2022. doi: 10.1007/978-981-16-6285-
+0_23 
+[27] S. N. H. Bukhari, F. Masoodi, M. A. Dar, N. I. Wani, A. Sajad, and G. Hussain, 
+“Prediction of Erythemato-Squamous Diseases Using Machine Learning” in 
+Auerbach Publications eBooks, pp. 87–96, 2023. doi: 10.1201/9781003328780-6 
+[28] S. N. H. Bukhari, A. Jain, E. Haq, A. Mehbodniya, & J. Webber, “Machine Learning 
+Techniques for the Prediction of B-Cell and T-Cell Epitopes as Potential Vaccine 
+Targets with a Specific Focus on SARS-CoV-2 Pathogen: A Review,” Pathogens, vol. 11, 
+no. 2, p. 146, 2022. MDPI AG. doi: 10.3390/pathogens11020146 
+[29] S. Nisar, H. Bukhari, and M. A. Dar, “Using Random Forest to Predict T-Cell Epitopes of 
+Dengue Virus,” Advances and Applications in Mathematical Sciences, vol. 20, no. 11, 
+pp. 2543–2547, 2021 
+ 

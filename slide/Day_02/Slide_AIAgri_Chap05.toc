@@ -1,0 +1,8 @@
+\babel@toc {vietnamese}{}\relax 
+\beamer@sectionintoc {1}{Giới thiệu \& Đặt vấn đề}{3}{0}{1}
+\beamer@sectionintoc {2}{Các nghiên cứu liên quan}{5}{0}{2}
+\beamer@sectionintoc {3}{Quy trình thực nghiệm}{6}{0}{3}
+\beamer@sectionintoc {4}{Trực quan hóa dữ liệu}{7}{0}{4}
+\beamer@sectionintoc {5}{Tiền xử lý dữ liệu}{9}{0}{5}
+\beamer@sectionintoc {6}{Xây dựng mô hình và Đánh giá}{10}{0}{6}
+\beamer@sectionintoc {7}{Kết luận}{16}{0}{7}

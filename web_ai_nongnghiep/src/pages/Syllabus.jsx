@@ -412,11 +412,21 @@ const Syllabus = () => {
       {selectedPdf && (
         <div className="pdf-modal-overlay" onClick={() => setSelectedPdf(null)}>
           <div className="pdf-modal-content" onClick={e => e.stopPropagation()}>
-            <div className="pdf-modal-header">
+            <div className="pdf-modal-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <h3 style={{ margin: 0, fontSize: '1.2rem', color: 'var(--text-primary)' }}>Xem Slide</h3>
-              <button className="close-btn" onClick={() => setSelectedPdf(null)}>
-                <X size={20} />
-              </button>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                <a 
+                  href={selectedPdf} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  style={{ color: 'var(--primary-color)', fontSize: '0.88rem', textDecoration: 'none', padding: '4px 10px', background: 'rgba(21, 128, 61, 0.08)', borderRadius: '6px' }}
+                >
+                  Mở tab mới ↗
+                </a>
+                <button className="close-btn" onClick={() => setSelectedPdf(null)}>
+                  <X size={20} />
+                </button>
+              </div>
             </div>
             <div className="pdf-modal-body">
               <iframe src={`${selectedPdf}#view=FitH`} title="PDF Viewer" width="100%" height="100%" style={{ border: 'none', display: 'block' }} />

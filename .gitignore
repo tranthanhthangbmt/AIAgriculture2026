@@ -57,6 +57,10 @@ desktop.ini
 Media/Video/
 web_ai_nongnghiep/Video2/
 web_ai_nongnghiep/VideoExtra/
-web_ai_nongnghiep/public/Video2/
+web_ai_nongnghiep/public/Video2/*
+!web_ai_nongnghiep/public/Video2/Ôn tập/
+!web_ai_nongnghiep/public/Video2/Ôn tập/**
+!web_ai_nongnghiep/public/Video2/Ôn tập/audio/*.mp3
+!web_ai_nongnghiep/public/slides/Slide_OnTap_Combine.pdf
 web_ai_nongnghiep/public/media/Video/
 web_ai_nongnghiep/public/Videos/*[*/

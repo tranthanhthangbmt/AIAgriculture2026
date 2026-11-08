@@ -6,6 +6,7 @@ const Syllabus = () => {
   const [selectedPdf, setSelectedPdf] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [selectedInteractiveVideo, setSelectedInteractiveVideo] = useState(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [selectedTextbooks, setSelectedTextbooks] = useState({});
 
@@ -21,6 +22,19 @@ const Syllabus = () => {
     { num: 7, title: "Báo cáo nhóm và Thảo luận dự án", slide: "slide Chương 7_ Báo cáo nhóm và Thảo luận dự án.pdf", notebookLink: tutorLink, audio: "Buổi 7_AI_biến_nông_nghiệp_thành_khoa_học_dữ_liệu.m4a", infographic: "Buổi 7_AI_Nâng_Cao_Năng_Suất,_Sản_Xuất.png", video: "Buổi 7_AI__Gieo_Mầm_Tương_Lai_Nông_Nghiệp.mp4", interactiveVideo: "Video2/Buổi 7/index.html" },
     { num: 8, title: "Ôn tập và Kiểm tra giữa kỳ", slide: null, notebookLink: tutorLink, audio: "Buổi 8_Cân_Bằng_Kỹ_Thuật_Và_Đạo_Đức_AI_Nông_Nghiệp.m4a", infographic: "Buổi 8_Báo_cáo_Dự_án_AI_Nông_nghiệp.png", video: "Buổi 8_Xây_dựng_AI_trong_Nông_nghiệp_một_cách_có_trách_nhiệm.mp4" },
     { num: "9&10", title: "Thực hành (Phần 1 - tại doanh nghiệp/trang trại)", slide: "slide Chương 9&10_Thực hành (Phần 1 - tại doanh nghiệp_trang trại).pdf", notebookLink: tutorLink, audio: null, infographic: null, video: null, interactiveVideo: "Video2/Buổi 9_10/index.html" },
+    { 
+      num: "Ôn tập", 
+      title: "Tổng kết & Ôn tập Toàn diện 10 Buổi học (Cuối kỳ)", 
+      slide: "Slide_OnTap_Combine.pdf", 
+      notebookLink: tutorLink, 
+      audio: null, 
+      infographic: null, 
+      video: null, 
+      interactiveVideo: "Video2/Ôn tập/index.html",
+      customBadge: "Ôn tập Tổng hợp",
+      customVideoBtnText: "Video Ôn tập",
+      customSlideBtnText: "Xem Slide Ôn tập"
+    },
   ];
 
   return (
@@ -35,7 +49,14 @@ const Syllabus = () => {
           {weeks.map((week, index) => (
             <div key={index} className="card glass-panel" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
               <div>
-                <h3 style={{ color: 'var(--primary-light)', fontSize: '1.2rem' }}>Tuần {week.num}</h3>
+                <h3 style={{ color: 'var(--primary-light)', fontSize: '1.2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span>{week.num === "Ôn tập" ? "Ôn tập Toàn diện" : `Tuần ${week.num}`}</span>
+                  {week.customBadge && (
+                    <span style={{ fontSize: '0.75rem', padding: '2px 8px', borderRadius: '12px', background: 'linear-gradient(135deg, #16a34a 0%, #15803d 100%)', color: 'white', fontWeight: 600 }}>
+                      {week.customBadge}
+                    </span>
+                  )}
+                </h3>
                 <p style={{ fontSize: '1.1rem', marginBottom: '20px', fontWeight: 500 }}>{week.title}</p>
               </div>
               
@@ -47,7 +68,7 @@ const Syllabus = () => {
                     style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', cursor: 'pointer', width: '100%' }}
                   >
                     <Eye size={18} />
-                    Xem Slide Bài Giảng
+                    {week.customSlideBtnText || "Xem Slide Bài Giảng"}
                   </button>
                 ) : (
                   <div style={{ padding: '12px', textAlign: 'center', color: 'var(--text-secondary)', background: 'rgba(0,0,0,0.03)', borderRadius: '8px' }}>
@@ -56,16 +77,27 @@ const Syllabus = () => {
                 )}
                 
                 {week.interactiveVideo && (
-                  <a 
-                    href={`${import.meta.env.BASE_URL}${week.interactiveVideo}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-secondary" 
-                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', cursor: 'pointer', width: '100%', background: 'var(--primary-color)', borderColor: 'var(--primary-color)', color: 'white', textDecoration: 'none', marginTop: '5px' }}
-                  >
-                    <PlayCircle size={18} />
-                    Xem Video Bài Giảng
-                  </a>
+                  <div style={{ display: 'flex', gap: '6px', marginTop: '5px' }}>
+                    <button 
+                      onClick={() => setSelectedInteractiveVideo(`${import.meta.env.BASE_URL}${week.interactiveVideo}`)}
+                      className="btn btn-secondary" 
+                      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', cursor: 'pointer', flex: 1, background: 'var(--primary-color)', borderColor: 'var(--primary-color)', color: 'white' }}
+                      title="Mở trình phát video trực tiếp"
+                    >
+                      <PlayCircle size={18} />
+                      {week.customVideoBtnText || "Xem Video Bài Giảng"}
+                    </button>
+                    <a 
+                      href={`${import.meta.env.BASE_URL}${week.interactiveVideo}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary"
+                      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 12px', background: 'rgba(0,0,0,0.05)', borderColor: 'var(--primary-color)', color: 'var(--primary-color)', textDecoration: 'none' }}
+                      title="Mở trong tab mới"
+                    >
+                      ↗
+                    </a>
+                  </div>
                 )}
 
                 {(() => {
@@ -424,6 +456,46 @@ const Syllabus = () => {
               <X size={20} />
             </button>
             <video controls src={selectedVideo} style={{ maxWidth: '100%', maxHeight: '100%', width: '100%', height: '100%', objectFit: 'contain' }} autoPlay />
+          </div>
+        </div>
+      )}
+
+      {selectedInteractiveVideo && (
+        <div className="pdf-modal-overlay" onClick={() => setSelectedInteractiveVideo(null)}>
+          <div className="pdf-modal-content" onClick={e => e.stopPropagation()} style={{ width: '95vw', maxWidth: '1440px', height: '92vh', maxHeight: '92vh', padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column', borderRadius: '12px', background: '#0a0a0a' }}>
+            <div className="pdf-modal-header" style={{ padding: '12px 20px', background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)', color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <PlayCircle size={20} color="#22c55e" />
+                <h3 style={{ margin: 0, fontSize: '1.05rem', color: '#fff', fontWeight: 600 }}>Trình phát Video Bài giảng & Ôn tập</h3>
+              </div>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                <a 
+                  href={selectedInteractiveVideo} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  style={{ color: '#38bdf8', fontSize: '0.85rem', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(56, 189, 248, 0.12)', border: '1px solid rgba(56, 189, 248, 0.3)', padding: '5px 12px', borderRadius: '6px' }}
+                >
+                  Mở tab mới toàn màn hình ↗
+                </a>
+                <button 
+                  className="close-btn" 
+                  onClick={() => setSelectedInteractiveVideo(null)} 
+                  style={{ color: '#fff', background: 'rgba(255,255,255,0.15)', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                >
+                  <X size={20} />
+                </button>
+              </div>
+            </div>
+            <div className="pdf-modal-body" style={{ flex: 1, height: 'calc(100% - 56px)', padding: 0, overflow: 'hidden' }}>
+              <iframe 
+                src={selectedInteractiveVideo} 
+                title="Trình phát Video Bài Giảng" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 'none', display: 'block', width: '100%', height: '100%' }} 
+                allow="autoplay; fullscreen"
+              />
+            </div>
           </div>
         </div>
       )}
